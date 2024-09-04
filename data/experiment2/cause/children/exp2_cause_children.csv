@@ -1,0 +1,601 @@
+participant,response_id,response__uuid,age_range,rounded_age,gender,lan_spoken,scenario,cause_question_order,question_type,full_response
+1,82108,b9d2990c-acd4-4656-97da-cb327d7e4915,1461-1826,1560,female,en,sunburn,first,caused,The sun.
+1,82108,b9d2990c-acd4-4656-97da-cb327d7e4915,1461-1826,1560,female,en,sunburn,first,simple,The sun.
+1,82108,b9d2990c-acd4-4656-97da-cb327d7e4915,1461-1826,1560,female,en,flood,second,simple,He left the door open with the tape off it. Yeah.
+1,82108,b9d2990c-acd4-4656-97da-cb327d7e4915,1461-1826,1560,female,en,flood,second,caused,He opened the door when the water came in when he took the tape off. Yeah.
+2,82195,4a5435c1-58af-4047-894f-b967c974e609,1461-1826,1710,female,en,sunburn,first,caused,Because she forgot her sunscreen at home.
+2,82195,4a5435c1-58af-4047-894f-b967c974e609,1461-1826,1710,female,en,sunburn,first,simple,The beach.
+2,82195,4a5435c1-58af-4047-894f-b967c974e609,1461-1826,1710,female,en,flood,second,simple,The--the water. I didn't think it flooded the basement because--because I would go swimming in it all day. Yeah. I would go swimming after I meet my [unintelligible]
+2,82195,4a5435c1-58af-4047-894f-b967c974e609,1461-1826,1710,female,en,flood,second,caused,"Because the water's open and I don't know what to say. Uh. Yeah, but do I have a fishy stuffy?"
+3,82209,c4726e62-d7c5-4f76-b1cb-dcb4056c632b,1461-1826,1500,female,en,flood,first,caused,Water.
+3,82209,c4726e62-d7c5-4f76-b1cb-dcb4056c632b,1461-1826,1500,female,en,flood,first,simple,Water.
+3,82209,c4726e62-d7c5-4f76-b1cb-dcb4056c632b,1461-1826,1500,female,en,sunburn,first,caused,Sunburn.
+3,82209,c4726e62-d7c5-4f76-b1cb-dcb4056c632b,1461-1826,1500,female,en,sunburn,first,simple,What do I say? The sun.
+4,82365,3ee90ac3-98e2-4616-b073-eb809a0c2f7a,1461-1826,1770,female,en so,flood,second,simple,What flooded the basement is water.
+4,82365,3ee90ac3-98e2-4616-b073-eb809a0c2f7a,1461-1826,1770,female,en so,flood,second,caused,Water.
+4,82365,3ee90ac3-98e2-4616-b073-eb809a0c2f7a,1461-1826,1770,female,en so,sunburn,second,simple,Sun.
+4,82365,3ee90ac3-98e2-4616-b073-eb809a0c2f7a,1461-1826,1770,female,en so,sunburn,second,caused,Sun.
+5,82389,b11293d2-dfa5-4d89-9626-35c235e318f5,1461-1826,1710,female,en,sunburn,second,simple,Sun.
+5,82389,b11293d2-dfa5-4d89-9626-35c235e318f5,1461-1826,1710,female,en,sunburn,second,caused,Sun.
+5,82389,b11293d2-dfa5-4d89-9626-35c235e318f5,1461-1826,1710,female,en,flood,first,caused,The-the rain.
+5,82389,b11293d2-dfa5-4d89-9626-35c235e318f5,1461-1826,1710,female,en,flood,first,simple,The water.
+6,82470,148bade8-2f83-4572-9a22-0fb899b3679f,1461-1826,1770,female,en,sunburn,second,simple,Bugs.
+6,82470,148bade8-2f83-4572-9a22-0fb899b3679f,1461-1826,1770,female,en,sunburn,second,caused,Sun. Yeah.
+6,82470,148bade8-2f83-4572-9a22-0fb899b3679f,1461-1826,1770,female,en,flood,first,caused,It rained. It rained.
+6,82470,148bade8-2f83-4572-9a22-0fb899b3679f,1461-1826,1770,female,en,flood,first,simple,It rained. Water.
+7,82473,b48ed08d-c563-4c2f-bf99-b769c1740548,1461-1826,1770,female,en it so,sunburn,second,simple,The sun.
+7,82473,b48ed08d-c563-4c2f-bf99-b769c1740548,1461-1826,1770,female,en it so,sunburn,second,caused,The sun.
+7,82473,b48ed08d-c563-4c2f-bf99-b769c1740548,1461-1826,1770,female,en it so,flood,second,simple,The rain.
+7,82473,b48ed08d-c563-4c2f-bf99-b769c1740548,1461-1826,1770,female,en it so,flood,second,caused,The rain.
+8,82586,3b68766a-01c2-45c3-a235-9795ac72cb7c,1461-1826,1770,male,en,flood,second,simple,The water. The water. The water.
+8,82586,3b68766a-01c2-45c3-a235-9795ac72cb7c,1461-1826,1770,male,en,flood,second,caused,The rain.
+8,82586,3b68766a-01c2-45c3-a235-9795ac72cb7c,1461-1826,1770,male,en,sunburn,second,simple,The sun. The sun but um she's not smiling when she has a sunburn.
+8,82586,3b68766a-01c2-45c3-a235-9795ac72cb7c,1461-1826,1770,male,en,sunburn,second,caused,The sunburn.
+9,82626,cb20930d-b710-47f2-a72e-08b052deb045,1461-1826,1560,female,,flood,second,simple,Water. Water.
+9,82626,cb20930d-b710-47f2-a72e-08b052deb045,1461-1826,1560,female,,flood,second,caused,Water. Water. Water. Water.
+9,82626,cb20930d-b710-47f2-a72e-08b052deb045,1461-1826,1560,female,,sunburn,first,caused,She didn't put her sunscreen.
+9,82626,cb20930d-b710-47f2-a72e-08b052deb045,1461-1826,1560,female,,sunburn,first,simple,The sun.
+10,82662,6de5112c-81b0-44b2-be54-e51ac4b826b3,1461-1826,1710,female,en,flood,second,simple,Um the window was open and it was raining so hard that the sea crashed down on his house.
+10,82662,6de5112c-81b0-44b2-be54-e51ac4b826b3,1461-1826,1710,female,en,flood,second,caused,The rain.
+10,82662,6de5112c-81b0-44b2-be54-e51ac4b826b3,1461-1826,1710,female,en,sunburn,first,caused,Sunscreen.
+10,82662,6de5112c-81b0-44b2-be54-e51ac4b826b3,1461-1826,1710,female,en,sunburn,first,simple,Um sun.
+11,82692,78626471-ffff-41f4-a40b-a74312bac1f8,1461-1826,1470,male,en fr,flood,second,simple,Water.
+11,82692,78626471-ffff-41f4-a40b-a74312bac1f8,1461-1826,1470,male,en fr,flood,second,caused,Rain.
+11,82692,78626471-ffff-41f4-a40b-a74312bac1f8,1461-1826,1470,male,en fr,sunburn,second,simple,The sun.
+11,82692,78626471-ffff-41f4-a40b-a74312bac1f8,1461-1826,1470,male,en fr,sunburn,second,caused,I cannot. The sun.
+12,82764,985e0b76-2e5d-4752-818a-f8612f53f849,1461-1826,1800,female,en,flood,first,caused,The rain. The rain flooding through the open window.
+12,82764,985e0b76-2e5d-4752-818a-f8612f53f849,1461-1826,1800,female,en,flood,first,simple,The rain goed through the open window in the workshop.
+12,82764,985e0b76-2e5d-4752-818a-f8612f53f849,1461-1826,1800,female,en,sunburn,second,simple,I don't know. It's something about melanin that I don't know. She forgot her sunscreen.
+12,82764,985e0b76-2e5d-4752-818a-f8612f53f849,1461-1826,1800,female,en,sunburn,second,caused,The sun is hot.
+13,82815,327dbc2e-6e7b-40c6-b495-8b0b737b880a,1461-1826,1740,male,en,sunburn,first,caused,It's wrong. I don't know. I think...when the sun was there.
+13,82815,327dbc2e-6e7b-40c6-b495-8b0b737b880a,1461-1826,1740,male,en,sunburn,first,simple,The sun because it's so hot.
+13,82815,327dbc2e-6e7b-40c6-b495-8b0b737b880a,1461-1826,1740,male,en,flood,second,simple,The window was open and all the water went in.
+13,82815,327dbc2e-6e7b-40c6-b495-8b0b737b880a,1461-1826,1740,male,en,flood,second,caused,It's right. Those rectangles [pointing to screen].
+14,82842,ed8ec22f-13d0-4b60-bd53-f0494f115f46,1461-1826,1470,male,en it,sunburn,first,caused,Sun.
+14,82842,ed8ec22f-13d0-4b60-bd53-f0494f115f46,1461-1826,1470,male,en it,sunburn,first,simple,Sun.
+14,82842,ed8ec22f-13d0-4b60-bd53-f0494f115f46,1461-1826,1470,male,en it,flood,second,simple,Water.
+14,82842,ed8ec22f-13d0-4b60-bd53-f0494f115f46,1461-1826,1470,male,en it,flood,second,caused,Water.
+15,82886,a17a7ade-05e6-4018-9baf-ff5fbdb78be3,1461-1826,1770,male,en,sunburn,second,simple,The sun.
+15,82886,a17a7ade-05e6-4018-9baf-ff5fbdb78be3,1461-1826,1770,male,en,sunburn,second,caused,The sun.
+15,82886,a17a7ade-05e6-4018-9baf-ff5fbdb78be3,1461-1826,1770,male,en,flood,second,simple,The rain.
+15,82886,a17a7ade-05e6-4018-9baf-ff5fbdb78be3,1461-1826,1770,male,en,flood,second,caused,The rain.
+16,83013,22a49024-843a-40d1-ba8e-bba70443d611,1461-1826,1560,male,en,flood,first,caused,It was raining.
+16,83013,22a49024-843a-40d1-ba8e-bba70443d611,1461-1826,1560,male,en,flood,first,simple,"I already know that, let's just go--[parent stops child]--it was the rain."
+16,83013,22a49024-843a-40d1-ba8e-bba70443d611,1461-1826,1560,male,en,sunburn,second,simple,She forgot her sunscreen and her hat. The sun.
+16,83013,22a49024-843a-40d1-ba8e-bba70443d611,1461-1826,1560,male,en,sunburn,second,caused,The sun.
+17,83011,c597c882-5899-4eac-9340-df58304eb6c2,1461-1826,1620,female,en,sunburn,second,simple,I think it was bad.
+17,83011,c597c882-5899-4eac-9340-df58304eb6c2,1461-1826,1620,female,en,sunburn,second,caused,I think it was bad.
+17,83011,c597c882-5899-4eac-9340-df58304eb6c2,1461-1826,1620,female,en,flood,second,simple,I think...because it went in the house it was bad. I think because it flooded in the house it was bad.
+17,83011,c597c882-5899-4eac-9340-df58304eb6c2,1461-1826,1620,female,en,flood,second,caused,I think was bad 'cause it flooded.
+18,83205,a7e3bfdd-cef8-414a-8245-9b57686f90da,1461-1826,1500,male,en,flood,first,caused,"It is the water from the rain, it poured down into the sea, the--the sea, it pouring down into the sea, and the sea gets higher, and then the water flooded the basement into Andy's workshop!"
+18,83205,a7e3bfdd-cef8-414a-8245-9b57686f90da,1461-1826,1500,male,en,flood,first,simple,It's the water. The ba-- the water flooded the basement.
+18,83205,a7e3bfdd-cef8-414a-8245-9b57686f90da,1461-1826,1500,male,en,sunburn,first,caused,Suzy has got a sunburn cause of the sun.
+18,83205,a7e3bfdd-cef8-414a-8245-9b57686f90da,1461-1826,1500,male,en,sunburn,first,simple,"Suzy's skin, cause of, the sun was making her Suzy's skin has gone red."
+19,83232,b481f75a-fdaf-42de-a5a5-ec3a51c18a23,1461-1826,1620,male,en,flood,first,caused,Water.
+19,83232,b481f75a-fdaf-42de-a5a5-ec3a51c18a23,1461-1826,1620,male,en,flood,first,simple,Water.
+19,83232,b481f75a-fdaf-42de-a5a5-ec3a51c18a23,1461-1826,1620,male,en,sunburn,first,caused,Sun. Sun.
+19,83232,b481f75a-fdaf-42de-a5a5-ec3a51c18a23,1461-1826,1620,male,en,sunburn,first,simple,Sun.
+20,83310,7f494d41-5ba6-40ac-9138-00e75e88f466,1461-1826,1770,male,en,sunburn,second,simple,The sun.
+20,83310,7f494d41-5ba6-40ac-9138-00e75e88f466,1461-1826,1770,male,en,sunburn,second,caused,Sun.
+20,83310,7f494d41-5ba6-40ac-9138-00e75e88f466,1461-1826,1770,male,en,flood,first,caused,The rain. The rain.
+20,83310,7f494d41-5ba6-40ac-9138-00e75e88f466,1461-1826,1770,male,en,flood,first,simple,The rain.
+21,85874,ff1d487c-8e77-42bb-830d-6c31015ffe4b,1461-1826,1800,male,en so,sunburn,first,caused,The sun.
+21,85874,ff1d487c-8e77-42bb-830d-6c31015ffe4b,1461-1826,1800,male,en so,sunburn,first,simple,The sun.
+21,85874,ff1d487c-8e77-42bb-830d-6c31015ffe4b,1461-1826,1800,male,en so,flood,first,caused,The--the water. It was raining and the water did it.
+21,85874,ff1d487c-8e77-42bb-830d-6c31015ffe4b,1461-1826,1800,male,en so,flood,first,simple,Water. Water. The water did.
+22,83332,6879c3d7-7f96-4bba-a5b9-a55c04b93642,1461-1826,1560,female,en,sunburn,first,caused,The sun.
+22,83332,6879c3d7-7f96-4bba-a5b9-a55c04b93642,1461-1826,1560,female,en,sunburn,first,simple,The sun.
+22,83332,6879c3d7-7f96-4bba-a5b9-a55c04b93642,1461-1826,1560,female,en,flood,first,caused,The rain.
+22,83332,6879c3d7-7f96-4bba-a5b9-a55c04b93642,1461-1826,1560,female,en,flood,first,simple,The rain.
+23,83347,aef588c3-f447-4b5e-bbe0-60988f85d6cb,1461-1826,1770,female,en ro,flood,first,caused,Rain. Rain.
+23,83347,aef588c3-f447-4b5e-bbe0-60988f85d6cb,1461-1826,1770,female,en ro,flood,first,simple,Rain.
+23,83347,aef588c3-f447-4b5e-bbe0-60988f85d6cb,1461-1826,1770,female,en ro,sunburn,second,simple,Sun.
+23,83347,aef588c3-f447-4b5e-bbe0-60988f85d6cb,1461-1826,1770,female,en ro,sunburn,second,caused,Sun.
+24,83349,14f8a217-8bba-489d-bad5-ac8f92b31a95,1461-1826,1770,male,en,flood,second,simple,The rain.
+24,83349,14f8a217-8bba-489d-bad5-ac8f92b31a95,1461-1826,1770,male,en,flood,second,caused,The floor.
+24,83349,14f8a217-8bba-489d-bad5-ac8f92b31a95,1461-1826,1770,male,en,sunburn,second,simple,The sun.
+24,83349,14f8a217-8bba-489d-bad5-ac8f92b31a95,1461-1826,1770,male,en,sunburn,second,caused,Sun.
+25,83374,a3602310-4756-4f2c-b75f-5bfd03be5a5b,1461-1826,1530,male,en,flood,first,caused,The water. Window.
+25,83374,a3602310-4756-4f2c-b75f-5bfd03be5a5b,1461-1826,1530,male,en,flood,first,simple,Water. Water.
+25,83374,a3602310-4756-4f2c-b75f-5bfd03be5a5b,1461-1826,1530,male,en,sunburn,first,caused,The sun. The sun.
+25,83374,a3602310-4756-4f2c-b75f-5bfd03be5a5b,1461-1826,1530,male,en,sunburn,first,simple,The sun.
+26,83367,7ac88be4-b1e6-4299-9e2d-7f4337a57b19,1461-1826,1620,female,en,flood,second,simple,Rain fell down and it come in here.
+26,83367,7ac88be4-b1e6-4299-9e2d-7f4337a57b19,1461-1826,1620,female,en,flood,second,caused,The rain got in the house. The basement.
+26,83367,7ac88be4-b1e6-4299-9e2d-7f4337a57b19,1461-1826,1620,female,en,sunburn,first,caused,Um she forgot her sunblock.
+26,83367,7ac88be4-b1e6-4299-9e2d-7f4337a57b19,1461-1826,1620,female,en,sunburn,first,simple,She forgot her sunblock.
+27,83439,5db0a004-0a23-4c2c-8941-4503d902b86b,1461-1826,1800,male,en so,sunburn,second,simple,Uh...the sun.
+27,83439,5db0a004-0a23-4c2c-8941-4503d902b86b,1461-1826,1800,male,en so,sunburn,second,caused,The sun.
+27,83439,5db0a004-0a23-4c2c-8941-4503d902b86b,1461-1826,1800,male,en so,flood,second,simple,The rain.
+27,83439,5db0a004-0a23-4c2c-8941-4503d902b86b,1461-1826,1800,male,en so,flood,second,caused,The water got high.
+28,83462,12d37ddb-94ac-4a0e-b31a-5d4c098b997a,1461-1826,1800,male,en km,flood,second,simple,The window was opened. This one.
+28,83462,12d37ddb-94ac-4a0e-b31a-5d4c098b997a,1461-1826,1800,male,en km,flood,second,caused,Um the water was flooding higher. This one.
+28,83462,12d37ddb-94ac-4a0e-b31a-5d4c098b997a,1461-1826,1800,male,en km,sunburn,second,simple,She didn't use sunscreen. 
+28,83462,12d37ddb-94ac-4a0e-b31a-5d4c098b997a,1461-1826,1800,male,en km,sunburn,second,caused,The sun.
+29,83474,16460c34-1ace-44d4-8598-b07ed36ed74e,1461-1826,1530,male,,sunburn,first,caused,She forgot her sunscreen.
+29,83474,16460c34-1ace-44d4-8598-b07ed36ed74e,1461-1826,1530,male,,sunburn,first,simple,She forgot her sunscreen.
+29,83474,16460c34-1ace-44d4-8598-b07ed36ed74e,1461-1826,1530,male,,flood,first,caused,The window opened and rain went in.
+29,83474,16460c34-1ace-44d4-8598-b07ed36ed74e,1461-1826,1530,male,,flood,first,simple,Water.
+30,88428,87d40957-6aa5-44bd-9078-f588c6220fb8,1461-1826,1530,male,en pl,flood,second,simple,Rain.
+30,88428,87d40957-6aa5-44bd-9078-f588c6220fb8,1461-1826,1530,male,en pl,flood,second,caused,Water.
+30,88428,87d40957-6aa5-44bd-9078-f588c6220fb8,1461-1826,1530,male,en pl,sunburn,first,caused,Because she left her sunscreen.
+30,88428,87d40957-6aa5-44bd-9078-f588c6220fb8,1461-1826,1530,male,en pl,sunburn,first,simple,Because she left her in the sun and she is red now.
+31,83505,4f73f79c-35d4-4cbb-9941-c18951612e50,1826 - 2191,2010,male,en so,sunburn,second,simple,"So when you don't put on sunscreen, you get really hot and you get red on your body."
+31,83505,4f73f79c-35d4-4cbb-9941-c18951612e50,1826 - 2191,2010,male,en so,sunburn,second,caused,It is the sun. It's getting her hot. So it's her--she's burning.
+31,83505,4f73f79c-35d4-4cbb-9941-c18951612e50,1826 - 2191,2010,male,en so,flood,first,caused,"So it's raining really hard, really really hard, and it's hitting the ground and it's splashing everywhere so--so the water's coming up and it's spilling on the basement."
+31,83505,4f73f79c-35d4-4cbb-9941-c18951612e50,1826 - 2191,2010,male,en so,flood,first,simple,So the--it's--the water's flooding it. It's the water.
+32,83531,0f32e1c9-2770-40d7-8081-ebcd8d9bbe35,1826 - 2191,2160,female,,sunburn,first,caused,She forgot her sunscreen.
+32,83531,0f32e1c9-2770-40d7-8081-ebcd8d9bbe35,1826 - 2191,2160,female,,sunburn,first,simple,The sun.
+32,83531,0f32e1c9-2770-40d7-8081-ebcd8d9bbe35,1826 - 2191,2160,female,,flood,second,simple,The rain.
+32,83531,0f32e1c9-2770-40d7-8081-ebcd8d9bbe35,1826 - 2191,2160,female,,flood,second,caused,The window was opened.  
+33,83573,1367ee81-ca3f-4482-851f-6c06bbacc3b0,1826 - 2191,2180,male,en so,sunburn,second,simple,The sun. 
+33,83573,1367ee81-ca3f-4482-851f-6c06bbacc3b0,1826 - 2191,2180,male,en so,sunburn,second,caused,The sun.
+33,83573,1367ee81-ca3f-4482-851f-6c06bbacc3b0,1826 - 2191,2180,male,en so,flood,second,simple,The rain.
+33,83573,1367ee81-ca3f-4482-851f-6c06bbacc3b0,1826 - 2191,2180,male,en so,flood,second,caused,The rain.
+34,83533,e471d601-6a5f-4969-b66e-5ce86d6e391b,1826 - 2191,2130,male,en,sunburn,first,caused,Sun.
+34,83533,e471d601-6a5f-4969-b66e-5ce86d6e391b,1826 - 2191,2130,male,en,sunburn,first,simple,Stuh [? unintelligible] sunscreen.
+34,83533,e471d601-6a5f-4969-b66e-5ce86d6e391b,1826 - 2191,2130,male,en,flood,second,simple,"Um I forgot what it's called, sorry."
+34,83533,e471d601-6a5f-4969-b66e-5ce86d6e391b,1826 - 2191,2130,male,en,flood,second,caused,Um...a holder.
+35,83870,a942d1a7-aca4-4178-9559-ad5718f98c64,1826 - 2191,2040,male,,sunburn,first,caused,Sun.
+35,83870,a942d1a7-aca4-4178-9559-ad5718f98c64,1826 - 2191,2040,male,,sunburn,first,simple,Sun.
+35,83870,a942d1a7-aca4-4178-9559-ad5718f98c64,1826 - 2191,2040,male,,flood,second,simple,Rain.
+35,83870,a942d1a7-aca4-4178-9559-ad5718f98c64,1826 - 2191,2040,male,,flood,second,caused,Rain.
+36,87259,b887bfa9-3064-47b7-a09f-ca6ece390150,1826 - 2191,1920,female,en so,flood,second,simple,The rain.
+36,87259,b887bfa9-3064-47b7-a09f-ca6ece390150,1826 - 2191,1920,female,en so,flood,second,caused,The rain.
+36,87259,b887bfa9-3064-47b7-a09f-ca6ece390150,1826 - 2191,1920,female,en so,sunburn,second,simple,The sun.
+36,87259,b887bfa9-3064-47b7-a09f-ca6ece390150,1826 - 2191,1920,female,en so,sunburn,second,caused,She forgot her sunscreen.
+37,84010,4707e04d-abe9-4c06-a00d-b3cc9b20a637,1826 - 2191,2160,female,en ro,sunburn,second,simple,Sun.
+37,84010,4707e04d-abe9-4c06-a00d-b3cc9b20a637,1826 - 2191,2160,female,en ro,sunburn,second,caused,Sun.
+37,84010,4707e04d-abe9-4c06-a00d-b3cc9b20a637,1826 - 2191,2160,female,en ro,flood,first,caused,Rain.
+37,84010,4707e04d-abe9-4c06-a00d-b3cc9b20a637,1826 - 2191,2160,female,en ro,flood,first,simple,Rain.
+38,84067,aefc9ed7-286c-4f1e-b654-deb802eaf9d9,1826 - 2191,2160,male,en,sunburn,second,simple,The sun. The sun.
+38,84067,aefc9ed7-286c-4f1e-b654-deb802eaf9d9,1826 - 2191,2160,male,en,sunburn,second,caused,The sun. The sun.
+38,84067,aefc9ed7-286c-4f1e-b654-deb802eaf9d9,1826 - 2191,2160,male,en,flood,first,caused,The rain. The rain.
+38,84067,aefc9ed7-286c-4f1e-b654-deb802eaf9d9,1826 - 2191,2160,male,en,flood,first,simple,The rain.
+39,84172,1c6da8ea-1380-4222-8f00-644575fa6a5f,1826 - 2191,2070,female,en,sunburn,first,caused,She forgot her sunscreen. She forgot her sunscreen. She forgot her sunscreen.
+39,84172,1c6da8ea-1380-4222-8f00-644575fa6a5f,1826 - 2191,2070,female,en,sunburn,first,simple,She forgot her sunscreen.
+39,84172,1c6da8ea-1380-4222-8f00-644575fa6a5f,1826 - 2191,2070,female,en,flood,first,caused,Because the window was open and something was broken so all the water came into his house. Or his basement outside.
+39,84172,1c6da8ea-1380-4222-8f00-644575fa6a5f,1826 - 2191,2070,female,en,flood,first,simple,I just did that. Um. The window was open and something was broken so it started raining very hard and the water all came in.
+40,84200,cc96c04b-a1c6-4b6b-9ce4-be741dc70f9c,1826 - 2191,2070,female,en pes,sunburn,second,simple,Not! The sun.
+40,84200,cc96c04b-a1c6-4b6b-9ce4-be741dc70f9c,1826 - 2191,2070,female,en pes,sunburn,second,caused,The sun.
+40,84200,cc96c04b-a1c6-4b6b-9ce4-be741dc70f9c,1826 - 2191,2070,female,en pes,flood,second,simple,The rain.
+40,84200,cc96c04b-a1c6-4b6b-9ce4-be741dc70f9c,1826 - 2191,2070,female,en pes,flood,second,caused,He opened the window.
+41,84236,935be7a2-c88a-4d26-9e33-03c4734b9885,1826 - 2191,2070,male,en,flood,first,caused,The rain.
+41,84236,935be7a2-c88a-4d26-9e33-03c4734b9885,1826 - 2191,2070,male,en,flood,first,simple,Rain.
+41,84236,935be7a2-c88a-4d26-9e33-03c4734b9885,1826 - 2191,2070,male,en,sunburn,second,simple,The sun.
+41,84236,935be7a2-c88a-4d26-9e33-03c4734b9885,1826 - 2191,2070,male,en,sunburn,second,caused,The sun.
+42,84261,8f15f222-8839-4c3d-86ad-7a567b201287,1826 - 2191,2160,female,en,sunburn,second,simple,Sun.
+42,84261,8f15f222-8839-4c3d-86ad-7a567b201287,1826 - 2191,2160,female,en,sunburn,second,caused,The sun.
+42,84261,8f15f222-8839-4c3d-86ad-7a567b201287,1826 - 2191,2160,female,en,flood,second,simple,Water.
+42,84261,8f15f222-8839-4c3d-86ad-7a567b201287,1826 - 2191,2160,female,en,flood,second,caused,The water.
+43,84280,86fb0588-3c04-4a68-bde8-8adda80faf15,1826 - 2191,1980,male,en ml so,flood,second,simple,"Um, the flood. A flood from outside and because the window was open. These windows were open. And the window opened because the latch wasn't there."
+43,84280,86fb0588-3c04-4a68-bde8-8adda80faf15,1826 - 2191,1980,male,en ml so,flood,second,caused,There was a--the rain was raining very hard and--'cause the window was open and it started to flood. It rained too much.
+43,84280,86fb0588-3c04-4a68-bde8-8adda80faf15,1826 - 2191,1980,male,en ml so,sunburn,first,caused,The sun. The sun.
+43,84280,86fb0588-3c04-4a68-bde8-8adda80faf15,1826 - 2191,1980,male,en ml so,sunburn,first,simple,The sun.
+44,84376,8a575b41-9990-444e-ab67-f6f31c621089,1826 - 2191,2180,female,en,flood,first,caused,What caused the basement to flood was a latch.
+44,84376,8a575b41-9990-444e-ab67-f6f31c621090,1826 - 2191,2180,female,en,flood,first,simple,Lots and lots of water.
+44,84376,8a575b41-9990-444e-ab67-f6f31c621091,1826 - 2191,2180,female,en,sunburn,second,simple,The sunlight.
+44,84376,8a575b41-9990-444e-ab67-f6f31c621092,1826 - 2191,2180,female,en,sunburn,second,caused,I already said that. The sunlight. The sunlight.
+45,84516,1b2dfbd3-90fd-4da0-8813-671c0bcea634,1826 - 2191,1950,male,en,sunburn,first,caused,The sun.
+45,84516,1b2dfbd3-90fd-4da0-8813-671c0bcea634,1826 - 2191,1950,male,en,sunburn,first,simple,The sun.
+45,84516,1b2dfbd3-90fd-4da0-8813-671c0bcea634,1826 - 2191,1950,male,en,flood,second,simple,The water.
+45,84516,1b2dfbd3-90fd-4da0-8813-671c0bcea634,1826 - 2191,1950,male,en,flood,second,caused,The water.
+46,84518,8b40f8ab-c0be-41c4-bd8b-41a3b93d947c,1826 - 2191,2010,female,,sunburn,second,simple,She forgot her sunscreen so she got sunburned and it's hurting.
+46,84518,8b40f8ab-c0be-41c4-bd8b-41a3b93d947c,1826 - 2191,2010,female,,sunburn,second,caused,The sun.
+46,84518,8b40f8ab-c0be-41c4-bd8b-41a3b93d947c,1826 - 2191,2010,female,,flood,second,simple,The rain and the door was open so it flooded. It was the window that was open so it flooded.
+46,84518,8b40f8ab-c0be-41c4-bd8b-41a3b93d947c,1826 - 2191,2010,female,,flood,second,caused,The rain.
+47,84592,aa2638f8-2d17-414b-b389-5e70e8722b47,1826 - 2191,1980,male,en,flood,first,caused,Cause the window was broken.
+47,84592,aa2638f8-2d17-414b-b389-5e70e8722b47,1826 - 2191,1980,male,en,flood,first,simple,The water.
+47,84592,aa2638f8-2d17-414b-b389-5e70e8722b47,1826 - 2191,1980,male,en,sunburn,second,simple,Because of the sun.
+47,84592,aa2638f8-2d17-414b-b389-5e70e8722b47,1826 - 2191,1980,male,en,sunburn,second,caused,Because she didn't have--she forgot her sunscreen.
+48,84699,4a6148db-c64e-447d-b154-a728681a8efb,1826 - 2191,1920,male,en,sunburn,second,simple,The sun.
+48,84699,4a6148db-c64e-447d-b154-a728681a8efb,1826 - 2191,1920,male,en,sunburn,second,caused,The sun.
+48,84699,4a6148db-c64e-447d-b154-a728681a8efb,1826 - 2191,1920,male,en,flood,first,caused,The rain.
+48,84699,4a6148db-c64e-447d-b154-a728681a8efb,1826 - 2191,1920,male,en,flood,first,simple,The rain.
+49,84729,0f056245-db64-492c-bcc1-a2c04945209d,1826 - 2191,2070,female,en,sunburn,second,simple,Because she didn't put her sunscreen on.
+49,84729,0f056245-db64-492c-bcc1-a2c04945209d,1826 - 2191,2070,female,en,sunburn,second,caused,She forgot to bring her sunscreen so that made her get it.
+49,84729,0f056245-db64-492c-bcc1-a2c04945209d,1826 - 2191,2070,female,en,flood,first,caused,Because he left the window open and it caused the rain and it flooded the basement.
+49,84729,0f056245-db64-492c-bcc1-a2c04945209d,1826 - 2191,2070,female,en,flood,first,simple,He left the window open and the water fell with out because the flood went into the basement and it flooded because he left the window open without the latch.
+50,84967,2d697187-b26c-4b2d-8da9-ee360731e1a9,1826 - 2191,2010,male,en he uk,flood,second,simple,Um the water.
+50,84967,2d697187-b26c-4b2d-8da9-ee360731e1a9,1826 - 2191,2010,male,en he uk,flood,second,caused,Water.
+50,84967,2d697187-b26c-4b2d-8da9-ee360731e1a9,1826 - 2191,2010,male,en he uk,sunburn,first,caused,Um she forgot his sunscreen on the table.
+50,84967,2d697187-b26c-4b2d-8da9-ee360731e1a9,1826 - 2191,2010,male,en he uk,sunburn,second,simple,Um she forgot to get his sunscreen.
+51,85052,ff352bd1-4d0a-4a0a-ad84-b05ea30a882f,1826 - 2191,1980,male,,sunburn,second,simple,Sun.
+51,85052,ff352bd1-4d0a-4a0a-ad84-b05ea30a882f,1826 - 2191,1980,male,,sunburn,second,caused,Sun.
+51,85052,ff352bd1-4d0a-4a0a-ad84-b05ea30a882f,1826 - 2191,1980,male,,flood,second,simple,Water.
+51,85052,ff352bd1-4d0a-4a0a-ad84-b05ea30a882f,1826 - 2191,1980,male,,flood,second,caused,Rain.
+52,85056,a87e6655-f44e-458e-88b8-04aed28fd048,1826 - 2191,2160,male,en,flood,first,caused,The window got broken.
+52,85056,a87e6655-f44e-458e-88b8-04aed28fd048,1826 - 2191,2160,male,en,flood,first,simple,Water.
+52,85056,a87e6655-f44e-458e-88b8-04aed28fd048,1826 - 2191,2160,male,en,sunburn,second,simple,The sun.
+52,85056,a87e6655-f44e-458e-88b8-04aed28fd048,1826 - 2191,2160,male,en,sunburn,second,caused,The sun.
+53,86062,766f0203-04fa-490d-8c99-540e4b909daa,1827 - 2191,2130,male,en,flood,first,caused,Water.
+53,86062,766f0203-04fa-490d-8c99-540e4b909daa,1828 - 2191,2130,male,en,flood,first,simple,Water.
+53,86062,766f0203-04fa-490d-8c99-540e4b909daa,1829 - 2191,2130,male,en,sunburn,second,simple,Sun. The sun.
+53,86062,766f0203-04fa-490d-8c99-540e4b909daa,1830 - 2191,2130,male,en,sunburn,second,caused,Sun. 
+54,86961,b26840bd-f832-4b34-be42-29b7709760fb,1831 - 2191,1950,male,en ms,sunburn,first,caused,The sun burns people in the beach.
+54,86961,b26840bd-f832-4b34-be42-29b7709760fb,1832 - 2191,1950,male,en ms,sunburn,first,simple,Sun.
+54,86961,b26840bd-f832-4b34-be42-29b7709760fb,1833 - 2191,1950,male,en ms,flood,second,simple,Rained.
+54,86961,b26840bd-f832-4b34-be42-29b7709760fb,1834 - 2191,1950,male,en ms,flood,second,caused,Rain.
+55,85440,beb99dfb-4f50-46ab-b8a3-e949504e9c92,1826 - 2191,1980,male,en km,sunburn,first,caused,Sun.
+55,85440,beb99dfb-4f50-46ab-b8a3-e949504e9c92,1826 - 2191,1980,male,en km,sunburn,first,simple,"The hot air. Right, mom?"
+55,85440,beb99dfb-4f50-46ab-b8a3-e949504e9c92,1826 - 2191,1980,male,en km,flood,first,caused,Rain. Rain.
+55,85440,beb99dfb-4f50-46ab-b8a3-e949504e9c92,1826 - 2191,1980,male,en km,flood,first,simple,All of the water.
+56,87034,fefe07b4-b551-436c-8d18-b7e0dc1b89d1,1827 - 2191,1950,female,en,sunburn,second,simple,The sun.
+56,87034,fefe07b4-b551-436c-8d18-b7e0dc1b89d1,1828 - 2191,1950,female,en,sunburn,second,caused,The hot sun.
+56,87034,fefe07b4-b551-436c-8d18-b7e0dc1b89d1,1829 - 2191,1950,female,en,flood,second,simple,Rain. The rain. The rain.
+56,87034,fefe07b4-b551-436c-8d18-b7e0dc1b89d1,1830 - 2191,1950,female,en,flood,second,caused,The water.
+57,85506,c079f34a-9858-4a23-9fb8-a3978e8b1226,1831 - 2191,2160,male,en ml,sunburn,second,simple,The sun.
+57,85506,c079f34a-9858-4a23-9fb8-a3978e8b1226,1826 - 2191,2160,male,en ml,sunburn,second,caused,The sun. The sun.
+57,85506,c079f34a-9858-4a23-9fb8-a3978e8b1226,1826 - 2191,2160,male,en ml,flood,first,caused,The hard hard hard hard hard hard hard hard hard hard hard hard rain.
+57,85506,c079f34a-9858-4a23-9fb8-a3978e8b1226,1826 - 2191,2160,male,en ml,flood,first,simple,The hard hard hard hard hard hard hard hard hard hard hard hard rain.
+58,85583,03d54a96-9571-499b-98b4-2ed58ae463d0,1826 - 2191,1920,male,en,flood,first,caused,It's the open window.
+58,85583,03d54a96-9571-499b-98b4-2ed58ae463d0,1826 - 2191,1920,male,en,flood,first,simple,It was the open window.
+58,85583,03d54a96-9571-499b-98b4-2ed58ae463d0,1826 - 2191,1920,male,en,sunburn,second,simple,"Mommy, it's the sun!"
+58,85583,03d54a96-9571-499b-98b4-2ed58ae463d0,1826 - 2191,1920,male,en,sunburn,second,caused,"Mommy, it's the sunlight!"
+59,85819,5a74ec4d-bdeb-437f-9d6c-20a518d956b3,1826 - 2191,2040,female,en so,flood,second,simple,Rain.
+59,85819,5a74ec4d-bdeb-437f-9d6c-20a518d956b3,1826 - 2191,2040,female,en so,flood,second,caused,Rain. Rain.
+59,85819,5a74ec4d-bdeb-437f-9d6c-20a518d956b3,1826 - 2191,2040,female,en so,sunburn,first,caused,The sun.
+59,85819,5a74ec4d-bdeb-437f-9d6c-20a518d956b3,1826 - 2191,2040,female,en so,sunburn,first,simple,The sun.
+60,83315,0279119a-f6d9-4f53-a54f-6176811f66ae,1826 - 2191,1830,male,en,sunburn,first,caused,Her forgot her sunscreen.
+60,83315,0279119a-f6d9-4f53-a54f-6176811f66ae,1826 - 2191,1830,male,en,sunburn,first,simple,The sun burned Suzy's skin.
+60,83315,0279119a-f6d9-4f53-a54f-6176811f66ae,1826 - 2191,1830,male,en,flood,second,simple,The water.
+60,83315,0279119a-f6d9-4f53-a54f-6176811f66ae,1826 - 2191,1830,male,en,flood,second,caused,The water um the window was still open when the water was ready.
+61,85978,e2e8c422-881d-4cb8-8cfb-bb3fa8b45814,2191 - 2556,2400,female,en,sunburn,second,simple,Sun.
+61,85978,e2e8c422-881d-4cb8-8cfb-bb3fa8b45814,2191 - 2556,2400,female,en,sunburn,second,caused,Sun. Sun.
+61,85978,e2e8c422-881d-4cb8-8cfb-bb3fa8b45814,2191 - 2556,2400,female,en,flood,first,caused,The rain.
+61,85978,e2e8c422-881d-4cb8-8cfb-bb3fa8b45814,2191 - 2556,2400,female,en,flood,first,simple,The rain.
+62,86038,643b3ddb-e363-474c-a8f2-cf3957754e90,2191 - 2556,2490,female,en,flood,second,simple,The--the water.  
+62,86038,643b3ddb-e363-474c-a8f2-cf3957754e90,2191 - 2556,2490,female,en,flood,second,caused,The--the heavy rain.
+62,86038,643b3ddb-e363-474c-a8f2-cf3957754e90,2191 - 2556,2490,female,en,sunburn,second,simple,The sun.
+62,86038,643b3ddb-e363-474c-a8f2-cf3957754e90,2191 - 2556,2490,female,en,sunburn,second,caused,The--the sun.
+63,86047,2746a700-94ad-4597-a70f-8774fcac21a6,2191 - 2556,2220,male,en,flood,second,simple,The window was open. The rain came in.
+63,86047,2746a700-94ad-4597-a70f-8774fcac21a6,2191 - 2556,2220,male,en,flood,second,caused,Because the window was open. 
+63,86047,2746a700-94ad-4597-a70f-8774fcac21a6,2191 - 2556,2220,male,en,sunburn,second,simple,The hot sun.
+63,86047,2746a700-94ad-4597-a70f-8774fcac21a6,2191 - 2556,2220,male,en,sunburn,second,caused,No. No sunscreen.
+64,86106,fcc0e1e7-136e-415e-a425-fdc59e5b0cff,2191 - 2556,2220,female,en cmn es,flood,first,caused,The window being not opened because of the broken latch.
+64,86106,fcc0e1e7-136e-415e-a425-fdc59e5b0cff,2191 - 2556,2220,female,en cmn es,flood,first,simple,Water.
+64,86106,fcc0e1e7-136e-415e-a425-fdc59e5b0cff,2191 - 2556,2220,female,en cmn es,sunburn,first,caused,Because she forgot her sunscreen.
+64,86106,fcc0e1e7-136e-415e-a425-fdc59e5b0cff,2191 - 2556,2220,female,en cmn es,sunburn,first,simple,The sun.
+65,86149,9c0ee854-9d59-4eb2-a19b-1d2f7f9ff6f9,2191 - 2556,2250,male,en bn he,flood,second,simple,Rain.
+65,86149,9c0ee854-9d59-4eb2-a19b-1d2f7f9ff6f9,2191 - 2556,2250,male,en bn he,flood,second,caused,The open window.
+65,86149,9c0ee854-9d59-4eb2-a19b-1d2f7f9ff6f9,2191 - 2556,2250,male,en bn he,sunburn,first,caused,She forgot her sunscreen.
+65,86149,9c0ee854-9d59-4eb2-a19b-1d2f7f9ff6f9,2191 - 2556,2250,male,en bn he,sunburn,first,simple,The sun.
+66,86204,838d5208-61d1-4589-8bbd-35b2149d4bee,2191 - 2556,2280,male,,sunburn,first,caused,The sun. The sun. The sun.
+66,86204,838d5208-61d1-4589-8bbd-35b2149d4bee,2191 - 2556,2280,male,,sunburn,first,simple,The--the sun.
+66,86204,838d5208-61d1-4589-8bbd-35b2149d4bee,2191 - 2556,2280,male,,flood,second,simple,"Uh, the rain. The rain. The rain."
+66,86204,838d5208-61d1-4589-8bbd-35b2149d4bee,2191 - 2556,2280,male,,flood,second,caused,The rain. The rain.
+67,86216,446de49f-d792-4964-84fe-4e035223d4fc,2191 - 2556,2250,male,en,sunburn,second,simple,Sun.
+67,86216,446de49f-d792-4964-84fe-4e035223d4fc,2191 - 2556,2250,male,en,sunburn,second,caused,Sun.
+67,86216,446de49f-d792-4964-84fe-4e035223d4fc,2191 - 2556,2250,male,en,flood,second,simple,Window.
+67,86216,446de49f-d792-4964-84fe-4e035223d4fc,2191 - 2556,2250,male,en,flood,second,caused,Water.
+68,86226,87ea8f81-05e6-4e25-914d-2c6fd4b8e31b,2191 - 2556,2490,female,en,sunburn,second,simple,The sun.
+68,86226,87ea8f81-05e6-4e25-914d-2c6fd4b8e31b,2191 - 2556,2490,female,en,sunburn,second,caused,The sun.
+68,86226,87ea8f81-05e6-4e25-914d-2c6fd4b8e31b,2191 - 2556,2490,female,en,flood,first,caused,The rain.
+68,86226,87ea8f81-05e6-4e25-914d-2c6fd4b8e31b,2191 - 2556,2490,female,en,flood,first,simple,The rain.
+69,86231,dac23056-11f5-465e-8be1-eb8e67417d73,2191 - 2556,2400,male,en,sunburn,first,caused,She forgot her sunscreen.
+69,86231,dac23056-11f5-465e-8be1-eb8e67417d73,2191 - 2556,2400,male,en,sunburn,first,simple,A sunburn.
+69,86231,dac23056-11f5-465e-8be1-eb8e67417d73,2191 - 2556,2400,male,en,flood,second,simple,Water.
+69,86231,dac23056-11f5-465e-8be1-eb8e67417d73,2191 - 2556,2400,male,en,flood,second,caused,The rain.
+70,86618,efece08f-200b-4d40-89cd-d22ca0ba9006,2191 - 2556,2460,male,en so,sunburn,first,caused,"The sun, the hot sun."
+70,86618,efece08f-200b-4d40-89cd-d22ca0ba9006,2191 - 2556,2460,male,en so,sunburn,first,simple,The hot sun. The hot sun. I already said it.
+70,86618,efece08f-200b-4d40-89cd-d22ca0ba9006,2191 - 2556,2460,male,en so,flood,first,caused,The hard rain. The hard rain.
+70,86618,efece08f-200b-4d40-89cd-d22ca0ba9006,2191 - 2556,2460,male,en so,flood,first,simple,The rain.
+71,86910,964ac192-98bd-4ce3-8504-834aa724ffbf,2191 - 2556,2550,male,en,sunburn,second,simple,Sunburn.  
+71,86910,964ac192-98bd-4ce3-8504-834aa724ffbf,2191 - 2556,2550,male,en,sunburn,second,caused,"Um, sun."
+71,86910,964ac192-98bd-4ce3-8504-834aa724ffbf,2191 - 2556,2550,male,en,flood,second,simple,"Um, that the window was open and the water flooded."
+71,86910,964ac192-98bd-4ce3-8504-834aa724ffbf,2191 - 2556,2550,male,en,flood,second,caused,Water.
+72,86918,30795e6f-aa76-48a4-8978-d979a246b3a9,2191 - 2556,2370,female,en,sunburn,second,simple,The sun.
+72,86918,30795e6f-aa76-48a4-8978-d979a246b3a9,2191 - 2556,2370,female,en,sunburn,second,caused,Her--her not bringing the sunscreen.
+72,86918,30795e6f-aa76-48a4-8978-d979a246b3a9,2191 - 2556,2370,female,en,flood,second,simple,Rainwater.
+72,86918,30795e6f-aa76-48a4-8978-d979a246b3a9,2191 - 2556,2370,female,en,flood,second,caused,The window latch being broken.
+73,87011,6cda96ae-9334-469e-9bc9-9c88561e6ad5,2191 - 2556,2550,female,en so,flood,first,caused,"Andy was in his workshop, he didn't see it was starting to rain, and there's water everywhere then--and the window was open so the water could come in."
+73,87011,6cda96ae-9334-469e-9bc9-9c88561e6ad5,2191 - 2556,2550,female,en so,flood,first,simple,The water flooded the basement because it was raining.
+73,87011,6cda96ae-9334-469e-9bc9-9c88561e6ad5,2191 - 2556,2550,female,en so,sunburn,second,simple,"The sun because, um, the sun was out, um, um, and she forgot to bring her sunscreen so she couldn't put her sunscreen on."
+73,87011,6cda96ae-9334-469e-9bc9-9c88561e6ad5,2191 - 2556,2550,female,en so,sunburn,second,caused,The sun 'cause--because it was too sunny and if it's too sunny then you get a sunburn.
+74,87064,f6297fca-9e2e-4b7d-9026-1a1fb8249c8e,2191 - 2556,2490,female,en km,flood,second,simple,Rain.
+74,87064,f6297fca-9e2e-4b7d-9026-1a1fb8249c8e,2191 - 2556,2490,female,en km,flood,second,caused,The window opened.
+74,87064,f6297fca-9e2e-4b7d-9026-1a1fb8249c8e,2191 - 2556,2490,female,en km,sunburn,first,caused,The sun.
+74,87064,f6297fca-9e2e-4b7d-9026-1a1fb8249c8e,2191 - 2556,2490,female,en km,sunburn,first,simple,The hotness.
+75,87178,52ba2356-5dd2-4ef3-964d-61f92136aefe,2191 - 2556,2370,female,en,flood,second,simple,Water.
+75,87178,52ba2356-5dd2-4ef3-964d-61f92136aefe,2191 - 2556,2370,female,en,flood,second,caused,Water.
+75,87178,52ba2356-5dd2-4ef3-964d-61f92136aefe,2191 - 2556,2370,female,en,sunburn,first,caused,Sun.
+75,87178,52ba2356-5dd2-4ef3-964d-61f92136aefe,2191 - 2556,2370,female,en,sunburn,first,simple,Sun.
+76,87231,47174f3f-e6b2-4d78-b4d4-a1636991c990,2191 - 2556,2460,male,en,flood,first,caused,It started to rain and the window was open.
+76,87231,47174f3f-e6b2-4d78-b4d4-a1636991c990,2191 - 2556,2460,male,en,flood,first,simple,Water.
+76,87231,47174f3f-e6b2-4d78-b4d4-a1636991c990,2191 - 2556,2460,male,en,sunburn,first,caused,The sun. The sun The sun and she forgot her sunscreen.
+76,87231,47174f3f-e6b2-4d78-b4d4-a1636991c990,2191 - 2556,2460,male,en,sunburn,first,simple,The sun.
+77,87256,8d1959bd-b3b7-4d6d-97dc-7527d9144cae,2191 - 2556,2400,female,en,flood,first,caused,The rain made the water in the sea rise so it came into his window.
+77,87256,8d1959bd-b3b7-4d6d-97dc-7527d9144cae,2191 - 2556,2400,female,en,flood,first,simple,Water.
+77,87256,8d1959bd-b3b7-4d6d-97dc-7527d9144cae,2191 - 2556,2400,female,en,sunburn,second,simple,The sun.
+77,87256,8d1959bd-b3b7-4d6d-97dc-7527d9144cae,2191 - 2556,2400,female,en,sunburn,second,caused,The sun.
+78,87267,f7d7aff6-839a-43c9-8ff0-6852c959b8a3,2191 - 2556,2280,male,en,flood,second,simple,The rain.
+78,87267,f7d7aff6-839a-43c9-8ff0-6852c959b8a3,2191 - 2556,2280,male,en,flood,second,caused,Water.
+78,87267,f7d7aff6-839a-43c9-8ff0-6852c959b8a3,2191 - 2556,2280,male,en,sunburn,second,simple,Sun. The sun.
+78,87267,f7d7aff6-839a-43c9-8ff0-6852c959b8a3,2191 - 2556,2280,male,en,sunburn,second,caused,Sun.
+79,87305,dcf54d66-855b-4096-a563-468552253037,2191 - 2556,2310,female,en nl so,flood,first,caused,The rain. It started raining.
+79,87305,dcf54d66-855b-4096-a563-468552253037,2191 - 2556,2310,female,en nl so,flood,first,simple,The rain flooded the basement.
+79,87305,dcf54d66-855b-4096-a563-468552253037,2191 - 2556,2310,female,en nl so,sunburn,second,simple,The sun burned Suzy's skin.
+79,87305,dcf54d66-855b-4096-a563-468552253037,2191 - 2556,2310,female,en nl so,sunburn,second,caused,The sun.
+80,87529,1f6b757d-1437-4e0b-bba4-47c050188b02,2191 - 2556,2520,male,en,sunburn,first,caused,The sun.
+80,87529,1f6b757d-1437-4e0b-bba4-47c050188b02,2191 - 2556,2520,male,en,sunburn,first,simple,The sun.
+80,87529,1f6b757d-1437-4e0b-bba4-47c050188b02,2191 - 2556,2520,male,en,flood,first,caused,The window was open.
+80,87529,1f6b757d-1437-4e0b-bba4-47c050188b02,2191 - 2556,2520,male,en,flood,first,simple,The--the rainwater.
+81,87642,51e5d839-1336-46ee-866a-3a5b547b39c4,2191 - 2556,2520,female,en,flood,second,simple,Water.
+81,87642,51e5d839-1336-46ee-866a-3a5b547b39c4,2191 - 2556,2520,female,en,flood,second,caused,Rain.
+81,87642,51e5d839-1336-46ee-866a-3a5b547b39c4,2191 - 2556,2520,female,en,sunburn,second,simple,The sun.
+81,87642,51e5d839-1336-46ee-866a-3a5b547b39c4,2191 - 2556,2520,female,en,sunburn,second,caused,The sun.
+82,87704,453f02d8-45cc-47bf-828a-a22d49e56e6f,2191 - 2556,2490,male,en,flood,second,simple,Rain.
+82,87704,453f02d8-45cc-47bf-828a-a22d49e56e6f,2191 - 2556,2490,male,en,flood,second,caused,Uh...water. Water. Water.
+82,87704,453f02d8-45cc-47bf-828a-a22d49e56e6f,2191 - 2556,2490,male,en,sunburn,second,simple,Sunlight.
+82,87704,453f02d8-45cc-47bf-828a-a22d49e56e6f,2191 - 2556,2490,male,en,sunburn,second,caused,Sunburn.
+83,87818,2687c513-cd61-4b46-85cf-95572dd7e3c3,2191 - 2556,2310,female,en,flood,second,simple,Rainwater.
+83,87818,2687c513-cd61-4b46-85cf-95572dd7e3c3,2191 - 2556,2310,female,en,flood,second,caused,Lots of rain.
+83,87818,2687c513-cd61-4b46-85cf-95572dd7e3c3,2191 - 2556,2310,female,en,sunburn,second,simple,The sun.
+83,87818,2687c513-cd61-4b46-85cf-95572dd7e3c3,2191 - 2556,2310,female,en,sunburn,second,caused,The sun's heat.
+84,87853,2fc77225-d81d-458e-b5ce-b69e374d59cb,2191 - 2556,2520,male,,sunburn,second,simple,The sun.
+84,87853,2fc77225-d81d-458e-b5ce-b69e374d59cb,2191 - 2556,2520,male,,sunburn,second,caused,The sun.
+84,87853,2fc77225-d81d-458e-b5ce-b69e374d59cb,2191 - 2556,2520,male,,flood,second,simple,Water.
+84,87853,2fc77225-d81d-458e-b5ce-b69e374d59cb,2191 - 2556,2520,male,,flood,second,caused,The windows were open and the water got too high.
+85,87958,affba0d5-8142-4ee2-889a-b1d20aa538e7,2191 - 2556,2460,male,en,flood,second,simple,Rain. Rain. Rain.
+85,87958,affba0d5-8142-4ee2-889a-b1d20aa538e7,2191 - 2556,2460,male,en,flood,second,caused,Rain. Rain.
+85,87958,affba0d5-8142-4ee2-889a-b1d20aa538e7,2191 - 2556,2460,male,en,sunburn,first,caused,The sun. The sun. The sun.
+85,87958,affba0d5-8142-4ee2-889a-b1d20aa538e7,2191 - 2556,2460,male,en,sunburn,first,simple,The sun. The sun.
+86,88024,bed9ba92-27f3-4b1b-b48f-8ec6853ec503,2191 - 2556,2220,female,en,sunburn,first,caused,Sunscreen.
+86,88024,bed9ba92-27f3-4b1b-b48f-8ec6853ec503,2191 - 2556,2220,female,en,sunburn,first,simple,The sun.
+86,88024,bed9ba92-27f3-4b1b-b48f-8ec6853ec503,2191 - 2556,2220,female,en,flood,second,simple,The water.
+86,88024,bed9ba92-27f3-4b1b-b48f-8ec6853ec503,2191 - 2556,2220,female,en,flood,second,caused,The water rising.
+87,88062,0db729e8-c39c-430a-8baf-7568e85349b8,2191 - 2556,2250,female,,sunburn,first,caused,She didn't bring her sunscreen. She forgot her sunscreen.
+87,88062,0db729e8-c39c-430a-8baf-7568e85349b8,2191 - 2556,2250,female,,sunburn,first,simple,The sun.
+87,88062,0db729e8-c39c-430a-8baf-7568e85349b8,2191 - 2556,2250,female,,flood,first,caused,"Andy took the latch off and it started, and the window was opening and closing and, ur, em, it started raining really hard, so the basement started to flood. "
+87,88062,0db729e8-c39c-430a-8baf-7568e85349b8,2191 - 2556,2250,female,,flood,first,simple,The rain.
+88,88119,2c68f173-d8b1-4746-878f-79bfa3406c2e,2191 - 2556,2340,female,,sunburn,first,caused,Because she left it on the table and she forgot.
+88,88119,2c68f173-d8b1-4746-878f-79bfa3406c2e,2191 - 2556,2340,female,,sunburn,first,simple,The sun.
+88,88119,2c68f173-d8b1-4746-878f-79bfa3406c2e,2191 - 2556,2340,female,,flood,second,simple,The rain.
+88,88119,2c68f173-d8b1-4746-878f-79bfa3406c2e,2191 - 2556,2340,female,,flood,second,caused,"Coz it rained so hard, that, um, that there is, um, water that it flooded in the basement."
+89,88306,50b81242-deac-451f-89f4-fe361a136f50,2191 - 2556,2400,female,en,sunburn,second,simple,Sun. Sun.
+89,88306,50b81242-deac-451f-89f4-fe361a136f50,2191 - 2556,2400,female,en,sunburn,second,caused,Sun.
+89,88306,50b81242-deac-451f-89f4-fe361a136f50,2191 - 2556,2400,female,en,flood,second,simple,Rain.
+89,88306,50b81242-deac-451f-89f4-fe361a136f50,2191 - 2556,2400,female,en,flood,second,caused,Rain.
+90,88374,abc585e9-8398-4f98-8bb8-80283e7861f8,2191 - 2556,2430,female,en,flood,first,caused,It flooded because the water got high and the window was open.
+90,88374,abc585e9-8398-4f98-8bb8-80283e7861f8,2191 - 2556,2430,female,en,flood,first,simple,Water. Water flooded the basement.
+90,88374,abc585e9-8398-4f98-8bb8-80283e7861f8,2191 - 2556,2430,female,en,sunburn,first,caused,The sun caused her to get a sunburn. That wouldn't have happened if Suzy had remembered her sunscreen.
+90,88374,abc585e9-8398-4f98-8bb8-80283e7861f8,2191 - 2556,2430,female,en,sunburn,first,simple,The sun burned Suzy's skin.
+91,77112,6a8c65da-544f-49f3-b9aa-68eefe585bdc,2556-3652,3510,female,,sunburn,second,simple,The sun burned Suzy's skin.
+91,77112,6a8c65da-544f-49f3-b9aa-68eefe585bdc,2556-3653,3510,female,,sunburn,second,caused,The sun caused Suzy's skin to burn because she forgot her sunscreen.
+91,77112,6a8c65da-544f-49f3-b9aa-68eefe585bdc,2556-3654,3510,female,,flood,second,simple,The flood that the rain caused.
+91,77112,6a8c65da-544f-49f3-b9aa-68eefe585bdc,2556-3655,3510,female,,flood,second,caused,The rain.
+92,72905,d751f188-6de2-4de9-b40b-9fbc8ff25c08,2556-3652,2670,female,en ro,sunburn,second,simple,"The sun, because she forgot to bring her sunscreen."
+92,72905,d751f188-6de2-4de9-b40b-9fbc8ff25c08,2556-3652,2670,female,en ro,sunburn,second,caused,Forgetting her sunscreen. 
+92,72905,d751f188-6de2-4de9-b40b-9fbc8ff25c08,2556-3652,2670,female,en ro,flood,second,simple,The rain that fell from the sky really hard.
+92,72905,d751f188-6de2-4de9-b40b-9fbc8ff25c08,2556-3652,2670,female,en ro,flood,second,caused,"Because Andy left the window open, and then the water came inside the house, and no, and the window latch wasn't there to stop it."
+93,72914,55409d40-947c-470b-a911-9e1afa942f54,2556-3652,3330,female,en,flood,first,caused,Because the water rose so high that it started to flood.
+93,72914,55409d40-947c-470b-a911-9e1afa942f54,2556-3652,3330,female,en,flood,first,simple,Water.
+93,72914,55409d40-947c-470b-a911-9e1afa942f54,2556-3652,3330,female,en,sunburn,first,caused,Cause she didn't put any sunscreen on.
+93,72914,55409d40-947c-470b-a911-9e1afa942f54,2556-3652,3330,female,en,sunburn,first,simple,The hot sun.
+94,73034,4c4ae3c5-fa4c-4bc3-af43-4cecc659c7fe,2556-3652,2730,male,en,flood,second,simple,The water.
+94,73034,4c4ae3c5-fa4c-4bc3-af43-4cecc659c7fe,2556-3652,2730,male,en,flood,second,caused,The storm.
+94,73034,4c4ae3c5-fa4c-4bc3-af43-4cecc659c7fe,2556-3652,2730,male,en,sunburn,first,caused,The sun.
+94,73034,4c4ae3c5-fa4c-4bc3-af43-4cecc659c7fe,2556-3652,2730,male,en,sunburn,first,simple,The sun.
+95,73204,6ae9126d-f21e-4fb2-a05b-0160decb11fa,2556-3652,2790,female,en,sunburn,second,simple,the sun.
+95,73204,6ae9126d-f21e-4fb2-a05b-0160decb11fa,2556-3652,2790,female,en,sunburn,second,caused,the sun.
+95,73204,6ae9126d-f21e-4fb2-a05b-0160decb11fa,2556-3652,2790,female,en,flood,first,caused,the rain.
+95,73204,6ae9126d-f21e-4fb2-a05b-0160decb11fa,2556-3652,2790,female,en,flood,first,simple,the rain.
+96,73571,df302837-e602-423a-ad51-2ba5350e1c8e,2556-3652,3090,male,en so,flood,second,simple,water.
+96,73571,df302837-e602-423a-ad51-2ba5350e1c8e,2556-3652,3090,male,en so,flood,second,caused,rain.
+96,73571,df302837-e602-423a-ad51-2ba5350e1c8e,2556-3652,3090,male,en so,sunburn,second,simple,the sun.
+96,73571,df302837-e602-423a-ad51-2ba5350e1c8e,2556-3652,3090,male,en so,sunburn,second,caused,the sun.
+97,73593,96d21618-f42b-4d2c-8367-9a7c06a1553e,2556-3652,2700,female,en,sunburn,first,caused,because she didn't put on sunscreen
+97,73593,96d21618-f42b-4d2c-8367-9a7c06a1553e,2556-3652,2700,female,en,sunburn,first,simple,the sun
+97,73593,96d21618-f42b-4d2c-8367-9a7c06a1553e,2556-3652,2700,female,en,flood,first,caused,the water.
+97,73593,96d21618-f42b-4d2c-8367-9a7c06a1553e,2556-3652,2700,female,en,flood,first,simple,the rain?
+98,73748,ac3b71a6-2b59-48e4-9462-0d8af040066b,2556-3652,3000,female,en so,sunburn,first,caused,she forgot to put her sunscreen on.
+98,73748,ac3b71a6-2b59-48e4-9462-0d8af040066b,2556-3652,3000,female,en so,sunburn,first,simple,the sun.
+98,73748,ac3b71a6-2b59-48e4-9462-0d8af040066b,2556-3652,3000,female,en so,flood,first,caused,because the window was open
+98,73748,ac3b71a6-2b59-48e4-9462-0d8af040066b,2556-3652,3000,female,en so,flood,first,simple,the rain.
+99,73878,4d24634e-5b2e-4177-955c-b7f1c324ef04,2556-3652,3390,female,,flood,first,caused,"Um, the window was open so when it was raining hard the rain was able to go into the basement."
+99,73878,4d24634e-5b2e-4177-955c-b7f1c324ef04,2556-3652,3390,female,,flood,first,simple,"Um, the window was open and then it was raining really hard, and because it was raining really hard it flooded the basement."
+99,73878,4d24634e-5b2e-4177-955c-b7f1c324ef04,2556-3652,3390,female,,sunburn,second,simple,"The sun burned her skin. and also she didn't have her sunscreen so she wasn't able to, um, avoid the burn."
+99,73878,4d24634e-5b2e-4177-955c-b7f1c324ef04,2556-3652,3390,female,,sunburn,second,caused,"Um, the sun caused her skin to burn."
+100,73887,25013712-4829-4028-bb19-42edef02cba6,2556-3652,3570,female,en,flood,first,caused,"The window was open on the--wait, in the basement window and so, and it starts raining really hard and so it flooded."
+100,73887,25013712-4829-4028-bb19-42edef02cba6,2556-3652,3570,female,en,flood,first,simple,The rain.
+100,73887,25013712-4829-4028-bb19-42edef02cba6,2556-3652,3570,female,en,sunburn,first,caused,"the...the sun, she forgot her sunscreen"
+100,73887,25013712-4829-4028-bb19-42edef02cba6,2556-3652,3570,female,en,sunburn,first,simple,the sun.
+101,73904,13a3c03a-46f9-412a-96d8-94eeb1bd6e40,2556-3652,2670,male,en km,sunburn,second,simple,sun.
+101,73904,13a3c03a-46f9-412a-96d8-94eeb1bd6e40,2556-3652,2670,male,en km,sunburn,second,caused,sun.
+101,73904,13a3c03a-46f9-412a-96d8-94eeb1bd6e40,2556-3652,2670,male,en km,flood,second,simple,rain.
+101,73904,13a3c03a-46f9-412a-96d8-94eeb1bd6e40,2556-3652,2670,male,en km,flood,second,caused,rain.
+102,73912,86e7f17b-016e-4bf6-ae72-c2cab76eef40,2556-3652,2640,male,en,sunburn,first,caused,"Because she left the sunscreen at home, oh Sally!"
+102,73912,86e7f17b-016e-4bf6-ae72-c2cab76eef40,2556-3652,2640,male,en,sunburn,first,simple,the sun.
+102,73912,86e7f17b-016e-4bf6-ae72-c2cab76eef40,2556-3652,2640,male,en,flood,second,simple,the rain.
+102,73912,86e7f17b-016e-4bf6-ae72-c2cab76eef40,2556-3652,2640,male,en,flood,second,caused,the rain. the rain.
+103,73947,9ba274a0-e23c-4dee-ac02-b05079f974d8,2556-3652,2730,male,en so,sunburn,second,simple,the sun.
+103,73947,9ba274a0-e23c-4dee-ac02-b05079f974d8,2556-3652,2730,male,en so,sunburn,second,caused,the sun.
+103,73947,9ba274a0-e23c-4dee-ac02-b05079f974d8,2556-3652,2730,male,en so,flood,second,simple,the water.
+103,73947,9ba274a0-e23c-4dee-ac02-b05079f974d8,2556-3652,2730,male,en so,flood,second,caused,the rain.
+104,73960,7f689e57-89e5-4b79-8719-6c73d7e444b9,2556-3652,3510,male,en,sunburn,second,simple,the sun
+104,73960,7f689e57-89e5-4b79-8719-6c73d7e444b9,2556-3652,3510,male,en,sunburn,second,caused,she forgot her sunscreen
+104,73960,7f689e57-89e5-4b79-8719-6c73d7e444b9,2556-3652,3510,male,en,flood,first,caused,the rain.
+104,73960,7f689e57-89e5-4b79-8719-6c73d7e444b9,2556-3652,3510,male,en,flood,first,simple,the rain.
+105,74011,5dfd07ae-8155-404a-bce6-028b835520c0,2556-3652,3120,male,en fr,flood,second,caused,It started to rain and then the water got so high it flooded the basement.
+105,74011,5dfd07ae-8155-404a-bce6-028b835520c0,2556-3652,3120,male,en fr,flood,second,simple,water. water. water.
+105,74011,5dfd07ae-8155-404a-bce6-028b835520c0,2556-3652,3120,male,en fr,sunburn,first,caused,the sun.
+105,74011,5dfd07ae-8155-404a-bce6-028b835520c0,2556-3652,3120,male,en fr,sunburn,first,simple,the sun.
+106,74033,0d329f7c-5866-426c-bdd8-ced3de2c0bb4,2556-3652,2970,male,en,sunburn,second,simple,The sun. 
+106,74033,0d329f7c-5866-426c-bdd8-ced3de2c0bb4,2556-3652,2970,male,en,sunburn,second,caused,The sun.
+106,74033,0d329f7c-5866-426c-bdd8-ced3de2c0bb4,2556-3652,2970,male,en,flood,second,simple,"Um, the latch wasn't--the latch--Andy took the latch off of the window and then it started to rain really hard."
+106,74033,0d329f7c-5866-426c-bdd8-ced3de2c0bb4,2556-3652,2970,male,en,flood,second,caused,It started to rain really hard and then the basement flooded.
+107,74080,8c3fdcfc-4cf9-416f-a642-46f05fa6b289,2556-3652,3600,male,,sunburn,second,simple,"the sun, UV rays."
+107,74080,8c3fdcfc-4cf9-416f-a642-46f05fa6b289,2556-3652,3600,male,,sunburn,second,caused,the sun.
+107,74080,8c3fdcfc-4cf9-416f-a642-46f05fa6b289,2556-3652,3600,male,,flood,second,simple,water.
+107,74080,8c3fdcfc-4cf9-416f-a642-46f05fa6b289,2556-3652,3600,male,,flood,second,caused,rain. rain.
+108,74082,377c7631-5407-48aa-96db-ab8693b31826,2556-3652,2880,male,en,flood,second,simple,rain.
+108,74082,377c7631-5407-48aa-96db-ab8693b31826,2556-3652,2880,male,en,flood,second,caused,heavy rain.
+108,74082,377c7631-5407-48aa-96db-ab8693b31826,2556-3652,2880,male,en,sunburn,second,simple,the sun.
+108,74082,377c7631-5407-48aa-96db-ab8693b31826,2556-3652,2880,male,en,sunburn,second,caused,she forgot her sunscreen and she got a sunburn.
+109,74111,1d7ce56d-82de-4ac2-b2f7-d119d4710aa5,2556-3652,3510,male,en,flood,second,simple,the hard rain flooded the basement
+109,74111,1d7ce56d-82de-4ac2-b2f7-d119d4710aa5,2556-3652,3510,male,en,flood,second,caused,"the latch not being on the window, and the window being open, and the rain."
+109,74111,1d7ce56d-82de-4ac2-b2f7-d119d4710aa5,2556-3652,3510,male,en,sunburn,second,simple,"Um, how hot the sun is, and because she forgot her sunscreen."
+109,74111,1d7ce56d-82de-4ac2-b2f7-d119d4710aa5,2556-3652,3510,male,en,sunburn,second,caused,the the hot sun
+110,74139,58209d95-8067-439c-b650-595d70fbc1d0,2556-3652,3150,female,,flood,first,caused,"Um, since Andy took away the latch to fix it and the window opened and it began raining really hard, then there was lots of water it went higher and higher and it--then the basement flooded because the water entered the basement."
+110,74139,58209d95-8067-439c-b650-595d70fbc1d0,2556-3652,3150,female,,flood,second,simple,um rainwater flooded the basement
+110,74139,58209d95-8067-439c-b650-595d70fbc1d0,2556-3652,3150,female,,sunburn,second,simple,um the sun burned Suzy's skin
+110,74139,58209d95-8067-439c-b650-595d70fbc1d0,2556-3652,3150,female,,sunburn,first,caused,"Um, because she forgot her sunscreen she did not put it--put on the sunscreen, then she went to the beach since it's really hot then the sun burned her. That's what caused Suzy's skin to burn."
+111,74197,e47bf346-87f7-4e64-9cba-d92cca607845,2556-3652,2910,female,en cjy ta,sunburn,first,caused,because she didn't wear sunscreen
+111,74197,e47bf346-87f7-4e64-9cba-d92cca607845,2556-3652,2910,female,en cjy ta,sunburn,first,simple,the sun.
+111,74197,e47bf346-87f7-4e64-9cba-d92cca607845,2556-3652,2910,female,en cjy ta,flood,first,caused,the rain.
+111,74197,e47bf346-87f7-4e64-9cba-d92cca607845,2556-3652,2910,female,en cjy ta,flood,first,simple,the water outside.
+112,74327,a2aebe9c-d65b-44fb-ae6b-c4ad4508928f,2556-3652,3270,female,,flood,second,simple,lots of rain.
+112,74327,a2aebe9c-d65b-44fb-ae6b-c4ad4508928f,2556-3652,3270,female,,flood,second,caused,"Because the dude was taking the latch off to fix the window when the window was open, so the water came in. Also who has a window in the basement?"
+112,74327,a2aebe9c-d65b-44fb-ae6b-c4ad4508928f,2556-3652,3270,female,,sunburn,second,simple,the sun because she forgot her sunscreen.
+112,74327,a2aebe9c-d65b-44fb-ae6b-c4ad4508928f,2556-3652,3270,female,,sunburn,second,caused,"She didn't put on sunscreen, she left it at home and she got a sunburn. Well, more like a kindergartner scribbled with crayons all over her. "
+113,74479,3e499980-a418-4100-b59e-8eca1ac4bc03,2556-3652,3540,female,,flood,first,caused,"The window was open, so there was nothing to protect the inside of the basement from the rain."
+113,74479,3e499980-a418-4100-b59e-8eca1ac4bc03,2556-3652,3540,female,,flood,first,simple,water flooded the basement
+113,74479,3e499980-a418-4100-b59e-8eca1ac4bc03,2556-3652,3540,female,,sunburn,first,caused,she forgot her sunscreen so there was nothing to protect her skin from the sun
+113,74479,3e499980-a418-4100-b59e-8eca1ac4bc03,2556-3652,3540,female,,sunburn,first,simple,the sun
+114,74632,f066388c-8962-427f-a089-70017a83ff67,2556-3652,3240,male,en,flood,first,caused,The basement flooded because he left the win--he left when the window was open and there was no window latch.
+114,74632,f066388c-8962-427f-a089-70017a83ff67,2556-3652,3240,male,en,flood,first,simple,The basement got flooded because Andy left the window open and there was no latch to hold it shut.
+114,74632,f066388c-8962-427f-a089-70017a83ff67,2556-3652,3240,male,en,sunburn,second,simple,the sun burned Suzy's face
+114,74632,f066388c-8962-427f-a089-70017a83ff67,2556-3652,3240,male,en,sunburn,second,caused,the sun caused Suzy's skin to burn.
+115,74701,53c8fce6-65db-4306-8e18-b12c20108751,2556-3652,2670,female,en,sunburn,first,caused,that she didn't bring it and the sun's shining on her
+115,74701,53c8fce6-65db-4306-8e18-b12c20108751,2556-3652,2670,female,en,sunburn,first,simple,the sun's burning at her
+115,74701,53c8fce6-65db-4306-8e18-b12c20108751,2556-3652,2670,female,en,flood,second,simple,that the water was a flood and it got into his building
+115,74701,53c8fce6-65db-4306-8e18-b12c20108751,2556-3652,2670,female,en,flood,second,caused,"Um, that the window was open and there was a big flood and the flood came inside of the basement."
+116,74876,5087aa2c-d06e-4dbf-9f02-5bad7c92330b,2556-3652,2700,female,,sunburn,second,simple,sun. the sun.
+116,74876,5087aa2c-d06e-4dbf-9f02-5bad7c92330b,2556-3652,2700,female,,sunburn,second,caused,the sun. the sun.
+116,74876,5087aa2c-d06e-4dbf-9f02-5bad7c92330b,2556-3652,2700,female,,flood,first,caused,The water that came from outside from when it rained.
+116,74876,5087aa2c-d06e-4dbf-9f02-5bad7c92330b,2556-3652,2700,female,,flood,first,simple,The water that went in from when it rained.
+117,74882,86d69ed1-c3e0-4be5-b16b-5cdf24b232e6,2556-3652,3420,female,en ro,sunburn,second,simple,the sun.
+117,74882,86d69ed1-c3e0-4be5-b16b-5cdf24b232e6,2556-3652,3420,female,en ro,sunburn,second,caused,forgetting to put on sunscreen.
+117,74882,86d69ed1-c3e0-4be5-b16b-5cdf24b232e6,2556-3652,3420,female,en ro,flood,second,simple,water.
+117,74882,86d69ed1-c3e0-4be5-b16b-5cdf24b232e6,2556-3652,3420,female,en ro,flood,second,caused,the latch broke and the window was open.
+118,74954,f8e921b7-8ef7-40e5-9db0-e0638e08dbbd,2556-3652,2940,female,,sunburn,first,caused,she didn't wear her sunscreen and she didn't bring it.
+118,74954,f8e921b7-8ef7-40e5-9db0-e0638e08dbbd,2556-3652,2940,female,,sunburn,first,simple,the sun.
+118,74954,f8e921b7-8ef7-40e5-9db0-e0638e08dbbd,2556-3652,2940,female,,flood,second,simple,the rain.
+118,74954,f8e921b7-8ef7-40e5-9db0-e0638e08dbbd,2556-3652,2940,female,,flood,second,caused,because the window was opened.
+119,75115,bd3353db-2951-46ba-ba04-832719c5d1a7,2556-3652,2700,female,en so,sunburn,first,caused,the sun.
+119,75115,bd3353db-2951-46ba-ba04-832719c5d1a7,2556-3652,2700,female,en so,sunburn,first,simple,the sun.
+119,75115,bd3353db-2951-46ba-ba04-832719c5d1a7,2556-3652,2700,female,en so,flood,second,simple,water.
+119,75115,bd3353db-2951-46ba-ba04-832719c5d1a7,2556-3652,2700,female,en so,flood,second,caused,the broken window latch.
+120,75117,e1104c10-aa7f-4a5d-bc71-9405d505d8f4,2556-3652,3300,female,en so,flood,first,caused,rain.
+120,75117,e1104c10-aa7f-4a5d-bc71-9405d505d8f4,2556-3652,3300,female,en so,flood,first,simple,rain.
+120,75117,e1104c10-aa7f-4a5d-bc71-9405d505d8f4,2556-3652,3300,female,en so,sunburn,second,simple,the sun.
+120,75117,e1104c10-aa7f-4a5d-bc71-9405d505d8f4,2556-3652,3300,female,en so,sunburn,second,caused,the sun.
+121,75129,21868370-47ad-4928-a91e-37d9edf01ea7,2556-3652,3030,female,en ml,flood,second,simple,the rain fell and flooded the basement.
+121,75129,21868370-47ad-4928-a91e-37d9edf01ea7,2556-3652,3030,female,en ml,flood,second,caused,the window latch was broken so the window opened and then the water came into the basement.
+121,75129,21868370-47ad-4928-a91e-37d9edf01ea7,2556-3652,3030,female,en ml,sunburn,second,simple,the sun burned Suzy's skin because she left her sunscreen at home
+121,75129,21868370-47ad-4928-a91e-37d9edf01ea7,2556-3652,3030,female,en ml,sunburn,second,caused,she didn't put on sunscreen because it was at her house.
+122,75132,291e0c9a-9aa4-4cb1-b1d3-1cc9fd733b58,2556-3652,3210,female,en,flood,first,caused,"When it rained, um, the water got high and then when the window was open so it flooded."
+122,75132,291e0c9a-9aa4-4cb1-b1d3-1cc9fd733b58,2556-3652,3210,female,en,flood,first,simple,the rain flooded the basement.
+122,75132,291e0c9a-9aa4-4cb1-b1d3-1cc9fd733b58,2556-3652,3210,female,en,sunburn,second,simple,the sun.
+122,75132,291e0c9a-9aa4-4cb1-b1d3-1cc9fd733b58,2556-3652,3210,female,en,sunburn,second,caused,the sun.
+123,75157,7a29ce86-2b84-419f-b933-0d17ee08f06a,2556-3652,3360,female,en ml,sunburn,second,simple,the sun burned Suzy's skin  
+123,75157,7a29ce86-2b84-419f-b933-0d17ee08f06a,2556-3652,3360,female,en ml,sunburn,second,caused,the sun.
+123,75157,7a29ce86-2b84-419f-b933-0d17ee08f06a,2556-3652,3360,female,en ml,flood,second,simple,the rain.
+123,75157,7a29ce86-2b84-419f-b933-0d17ee08f06a,2556-3652,3360,female,en ml,flood,second,caused,the open window.
+124,75284,0938945a-36ce-4833-b957-ca48f14be775,2556-3652,3060,male,en tl,flood,first,caused,The open window caused the basement to flood.
+124,75284,0938945a-36ce-4833-b957-ca48f14be775,2556-3652,3060,male,en tl,flood,first,simple,The rain flooded the basement.
+124,75284,0938945a-36ce-4833-b957-ca48f14be775,2556-3652,3060,male,en tl,sunburn,first,caused,The sun caused Suzy's skin to burn.
+124,75284,0938945a-36ce-4833-b957-ca48f14be775,2556-3652,3060,male,en tl,sunburn,first,simple,The sun burned Suzy's skin.
+125,75292,278541a6-4dfe-40fd-9be3-3921b419ac2c,2556-3652,2880,female,en,sunburn,second,simple,The sun burned Suzy's skin.
+125,75292,278541a6-4dfe-40fd-9be3-3921b419ac2c,2556-3652,2880,female,en,sunburn,second,caused,"The sun burned Suzy's skin, which makes like the sunbeam on her skin, she forg--is like hurting her and she forgot her sunscreen which makes her have a sunburn."
+125,75292,278541a6-4dfe-40fd-9be3-3921b419ac2c,2556-3652,2880,female,en,flood,second,simple,"Well, Andy did not close the window, he should've put tape on it to make it closed and then all the water just--from the rain just came flushing down into the basement."
+125,75292,278541a6-4dfe-40fd-9be3-3921b419ac2c,2556-3652,2880,female,en,flood,second,caused,"Andy did not close the window. So all of the rain--he needs the window latch to close it. He could've used some duct tape or something like that, but all the rain outside came all the way inside into the basement and now his basement is flooded."
+126,75664,8a1036ff-1db1-4f24-a680-f47ece602f10,2556-3652,2610,female,en,flood,second,simple,the rain did.
+126,75664,8a1036ff-1db1-4f24-a680-f47ece602f10,2556-3652,2610,female,en,flood,second,caused,because...because the window was open.
+126,75664,8a1036ff-1db1-4f24-a680-f47ece602f10,2556-3652,2610,female,en,sunburn,first,caused,Because...because she didn't bring her sunscreen. Yeah.
+126,75664,8a1036ff-1db1-4f24-a680-f47ece602f10,2556-3652,2610,female,en,sunburn,first,simple,"It was that...bad sun, yeah."
+127,75693,e15b7b65-1077-4332-a4a9-0a75e72965c1,2556-3652,2700,female,en it,flood,first,caused,because the window was open.
+127,75693,e15b7b65-1077-4332-a4a9-0a75e72965c1,2556-3652,2700,female,en it,flood,first,simple,the water.
+127,75693,e15b7b65-1077-4332-a4a9-0a75e72965c1,2556-3652,2700,female,en it,sunburn,second,simple,the sun.
+127,75693,e15b7b65-1077-4332-a4a9-0a75e72965c1,2556-3652,2700,female,en it,sunburn,second,caused,the sun.
+128,75695,cec8da6e-b048-4c1c-a568-10f78bb4f840,2556-3652,3300,male,en it,sunburn,second,simple,the sun.
+128,75695,cec8da6e-b048-4c1c-a568-10f78bb4f840,2556-3652,3300,male,en it,sunburn,second,caused,Because there's no sunscreen.
+128,75695,cec8da6e-b048-4c1c-a568-10f78bb4f840,2556-3652,3300,male,en it,flood,second,simple,the water.
+128,75695,cec8da6e-b048-4c1c-a568-10f78bb4f840,2556-3652,3300,male,en it,flood,second,caused,the window staying open.
+129,75731,df7ff151-e6cb-4479-9c35-754b6ee41568,2556-3652,3570,male,en ro,flood,first,caused,the rain caused the basement to flood.
+129,75731,df7ff151-e6cb-4479-9c35-754b6ee41568,2556-3652,3570,male,en ro,flood,first,simple,the rain.
+129,75731,df7ff151-e6cb-4479-9c35-754b6ee41568,2556-3652,3570,male,en ro,sunburn,first,caused,the sun.
+129,75731,df7ff151-e6cb-4479-9c35-754b6ee41568,2556-3652,3570,male,en ro,sunburn,first,simple,sunburn.
+130,75738,92241a9a-e029-4187-be20-1ad75f41aab7,2556-3652,3270,male,,sunburn,first,caused,No sunscreen. The sun.
+130,75738,92241a9a-e029-4187-be20-1ad75f41aab7,2556-3652,3270,male,,sunburn,first,simple,The sun.
+130,75738,92241a9a-e029-4187-be20-1ad75f41aab7,2556-3652,3270,male,,flood,first,caused,The open window. The open windows.
+130,75738,92241a9a-e029-4187-be20-1ad75f41aab7,2556-3652,3270,male,,flood,first,simple,The rain.
+131,75903,dc384a52-8a07-47cc-a54b-2c1bc104e4f8,2556-3652,2610,female,en fr,flood,first,caused,The rain got too high and it accidentally flooded the basement because the water was too high and the rain was very hard.
+131,75903,dc384a52-8a07-47cc-a54b-2c1bc104e4f8,2556-3652,2610,female,en fr,flood,first,simple,The water flooded the basement.
+131,75903,dc384a52-8a07-47cc-a54b-2c1bc104e4f8,2556-3652,2610,female,en fr,sunburn,first,caused,um she...she was sunburning because the sun.
+131,75903,dc384a52-8a07-47cc-a54b-2c1bc104e4f8,2556-3652,2610,female,en fr,sunburn,first,simple,the sun.
+132,75913,e83d3bce-aa63-4045-b063-ed363e8bc744,2556-3652,2820,male,en fr de,sunburn,first,caused,she forgot her sunscreen.
+132,75913,e83d3bce-aa63-4045-b063-ed363e8bc744,2556-3652,2820,male,en fr de,sunburn,first,simple,the sun.
+132,75913,e83d3bce-aa63-4045-b063-ed363e8bc744,2556-3652,2820,male,en fr de,flood,second,simple,water.
+132,75913,e83d3bce-aa63-4045-b063-ed363e8bc744,2556-3652,2820,male,en fr de,flood,second,caused,water.
+133,75924,dcbdff41-4b51-48a3-9916-45621fb7bcd8,2556-3652,2880,female,en,flood,second,simple,The rain falling down and making the water build up really high...flooded the basement because the window was open because the latch was gone.
+133,75924,dcbdff41-4b51-48a3-9916-45621fb7bcd8,2556-3652,2880,female,en,flood,second,caused,the rain built up and went through the open window. The window was open because the latch was gone.
+133,75924,dcbdff41-4b51-48a3-9916-45621fb7bcd8,2556-3652,2880,female,en,sunburn,second,simple,The sun burned Suzy's skin.
+133,75924,dcbdff41-4b51-48a3-9916-45621fb7bcd8,2556-3652,2880,female,en,sunburn,second,caused,"Suzy forgot to bring her sunscreen, so she could not prevent the sun from burning her skin."
+134,76186,632fb9ab-3f2f-45f1-868b-430800f17f28,2556-3652,2670,male,en fr,flood,second,simple,The rain.
+134,76186,632fb9ab-3f2f-45f1-868b-430800f17f28,2556-3652,2670,male,en fr,flood,second,caused,The rain. The rain flooded the basement when it was raining.
+134,76186,632fb9ab-3f2f-45f1-868b-430800f17f28,2556-3652,2670,male,en fr,sunburn,second,simple,"What burned Suzy's skin is that she forgot to bring her sunscreen so the--air burned--no wait, the sun burned Suzy's skin."
+134,76186,632fb9ab-3f2f-45f1-868b-430800f17f28,2556-3652,2670,male,en fr,sunburn,second,caused,She forgot to bring her sunscreen.
+135,76243,4480184a-9c60-44b6-b97f-11838f53767c,2556-3652,2580,female,en,sunburn,second,simple,Sun.
+135,76243,4480184a-9c60-44b6-b97f-11838f53767c,2556-3652,2580,female,en,sunburn,second,caused,Sun.
+135,76243,4480184a-9c60-44b6-b97f-11838f53767c,2556-3652,2580,female,en,flood,second,simple,The water.
+135,76243,4480184a-9c60-44b6-b97f-11838f53767c,2556-3652,2580,female,en,flood,second,caused,The water.
+136,76433,3f3b5404-c2d1-4b54-b1d8-8847e4c160dc,2556-3652,3480,female,en,sunburn,second,simple,The sun.
+136,76433,3f3b5404-c2d1-4b54-b1d8-8847e4c160dc,2556-3652,3480,female,en,sunburn,second,caused,She forgot her sunscreen.
+136,76433,3f3b5404-c2d1-4b54-b1d8-8847e4c160dc,2556-3652,3480,female,en,flood,second,simple,The rain.
+136,76433,3f3b5404-c2d1-4b54-b1d8-8847e4c160dc,2556-3652,3480,female,en,flood,second,caused,The window was open.
+137,76442,0eb62d30-2234-4a6b-b74e-3c1a26b0d3a6,2556-3652,3480,female,en he,sunburn,first,caused,The sun.
+137,76442,0eb62d30-2234-4a6b-b74e-3c1a26b0d3a6,2556-3652,3480,female,en he,sunburn,first,simple,The sun.
+137,76442,0eb62d30-2234-4a6b-b74e-3c1a26b0d3a6,2556-3652,3480,female,en he,flood,first,caused,It was raining and the doors were open.
+137,76442,0eb62d30-2234-4a6b-b74e-3c1a26b0d3a6,2556-3652,3480,female,en he,flood,first,simple,Water.
+138,76561,a70d8d34-f516-48fc-a209-a7ffd2200678,2556-3652,3540,female,,flood,first,caused,"Um, first, it was raining, and two, the window was open."
+138,76561,a70d8d34-f516-48fc-a209-a7ffd2200678,2556-3652,3540,female,,flood,first,simple,The water.
+138,76561,a70d8d34-f516-48fc-a209-a7ffd2200678,2556-3652,3540,female,,sunburn,first,caused,"Um, the fact that she forgot her sunscreen, and the sun."
+138,76561,a70d8d34-f516-48fc-a209-a7ffd2200678,2556-3652,3540,female,,sunburn,first,simple,The sun.
+139,76638,11b15fce-8bb9-46b4-9f39-b32566fdb0b1,2556-3652,2880,male,en,flood,first,caused,"Um, because, like the hatch was broken."
+139,76638,11b15fce-8bb9-46b4-9f39-b32566fdb0b1,2556-3652,2880,male,en,flood,first,simple,Water. Rainwater.
+139,76638,11b15fce-8bb9-46b4-9f39-b32566fdb0b1,2556-3652,2880,male,en,sunburn,second,simple,Because she forgot her sunscreen.
+139,76638,11b15fce-8bb9-46b4-9f39-b32566fdb0b1,2556-3652,2880,male,en,sunburn,second,caused,The sun.
+140,76639,f9a6610b-65a9-4f1b-8235-13a0738d9d94,2556-3652,3540,male,en,sunburn,first,caused,Because she forgot to put on her sunscreen and the sun burned her skin.
+140,76639,f9a6610b-65a9-4f1b-8235-13a0738d9d94,2556-3652,3540,male,en,sunburn,first,simple,The sun. The light or sun.
+140,76639,f9a6610b-65a9-4f1b-8235-13a0738d9d94,2556-3652,3540,male,en,flood,first,caused,"The window latch was broken and the window opened, it started raining hard so all the water came in."
+140,76639,f9a6610b-65a9-4f1b-8235-13a0738d9d94,2556-3652,3540,male,en,flood,first,simple,The hard rain.
+141,76667,f16bc3ee-6fbe-4908-9223-29d435549c9a,2556-3652,2670,female,,flood,first,caused,The rain.
+141,76667,f16bc3ee-6fbe-4908-9223-29d435549c9a,2556-3652,2670,female,,flood,first,simple,Water.
+141,76667,f16bc3ee-6fbe-4908-9223-29d435549c9a,2556-3652,2670,female,,sunburn,second,simple,The sun.
+141,76667,f16bc3ee-6fbe-4908-9223-29d435549c9a,2556-3652,2670,female,,sunburn,second,caused,The sun.
+142,76741,c16a4af0-7dc0-4229-8a57-a33616996955,2556-3652,3030,male,,sunburn,second,simple,She forgot her sunscreen and she went out in the sun for too long.
+142,76741,c16a4af0-7dc0-4229-8a57-a33616996955,2556-3652,3030,male,,sunburn,second,caused,She was out in the sun for too long.
+142,76741,c16a4af0-7dc0-4229-8a57-a33616996955,2556-3652,3030,male,,flood,second,simple,The window was open.
+142,76741,c16a4af0-7dc0-4229-8a57-a33616996955,2556-3652,3030,male,,flood,second,caused,Because the rain was coming down and then it was getting higher and higher for it to go over the bottom of the window.
+143,76817,a922c6fa-9536-4871-89f8-16760c3cb8e3,2556-3652,3240,female,en,sunburn,second,simple,The sun made her get sunburned. The sun burned Suzy's skin.
+143,76817,a922c6fa-9536-4871-89f8-16760c3cb8e3,2556-3652,3240,female,en,sunburn,second,caused,"She forgot to take her sunscreen, so she couldn't protect herself."
+143,76817,a922c6fa-9536-4871-89f8-16760c3cb8e3,2556-3652,3240,female,en,flood,first,caused,The open window and not--no latch.
+143,76817,a922c6fa-9536-4871-89f8-16760c3cb8e3,2556-3652,3240,female,en,flood,first,simple,Water flooded the basement.
+144,76869,3acc46d5-2a3b-40cb-a997-cee377d56018,2556-3652,3630,female,en,flood,second,simple,Water. Water is what flooded the basement.
+144,76869,3acc46d5-2a3b-40cb-a997-cee377d56018,2556-3652,3630,female,en,flood,second,caused,"The latch is gone on the window, which means the window is open, which means the water can get in."
+144,76869,3acc46d5-2a3b-40cb-a997-cee377d56018,2556-3652,3630,female,en,sunburn,second,simple,"Well, the sun burned Suzy's skin because she didn't have any sunscreen on."
+144,76869,3acc46d5-2a3b-40cb-a997-cee377d56018,2556-3652,3630,female,en,sunburn,second,caused,"Well, basically the other answer that I said. The sun. And that she didn't have any sunscreen on to protect her skin."
+145,76871,d04f0766-3fba-4857-a6ce-be28a3f9341c,2556-3652,2700,male,en,flood,first,caused,Because the window is open.
+145,76871,d04f0766-3fba-4857-a6ce-be28a3f9341c,2556-3652,2700,male,en,flood,first,simple,Water.
+145,76871,d04f0766-3fba-4857-a6ce-be28a3f9341c,2556-3652,2700,male,en,sunburn,second,simple,Sunburn.
+145,76871,d04f0766-3fba-4857-a6ce-be28a3f9341c,2556-3652,2700,male,en,sunburn,second,caused,"Um, the sun?"
+146,76886,697a7086-2bf9-433d-b3ce-ae97eb5abc0f,2556-3652,3420,female,en,sunburn,second,simple,The sun burned Suzy's skin.
+146,76886,697a7086-2bf9-433d-b3ce-ae97eb5abc0f,2556-3652,3420,female,en,sunburn,second,caused,The sun caused Suzy's skin to burn.
+146,76886,697a7086-2bf9-433d-b3ce-ae97eb5abc0f,2556-3652,3420,female,en,flood,second,simple,The rain flooded the basement.
+146,76886,697a7086-2bf9-433d-b3ce-ae97eb5abc0f,2556-3652,3420,female,en,flood,second,caused,It caused--how it caused it because the latch wasn't on and the rain got really high and went in.
+147,76892,fddc3100-9de5-4be0-8cb5-907b23c6568d,2556-3652,3540,male,,flood,first,caused,"There was no latch on the windows because it is getting fixed, the window was open, and it was raining very hard."
+147,76892,fddc3100-9de5-4be0-8cb5-907b23c6568d,2556-3652,3540,male,,flood,first,simple,Rain. A lot of rain.
+147,76892,fddc3100-9de5-4be0-8cb5-907b23c6568d,2556-3652,3540,male,,sunburn,second,simple,The sun.
+147,76892,fddc3100-9de5-4be0-8cb5-907b23c6568d,2556-3652,3540,male,,sunburn,second,caused,"She didn't have sunscreen, and it's very very sunny."
+148,76979,faf6a47e-d8c7-4007-812a-70730e891892,2556-3652,3450,female,en km,flood,first,caused,Because the latch wasn't there.
+148,76979,faf6a47e-d8c7-4007-812a-70730e891892,2556-3652,3450,female,en km,flood,first,simple,Water. Water. Water.
+148,76979,faf6a47e-d8c7-4007-812a-70730e891892,2556-3652,3450,female,en km,sunburn,first,caused,"She didn't put on her sunscreen, she forgot it and left it home."
+148,76979,faf6a47e-d8c7-4007-812a-70730e891892,2556-3652,3450,female,en km,sunburn,first,simple,"The sun. The sun, the sun, the sun. The shining, shining sun."
+149,76986,be7b0398-f489-46ce-860c-c6498cfaf73e,2556-3652,3300,male,en,sunburn,first,caused,"The sun, forgetting the sunscreen."
+149,76986,be7b0398-f489-46ce-860c-c6498cfaf73e,2556-3652,3300,male,en,sunburn,first,simple,The sun.
+149,76986,be7b0398-f489-46ce-860c-c6498cfaf73e,2556-3652,3300,male,en,flood,first,caused,There was no--it was raining and there was no latch on the window.
+149,76986,be7b0398-f489-46ce-860c-c6498cfaf73e,2556-3652,3300,male,en,flood,first,simple,The rain. The rain. The rain.
+150,77108,5053215f-6fbe-410a-bf9b-477ef3165fb8,2556-3652,2880,female,en,sunburn,first,caused,What...what...what caused Suzy's skin to burn? She left her--she left her sunscreen at home.
+150,77108,5053215f-6fbe-410a-bf9b-477ef3165fb8,2556-3652,2880,female,en,sunburn,first,simple,Sun. Sun or sand? Probably sun.
+150,77108,5053215f-6fbe-410a-bf9b-477ef3165fb8,2556-3652,2880,female,en,flood,second,simple,The latch broke and then the window was opening back and forth and then too much water came in. And that's how it got flooded.
+150,77108,5053215f-6fbe-410a-bf9b-477ef3165fb8,2556-3652,2880,female,en,flood,second,caused,Okay. Uh. It started to rain and the window was opening. And then--and then too much water was flooding and then it flooded into his house. Because the window was open. And it could.
