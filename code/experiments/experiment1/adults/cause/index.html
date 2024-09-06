@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Experiment</title>
+
+    <link href="https://unpkg.com/jspsych@7.2.3/css/jspsych.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://unpkg.com/jspsych@7.2.3"></script>
+    <script src='js/jquery.min.js'></script>
+    <script src='js/jquery-ui.min.js'></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-button-response@1.1.1"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.1"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-likert@1.1.1"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-html-form@1.0.1"></script>
+    <script src="https://proliferate.alps.science/static/js/proliferate.js"> </script>
+    <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.1"></script>
+
+
+
+    <script src='js/intro.js'></script>
+    <script src='js/consent.js'></script>
+    <script src='js/trial.js'></script>
+    <script src='js/demographic_form.js'></script>
+</head>
+
+<body></body>
+<script>
+
+
+
+
+    let timeline = []
+
+
+    // Data display
+
+    let jsPsych = initJsPsych({
+        show_progress_bar: true,
+        on_finish: () => {
+
+            jsPsych.data.displayData();
+            let responseData = {};
+            for (const trialPage of jsPsych.data.get().filter({ "page_type": "trial_data" }).values()) {
+                const scenario = trialPage["scenario"];
+                const question = trialPage["question"];
+                responseData["counterbalance"] = trialPage["counterbalance"];
+                responseData[`${scenario}_${question}`] = trialPage["response"]["Q0"];
+            }
+
+            console.log(responseData);
+
+
+            let gender = jsPsych.data.get().filter({ "page_type": "participant_survey" }).values()[0]["response"].gender
+            if (!gender && jsPsych.data.get().filter({ "page_type": "participant_survey" }).values()[0]["response"].other_gender) {
+                gender = "other_gender"
+            }
+            let age = parseInt(jsPsych.data.get().filter({ "page_type": "participant_survey" }).values()[0]["response"].age)
+            let race = jsPsych.data.get().filter({ "page_type": "participant_survey" }).values()[0]["response"].race
+            if (!race && jsPsych.data.get().filter({ "page_type": "participant_survey" }).values()[0]["response"].other_race) {
+                race = "other_race"
+            }
+            let ethicity = jsPsych.data.get().filter({ "page_type": "participant_survey" }).values()[0]["response"].ethicity
+            let demographics = {
+                "age": age,
+                "gender": gender,
+                "race": race,
+                "ethicity": ethicity
+            }
+
+            // // combine all data 
+            let data_final = {
+                "responses": responseData,
+                "participants": demographics,
+            }
+
+            console.log(data_final)
+
+            proliferate.submit(data_final);
+
+            $('#jspsych-content').html('<div style="margin: auto;"> <p> Thank you for' +
+                ' participating in this experiment! </p> <p> Redirecting you back to' +
+                ' Prolific... </p>');
+            setTimeout(function () { }, 400);
+        }
+    })
+
+
+    // Consent
+
+    timeline.push(consent)
+
+    // Create randomization
+
+    const scenario_list = jsPsych.randomization.shuffle(["break", "crack"]);
+
+    const question_list = jsPsych.randomization.shuffle(["cause", "simple"]);
+
+    const order_list = jsPsych.randomization.shuffle(["order_1", "order_2"])[0];
+    console.log(order_list);
+
+
+    // instructions
+
+
+
+    const instruct = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: `<img src=images/${trials["instructions"]} width = "80%"></img>`,
+        choices: [(' ')],
+        prompt: "<p>Press the spacebar to begin.</p>"
+
+    };
+
+    timeline.push(instruct)
+
+
+    // trials
+
+    let scenarioIdx = 0;
+    for (const scenario of scenario_list) {
+        console.log(scenario);
+        for (const trial_page of trials[order_list][scenario]["story"]) {
+            let trial = {
+                type: jsPsychHtmlKeyboardResponse,
+                stimulus: `<img src=images/${trial_page} width = "70%"></img>`,
+                choices: [(' ')],
+                prompt: "<p>Press the <b>spacebar</b> to continue.</p>"
+            };
+            timeline.push(trial);
+        };
+
+        for (const question of question_list) {
+            console.log(question);
+            let questions = {
+                type: jsPsychSurveyText,
+                preamble: `<img src=images/${trials[order_list][scenario]["questions"][question]} width = "70%"></img>`,
+                questions: [
+                    { prompt: 'Please write your response below', rows: 10, columns: 65 }
+                ],
+                data: {
+                    "page_type": "trial_data",
+                    "counterbalance": order_list,
+                    "scenario": scenario,
+                    "question": question,
+                },
+            };
+            timeline.push(questions);
+        };
+
+        if (scenarioIdx == 0) {
+            const next = {
+                type: jsPsychHtmlKeyboardResponse,
+                stimulus: `<img src=images/${trials["next_scenario"]} width = "70%"></img>`,
+                choices: [' '],
+                prompt: "<p>Press the spacebar to begin.</p>"
+
+            };
+            timeline.push(next);
+        } else {
+            timeline.push(demographic_form)
+        };
+        scenarioIdx += 1;
+    };
+
+
+    jsPsych.run(timeline);
+</script>
+
+</html>
