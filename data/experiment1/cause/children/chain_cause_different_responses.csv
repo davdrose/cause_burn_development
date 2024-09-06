@@ -1,0 +1,520 @@
+participant,rounded_age,lan_spoken,scenario,counterbalance,caused_question_order,question,response,distal,proximal,age,age_whole,age_character,both,response_pattern
+1,1470,en,mirror_crack,bobby,first,caused,sophia,0,1,4.03,4,4,0,different
+1,1470,en,mirror_crack,bobby,first,lexical,bobby,1,0,4.03,4,4,0,different
+1,1470,en,fence_break,suzy,second,lexical,andy,0,1,4.03,4,4,0,different
+1,1470,en,fence_break,suzy,second,caused,suzy,1,0,4.03,4,4,0,different
+2,1590,en,fence_break,suzy,first,caused,suzy,1,0,4.36,4,4,0,different
+2,1590,en,fence_break,suzy,first,lexical,suzy,1,0,4.36,4,4,0,different
+2,1590,en,mirror_crack,bobby,second,lexical,sophia,0,1,4.36,4,4,0,different
+2,1590,en,mirror_crack,bobby,second,caused,sophia,0,1,4.36,4,4,0,different
+3,1770,en,mirror_crack,sophia,first,caused,sophia,1,0,4.85,4,4,0,different
+3,1770,en,mirror_crack,sophia,first,lexical,sophia,1,0,4.85,4,4,0,different
+3,1770,en,fence_break,andy,first,caused,andy,1,0,4.85,4,4,0,different
+3,1770,en,fence_break,andy,first,lexical,andy,1,0,4.85,4,4,0,different
+4,1470,en,mirror_crack,bobby,first,caused,bobby,1,0,4.03,4,4,0,different
+4,1470,en,mirror_crack,bobby,first,lexical,sophia,0,1,4.03,4,4,0,different
+4,1470,en,fence_break,suzy,first,caused,suzy,1,0,4.03,4,4,0,different
+4,1470,en,fence_break,suzy,first,lexical,andy,0,1,4.03,4,4,0,different
+5,1740,en,fence_break,suzy,second,lexical,andy,0,1,4.77,4,4,0,different
+5,1740,en,fence_break,suzy,second,caused,suzy,1,0,4.77,4,4,0,different
+5,1740,en,mirror_crack,bobby,second,lexical,sophia,0,1,4.77,4,4,0,different
+5,1740,en,mirror_crack,bobby,second,caused,bobby,1,0,4.77,4,4,0,different
+6,1470,en ml,mirror_crack,bobby,first,caused,sophia,0,1,4.03,4,4,0,different
+6,1470,en ml,mirror_crack,bobby,first,lexical,bobby,1,0,4.03,4,4,0,different
+6,1470,en ml,fence_break,suzy,first,caused,suzy,1,0,4.03,4,4,0,different
+6,1470,en ml,fence_break,suzy,first,lexical,suzy,1,0,4.03,4,4,0,different
+7,1500,en,fence_break,andy,second,lexical,suzy,0,1,4.11,4,4,0,different
+7,1500,en,fence_break,andy,second,caused,andy,1,0,4.11,4,4,0,different
+7,1500,en,mirror_crack,sophia,second,lexical,bobby,0,1,4.11,4,4,0,different
+7,1500,en,mirror_crack,sophia,second,caused,bobby,0,1,4.11,4,4,0,different
+8,1470,en,mirror_crack,sophia,first,caused,bobby,0,1,4.03,4,4,0,different
+8,1470,en,mirror_crack,sophia,first,lexical,bobby,0,1,4.03,4,4,0,different
+8,1470,en,fence_break,andy,second,lexical,suzy,0,1,4.03,4,4,0,different
+8,1470,en,fence_break,andy,second,caused,suzy,0,1,4.03,4,4,0,different
+9,1680,en,fence_break,suzy,second,lexical,andy,0,1,4.6,4,4,0,different
+9,1680,en,fence_break,suzy,second,caused,suzy,1,0,4.6,4,4,0,different
+9,1680,en,mirror_crack,bobby,second,lexical,sophia,0,1,4.6,4,4,0,different
+9,1680,en,mirror_crack,bobby,second,caused,sophia,0,1,4.6,4,4,0,different
+10,1770,en,mirror_crack,sophia,second,lexical,bobby,0,1,4.85,4,4,0,different
+10,1770,en,mirror_crack,sophia,second,caused,bobby,0,1,4.85,4,4,0,different
+10,1770,en,fence_break,andy,first,caused,suzy,0,1,4.85,4,4,0,different
+10,1770,en,fence_break,andy,first,lexical,suzy,0,1,4.85,4,4,0,different
+12,1800,en wuu,mirror_crack,bobby,second,lexical,sophia,0,1,4.93,4,4,0,different
+12,1800,en wuu,mirror_crack,bobby,second,caused,sophia,0,1,4.93,4,4,0,different
+12,1800,en wuu,fence_break,suzy,second,lexical,suzy,1,0,4.93,4,4,0,different
+12,1800,en wuu,fence_break,suzy,second,caused,suzy,1,0,4.93,4,4,0,different
+13,1530,en,mirror_crack,bobby,second,lexical,sophia,0,1,4.19,4,4,0,different
+13,1530,en,mirror_crack,bobby,second,caused,sophia,0,1,4.19,4,4,0,different
+13,1530,en,fence_break,suzy,first,caused,suzy,1,0,4.19,4,4,0,different
+13,1530,en,fence_break,suzy,first,lexical,andy,0,1,4.19,4,4,0,different
+14,1770,en,mirror_crack,sophia,first,caused,sophia,1,0,4.85,4,4,0,different
+14,1770,en,mirror_crack,sophia,first,lexical,bobby,0,1,4.85,4,4,0,different
+14,1770,en,fence_break,andy,second,lexical,suzy,0,1,4.85,4,4,0,different
+14,1770,en,fence_break,andy,second,caused,andy,1,0,4.85,4,4,0,different
+15,1650,en,mirror_crack,sophia,second,lexical,bobby,0,1,4.52,4,4,0,different
+15,1650,en,mirror_crack,sophia,second,caused,sophia,1,0,4.52,4,4,0,different
+15,1650,en,fence_break,andy,second,lexical,suzy,0,1,4.52,4,4,0,different
+15,1650,en,fence_break,andy,second,caused,suzy,0,1,4.52,4,4,0,different
+16,1740,en,mirror_crack,bobby,second,lexical,sophia,0,1,4.77,4,4,0,different
+16,1740,en,mirror_crack,bobby,second,caused,bobby,1,0,4.77,4,4,0,different
+16,1740,en,fence_break,suzy,second,lexical,andy,0,1,4.77,4,4,0,different
+16,1740,en,fence_break,suzy,second,caused,suzy,1,0,4.77,4,4,0,different
+17,1710,en,mirror_crack,bobby,second,lexical,bobby,1,0,4.68,4,4,0,different
+17,1710,en,mirror_crack,bobby,second,caused,bobby,1,0,4.68,4,4,0,different
+17,1710,en,fence_break,suzy,first,caused,andy,0,1,4.68,4,4,0,different
+17,1710,en,fence_break,suzy,first,lexical,suzy,1,0,4.68,4,4,0,different
+20,1590,en ur,mirror_crack,sophia,first,caused,bobby,0,1,4.36,4,4,0,different
+20,1590,en ur,mirror_crack,sophia,first,lexical,sophia,1,0,4.36,4,4,0,different
+20,1590,en ur,fence_break,andy,first,caused,suzy,0,1,4.36,4,4,0,different
+20,1590,en ur,fence_break,andy,first,lexical,suzy,0,1,4.36,4,4,0,different
+21,1710,en,mirror_crack,bobby,first,caused,bobby,1,0,4.68,4,4,0,different
+21,1710,en,mirror_crack,bobby,first,lexical,sophia,0,1,4.68,4,4,0,different
+22,1470,en,fence_break,andy,second,lexical,suzy,0,1,4.03,4,4,0,different
+22,1470,en,fence_break,andy,second,caused,andy,1,0,4.03,4,4,0,different
+22,1470,en,mirror_crack,sophia,first,caused,sophia,1,0,4.03,4,4,0,different
+22,1470,en,mirror_crack,sophia,first,lexical,sophia,1,0,4.03,4,4,0,different
+23,1800,en,mirror_crack,bobby,second,lexical,sophia,0,1,4.93,4,4,0,different
+23,1800,en,mirror_crack,bobby,second,caused,sophia,0,1,4.93,4,4,0,different
+23,1800,en,fence_break,suzy,second,lexical,andy,0,1,4.93,4,4,0,different
+23,1800,en,fence_break,suzy,second,caused,andy,0,1,4.93,4,4,0,different
+24,1470,en,mirror_crack,sophia,second,lexical,bobby,0,1,4.03,4,4,0,different
+24,1470,en,mirror_crack,sophia,second,caused,bobby,0,1,4.03,4,4,0,different
+24,1470,en,fence_break,andy,first,caused,suzy,0,1,4.03,4,4,0,different
+24,1470,en,fence_break,andy,first,lexical,suzy,0,1,4.03,4,4,0,different
+25,1650,en so,mirror_crack,bobby,first,caused,bobby,1,0,4.52,4,4,0,different
+25,1650,en so,mirror_crack,bobby,first,lexical,sophia,0,1,4.52,4,4,0,different
+25,1650,en so,fence_break,suzy,second,lexical,andy,0,1,4.52,4,4,0,different
+25,1650,en so,fence_break,suzy,second,caused,suzy,1,0,4.52,4,4,0,different
+26,1590,en,mirror_crack,sophia,first,caused,sophia,1,0,4.36,4,4,0,different
+26,1590,en,mirror_crack,sophia,first,lexical,sophia,1,0,4.36,4,4,0,different
+26,1590,en,fence_break,andy,first,caused,andy,1,0,4.36,4,4,0,different
+26,1590,en,fence_break,andy,first,lexical,andy,1,0,4.36,4,4,0,different
+27,1560,en ro,mirror_crack,bobby,first,caused,sophia,0,1,4.27,4,4,0,different
+27,1560,en ro,mirror_crack,bobby,first,lexical,sophia,0,1,4.27,4,4,0,different
+27,1560,en ro,fence_break,suzy,first,caused,andy,0,1,4.27,4,4,0,different
+27,1560,en ro,fence_break,suzy,first,lexical,andy,0,1,4.27,4,4,0,different
+28,1680,en de,fence_break,suzy,second,lexical,andy,0,1,4.6,4,4,0,different
+28,1680,en de,fence_break,suzy,second,caused,suzy,1,0,4.6,4,4,0,different
+28,1680,en de,mirror_crack,bobby,second,lexical,sophia,0,1,4.6,4,4,0,different
+28,1680,en de,mirror_crack,bobby,second,caused,bobby,1,0,4.6,4,4,0,different
+29,1800,en,mirror_crack,bobby,second,lexical,sophia,0,1,4.93,4,4,0,different
+29,1800,en,mirror_crack,bobby,second,caused,sophia,0,1,4.93,4,4,0,different
+29,1800,en,fence_break,suzy,first,caused,suzy,1,0,4.93,4,4,0,different
+29,1800,en,fence_break,suzy,first,lexical,andy,0,1,4.93,4,4,0,different
+30,1800,en,fence_break,andy,second,lexical,suzy,0,1,4.93,4,4,0,different
+30,1800,en,fence_break,andy,second,caused,andy,1,0,4.93,4,4,0,different
+30,1800,en,mirror_crack,sophia,second,lexical,bobby,0,1,4.93,4,4,0,different
+30,1800,en,mirror_crack,sophia,second,caused,sophia,1,0,4.93,4,4,0,different
+31,2190,en km,fence_break,suzy,second,lexical,andy,0,1,6,6,6,0,different
+31,2190,en km,fence_break,suzy,second,caused,suzy,1,0,6,6,6,0,different
+31,2190,en km,mirror_crack,bobby,second,lexical,sophia,0,1,6,6,6,0,different
+31,2190,en km,mirror_crack,bobby,second,caused,bobby,1,0,6,6,6,0,different
+32,1890,en,mirror_crack,bobby,first,caused,bobby,1,0,5.18,5,5,0,different
+32,1890,en,mirror_crack,bobby,first,lexical,bobby,1,0,5.18,5,5,0,different
+32,1890,en,fence_break,suzy,first,caused,suzy,1,0,5.18,5,5,0,different
+32,1890,en,fence_break,suzy,first,lexical,suzy,1,0,5.18,5,5,0,different
+33,2070,en,fence_break,andy,first,caused,andy,1,0,5.67,5,5,0,different
+33,2070,en,fence_break,andy,first,lexical,andy,1,0,5.67,5,5,0,different
+33,2070,en,mirror_crack,sophia,second,lexical,bobby,0,1,5.67,5,5,0,different
+33,2070,en,mirror_crack,sophia,second,caused,sophia,1,0,5.67,5,5,0,different
+34,1830,en,fence_break,suzy,second,lexical,andy,0,1,5.01,5,5,0,different
+34,1830,en,fence_break,suzy,second,caused,suzy,1,0,5.01,5,5,0,different
+34,1830,en,mirror_crack,bobby,first,caused,bobby,1,0,5.01,5,5,0,different
+34,1830,en,mirror_crack,bobby,first,lexical,sophia,0,1,5.01,5,5,0,different
+35,1950,en,mirror_crack,bobby,second,lexical,sophia,0,1,5.34,5,5,0,different
+35,1950,en,mirror_crack,bobby,second,caused,sophia,0,1,5.34,5,5,0,different
+36,2160,en,fence_break,andy,first,caused,suzy,0,1,5.92,5,5,0,different
+36,2160,en,fence_break,andy,first,lexical,andy,1,0,5.92,5,5,0,different
+36,2160,en,mirror_crack,sophia,second,lexical,bobby,0,1,5.92,5,5,0,different
+36,2160,en,mirror_crack,sophia,second,caused,bobby,0,1,5.92,5,5,0,different
+37,2070,en km so,mirror_crack,bobby,first,caused,bobby,1,0,5.67,5,5,0,different
+37,2070,en km so,mirror_crack,bobby,first,lexical,bobby,1,0,5.67,5,5,0,different
+37,2070,en km so,fence_break,suzy,second,lexical,suzy,1,0,5.67,5,5,0,different
+37,2070,en km so,fence_break,suzy,second,caused,suzy,1,0,5.67,5,5,0,different
+38,1860,en ro,mirror_crack,sophia,second,lexical,bobby,0,1,5.1,5,5,0,different
+38,1860,en ro,mirror_crack,sophia,second,caused,bobby,0,1,5.1,5,5,0,different
+38,1860,en ro,fence_break,andy,second,lexical,suzy,0,1,5.1,5,5,0,different
+38,1860,en ro,fence_break,andy,second,caused,suzy,0,1,5.1,5,5,0,different
+39,2040,en he,mirror_crack,bobby,first,caused,sophia,0,1,5.59,5,5,0,different
+39,2040,en he,mirror_crack,bobby,first,lexical,sophia,0,1,5.59,5,5,0,different
+39,2040,en he,fence_break,suzy,second,lexical,andy,0,1,5.59,5,5,0,different
+39,2040,en he,fence_break,suzy,second,caused,suzy,1,0,5.59,5,5,0,different
+40,2070,en,mirror_crack,bobby,second,lexical,sophia,0,1,5.67,5,5,0,different
+40,2070,en,mirror_crack,bobby,second,caused,bobby,1,0,5.67,5,5,0,different
+40,2070,en,fence_break,suzy,second,lexical,andy,0,1,5.67,5,5,0,different
+40,2070,en,fence_break,suzy,second,caused,suzy,1,0,5.67,5,5,0,different
+41,1890,en fr,mirror_crack,sophia,second,lexical,sophia,1,0,5.18,5,5,0,different
+41,1890,en fr,mirror_crack,sophia,second,caused,bobby,0,1,5.18,5,5,0,different
+41,1890,en fr,fence_break,andy,first,lexical,andy,1,0,5.18,5,5,0,different
+42,1950,en fr,mirror_crack,sophia,first,caused,sophia,1,0,5.34,5,5,0,different
+42,1950,en fr,mirror_crack,sophia,first,lexical,bobby,0,1,5.34,5,5,0,different
+42,1950,en fr,fence_break,andy,second,lexical,suzy,0,1,5.34,5,5,0,different
+42,1950,en fr,fence_break,andy,second,caused,andy,1,0,5.34,5,5,0,different
+43,2100,en,fence_break,suzy,second,lexical,andy,0,1,5.75,5,5,0,different
+43,2100,en,fence_break,suzy,second,caused,suzy,1,0,5.75,5,5,0,different
+43,2100,en,mirror_crack,bobby,second,lexical,sophia,0,1,5.75,5,5,0,different
+43,2100,en,mirror_crack,bobby,second,caused,bobby,1,0,5.75,5,5,0,different
+44,1920,en,mirror_crack,sophia,first,caused,bobby,0,1,5.26,5,5,0,different
+44,1920,en,mirror_crack,sophia,first,lexical,bobby,0,1,5.26,5,5,0,different
+44,1920,en,fence_break,andy,first,caused,suzy,0,1,5.26,5,5,0,different
+44,1920,en,fence_break,andy,first,lexical,suzy,0,1,5.26,5,5,0,different
+45,1890,en km,fence_break,andy,first,caused,andy,1,0,5.18,5,5,0,different
+45,1890,en km,fence_break,andy,first,lexical,andy,1,0,5.18,5,5,0,different
+45,1890,en km,mirror_crack,sophia,second,lexical,bobby,0,1,5.18,5,5,0,different
+46,2160,en,mirror_crack,bobby,second,lexical,sophia,0,1,5.92,5,5,0,different
+46,2160,en,mirror_crack,bobby,second,caused,bobby,1,0,5.92,5,5,0,different
+46,2160,en,fence_break,suzy,first,caused,andy,0,1,5.92,5,5,0,different
+46,2160,en,fence_break,suzy,first,lexical,andy,0,1,5.92,5,5,0,different
+47,2160,en pes,mirror_crack,bobby,first,caused,sophia,0,1,5.92,5,5,0,different
+47,2160,en pes,mirror_crack,bobby,first,lexical,sophia,0,1,5.92,5,5,0,different
+47,2160,en pes,fence_break,suzy,second,lexical,andy,0,1,5.92,5,5,0,different
+47,2160,en pes,fence_break,suzy,second,caused,andy,0,1,5.92,5,5,0,different
+48,2100,en,fence_break,andy,first,caused,andy,1,0,5.75,5,5,0,different
+48,2100,en,fence_break,andy,first,lexical,andy,1,0,5.75,5,5,0,different
+48,2100,en,mirror_crack,sophia,second,lexical,bobby,0,1,5.75,5,5,0,different
+48,2100,en,mirror_crack,sophia,second,caused,sophia,1,0,5.75,5,5,0,different
+49,1890,en,mirror_crack,bobby,second,lexical,sophia,0,1,5.18,5,5,0,different
+49,1890,en,mirror_crack,bobby,second,caused,sophia,0,1,5.18,5,5,0,different
+49,1890,en,fence_break,suzy,first,caused,suzy,1,0,5.18,5,5,0,different
+49,1890,en,fence_break,suzy,first,lexical,suzy,1,0,5.18,5,5,0,different
+50,2190,en so,fence_break,andy,first,caused,suzy,0,1,6,6,6,0,different
+50,2190,en so,fence_break,andy,first,lexical,suzy,0,1,6,6,6,0,different
+50,2190,en so,mirror_crack,sophia,second,lexical,bobby,0,1,6,6,6,0,different
+50,2190,en so,mirror_crack,sophia,second,caused,sophia,1,0,6,6,6,0,different
+51,2100,en,fence_break,suzy,second,lexical,andy,0,1,5.75,5,5,0,different
+51,2100,en,fence_break,suzy,second,caused,suzy,1,0,5.75,5,5,0,different
+51,2100,en,mirror_crack,bobby,second,lexical,sophia,0,1,5.75,5,5,0,different
+51,2100,en,mirror_crack,bobby,second,caused,bobby,1,0,5.75,5,5,0,different
+54,2100,en tl ta,mirror_crack,bobby,first,caused,sophia,0,1,5.75,5,5,0,different
+54,2100,en tl ta,mirror_crack,bobby,first,lexical,sophia,0,1,5.75,5,5,0,different
+54,2100,en tl ta,fence_break,suzy,first,caused,andy,0,1,5.75,5,5,0,different
+54,2100,en tl ta,fence_break,suzy,first,lexical,andy,0,1,5.75,5,5,0,different
+55,1920,en so,fence_break,suzy,second,lexical,andy,0,1,5.26,5,5,0,different
+55,1920,en so,fence_break,suzy,second,caused,suzy,1,0,5.26,5,5,0,different
+55,1920,en so,mirror_crack,bobby,first,caused,bobby,1,0,5.26,5,5,0,different
+55,1920,en so,mirror_crack,bobby,first,lexical,sophia,0,1,5.26,5,5,0,different
+56,1950,en so,mirror_crack,bobby,first,caused,sophia,0,1,5.34,5,5,0,different
+56,1950,en so,mirror_crack,bobby,first,lexical,sophia,0,1,5.34,5,5,0,different
+56,1950,en so,fence_break,suzy,second,lexical,andy,0,1,5.34,5,5,0,different
+56,1950,en so,fence_break,suzy,second,caused,andy,0,1,5.34,5,5,0,different
+57,1920,en,mirror_crack,sophia,first,caused,bobby,0,1,5.26,5,5,0,different
+57,1920,en,mirror_crack,sophia,first,lexical,bobby,0,1,5.26,5,5,0,different
+57,1920,en,fence_break,andy,first,caused,andy,1,0,5.26,5,5,0,different
+57,1920,en,fence_break,andy,first,lexical,suzy,0,1,5.26,5,5,0,different
+58,1920,en ml yo,mirror_crack,bobby,first,caused,bobby,1,0,5.26,5,5,0,different
+58,1920,en ml yo,mirror_crack,bobby,first,lexical,sophia,0,1,5.26,5,5,0,different
+58,1920,en mo yo,fence_break,suzy,second,lexical,andy,0,1,5.26,5,5,0,different
+58,1920,en mo yo,fence_break,suzy,second,caused,andy,0,1,5.26,5,5,0,different
+59,2160,en,mirror_crack,sophia,first,caused,bobby,0,1,5.92,5,5,0,different
+59,2160,en,mirror_crack,sophia,first,lexical,bobby,0,1,5.92,5,5,0,different
+59,2160,en,fence_break,andy,first,caused,suzy,0,1,5.92,5,5,0,different
+59,2160,en,fence_break,andy,first,lexical,suzy,0,1,5.92,5,5,0,different
+60,1950,en so,fence_break,andy,second,lexical,suzy,0,1,5.34,5,5,0,different
+60,1950,en so,fence_break,andy,second,caused,suzy,0,1,5.34,5,5,0,different
+60,1950,en so,mirror_crack,sophia,second,lexical,bobby,0,1,5.34,5,5,0,different
+60,1950,en so,mirror_crack,sophia,second,caused,bobby,0,1,5.34,5,5,0,different
+61,2400,en,fence_break,andy,second,lexical,suzy,0,1,6.58,6,6,0,different
+61,2400,en,fence_break,andy,second,caused,andy,1,0,6.58,6,6,0,different
+61,2400,en,mirror_crack,sophia,first,caused,sophia,1,0,6.58,6,6,0,different
+61,2400,en,mirror_crack,sophia,first,lexical,bobby,0,1,6.58,6,6,0,different
+62,2220,en,fence_break,suzy,second,lexical,andy,0,1,6.08,6,6,0,different
+62,2220,en,fence_break,suzy,second,caused,suzy,1,0,6.08,6,6,0,different
+62,2220,en,mirror_crack,bobby,second,lexical,sophia,0,1,6.08,6,6,0,different
+62,2220,en,mirror_crack,bobby,second,caused,bobby,1,0,6.08,6,6,0,different
+63,2490,en,fence_break,andy,first,caused,andy,1,0,6.82,6,6,0,different
+63,2490,en,fence_break,andy,first,lexical,suzy,0,1,6.82,6,6,0,different
+63,2490,en,mirror_crack,sophia,second,lexical,bobby,0,1,6.82,6,6,0,different
+63,2490,en,mirror_crack,sophia,second,caused,sophia,1,0,6.82,6,6,0,different
+64,2220,en th,mirror_crack,bobby,second,lexical,sophia,0,1,6.08,6,6,0,different
+64,2220,en th,mirror_crack,bobby,second,caused,bobby,1,0,6.08,6,6,0,different
+64,2220,en th,fence_break,suzy,first,caused,andy,0,1,6.08,6,6,0,different
+64,2220,en th,fence_break,suzy,first,lexical,andy,0,1,6.08,6,6,0,different
+65,2340,en,mirror_crack,sophia,second,lexical,bobby,0,1,6.41,6,6,0,different
+65,2340,en,mirror_crack,sophia,second,caused,sophia,1,0,6.41,6,6,0,different
+65,2340,en,fence_break,andy,second,lexical,suzy,0,1,6.41,6,6,0,different
+66,2340,en,fence_break,suzy,first,caused,suzy,1,0,6.41,6,6,0,different
+66,2340,en,fence_break,suzy,first,lexical,andy,0,1,6.41,6,6,0,different
+66,2340,en,mirror_crack,bobby,second,lexical,sophia,0,1,6.41,6,6,0,different
+66,2340,en,mirror_crack,bobby,second,caused,sophia,0,1,6.41,6,6,0,different
+67,2280,en,fence_break,suzy,second,lexical,suzy,1,0,6.25,6,6,0,different
+67,2280,en,fence_break,suzy,second,caused,suzy,1,0,6.25,6,6,0,different
+67,2280,en,mirror_crack,bobby,first,caused,bobby,1,0,6.25,6,6,0,different
+67,2280,en,mirror_crack,bobby,first,lexical,bobby,1,0,6.25,6,6,0,different
+68,2160,en so,mirror_crack,sophia,first,caused,sophia,1,0,5.92,5,5,0,different
+68,2160,en so,mirror_crack,sophia,first,lexical,bobby,0,1,5.92,5,5,0,different
+68,2160,en so,fence_break,andy,second,lexical,andy,1,0,5.92,5,5,0,different
+68,2160,en so,fence_break,andy,second,caused,andy,1,0,5.92,5,5,0,different
+69,2490,en,fence_break,andy,first,caused,andy,1,0,6.82,6,6,0,different
+69,2490,en,mirror_crack,sophia,first,caused,bobby,0,1,6.82,6,6,0,different
+70,2400,en so,fence_break,suzy,second,lexical,andy,0,1,6.58,6,6,0,different
+70,2400,en so,fence_break,suzy,second,caused,suzy,1,0,6.58,6,6,0,different
+70,2400,en so,mirror_crack,bobby,first,caused,bobby,1,0,6.58,6,6,0,different
+70,2400,en so,mirror_crack,bobby,first,lexical,sophia,0,1,6.58,6,6,0,different
+71,2220,en,mirror_crack,bobby,second,lexical,bobby,1,0,6.08,6,6,0,different
+71,2220,en,mirror_crack,bobby,second,caused,sophia,0,1,6.08,6,6,0,different
+71,2220,en,fence_break,suzy,second,lexical,andy,0,1,6.08,6,6,0,different
+71,2220,en,fence_break,suzy,second,caused,suzy,1,0,6.08,6,6,0,different
+72,2460,en,fence_break,suzy,second,caused,suzy,1,0,6.74,6,6,0,different
+72,2460,en,mirror_crack,bobby,second,lexical,sophia,0,1,6.74,6,6,0,different
+72,2460,en,mirror_crack,bobby,second,caused,bobby,1,0,6.74,6,6,0,different
+74,2460,en,fence_break,andy,second,lexical,suzy,0,1,6.74,6,6,0,different
+74,2460,en,fence_break,andy,second,caused,andy,1,0,6.74,6,6,0,different
+74,2460,en,mirror_crack,sophia,second,lexical,bobby,0,1,6.74,6,6,0,different
+74,2460,en,mirror_crack,sophia,second,caused,sophia,1,0,6.74,6,6,0,different
+75,2520,en gu,mirror_crack,bobby,first,caused,bobby,1,0,6.9,6,6,0,different
+75,2520,en gu,mirror_crack,bobby,first,lexical,sophia,0,1,6.9,6,6,0,different
+75,2520,en gu,fence_break,suzy,first,lexical,andy,0,1,6.9,6,6,0,different
+76,2490,en bn he,mirror_crack,sophia,first,caused,bobby,0,1,6.82,6,6,0,different
+76,2490,en bn he,mirror_crack,sophia,first,lexical,bobby,0,1,6.82,6,6,0,different
+76,2490,en bn he,fence_break,andy,second,lexical,suzy,0,1,6.82,6,6,0,different
+76,2490,en bn he,fence_break,andy,second,caused,suzy,0,1,6.82,6,6,0,different
+78,2370,en,fence_break,suzy,second,lexical,andy,0,1,6.49,6,6,0,different
+78,2370,en,fence_break,suzy,second,caused,suzy,1,0,6.49,6,6,0,different
+78,2370,en,mirror_crack,bobby,second,lexical,sophia,0,1,6.49,6,6,0,different
+78,2370,en,mirror_crack,bobby,second,caused,bobby,1,0,6.49,6,6,0,different
+79,2370,en ml,mirror_crack,bobby,first,caused,sophia,0,1,6.49,6,6,0,different
+79,2370,en ml,mirror_crack,bobby,first,lexical,sophia,0,1,6.49,6,6,0,different
+79,2370,en ml,fence_break,suzy,second,lexical,andy,0,1,6.49,6,6,0,different
+79,2370,en ml,fence_break,suzy,second,caused,suzy,1,0,6.49,6,6,0,different
+80,2400,en,fence_break,andy,second,caused,andy,1,0,6.58,6,6,0,different
+80,2400,en,mirror_crack,sophia,second,lexical,bobby,0,1,6.58,6,6,0,different
+80,2400,en,mirror_crack,sophia,second,caused,sophia,1,0,6.58,6,6,0,different
+81,2220,en,mirror_crack,bobby,first,caused,sophia,0,1,6.08,6,6,0,different
+81,2220,en,mirror_crack,bobby,first,lexical,sophia,0,1,6.08,6,6,0,different
+81,2220,en,fence_break,suzy,first,caused,andy,0,1,6.08,6,6,0,different
+81,2220,en,fence_break,suzy,first,lexical,andy,0,1,6.08,6,6,0,different
+82,2370,en pl,fence_break,andy,second,lexical,suzy,0,1,6.49,6,6,0,different
+82,2370,en pl,fence_break,andy,second,caused,andy,1,0,6.49,6,6,0,different
+82,2370,en pl,mirror_crack,sophia,second,lexical,bobby,0,1,6.49,6,6,0,different
+82,2370,en pl,mirror_crack,sophia,second,caused,sophia,1,0,6.49,6,6,0,different
+84,2550,en fr,fence_break,suzy,second,lexical,andy,0,1,6.99,6,6,0,different
+84,2550,en fr,fence_break,suzy,second,caused,suzy,1,0,6.99,6,6,0,different
+84,2550,en fr,mirror_crack,bobby,first,caused,bobby,1,0,6.99,6,6,0,different
+84,2550,en fr,mirror_crack,bobby,first,lexical,sophia,0,1,6.99,6,6,0,different
+85,2520,en ml so,fence_break,andy,second,caused,andy,1,0,6.9,6,6,0,different
+85,2520,en ml so,mirror_crack,sophia,second,lexical,bobby,0,1,6.9,6,6,0,different
+85,2520,en ml so,mirror_crack,sophia,second,caused,sophia,1,0,6.9,6,6,0,different
+86,2280,en,mirror_crack,bobby,first,caused,bobby,1,0,6.25,6,6,0,different
+86,2280,en,mirror_crack,bobby,first,lexical,sophia,0,1,6.25,6,6,0,different
+86,2280,en,fence_break,suzy,second,lexical,andy,0,1,6.25,6,6,0,different
+86,2280,en,fence_break,suzy,second,caused,suzy,1,0,6.25,6,6,0,different
+87,2280,en so,mirror_crack,sophia,second,lexical,bobby,0,1,6.25,6,6,0,different
+87,2280,en so,mirror_crack,sophia,second,caused,sophia,1,0,6.25,6,6,0,different
+87,2280,en so,fence_break,andy,second,lexical,suzy,0,1,6.25,6,6,0,different
+87,2280,en so,fence_break,andy,second,caused,andy,1,0,6.25,6,6,0,different
+88,2430,en so,mirror_crack,bobby,first,caused,sophia,0,1,6.66,6,6,0,different
+88,2430,en so,mirror_crack,bobby,first,lexical,sophia,0,1,6.66,6,6,0,different
+88,2430,en so,fence_break,suzy,second,lexical,andy,0,1,6.66,6,6,0,different
+88,2430,en so,fence_break,suzy,second,caused,andy,0,1,6.66,6,6,0,different
+89,2370,en,fence_break,suzy,first,caused,suzy,1,0,6.49,6,6,0,different
+89,2370,en,fence_break,suzy,first,lexical,andy,0,1,6.49,6,6,0,different
+89,2370,en,mirror_crack,bobby,second,lexical,sophia,0,1,6.49,6,6,0,different
+89,2370,en,mirror_crack,bobby,second,caused,bobby,1,0,6.49,6,6,0,different
+90,2520,en,fence_break,andy,first,caused,andy,1,0,6.9,6,6,0,different
+90,2520,en,fence_break,andy,first,lexical,suzy,0,1,6.9,6,6,0,different
+90,2520,en,mirror_crack,sophia,second,lexical,sophia,1,0,6.9,6,6,0,different
+90,2520,en,mirror_crack,sophia,second,caused,bobby,0,1,6.9,6,6,0,different
+91,2970,en km,mirror_crack,bobby,second,lexical,sophia,0,1,8.14,8,7-9,0,different
+91,2970,en km,mirror_crack,bobby,second,caused,bobby,1,0,8.14,8,7-9,0,different
+92,2880,en,fence_break,andy,second,lexical,andy,1,0,7.89,7,7-9,0,different
+92,2880,en,fence_break,andy,second,caused,andy,1,0,7.89,7,7-9,0,different
+92,2880,en,mirror_crack,sophia,second,lexical,bobby,0,1,7.89,7,7-9,0,different
+92,2880,en,mirror_crack,sophia,second,caused,sophia,1,0,7.89,7,7-9,0,different
+93,2610,en,fence_break,andy,first,caused,andy,1,0,7.15,7,7-9,0,different
+93,2610,en,fence_break,andy,first,lexical,andy,1,0,7.15,7,7-9,0,different
+93,2610,en,mirror_crack,sophia,second,lexical,sophia,1,0,7.15,7,7-9,0,different
+93,2610,en,mirror_crack,sophia,second,caused,sophia,1,0,7.15,7,7-9,0,different
+95,3150,en,fence_break,suzy,first,caused,andy,0,1,8.63,8,7-9,0,different
+95,3150,en,fence_break,suzy,first,lexical,andy,0,1,8.63,8,7-9,0,different
+95,3150,en,mirror_crack,bobby,second,lexical,sophia,0,1,8.63,8,7-9,0,different
+95,3150,en,mirror_crack,bobby,second,caused,sophia,0,1,8.63,8,7-9,0,different
+96,3090,en,mirror_crack,sophia,second,lexical,bobby,0,1,8.47,8,7-9,0,different
+96,3090,en,mirror_crack,sophia,second,caused,sophia,1,0,8.47,8,7-9,0,different
+96,3090,en,fence_break,andy,first,caused,andy,1,0,8.47,8,7-9,0,different
+96,3090,en,fence_break,andy,first,lexical,suzy,0,1,8.47,8,7-9,0,different
+97,2790,en,mirror_crack,bobby,second,lexical,sophia,0,1,7.64,7,7-9,0,different
+97,2790,en,mirror_crack,bobby,second,caused,bobby,1,0,7.64,7,7-9,0,different
+97,2790,en,fence_break,suzy,first,caused,suzy,1,0,7.64,7,7-9,0,different
+97,2790,en,fence_break,suzy,first,lexical,andy,0,1,7.64,7,7-9,0,different
+98,2820,en,fence_break,andy,second,lexical,suzy,0,1,7.73,7,7-9,0,different
+98,2820,en,fence_break,andy,second,caused,andy,1,0,7.73,7,7-9,0,different
+98,2820,en,mirror_crack,sophia,first,caused,sophia,1,0,7.73,7,7-9,0,different
+98,2820,en,mirror_crack,sophia,first,lexical,bobby,0,1,7.73,7,7-9,0,different
+99,3030,en,mirror_crack,sophia,second,lexical,bobby,0,1,8.3,8,7-9,0,different
+99,3030,en,mirror_crack,sophia,second,caused,sophia,1,0,8.3,8,7-9,0,different
+99,3030,en,fence_break,andy,second,lexical,suzy,0,1,8.3,8,7-9,0,different
+99,3030,en,fence_break,andy,second,caused,andy,1,0,8.3,8,7-9,0,different
+100,2820,en,fence_break,andy,second,lexical,suzy,0,1,7.73,7,7-9,0,different
+100,2820,en,fence_break,andy,second,caused,andy,1,0,7.73,7,7-9,0,different
+100,2820,en,mirror_crack,sophia,second,lexical,bobby,0,1,7.73,7,7-9,0,different
+100,2820,en,mirror_crack,sophia,second,caused,sophia,1,0,7.73,7,7-9,0,different
+101,2820,en,mirror_crack,bobby,second,lexical,sophia,0,1,7.73,7,7-9,0,different
+101,2820,en,mirror_crack,bobby,second,caused,sophia,0,1,7.73,7,7-9,0,different
+101,2820,en,fence_break,suzy,second,lexical,suzy,1,0,7.73,7,7-9,0,different
+101,2820,en,fence_break,suzy,second,caused,suzy,1,0,7.73,7,7-9,0,different
+102,3090,en,fence_break,andy,second,lexical,suzy,0,1,8.47,8,7-9,0,different
+102,3090,en,fence_break,andy,second,caused,andy,1,0,8.47,8,7-9,0,different
+102,3090,en,mirror_crack,sophia,first,caused,bobby,0,1,8.47,8,7-9,0,different
+102,3090,en,mirror_crack,sophia,first,lexical,bobby,0,1,8.47,8,7-9,0,different
+103,3240,en nl,mirror_crack,sophia,second,lexical,bobby,0,1,8.88,8,7-9,0,different
+103,3240,en nl,mirror_crack,sophia,second,caused,sophia,1,0,8.88,8,7-9,0,different
+103,3240,en nl,fence_break,andy,second,lexical,suzy,0,1,8.88,8,7-9,0,different
+103,3240,en nl,fence_break,andy,second,caused,andy,1,0,8.88,8,7-9,0,different
+104,3120,en,fence_break,andy,second,lexical,suzy,0,1,8.55,8,7-9,0,different
+104,3120,en,fence_break,andy,second,caused,andy,1,0,8.55,8,7-9,0,different
+104,3120,en,mirror_crack,sophia,first,caused,sophia,1,0,8.55,8,7-9,0,different
+104,3120,en,mirror_crack,sophia,first,lexical,bobby,0,1,8.55,8,7-9,0,different
+105,2760,en,mirror_crack,sophia,first,caused,bobby,0,1,7.56,7,7-9,0,different
+105,2760,en,mirror_crack,sophia,first,lexical,bobby,0,1,7.56,7,7-9,0,different
+105,2760,en,fence_break,andy,first,caused,suzy,0,1,7.56,7,7-9,0,different
+105,2760,en,fence_break,andy,first,lexical,suzy,0,1,7.56,7,7-9,0,different
+106,2670,en fr,fence_break,suzy,second,lexical,andy,0,1,7.32,7,7-9,0,different
+106,2670,en fr,fence_break,suzy,second,caused,suzy,1,0,7.32,7,7-9,0,different
+106,2670,en fr,mirror_crack,bobby,second,lexical,sophia,0,1,7.32,7,7-9,0,different
+106,2670,en fr,mirror_crack,bobby,second,caused,bobby,1,0,7.32,7,7-9,0,different
+107,3630,en,fence_break,andy,second,caused,suzy,0,1,9.95,9,7-9,0,different
+107,3630,en,mirror_crack,sophia,second,lexical,bobby,0,1,9.95,9,7-9,0,different
+108,3210,en,mirror_crack,bobby,second,caused,sophia,0,1,8.79,8,7-9,0,different
+108,3210,en,fence_break,suzy,first,caused,suzy,1,0,8.79,8,7-9,0,different
+108,3210,en,fence_break,suzy,first,lexical,andy,0,1,8.79,8,7-9,0,different
+109,3210,en so,mirror_crack,sophia,first,caused,sophia,1,0,8.79,8,7-9,0,different
+109,3210,en so,mirror_crack,sophia,first,lexical,bobby,0,1,8.79,8,7-9,0,different
+109,3210,en so,fence_break,andy,first,caused,andy,1,0,8.79,8,7-9,0,different
+109,3210,en so,fence_break,andy,first,lexical,suzy,0,1,8.79,8,7-9,0,different
+110,3450,en,fence_break,suzy,second,lexical,andy,0,1,9.45,9,7-9,0,different
+110,3450,en,fence_break,suzy,second,caused,suzy,1,0,9.45,9,7-9,0,different
+110,3450,en,mirror_crack,bobby,first,caused,bobby,1,0,9.45,9,7-9,0,different
+110,3450,en,mirror_crack,bobby,first,lexical,sophia,0,1,9.45,9,7-9,0,different
+111,2700,en,mirror_crack,bobby,first,caused,bobby,1,0,7.4,7,7-9,0,different
+111,2700,en,mirror_crack,bobby,first,lexical,sophia,0,1,7.4,7,7-9,0,different
+111,2700,en,fence_break,suzy,second,lexical,suzy,1,0,7.4,7,7-9,0,different
+111,2700,en,fence_break,suzy,second,caused,suzy,1,0,7.4,7,7-9,0,different
+112,2670,en,mirror_crack,bobby,second,lexical,sophia,0,1,7.32,7,7-9,0,different
+112,2670,en,mirror_crack,bobby,second,caused,sophia,0,1,7.32,7,7-9,0,different
+112,2670,en,fence_break,suzy,first,caused,andy,0,1,7.32,7,7-9,0,different
+112,2670,en,fence_break,suzy,first,lexical,andy,0,1,7.32,7,7-9,0,different
+113,3420,en,mirror_crack,sophia,first,caused,bobby,0,1,9.37,9,7-9,0,different
+113,3420,en,mirror_crack,sophia,first,lexical,bobby,0,1,9.37,9,7-9,0,different
+113,3420,en,fence_break,andy,first,caused,suzy,0,1,9.37,9,7-9,0,different
+113,3420,en,fence_break,andy,first,lexical,suzy,0,1,9.37,9,7-9,0,different
+114,3600,en,fence_break,suzy,second,lexical,suzy,1,0,9.86,9,7-9,0,different
+114,3600,en,fence_break,suzy,second,caused,suzy,1,0,9.86,9,7-9,0,different
+114,3600,en,mirror_crack,bobby,second,lexical,bobby,1,0,9.86,9,7-9,0,different
+114,3600,en,mirror_crack,bobby,second,caused,bobby,1,0,9.86,9,7-9,0,different
+115,2820,en so,fence_break,suzy,second,lexical,suzy,1,0,7.73,7,7-9,0,different
+115,2820,en so,fence_break,suzy,second,caused,suzy,1,0,7.73,7,7-9,0,different
+115,2820,en so,mirror_crack,bobby,first,caused,bobby,1,0,7.73,7,7-9,0,different
+115,2820,en so,mirror_crack,bobby,first,lexical,sophia,0,1,7.73,7,7-9,0,different
+116,2700,en so,fence_break,suzy,second,lexical,andy,0,1,7.4,7,7-9,0,different
+116,2700,en so,fence_break,suzy,second,caused,suzy,1,0,7.4,7,7-9,0,different
+116,2700,en so,mirror_crack,bobby,second,lexical,sophia,0,1,7.4,7,7-9,0,different
+116,2700,en so,mirror_crack,bobby,second,caused,bobby,1,0,7.4,7,7-9,0,different
+117,3300,en so,mirror_crack,bobby,second,lexical,sophia,0,1,9.04,9,7-9,0,different
+117,3300,en so,fence_break,suzy,first,caused,andy,0,1,9.04,9,7-9,0,different
+117,3300,en so,fence_break,suzy,first,lexical,andy,0,1,9.04,9,7-9,0,different
+118,3150,en so,mirror_crack,bobby,second,lexical,bobby,1,0,8.63,8,7-9,0,different
+118,3150,en so,mirror_crack,bobby,second,caused,bobby,1,0,8.63,8,7-9,0,different
+118,3150,en so,fence_break,suzy,second,lexical,suzy,1,0,8.63,8,7-9,0,different
+118,3150,enso,fence_break,suzy,second,caused,suzy,1,0,8.63,8,7-9,0,different
+119,2580,en fr pes ml so,mirror_crack,sophia,second,lexical,bobby,0,1,7.07,7,7-9,0,different
+119,2580,en fr pes ml so,mirror_crack,sophia,second,caused,sophia,1,0,7.07,7,7-9,0,different
+119,2580,en fr pes ml so,fence_break,andy,first,caused,andy,1,0,7.07,7,7-9,0,different
+119,2580,en fr pes ml so,fence_break,andy,first,lexical,suzy,0,1,7.07,7,7-9,0,different
+120,3300,en pl ro so,fence_break,andy,second,lexical,suzy,0,1,9.04,9,7-9,0,different
+120,3300,en pl ro so,fence_break,andy,second,caused,andy,1,0,9.04,9,7-9,0,different
+120,3300,en pl ro so,mirror_crack,sophia,second,lexical,bobby,0,1,9.04,9,7-9,0,different
+120,3300,en pl ro so,mirror_crack,sophia,second,caused,sophia,1,0,9.04,9,7-9,0,different
+121,3000,en so,mirror_crack,sophia,second,lexical,sophia,1,0,8.22,8,7-9,0,different
+121,3000,en so,mirror_crack,sophia,second,caused,sophia,1,0,8.22,8,7-9,0,different
+121,3000,en so,fence_break,andy,first,caused,andy,1,0,8.22,8,7-9,0,different
+121,3000,en so,fence_break,andy,first,lexical,suzy,0,1,8.22,8,7-9,0,different
+122,2790,en so,fence_break,andy,first,caused,andy,1,0,7.64,7,7-9,0,different
+122,2790,en so,fence_break,andy,first,lexical,suzy,0,1,7.64,7,7-9,0,different
+122,2790,en so,mirror_crack,sophia,first,caused,bobby,0,1,7.64,7,7-9,0,different
+122,2790,en so,mirror_crack,sophia,first,lexical,sophia,1,0,7.64,7,7-9,0,different
+123,3060,en,mirror_crack,sophia,second,lexical,bobby,0,1,8.38,8,7-9,0,different
+123,3060,en,mirror_crack,sophia,second,caused,sophia,1,0,8.38,8,7-9,0,different
+123,3060,en,fence_break,andy,second,lexical,suzy,0,1,8.38,8,7-9,0,different
+123,3060,en,fence_break,andy,second,caused,andy,1,0,8.38,8,7-9,0,different
+124,3060,en pl,mirror_crack,bobby,first,caused,sophia,0,1,8.38,8,7-9,0,different
+124,3060,en pl,mirror_crack,bobby,first,lexical,sophia,0,1,8.38,8,7-9,0,different
+124,3060,en pl,fence_break,suzy,second,lexical,andy,0,1,8.38,8,7-9,0,different
+124,3060,en pl,fence_break,suzy,second,caused,andy,0,1,8.38,8,7-9,0,different
+125,2880,en ro so,fence_break,andy,second,lexical,suzy,0,1,7.89,7,7-9,0,different
+125,2880,en ro so,fence_break,andy,second,caused,andy,1,0,7.89,7,7-9,0,different
+125,2880,en ro so,mirror_crack,sophia,second,lexical,sophia,1,0,7.89,7,7-9,0,different
+125,2880,en ro so,mirror_crack,sophia,second,caused,bobby,0,1,7.89,7,7-9,0,different
+126,2910,en,fence_break,andy,first,caused,suzy,0,1,7.97,7,7-9,0,different
+126,2910,en,fence_break,andy,first,lexical,suzy,0,1,7.97,7,7-9,0,different
+126,2910,en,mirror_crack,sophia,first,caused,sophia,1,0,7.97,7,7-9,0,different
+126,2910,en,mirror_crack,sophia,first,lexical,bobby,0,1,7.97,7,7-9,0,different
+128,2700,en,mirror_crack,sophia,second,lexical,bobby,0,1,7.4,7,7-9,0,different
+128,2700,en,mirror_crack,sophia,second,caused,sophia,1,0,7.4,7,7-9,0,different
+128,2700,en,fence_break,andy,second,lexical,suzy,0,1,7.4,7,7-9,0,different
+128,2700,en,fence_break,andy,second,caused,andy,1,0,7.4,7,7-9,0,different
+129,2670,en so,mirror_crack,bobby,first,caused,bobby,1,0,7.32,7,7-9,0,different
+129,2670,en so,mirror_crack,bobby,first,lexical,bobby,1,0,7.32,7,7-9,0,different
+132,3150,en,fence_break,suzy,second,lexical,andy,0,1,8.63,8,7-9,0,different
+132,3150,en,fence_break,suzy,second,caused,suzy,1,0,8.63,8,7-9,0,different
+132,3150,en,mirror_crack,bobby,first,caused,bobby,1,0,8.63,8,7-9,0,different
+132,3150,en,mirror_crack,bobby,first,lexical,sophia,0,1,8.63,8,7-9,0,different
+133,3300,en ml,fence_break,suzy,second,lexical,andy,0,1,9.04,9,7-9,0,different
+133,3300,en ml,fence_break,suzy,second,caused,suzy,1,0,9.04,9,7-9,0,different
+133,3300,en ml,mirror_crack,bobby,first,caused,sophia,0,1,9.04,9,7-9,0,different
+133,3300,en ml,mirror_crack,bobby,first,lexical,sophia,0,1,9.04,9,7-9,0,different
+134,2670,en,fence_break,andy,first,caused,suzy,0,1,7.32,7,7-9,0,different
+134,2670,en,fence_break,andy,first,lexical,andy,1,0,7.32,7,7-9,0,different
+134,2670,en,mirror_crack,sophia,second,lexical,bobby,0,1,7.32,7,7-9,0,different
+134,2670,en,mirror_crack,sophia,second,caused,sophia,1,0,7.32,7,7-9,0,different
+135,2700,en km,fence_break,andy,first,caused,andy,1,0,7.4,7,7-9,0,different
+135,2700,en km,fence_break,andy,first,lexical,suzy,0,1,7.4,7,7-9,0,different
+135,2700,en km,mirror_crack,sophia,second,lexical,bobby,0,1,7.4,7,7-9,0,different
+135,2700,en km,mirror_crack,sophia,second,caused,sophia,1,0,7.4,7,7-9,0,different
+136,2580,en,mirror_crack,sophia,first,caused,bobby,0,1,7.07,7,7-9,0,different
+136,2580,en,mirror_crack,sophia,first,lexical,bobby,0,1,7.07,7,7-9,0,different
+136,2580,en,fence_break,andy,second,lexical,andy,1,0,7.07,7,7-9,0,different
+136,2580,en,fence_break,andy,second,caused,suzy,0,1,7.07,7,7-9,0,different
+137,2910,en so,fence_break,suzy,second,lexical,andy,0,1,7.97,7,7-9,0,different
+137,2910,en so,fence_break,suzy,second,caused,andy,0,1,7.97,7,7-9,0,different
+137,2910,en so,mirror_crack,bobby,second,lexical,sophia,0,1,7.97,7,7-9,0,different
+137,2910,en so,mirror_crack,bobby,second,caused,sophia,0,1,7.97,7,7-9,0,different
+138,2700,en fr,fence_break,suzy,first,caused,andy,0,1,7.4,7,7-9,0,different
+138,2700,en fr,fence_break,suzy,first,lexical,andy,0,1,7.4,7,7-9,0,different
+138,2700,en fr,mirror_crack,bobby,second,lexical,sophia,0,1,7.4,7,7-9,0,different
+138,2700,en fr,mirror_crack,bobby,second,caused,bobby,1,0,7.4,7,7-9,0,different
+139,2760,en,fence_break,andy,second,lexical,suzy,0,1,7.56,7,7-9,0,different
+139,2760,en,fence_break,andy,second,caused,andy,1,0,7.56,7,7-9,0,different
+139,2760,en,mirror_crack,sophia,second,lexical,bobby,0,1,7.56,7,7-9,0,different
+139,2760,en,mirror_crack,sophia,second,caused,sophia,1,0,7.56,7,7-9,0,different
+140,3060,en fr so,mirror_crack,sophia,first,caused,sophia,1,0,8.38,8,7-9,0,different
+140,3060,en fr so,mirror_crack,sophia,first,lexical,bobby,0,1,8.38,8,7-9,0,different
+140,3060,en fr so,fence_break,andy,first,caused,andy,1,0,8.38,8,7-9,0,different
+140,3060,en fr so,fence_break,andy,first,lexical,suzy,0,1,8.38,8,7-9,0,different
+141,2700,en,fence_break,andy,first,caused,andy,1,0,7.4,7,7-9,0,different
+141,2700,en,fence_break,andy,first,lexical,suzy,0,1,7.4,7,7-9,0,different
+141,2700,en,mirror_crack,sophia,second,lexical,sophia,1,0,7.4,7,7-9,0,different
+141,2700,en,mirror_crack,sophia,second,caused,bobby,0,1,7.4,7,7-9,0,different
+142,3090,en,fence_break,suzy,second,lexical,andy,0,1,8.47,8,7-9,0,different
+142,3090,en,fence_break,suzy,second,caused,suzy,1,0,8.47,8,7-9,0,different
+142,3090,en,mirror_crack,bobby,first,caused,sophia,0,1,8.47,8,7-9,0,different
+142,3090,en,mirror_crack,bobby,first,lexical,sophia,0,1,8.47,8,7-9,0,different
+144,2880,en so,fence_break,andy,first,caused,andy,1,0,7.89,7,7-9,0,different
+144,2880,en so,fence_break,andy,first,lexical,andy,1,0,7.89,7,7-9,0,different
+144,2880,en so,mirror_crack,sophia,first,caused,sophia,1,0,7.89,7,7-9,0,different
+144,2880,en so,mirror_crack,sophia,first,lexical,bobby,0,1,7.89,7,7-9,0,different
+146,3030,en,fence_break,andy,first,caused,andy,1,0,8.3,8,7-9,0,different
+146,3030,en,fence_break,andy,first,lexical,andy,1,0,8.3,8,7-9,0,different
+146,3030,en,mirror_crack,sophia,second,lexical,bobby,0,1,8.3,8,7-9,0,different
+146,3030,en,mirror_crack,sophia,second,caused,sophia,1,0,8.3,8,7-9,0,different
+147,3390,en so,mirror_crack,sophia,first,caused,sophia,1,0,9.29,9,7-9,0,different
+147,3390,en so,mirror_crack,sophia,first,lexical,bobby,0,1,9.29,9,7-9,0,different
+147,3390,en so,fence_break,andy,first,caused,andy,1,0,9.29,9,7-9,0,different
+147,3390,en so,fence_break,andy,first,lexical,suzy,0,1,9.29,9,7-9,0,different
+148,2910,en,mirror_crack,sophia,second,caused,sophia,1,0,7.97,7,7-9,0,different
+149,2970,en,fence_break,suzy,second,caused,suzy,1,0,8.14,8,7-9,0,different
+149,2970,en,mirror_crack,bobby,second,lexical,sophia,0,1,8.14,8,7-9,0,different
+149,2970,en,mirror_crack,bobby,second,caused,bobby,1,0,8.14,8,7-9,0,different
+150,2850,en fr ml,fence_break,suzy,second,lexical,suzy,1,0,7.81,7,7-9,0,different
+150,2850,en fr ml,fence_break,suzy,second,caused,andy,0,1,7.81,7,7-9,0,different
+150,2850,en fr ml,mirror_crack,bobby,second,lexical,sophia,0,1,7.81,7,7-9,0,different
+150,2850,en fr ml,mirror_crack,bobby,second,caused,bobby,1,0,7.81,7,7-9,0,different

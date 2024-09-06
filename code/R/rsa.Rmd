@@ -1,0 +1,1037 @@
+---
+title: "RSA model of causal verbs"
+author: "David Rose, Siying Zhang, Shaun Nichols, Ellen Markman & Tobias Gerstenberg"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Load Packages
+
+```{r}
+library("patchwork")
+library("kableExtra")
+library("boot")
+library("patchwork")
+library("rsample")
+library("latex2exp")
+library("tidyverse")
+```
+
+# Helper functions
+
+```{r}
+# softmax function
+softmax = function(x, beta = 1) {
+  return(exp(x * beta) / sum(exp(x * beta)))
+}
+
+# set the theme 
+theme_set(theme_classic() + 
+    theme(text = element_text(size = 24)))
+
+# function for printing out html or latex tables 
+print_table = function(data, format = "html", digits = 2){
+  if(format == "html"){
+    data %>% 
+      kable(digits = digits) %>% 
+      kable_styling()
+  }else if(format == "latex"){
+    data %>% 
+      xtable(digits = digits,
+             caption = "Caption",
+             label = "tab:table") %>%
+      print(include.rownames = F,
+            booktabs = T,
+            sanitize.colnames.function = identity,
+            caption.placement = "top")
+  }
+}
+
+# suppress grouping warning 
+options(dplyr.summarise.inform = F)
+```
+
+# DATA
+
+## Chain
+
+### Caused vs. lexical 
+
+```{r}
+df.chain_caused = read.csv("../../data/experiment1/cause/children/chain_cause_different_responses.csv") %>% 
+  count(age_whole, question, distal) %>% 
+  group_by(age_whole, question) %>%
+  mutate(probability = n/sum(n)) %>%
+  ungroup() %>% 
+  mutate(distal = factor(distal,
+                         levels = c(0, 1),
+                         labels = c("no", "yes"))) %>% 
+  select(-n) %>% 
+  relocate(probability, .after = last_col()) %>% 
+  arrange(age_whole, question, distal) %>% 
+  mutate(version = rep("chain")) %>% 
+  rename(age = age_whole) %>% 
+  mutate(event = ifelse(distal == "yes", "distal", "proximal"),
+         alternative = "caused") %>%
+  select(age, question, event, probability, version, -distal, alternative)
+```
+
+### Made vs. lexical 
+
+```{r}
+df.chain_made = read.csv("../../data/experiment1/made/children/chain_made_different_responses.csv") %>% 
+  count(age_whole, question, distal) %>% 
+  group_by(age_whole, question) %>%
+  mutate(probability = n/sum(n)) %>%
+  ungroup() %>% 
+  mutate(distal = factor(distal,
+                         levels = c(0, 1),
+                         labels = c("no", "yes"))) %>% 
+  select(-n) %>% 
+  relocate(probability, .after = last_col()) %>% 
+  arrange(age_whole, question, distal) %>% 
+  mutate(version = rep("chain")) %>% 
+  rename(age = age_whole) %>% 
+  mutate(event = ifelse(distal == "yes", "distal", "proximal"),
+         alternative = "made") %>% 
+  select(age, question, event, probability, version, -distal, alternative)
+```
+
+## Omission
+
+### Caused vs. lexical
+
+```{r}
+df.omission_caused = read.csv("../../data/experiment2/cause/children/absence_cause_different_responses.csv") %>% 
+  rename(absent = absence) %>% 
+  count(age_whole, question, absent) %>% 
+  group_by(age_whole, question) %>%
+  mutate(probability = n/sum(n)) %>%
+  ungroup() %>% 
+  mutate(absent = factor(absent,
+                         levels = c(0, 1),
+                         labels = c("no", "yes"))) %>% 
+  select(-n) %>% 
+  relocate(probability, .after = last_col()) %>% 
+  arrange(age_whole, question, absent) %>% 
+  mutate(version = "omission") %>% 
+  rename(age = age_whole) %>% 
+  mutate(event = ifelse(absent == "yes", "absent", "direct"),
+         alternative = "caused") %>% 
+  select(age, question, event, probability, version, -absent, alternative)
+```
+
+### Made vs. lexical
+
+```{r}
+df.omission_made = read.csv("../../data/experiment2/made/children/absence_made_different_responses.csv") %>% 
+  rename(absent = absence) %>% 
+  mutate(age_whole = as.integer(age)) %>% 
+  count(age_whole, question, absent) %>% 
+  group_by(age_whole, question) %>%
+  mutate(probability = n/sum(n)) %>%
+  ungroup() %>% 
+  mutate(absent = factor(absent,
+                         levels = c(0, 1),
+                         labels = c("no", "yes"))) %>% 
+  select(-n) %>% 
+  relocate(probability, .after = last_col()) %>% 
+  arrange(age_whole, question, absent) %>% 
+  mutate(version = "omission") %>% 
+  rename(age = age_whole) %>% 
+  mutate(event = ifelse(absent == "yes", "absent", "direct"),
+         alternative = "made") %>% 
+  select(age, question, event, probability, version, -absent, alternative)
+```
+
+## Bootstrapped confidence intervals 
+
+```{r}
+fun_bootstraps = function(df, variable, scenario, alternative, nboots){
+  df = df %>% 
+    bootstraps(times = nboots,
+               strata = age_whole) %>% 
+    mutate(probability = map(.x = splits,
+                             .f = ~ .x %>%
+                               as_tibble() %>%
+                               count(age_whole, question, {{variable}}, .drop = FALSE) %>% 
+                               group_by(age_whole, question) %>%
+                               mutate(probability = n/sum(n)))) %>%
+    select(-splits) %>%
+    unnest(cols = c(probability)) %>% 
+    group_by(age_whole, question, {{variable}}) %>%
+    summarize(low = quantile(probability, 0.025),
+              high = quantile(probability, 0.975)) %>% 
+    ungroup()
+  
+  if (scenario == "chain"){
+    df = df %>% 
+      mutate(event = factor({{variable}},
+                             levels = c(0, 1),
+                             labels = c("proximal", "distal")))
+  }
+  
+  if (scenario == "omission"){
+    df = df %>% 
+      mutate(event = factor({{variable}},
+                             levels = c(0, 1),
+                             labels = c("direct", "absent"))) 
+  }
+  
+  df = df %>% 
+    select(-{{variable}}) %>% 
+      mutate(version = scenario,
+             alternative = alternative)
+
+  return(df)
+}
+
+nboots = 100
+
+df.boot = bind_rows(
+  fun_bootstraps(df = read.csv("../../data/experiment1/cause/children/chain_cause_different_responses.csv"),
+                 variable = distal,
+                 scenario = "chain",
+                 alternative = "caused",
+                 nboots = nboots),
+  fun_bootstraps(df = read.csv("../../data/experiment1/made/children/chain_made_different_responses.csv"),
+                 variable = distal,
+                 scenario = "chain",
+                 alternative = "made",
+                 nboots = nboots),
+  fun_bootstraps(df = read.csv("../../data/experiment2/cause/children/absence_cause_different_responses.csv"),
+                 variable = absence,
+                 scenario = "omission",
+                 alternative = "caused",
+                 nboots = nboots),
+  fun_bootstraps(df = read.csv("../../data/experiment2/made/children/absence_made_different_responses.csv") %>% 
+                   mutate(age_whole = as.integer(age)),
+                 variable = absence,
+                 scenario = "omission",
+                 alternative = "made",
+                 nboots = nboots)) %>% 
+  rename(age = age_whole)
+```
+
+## Combined data 
+
+```{r}
+df.data = bind_rows(df.chain_caused, 
+                    df.chain_made, 
+                    df.omission_caused,
+                    df.omission_made) %>% 
+  left_join(df.boot,
+            by = c("age", "question", "event", "version", "alternative")) %>% 
+  mutate(alternative = factor(alternative, levels = c("caused", "made")),
+         question = factor(question, levels = c("lexical", "caused", "made")),
+         event = factor(event, levels = c("proximal", "distal", "direct", "absent")),
+         event = ifelse(event %in% c("proximal", "direct"), "prototypical", "nonstandard"),
+         event = factor(event, levels = c("prototypical", "nonstandard")),
+         version = factor(version, levels = c("chain", "omission"))) %>%
+  relocate(probability, .after = alternative) %>% 
+  arrange(version, age, question, event, alternative)
+```
+
+# MODEL
+
+## Helper functions
+
+### Listener and speaker functions
+
+```{r}
+fun.l0 = function(prior){
+  l0 = tibble(question = c("lexical", "alternative"),
+              prototypical = c(1, 1),
+              nonstandard = c(0, 1)) %>% 
+    pivot_longer(cols = -question,
+                 names_to = "event",
+                 values_to = "value") %>% 
+    # add prior
+    mutate(prior = ifelse(event == "prototypical", prior["prototypical"], prior["nonstandard"]),
+           value = value * prior) %>%
+    group_by(question) %>%
+    mutate(value = value/sum(value)) %>%
+    ungroup()
+  return(l0)
+}
+
+fun.s1 = function(l0, cost, beta){
+  s1 = l0 %>% 
+    select(-prior) %>%
+    group_by(event) %>% 
+    mutate(cost = ifelse(question == "lexical", 0, cost),
+           value = ifelse(value == 0, 0.001, value),
+           value = ifelse(value == 1, 0.999, value),
+           value = log(value) - cost,
+           value = softmax(value, beta = beta)) %>%
+    ungroup()
+  return(s1)
+}
+
+fun.l1 = function(s1, prior){
+  l1 = s1 %>%
+    mutate(prior = ifelse(event == "prototypical", prior["prototypical"], prior["nonstandard"]), 
+           value = value * prior) %>%
+    group_by(question) %>% 
+    mutate(value = value/sum(value)) %>% 
+    ungroup()
+  return(l1)
+}
+
+fun.fit = function(par, data, fun_model){
+  loss = data %>%
+    group_by(age) %>%
+    nest() %>%
+    mutate(prediction = list(fun_model(par = par,
+                                       age = age))) %>%
+    unnest(c(data, prediction),
+           names_sep = "_") %>%
+    ungroup() %>%
+    summarize(loss = sum((data_probability - prediction_value)^2)) %>%
+    pull(loss)
+  return(loss)
+}
+
+fun.overall = function(par, data, df_parameters, fun_model){
+  tmp = data %>% 
+    group_by(version, alternative) %>% 
+    nest() %>% 
+    left_join(df_parameters,
+              by = c("version", "alternative")) %>% 
+    mutate(l = map2_dbl(.x = parameters, 
+                        .y = data,
+                        .f = ~ fun.fit(par = par[.x],
+                                       data = .y,
+                                       fun_model = fun_model)))
+  loss = sum(tmp$l)
+  return(loss)
+}
+
+fun.overall_grid = function(data, df_parameters, fun_model){
+  tmp = data %>% 
+    group_by(version, alternative) %>% 
+    nest() %>% 
+    left_join(df_parameters,
+              by = c("version", "alternative")) %>% 
+    mutate(l = map2_dbl(.x = parameters, 
+                        .y = data,
+                        .f = ~ fun.fit(par = .x,
+                                       data = .y,
+                                       fun_model = fun_model)))
+  loss = sum(tmp$l)
+  return(loss)
+}
+
+```
+
+### Plots 
+
+#### Results
+
+```{r, fig.width=10, fig.height = 7}
+fun.plot_results = function(params){
+  
+  df.model = df.data %>% 
+    group_by(alternative, version, age) %>%
+    nest() %>% 
+    left_join(df.parameters,
+              by = c("version", "alternative")) %>% 
+    mutate(prediction = map2(.x = parameters, 
+                             .y = age,
+                             .f = ~ fun.model(par = params[.x],
+                                              age = .y))) %>% 
+    unnest(c(data, prediction),
+           names_sep = "_") %>% 
+    ungroup() %>% 
+    select(age,
+           question = data_question,
+           event = data_event,
+           probability = data_probability,
+           low = data_low,
+           high = data_high,
+           prediction = prediction_value,
+           alternative,
+           version)
+  
+  df.plot = df.model %>% 
+    filter(event == "nonstandard")
+  
+  p = ggplot(data = df.plot,
+             mapping = aes(x = age,
+                           y = probability,
+                           group = question,
+                           color = question,
+                           fill = question)) +
+    geom_hline(yintercept = 0.50,
+               linetype = "dashed",
+               color = "black") +
+    geom_line(mapping = aes(y = prediction),
+              linewidth = 1.5,
+              alpha = 0.5) +
+    geom_linerange(mapping = aes(ymin = low,
+                                ymax = high),
+                   alpha = 0.75,
+                   show.legend = F) + 
+    geom_point(size = 2.5,
+               show.legend = F) + 
+    facet_grid(rows = vars(version),
+               cols = vars(alternative)) + 
+    scale_color_manual(values = c("lexical" = "#377EB8",
+                                  "made" = "#4DAF4A",
+                                  "caused" = "#E41A1C"),
+                       breaks = c("lexical", "made", "caused"),
+                       guide = guide_legend(reverse = T)) +
+    scale_y_continuous(breaks = seq(0, 1, 0.25),
+                       labels = c("100% PT", "75%", "50%", "75%", "100% NS"),
+                       limits = c(0, 1)) + 
+    labs(y = "probability of selecting\neach cause") + 
+    theme(panel.spacing.y = unit(0.5, "cm"))
+  p
+  
+  return(p)
+}
+```
+
+#### Parameters 
+
+```{r, fig.width=12, fig.height = 5}
+fun.plot_params = function(params, nbeta, nprior, ncost){
+  n_params = length(params)
+  
+  if(nbeta == 1){
+    p.beta = ggplot(data = tibble(),
+                    mapping = aes(x = x)) + 
+      geom_col(mapping = aes(x = 1,
+                             y = params[1],
+                             fill = "black"),
+               show.legend = F)
+      labs(y = "softmax")
+  }else{
+    p.beta = ggplot(data = tibble(x = 4:9),
+                    mapping = aes(x = x)) + 
+      geom_line(mapping = aes(y = params[1] + params[2] * x),
+                color = "black",
+                linewidth = 1.5) + 
+      scale_y_continuous(breaks = seq(0, 0.5, 0.1),
+                         limits = c(0, 0.5)) + 
+      labs(x = "age",
+           y = TeX(r"(speaker optimality $\alpha$)"))
+  }
+  
+  if(nprior == 2){
+    p.prior = ggplot() + 
+      geom_col(mapping = aes(x = 1:2,
+                             y = c(params[nbeta + 1], params[nbeta + 2]),
+                             fill = c("chain", "omission")),
+               color = "black", 
+               show.legend = F) + 
+      scale_x_continuous(breaks = c(1, 2),
+                         labels = c("chain", "omission")) +
+      scale_fill_manual(values = c("chain" = "orange",
+                                   "omission" = "purple")) + 
+      scale_y_continuous(breaks = seq(0, 0.5, 0.1),
+                         limits = c(0, 0.5)) + 
+      labs(x = "scenario",
+           y = TeX(r"(prior $\it{P}(\it{r})$)"))
+  }else{
+    p.prior = ggplot(data = tibble(x = 4:9),
+                    mapping = aes(x = x)) + 
+      geom_line(mapping = aes(y = params[nbeta + 1] + params[nbeta + 2] * x,
+                              color = "caused"),
+                linewidth = 1) + 
+      geom_line(mapping = aes(y = params[nbeta + 3] + params[nbeta + 4] * x,
+                              color = "made"),
+                linewidth = 1) + 
+      scale_x_continuous(breaks = c(1, 2),
+                         labels = c("chain", "omission")) +
+      scale_fill_manual(values = c("chain" = "orange",
+                                   "omission" = "purple")) + 
+      labs(x = "age",
+           y = "prior") +
+      theme(legend.position = "right",
+            legend.direction = "vertical") + 
+      guides(color = guide_legend(reverse = T))
+  }
+  
+  if(ncost == 2){
+    p.cost = ggplot() + 
+      geom_col(mapping = aes(x = 1,
+                             y = params[nbeta + nprior + 1],
+                             fill = "caused"),
+               show.legend = F) + 
+      geom_col(mapping = aes(x = 2, 
+                             y = params[nbeta + nprior + 2],
+                             fill = "made"),
+               show.legend = F) + 
+      scale_x_continuous(breaks = c(1, 2),
+                         labels = c("caused", "made")) +
+      scale_fill_manual(values = c("caused" = "#E41A1C",
+                                   "made" = "#4DAF4A")) +
+      labs(y = "cost") +
+      theme(axis.title.x = element_blank())
+  }else{
+    p.cost = ggplot(data = tibble(x = 4:9),
+                    mapping = aes(x = x)) + 
+      geom_line(mapping = aes(y = params[nbeta + nprior + 1] + params[nbeta + nprior + 2] * x,
+                              color = "caused"),
+                linewidth = 1.5) + 
+      geom_line(mapping = aes(y = params[nbeta + nprior + 3] + params[nbeta + nprior + 4] * x,
+                              color = "made"),
+                linewidth = 1.5) + 
+      scale_color_manual(values = c("caused" = "#E41A1C",
+                                    "made" = "#4DAF4A")) +
+      labs(x = "age",
+           y = TeX(r"(cost $\it{u}$)"),
+           color = "alternative") +
+      theme(legend.position = "right",
+            legend.direction = "vertical")
+  }
+  
+  p.beta + p.prior + p.cost +  
+    plot_annotation(tag_levels = "A")
+}
+```
+
+## Model fits 
+
+### Optimization 
+
+#### Beta: variable; prior: constant; cost: variable 
+
+```{r, fig.width=10, fig.height=6}
+# beta = 1:2
+# chain = 3
+# omission 4
+# caused = 5:6
+# made = 7:8
+df.parameters = df.data %>% 
+  distinct(version, alternative) %>% 
+  mutate(parameters = list(c(1:2, 3, 5:6), 
+                           c(1:2, 3, 7:8),
+                           c(1:2, 4, 5:6),
+                           c(1:2, 4, 7:8)))
+
+fun.model = function(par, age){
+  beta = par[1] + par[2] * age
+  p_nonstandard = par[3] 
+  cost = par[4] + par[5] * age
+  
+  if(p_nonstandard <= 0){
+    p_nonstandard = 0.001
+  }
+  if(p_nonstandard >= 1){
+    p_nonstandard = 0.999
+  }
+  prior = c(prototypical = 1-p_nonstandard,
+            nonstandard = p_nonstandard)
+  
+  l0 = fun.l0(prior = prior)
+  s1 = fun.s1(l0,
+              cost = cost,
+              beta = beta)
+  l1 = fun.l1(s1,
+              prior = prior)
+  return(l1)
+}
+
+# # best fitting parameters (converging solution!)
+par = c(-0.0971210, 0.0623497, 0.3595724, 0.1530933, -0.1393184,  0.5599144, -1.2883752,  0.3481894)
+
+# optimization
+# fit = optim(par = rep(0, max(unlist(df.parameters$parameters))),
+#             fn = fun.overall,
+#             data = df.data,
+#             fun_model = fun.model,
+#             df_parameters = df.parameters,
+#             method = "Nelder-Mead",
+#             control = list(maxit = 2000))
+
+# results 
+# fun.plot_results(params = fit$par)
+fun.plot_results(params = par)
+# ggsave("../../figures/plots/model_fits.pdf",
+#        width = 10,
+#        height = 7)
+
+# # parameters
+# # fun.plot_params(params = fit$par,
+fun.plot_params(params = par,
+                 nbeta = 2,
+                 nprior = 2,
+                 ncost = 4)
+
+# ggsave("../../figures/rsa/model_parameters.pdf",
+#        width = 12,
+#        height = 5)
+```
+
+#### Alternative models 
+
+##### Beta: constant; prior: constant; cost: constant 
+
+```{r, fig.width=10, fig.height=6}
+# beta = 1
+# chain = 2
+# omission 3
+# caused = 4
+# made = 5
+df.parameters = df.data %>% 
+  distinct(version, alternative) %>% 
+  mutate(parameters = list(c(1, 2, 4), 
+                           c(1, 2, 5),
+                           c(1, 3, 4),
+                           c(1, 3, 5)))
+
+fun.model = function(par, age){
+  beta = par[1] 
+  p_nonstandard = par[2] 
+  cost = par[3]
+  
+  if(p_nonstandard <= 0){
+    p_nonstandard = 0.001
+  }
+  if(p_nonstandard >= 1){
+    p_nonstandard = 0.999
+  }
+  prior = c(prototypical = 1-p_nonstandard,
+            nonstandard = p_nonstandard)
+  
+  l0 = fun.l0(prior = prior)
+  s1 = fun.s1(l0,
+              cost = cost,
+              beta = beta)
+  l1 = fun.l1(s1,
+              prior = prior)
+  return(l1)
+}
+
+par = c(0.5, 0.1, 0.5)
+
+# optimization
+fit = optim(par = rep(0, 5),
+            fn = fun.overall,
+            data = df.data,
+            fun_model = fun.model,
+            df_parameters = df.parameters,
+            method = "Nelder-Mead")
+
+# results 
+fun.plot_results(params = fit$par)
+
+# parameters
+fun.plot_params(params = fit$par,
+                nbeta = 1,
+                nprior = 2,
+                ncost = 2)
+```
+
+##### Beta: variable; prior: constant; cost: constant 
+
+```{r, fig.width=10, fig.height=6}
+# beta = 1:2
+# chain = 3
+# omission 4
+# caused = 5
+# made = 6
+df.parameters = df.data %>% 
+  distinct(version, alternative) %>% 
+  mutate(parameters = list(c(1:2, 3, 5), 
+                           c(1:2, 3, 6),
+                           c(1:2, 4, 5),
+                           c(1:2, 4, 6)))
+
+fun.model = function(par, age){
+  beta = par[1] + par[2] * age
+  p_nonstandard = par[3] 
+  cost = par[4]
+  
+  if(p_nonstandard <= 0){
+    p_nonstandard = 0.001
+  }
+  if(p_nonstandard >= 1){
+    p_nonstandard = 0.999
+  }
+  prior = c(prototypical = 1-p_nonstandard,
+            nonstandard = p_nonstandard)
+  
+  l0 = fun.l0(prior = prior)
+  s1 = fun.s1(l0,
+              cost = cost,
+              beta = beta)
+  l1 = fun.l1(s1,
+              prior = prior)
+  return(l1)
+}
+
+# optimization
+fit = optim(par = rep(0, 6),
+            fn = fun.overall,
+            data = df.data,
+            fun_model = fun.model,
+            df_parameters = df.parameters,
+            method = "Nelder-Mead")
+
+# results 
+fun.plot_results(params = fit$par)
+
+# parameters
+fun.plot_params(params = fit$par,
+                nbeta = 2,
+                nprior = 2,
+                ncost = 2)
+```
+
+##### Beta: constant; prior: constant; cost: variable 
+
+```{r, fig.width=10, fig.height=6}
+# beta = 1
+# chain = 2
+# omission 3
+# caused = 4:5
+# made = 6:7
+df.parameters = df.data %>% 
+  distinct(version, alternative) %>% 
+  mutate(parameters = list(c(1, 2, 4, 5), 
+                           c(1, 2, 6, 7),
+                           c(1, 3, 4, 5), 
+                           c(1, 3, 6, 7)))
+
+fun.model = function(par, age){
+  beta = par[1]
+  p_nonstandard = par[2] 
+  cost = par[3] + par[4] * age
+  
+  if(p_nonstandard <= 0){
+    p_nonstandard = 0.001
+  }
+  if(p_nonstandard >= 1){
+    p_nonstandard = 0.999
+  }
+  prior = c(prototypical = 1-p_nonstandard,
+            nonstandard = p_nonstandard)
+  
+  l0 = fun.l0(prior = prior)
+  s1 = fun.s1(l0,
+              cost = cost,
+              beta = beta)
+  l1 = fun.l1(s1,
+              prior = prior)
+  return(l1)
+}
+
+# best fitting parameters
+# par = c(0.37389834,
+#         0.24199678,
+#         0.10174182,
+#         -0.07839857,
+#         1.16558207,
+#         -3.41787156,
+#         1.18943229)
+
+# optimization
+fit = optim(par = rep(0, max(unlist(df.parameters$parameters))),
+            fn = fun.overall,
+            data = df.data,
+            fun_model = fun.model,
+            df_parameters = df.parameters,
+            method = "Nelder-Mead",
+            control = list(maxit = 1000))
+
+# results 
+fun.plot_results(params = fit$par)
+
+# parameters
+fun.plot_params(params = fit$par,
+                nbeta = 1,
+                nprior = 2,
+                ncost = 4)
+```
+
+### Grid search 
+
+#### Beta: constant; prior: constant; cost: constant 
+
+```{r, fig.width=10, fig.height=6}
+# beta = 1
+# chain = 2
+# omission 3
+# caused = 4
+# made = 5
+
+variables = c("beta",
+              "chain",
+              "omission",
+              "caused",
+              "made")
+
+df.parameters = df.data %>% 
+  distinct(version, alternative) %>% 
+  mutate(parameters = list(c(1, 2, 4), 
+                           c(1, 2, 5),
+                           c(1, 3, 4),
+                           c(1, 3, 5)))
+
+df.parameter_values = expand_grid(beta = seq(0.5, 2, 0.5),
+                                  chain = seq(0.1, 0.9, 0.2),
+                                  omission = seq(0.1, 0.9, 0.2),
+                                  caused = seq(0.5, 2, 0.5),
+                                  made = seq(0.5, 2, 0.5))
+
+# df.parameter_values = df.parameter_values %>% 
+#   filter(row_number() %in% c(1, 100, 200))
+
+fun.model = function(par, age){
+  beta = par[1] 
+  p_nonstandard = par[2] 
+  cost = par[3]
+  
+  prior = c(prototypical = 1-p_nonstandard,
+            nonstandard = p_nonstandard)
+  
+  l0 = fun.l0(prior = prior)
+  s1 = fun.s1(l0,
+              cost = cost,
+              beta = beta)
+  l1 = fun.l1(s1,
+              prior = prior)
+  return(l1)
+}
+
+df.loss = df.parameters %>% 
+  unnest(parameters) %>% 
+  mutate(parameters = variables[parameters]) %>% 
+  expand_grid(index = 1:nrow(df.parameter_values)) %>% 
+  arrange(index) %>% 
+  left_join(df.parameter_values %>% 
+              mutate(index = 1:n()) %>% 
+              pivot_longer(cols = -index), 
+            by = c("index", "parameters" = "name")) %>% 
+  group_by(index, version, alternative) %>% 
+  mutate(parameters = list(value)) %>% 
+  distinct(index, version, alternative, parameters) %>% 
+  ungroup() %>% 
+  nest(data = -index) %>% 
+  mutate(loss = map_dbl(.x = data,
+                        .f = ~ fun.overall_grid(data = df.data,
+                                                df_parameters = .x,
+                                                fun_model = fun.model)))
+
+
+# fun.overall_grid(df.data,
+#                  df_parameters,
+#                  fun.model)
+
+# save(df.loss, file = "loss.RData")
+
+df.best_fit = df.loss %>% 
+  ungroup() %>% 
+  filter(loss == min(loss)) %>% 
+  unnest(data) %>% 
+  select(version, alternative, parameters) %>% 
+  unnest(parameters) %>% 
+  bind_cols(df.parameters %>% 
+              unnest(parameters) %>% 
+              select(index = parameters)) %>% 
+  distinct(index, parameters) %>% 
+  arrange(index)
+
+# results 
+fun.plot_results(params = df.best_fit$parameters)
+
+# parameters
+fun.plot_params(params = df.best_fit$parameters,
+                nbeta = 1,
+                nprior = 2,
+                ncost = 2)
+```
+
+#### Beta: variable; prior: constant; cost: variable 
+
+```{r, fig.width=10, fig.height=6}
+# beta = 1:2
+# chain = 3
+# omission 4
+# caused = 5:6
+# made = 7:8
+df.parameters = df.data %>% 
+  distinct(version, alternative) %>% 
+  mutate(parameters = list(c(1:2, 3, 5:6), 
+                           c(1:2, 3, 7:8),
+                           c(1:2, 4, 5:6),
+                           c(1:2, 4, 7:8)))
+
+variables = c("beta_intercept",
+              "beta_slope",
+              "chain",
+              "omission",
+              "caused_intercept",
+              "caused_slope",
+              "made_intercept",
+              "made_slope")
+
+# best fitting parameters from optim 
+params = c(-0.10348257,
+           0.06281879,
+           0.35939409,
+           0.15519388,
+           -0.14396582,
+           0.56518446,
+           -1.28347795,
+           0.34417906)
+
+delta = seq(-0.1, 0.1, 0.1)
+
+df.parameter_values = expand_grid(beta_intercept = params[1] + delta,
+                                  beta_slope = params[2] + delta,
+                                  chain = params[3] + delta,
+                                  omission = params[4] + delta,
+                                  caused_intercept = params[5] + delta,
+                                  caused_slope = params[6] + delta,
+                                  made_intercept = params[7] + delta,
+                                  made_slope = params[8] + delta)
+
+fun.model = function(par, age){
+  beta = par[1] + par[2] * age
+  p_nonstandard = par[3] 
+  cost = par[4] + par[5] * age
+  prior = c(prototypical = 1-p_nonstandard,
+            nonstandard = p_nonstandard)
+  
+  l0 = fun.l0(prior = prior)
+  s1 = fun.s1(l0,
+              cost = cost,
+              beta = beta)
+  l1 = fun.l1(s1,
+              prior = prior)
+  return(l1)
+}
+
+df.loss = df.parameters %>% 
+  unnest(parameters) %>% 
+  mutate(parameters = variables[parameters]) %>% 
+  expand_grid(index = 1:nrow(df.parameter_values)) %>% 
+  arrange(index) %>% 
+  left_join(df.parameter_values %>% 
+              mutate(index = 1:n()) %>% 
+              pivot_longer(cols = -index), 
+            by = c("index", "parameters" = "name")) %>% 
+  group_by(index, version, alternative) %>% 
+  mutate(parameters = list(value)) %>% 
+  distinct(index, version, alternative, parameters) %>% 
+  ungroup() %>% 
+  nest(data = -index) %>% 
+  mutate(loss = map_dbl(.x = data,
+                        .f = ~ fun.overall_grid(data = df.data,
+                                                df_parameters = .x,
+                                                fun_model = fun.model)))
+
+# save(df.loss, file = "loss.RData")
+
+df.best_fit = df.loss %>% 
+  ungroup() %>% 
+  filter(loss == min(loss)) %>% 
+  unnest(data) %>% 
+  select(version, alternative, parameters) %>% 
+  unnest(parameters) %>% 
+  bind_cols(df.parameters %>% 
+              unnest(parameters) %>% 
+              select(index = parameters)) %>% 
+  distinct(index, parameters) %>% 
+  arrange(index)
+
+# results 
+fun.plot_results(params = df.best_fit$parameters)
+
+# parameters
+fun.plot_params(params = df.best_fit$parameters,
+                nbeta = 2,
+                nprior = 2,
+                ncost = 4)
+```
+
+## Scatter plot 
+
+```{r, fig.width=9, fig.height=6}
+df.plot = df.data %>% 
+  group_by(alternative, version, age) %>%
+  nest() %>% 
+  left_join(df.parameters,
+            by = c("version", "alternative")) %>% 
+  mutate(prediction = map2(.x = parameters, 
+                           .y = age,
+                           .f = ~ fun.model(par = par[.x],
+                                            age = .y))) %>% 
+  unnest(c(data, prediction),
+         names_sep = "_") %>% 
+  ungroup() %>% 
+  select(age,
+         question = data_question,
+         event = data_event,
+         probability = data_probability,
+         low = data_low,
+         high = data_high,
+         prediction = prediction_value,
+         alternative,
+         version) %>% 
+  filter(event == "nonstandard")
+
+df.text = df.plot %>% 
+  summarize(r = cor(probability, prediction),
+            rmse = sqrt(mean((probability - prediction)^2))*100)
+
+
+ggplot(data = df.plot,
+       mapping = aes(x = prediction,
+                     y = probability)) + 
+  # geom_hline(yintercept = 0.5,
+  #            linetype = "dashed",
+  #            color = "grey") +
+  # geom_vline(xintercept = 0.5,
+  #            linetype = "dashed",
+  #            color = "grey") +
+  geom_smooth(method = "lm",
+              formula = y ~ x, 
+              fill = "lightblue",
+              color = "black") +
+  geom_linerange(mapping = aes(ymin = low,
+                               ymax = high),
+                 alpha = 0.2) +
+  geom_point(mapping = aes(fill = question,
+                           shape = version),
+             size = 2) + 
+  annotate(geom = "text",
+           x = 0,
+           y = c(1, 0.9),
+           label = c(str_c("r = ", round(df.text$r, 2)),
+                      str_c("RMSE = ", round(df.text$rmse, 2))),
+           hjust = 0,
+           vjust = 1,
+           size = 8) + 
+  labs(x = "model prediction",
+       y = "probability of selecting\neach cause",
+       shape = "scenario",
+       fill = "utterance") + 
+  scale_shape_manual(values = c("chain" = 21,
+                                "omission" = 22)) +
+  scale_fill_manual(values = c("lexical" = "#377EB8",
+                                  "made" = "#4DAF4A",
+                                  "caused" = "#E41A1C"),
+                       breaks = c("lexical", "made", "caused"),
+                       guide = guide_legend(reverse = T)) + 
+  scale_x_continuous(breaks = seq(0, 1, 0.25),
+                       labels = c("100% PT", "75%", "50%", "75%", "100% NS"),
+                     limits = c(0, 1)) + 
+  scale_y_continuous(breaks = seq(0, 1, 0.25),
+                       labels = c("100% PT", "75%", "50%", "75%", "100% NS"),
+                     limits = c(0, 1)) +
+  guides(fill = guide_legend(override.aes = list(shape = 21, size = 3)),
+         shape = guide_legend(override.aes = list(size = 3)))
+
+ggsave("../../figures/rsa/scatterplot.pdf",
+       width = 9,
+       height = 6)
+```
+
+
+
+
