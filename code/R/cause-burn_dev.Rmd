@@ -651,7 +651,6 @@ p1 = ggplot(mapping = aes(x = age,
                   show.legend = TRUE,
                   alpha = 0.8,
                   position = position_dodge(width = 0.3)) +
-  ylab("Probability of selecting \n proximal or distal cause") +
   scale_fill_manual(values = c("cause" = "#E41A1C", 
                                "lexical" = "#377EB8")) +
   scale_color_manual(values = c("cause" = "#E41A1C",
@@ -663,6 +662,7 @@ p1 = ggplot(mapping = aes(x = age,
                       limits = c(0, 1)) +  
  scale_x_continuous(breaks = 4:10,
                      labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
+  labs(y = "Probability of selecting \n proximal or distal cause") +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
         text = element_text(size = 18)) + 
@@ -670,7 +670,7 @@ p1 = ggplot(mapping = aes(x = age,
          color = "none",
          shape = guide_legend(override.aes = list(fill = c("#377EB8", "#E41A1C")),
                               reverse = T))
-p1
+
 
 ```
 
@@ -795,7 +795,7 @@ p2 = ggplot(mapping = aes(x = age,
   guides(fill = "none",
          color = "none",
          shape = guide_legend(override.aes = list(fill = c("#377EB8", "#4DAF4A"))))
-p2 
+
 ```
 
 #### Combine Cause and Made Plots
@@ -807,7 +807,7 @@ plot_layout(nrow = 1) &
 plot_annotation(tag_levels = "A") &
 theme(plot.tag = element_text(face = "bold"))
 
-ggsave(plot, filename = "../../figures/experiment1/chain.pdf", height = 5, width = 12)
+ggsave(plot, filename = "../../figures/experiment1/chain_different.pdf", height = 5, width = 12)
 
 plot
 
@@ -904,7 +904,8 @@ p3 = ggplot(mapping = aes(x = age,
                             color = question,
                             fill = question),
               stat = "identity",
-              alpha = 0.2) +
+              alpha = 0.2,
+              show.legend = F) +
   geom_pointrange(data = df.means,
                   mapping = aes(x = age_whole,
                                 y = response,
@@ -927,9 +928,17 @@ p3 = ggplot(mapping = aes(x = age,
                       labels = str_c(seq(0, 1, 0.25) * 100, "%")) +
   scale_x_continuous(breaks = 4:10,
                      labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
+  labs(y = "Probability of selecting \n causal candidate") +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
-        text = element_text(size = 18))
+        text = element_text(size = 18)) +
+   guides(color = guide_legend(reverse = TRUE),
+         fill = guide_legend(reverse = TRUE),
+         shape = guide_legend(reverse = TRUE))
+
+
+
+
 ```
 #### Made
 
@@ -1025,7 +1034,8 @@ p4 = ggplot(mapping = aes(x = age,
                             color = question,
                             fill = question),
               stat = "identity",
-              alpha = 0.2) +
+              alpha = 0.2,
+              show.legend = F) +
   geom_pointrange(data = df.means,
                   mapping = aes(x = age_whole,
                                 y = response,
@@ -1040,7 +1050,6 @@ p4 = ggplot(mapping = aes(x = age,
                   position = position_dodge(width = 0.3)) +
     facet_wrap(~type,
              labeller = custom_labels) + 
-  ylab("Probability of selecting \n causal candidate") +
    scale_fill_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
   scale_color_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
   scale_shape_manual(values = c(21, 23), breaks=c("made", "lexical")) +
@@ -1049,23 +1058,26 @@ p4 = ggplot(mapping = aes(x = age,
                      limits = c(0, 1)) +
   scale_x_continuous(breaks = 4:10,
                      labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
+  labs(y = "Probability of selecting \n causal candidate") + 
   theme(legend.position = "bottom",
         legend.title = element_blank(),
-        text = element_text(size = 18))
+        text = element_text(size = 18)) 
+
+
 
 
   
 ```
 #### Combine Cause and Made Plots
 
-```{r fig.height=4, fig.width=12}
+```{r fig.height=5, fig.width=18}
 
 plot = p3 + p4 + 
 plot_layout(nrow = 1) &
 plot_annotation(tag_levels = "A") &
 theme(plot.tag = element_text(face = "bold"))
 
-ggsave(plot, filename = "../../figures/experiment1/chain_all.pdf", height = 4, width = 12)
+ggsave(plot, filename = "../../figures/experiment1/chain_all.pdf", height = 5, width = 18)
 
 plot
 
@@ -1682,18 +1694,24 @@ p5 = ggplot(mapping = aes(x = age,
                   alpha = 0.8,
                   position = position_dodge(width = 0.3)) +
   ylab("Probability of selecting \n direct or absent cause") +
-  scale_fill_brewer(palette = "Set1") + 
-  scale_color_brewer(palette = "Set1") +
-  scale_shape_manual(values = c(21, 23)) +
+   scale_fill_manual(values = c("cause" = "#E41A1C", 
+                               "lexical" = "#377EB8")) +
+  scale_color_manual(values = c("cause" = "#E41A1C",
+                                "lexical" = "#377EB8")) +
+  scale_shape_manual(values = c("cause" = 21, 
+                               "lexical" = 23)) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
-                     labels = c("100% \n direct", "75%", "50%", "75%", "100% \n absent"),
+                     labels = c("100% \n proximal", "75%", "50%", "75%", "100% \n distal"),
                       limits = c(0, 1)) +  
  scale_x_continuous(breaks = 4:10,
                      labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
- theme(legend.position = "bottom",
+  theme(legend.position = "bottom",
         legend.title = element_blank(),
-        text = element_text(size = 18))
-
+        text = element_text(size = 18)) + 
+  guides(fill = "none",
+         color = "none",
+         shape = guide_legend(override.aes = list(fill = c("#377EB8", "#E41A1C")),
+                              reverse = T))
 
 
 
@@ -1797,20 +1815,29 @@ p6 = ggplot(mapping = aes(x = age,
                   alpha = 0.8,
                   position = position_dodge(width = 0.3)) +
   ylab(element_blank()) +
-  scale_fill_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
-  scale_color_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
-  scale_shape_manual(values = c(23, 21)) +
+    scale_fill_manual(values = c("made" = "#4DAF4A", 
+                               "lexical" = "#377EB8"),
+                    breaks = c("made",
+                               "lexical")) +
+  scale_color_manual(values = c("made" = "#4DAF4A",
+                                "lexical" = "#377EB8"),
+                     breaks= c("made", "lexical")) +
+  scale_shape_manual(values = c("made" = 21, 
+                               "lexical" = 23)) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
-                     labels = c("100% \n direct", "75%", "50%", "75%", "100% \n absent"),
-                     limits = c(0, 1)) +
+                     labels = c("100% \n proximal", "75%", "50%", "75%", "100% \n distal"),
+                     limits = c(0, 1)) + 
   scale_x_continuous(breaks = 4:10,
                      labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
- theme(legend.position = "bottom",
+  theme(legend.position = "bottom",
         legend.title = element_blank(),
-        text = element_text(size = 18))
+        axis.title.y = element_blank(),
+        text = element_text(size = 18)) +
+  guides(fill = "none",
+         color = "none",
+         shape = guide_legend(override.aes = list(fill = c("#377EB8", "#4DAF4A"))))
 
 
-p6
 
 
 ```
@@ -1823,7 +1850,7 @@ plot_layout(nrow = 1) &
 plot_annotation(tag_levels = "A") &
 theme(plot.tag = element_text(face = "bold"))
 
-ggsave(plot, filename = "../../figures/experiment2/absence.pdf", height = 4, width = 12)
+ggsave(plot, filename = "../../figures/experiment2/absence_different.pdf", height = 5, width = 12)
 
 plot
 
@@ -1931,7 +1958,8 @@ p7 = ggplot(mapping = aes(x = age,
                             color = question,
                             fill = question),
               stat = "identity",
-              alpha = 0.2) +
+              alpha = 0.2,
+              show.legend = F) +
   geom_pointrange(data = df.means,
                   mapping = aes(x = age_whole,
                                 y = response,
@@ -1946,7 +1974,6 @@ p7 = ggplot(mapping = aes(x = age,
                   position = position_dodge(width = 0.5)) +
     facet_wrap(~type,
              labeller = custom_labels) + 
-  ylab("Probability of selecting \n causal candidate") +
   scale_fill_brewer(palette = "Set1") + 
   scale_color_brewer(palette = "Set1") +
   scale_shape_manual(values = c(21, 23)) +
@@ -1954,9 +1981,13 @@ p7 = ggplot(mapping = aes(x = age,
                       labels = str_c(seq(0, 1, 0.25) * 100, "%")) +
   scale_x_continuous(breaks = 4:10,
                      labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
+  labs(y = "Probability of selecting \n causal candidate") +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
-        text = element_text(size = 18))
+        text = element_text(size = 18)) +
+  guides(color = guide_legend(reverse = TRUE),
+         fill = guide_legend(reverse = TRUE),
+         shape = guide_legend(reverse = TRUE))
 
   
 ```
@@ -2063,7 +2094,7 @@ p8 = ggplot(mapping = aes(x = age,
                             fill = question),
               stat = "identity",
               alpha = 0.2,
-              show.legend = TRUE) +
+              show.legend = F) +
   geom_pointrange(data = df.means,
                   mapping = aes(x = age_whole,
                                 y = response,
@@ -2078,7 +2109,6 @@ p8 = ggplot(mapping = aes(x = age,
                   position = position_dodge(width = 0.4)) +
     facet_wrap(~type,
              labeller = custom_labels) + 
-  ylab("Probability of selecting \n causal candidate") +
    scale_fill_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
   scale_color_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
   scale_shape_manual(values = c(21, 23), breaks=c("made", "lexical")) +
@@ -2087,11 +2117,12 @@ p8 = ggplot(mapping = aes(x = age,
                      limits = c(0, 1)) +
   scale_x_continuous(breaks = 4:10,
                      labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
+  labs(y = "Probability of selecting \n causal candidate") +
    theme(legend.position = "bottom",
         legend.title = element_blank(),
         text = element_text(size = 18)) 
 
-p8
+
 
 
 
@@ -2099,14 +2130,14 @@ p8
 
 #### Combine Cause and Made Plots
 
-```{r fig.height=4, fig.width=12}
+```{r fig.height=5, fig.width=18}
 
 plot = p7 + p8 + 
 plot_layout(nrow = 1) &
 plot_annotation(tag_levels = "A") &
 theme(plot.tag = element_text(face = "bold"))
 
-ggsave(plot, filename = "../../figures/experiment2/absence_all.pdf", height = 4, width = 12)
+ggsave(plot, filename = "../../figures/experiment2/absence_all.pdf", height = 5, width = 18)
 
 plot
 
@@ -2372,7 +2403,7 @@ df.prediction = fit.brm.explanation %>%
   bind_cols(df.data) %>% 
   clean_names() %>% 
   rename(type = causal_candidate) %>% 
-  mutate(type = ifelse(type == "direct", "direct (sun, rain)", "absent (sunscreen, latch)"))
+  mutate(type = ifelse(type == "direct", "direct", "absent"))
 
 df.adults = df.exp3_adults %>% 
   select(-response) %>% 
@@ -2404,7 +2435,7 @@ df.means = df.children %>%
                 values_from = response) %>% 
   mutate(age_whole = fct_recode(age_whole, "7" = "adults"),
          age_whole = as.numeric(as.character(age_whole)),
-         type = ifelse(type == "direct", "direct (sun, rain)", "absent (sunscreen, latch)"))
+         type = ifelse(type == "direct", "direct", "absent"))
 
 
 
@@ -2433,20 +2464,32 @@ ggplot(mapping = aes(x = age,
                   show.legend = TRUE,
                   alpha = 0.8,
                   position = position_dodge(width = 0.1)) +
-  ylab("Probability of selecting \n causal candidate") +
-   scale_fill_manual(values = c("direct (sun, rain)" = "#FF7F00", "absent (sunscreen, latch)" = "#984EA3"), breaks=c("absent (sunscreen, latch)", "direct (sun, rain)"), guide = guide_legend(nrow = 2)) +
-  scale_color_manual(values = c("direct (sun, rain)" = "#FF7F00", "absent (sunscreen, latch)" = "#984EA3"), breaks=c("absent (sunscreen, latch)", "direct (sun, rain)"), guide = guide_legend(nrow = 2)) +
-  scale_shape_manual(values = c(21, 23), guide = guide_legend(nrow = 2)) +
-  scale_y_continuous(breaks = seq(0, 1, 0.25),
+   scale_fill_manual(values = c("direct" = "#FF7F00", 
+                               "absent" = "#984EA3"),
+                    breaks = c("direct",
+                               "absent")) +
+  scale_color_manual(values = c("direct" = "#FF7F00", 
+                               "absent" = "#984EA3"),
+                     breaks= c("direct",
+                               "absent")) +
+  scale_shape_manual(values = c("absent" = 21, 
+                               "direct" = 23)) +
+scale_y_continuous(breaks = seq(0, 1, 0.25),
                      labels = str_c(seq(0, 1, 0.25) * 100, "%"),
                      limits = c(0, 1)) +
   scale_x_continuous(breaks = 4:7,
                      labels = c("4", "5", "6", "Adults")) +
- theme(legend.position = "bottom",
+  labs(y = "Probability of selecting \n causal candidate") +
+  theme(legend.position = "bottom",
         legend.title = element_blank(),
-        text = element_text(size = 18)) 
-
-
+        text = element_text(size = 18)) +
+  guides(fill = "none",
+         color = "none",
+         shape = guide_legend(override.aes = list(fill = c("#FF7F00", "#984EA3")),
+         reverse = T))
+  
+  
+  
 
 ggsave("../../figures/experiment3/explanation.pdf", height = 4, width = 5)
 
