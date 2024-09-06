@@ -55,12 +55,9 @@ Add abstract here
 		- childern ([pre-registration](UPDATE)) 
   - `R` contains the analysis scripts that were used to analyze data and generate figures
 	 (view a rendered file [here](UPDATE)).
-- `data/` contains anonymized data from all experiments:
-  - `experiment1` contains `experiment1.db` which includes trial and demographic data. 
-  - `experiment2` contains `experiment2.csv` which includes the trial data and `experiment2_demographics.csv` which includes demographic data. The remaining files are for getting the probabilities of sentence completions from large language models for the properties used in experiment 2. 
-  - `experiment3` contains `experiment3.csv` which includes the trial data for experiment 3 while `experiment2_demographics.csv` contains the demographic data.
+- `data/` contains anonymized data from all experiments
 - `docs/` contains all the experiment code for the adult versions of each experiment. You can preview the experiments below:
-	- [Experiment 1](UPDATE),
-	- [Experiment 2](UPDATE),
-	- [Experiment 3](UPDATE),
+	- [Experiment 1](UPDATE)
+	- [Experiment 2](UPDATE)
+	- [Experiment 3](UPDATE)
 - `figures/` contains all the figures from the paper (generated using the script in `code/R/`). 
