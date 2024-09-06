@@ -27,6 +27,8 @@ theme_set(theme_classic())
 # sum coding
 options(contrasts = c("contr.sum","contr.poly"))
 
+# suppress grouping warning 
+options(dplyr.summarise.inform = F)
 ```
 
 # EXPERIMENT 1: CHAINS
@@ -553,7 +555,7 @@ df.difference_combined %>%
 
 ### Different Responses Plots
 #### Cause
-```{r message=TRUE, warning=TRUE}
+```{r message=FALSE, warning=FALSE}
 
 df.cause_children_differnet = df.exp1_cause_children %>% 
   mutate(response_pattern = case_when(
@@ -635,7 +637,8 @@ p1 = ggplot(mapping = aes(x = age,
                             color = question,
                             fill = question),
               stat = "identity",
-              alpha = 0.2) +
+              alpha = 0.2,
+              show.legend = F) +
   geom_pointrange(data = df.means,
                   mapping = aes(x = age_whole,
                                 y = response,
@@ -649,9 +652,12 @@ p1 = ggplot(mapping = aes(x = age,
                   alpha = 0.8,
                   position = position_dodge(width = 0.3)) +
   ylab("Probability of selecting \n proximal or distal cause") +
-  scale_fill_brewer(palette = "Set1") + 
-  scale_color_brewer(palette = "Set1") +
-  scale_shape_manual(values = c(21, 23)) +
+  scale_fill_manual(values = c("cause" = "#E41A1C", 
+                               "lexical" = "#377EB8")) +
+  scale_color_manual(values = c("cause" = "#E41A1C",
+                                "lexical" = "#377EB8")) +
+  scale_shape_manual(values = c("cause" = 21, 
+                               "lexical" = 23)) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
                      labels = c("100% \n proximal", "75%", "50%", "75%", "100% \n distal"),
                       limits = c(0, 1)) +  
@@ -659,13 +665,18 @@ p1 = ggplot(mapping = aes(x = age,
                      labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
-        text = element_text(size = 18))
+        text = element_text(size = 18)) + 
+  guides(fill = "none",
+         color = "none",
+         shape = guide_legend(override.aes = list(fill = c("#377EB8", "#E41A1C")),
+                              reverse = T))
+p1
 
 ```
 
 
 #### Made
-```{r message=TRUE, warning=TRUE}
+```{r message=FALSE, warning=FALSE}
 
 df.made_children_differnet = df.exp1_made_children %>%
   mutate(response_pattern = case_when(
@@ -737,9 +748,11 @@ df.means = df.model %>%
 
 
 p2 = ggplot(mapping = aes(x = age, 
-                     y = difference,
-                     color = question)) + 
-  geom_hline(yintercept = 0.5, linetype = "dashed", color = "black") +
+                          y = difference,
+                          color = question)) + 
+  geom_hline(yintercept = 0.5, 
+             linetype = "dashed", 
+             color = "black") +
   geom_smooth(data = df.prediction,
               mapping = aes(y = estimate,
                             ymin = q10,
@@ -747,7 +760,8 @@ p2 = ggplot(mapping = aes(x = age,
                             color = question,
                             fill = question),
               stat = "identity",
-              alpha = 0.2) +
+              alpha = 0.2,
+              show.legend = F) +
   geom_pointrange(data = df.means,
                   mapping = aes(x = age_whole,
                                 y = response,
@@ -760,10 +774,15 @@ p2 = ggplot(mapping = aes(x = age,
                   show.legend = TRUE,
                   alpha = 0.8,
                   position = position_dodge(width = 0.3)) +
-  ylab(element_blank()) +
-  scale_fill_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
-  scale_color_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
-  scale_shape_manual(values = c(23, 21)) +
+  scale_fill_manual(values = c("made" = "#4DAF4A", 
+                               "lexical" = "#377EB8"),
+                    breaks = c("made",
+                               "lexical")) +
+  scale_color_manual(values = c("made" = "#4DAF4A",
+                                "lexical" = "#377EB8"),
+                     breaks= c("made", "lexical")) +
+  scale_shape_manual(values = c("made" = 21, 
+                               "lexical" = 23)) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
                      labels = c("100% \n proximal", "75%", "50%", "75%", "100% \n distal"),
                      limits = c(0, 1)) + 
@@ -771,20 +790,24 @@ p2 = ggplot(mapping = aes(x = age,
                      labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
-        text = element_text(size = 18))
-
+        axis.title.y = element_blank(),
+        text = element_text(size = 18)) +
+  guides(fill = "none",
+         color = "none",
+         shape = guide_legend(override.aes = list(fill = c("#377EB8", "#4DAF4A"))))
+p2 
 ```
 
 #### Combine Cause and Made Plots
 
-```{r fig.height=4, fig.width=12}
+```{r fig.height=5, fig.width=12}
 
 plot = p1 + p2 + 
 plot_layout(nrow = 1) &
 plot_annotation(tag_levels = "A") &
 theme(plot.tag = element_text(face = "bold"))
 
-ggsave(plot, filename = "../../figures/experiment1/chain.pdf", height = 4, width = 12)
+ggsave(plot, filename = "../../figures/experiment1/chain.pdf", height = 5, width = 12)
 
 plot
 
@@ -907,8 +930,6 @@ p3 = ggplot(mapping = aes(x = age,
   theme(legend.position = "bottom",
         legend.title = element_blank(),
         text = element_text(size = 18))
-
-  
 ```
 #### Made
 
