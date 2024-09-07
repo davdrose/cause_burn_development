@@ -2,7 +2,12 @@
 title: "Cause and Burn in Development"
 author: "David Rose, Siying Zhang, Shaun Nichols, Ellen Markman & Tobias Gerstenberg"
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  bookdown::html_document2:
+    toc: true
+    toc_depth: 6
+    theme: cosmo
+    highlight: tango
 ---
 
 # Load packages
@@ -534,7 +539,7 @@ fit.brm.proximal.age
 
 ```
 
-##PLOTS
+## PLOTS
 ### Data
 #### Different Responses
 
@@ -834,6 +839,7 @@ plot
 
 
 ```
+
 ### All Responses Plots
 #### Cause
 ```{r message=FALSE, warning=FALSE}
@@ -959,8 +965,8 @@ p3 = ggplot(mapping = aes(x = age,
 
 
 ```
-#### Made
 
+#### Made
 ```{r message=FALSE, warning=FALSE}
 
 
@@ -1082,8 +1088,8 @@ p4 = ggplot(mapping = aes(x = age,
 
   
 ```
-#### Combine Cause and Made Plots
 
+#### Combine Cause and Made Plots
 ```{r fig.height=5, fig.width=18, message=FALSE, warning=FALSE}
 
 plot = p3 + p4 + 
@@ -1594,7 +1600,7 @@ fit.brm.absent
 
 ```
 
-##PLOTS
+## PLOTS
 ### Data
 #### Different Responses
 
@@ -2186,7 +2192,7 @@ df.exp3_adults = read_csv("../../data/experiment3/adults/exp3_adults.csv")
 
 ```
 
-#### Wrangle
+##### Wrangle
 
 ```{r message=FALSE, warning=FALSE}
 
@@ -2231,7 +2237,7 @@ df.exp3_adults = df.exp3_adults %>%
 
 ```
 
-#### Demographics
+##### Demographics
 
 ```{r message=FALSE, warning=FALSE}
 
@@ -2403,8 +2409,8 @@ fit.brm.exp
 
 ```
 
-#### PLOTS
-##### Explanation 
+### PLOTS
+#### Explanation 
 
 ```{r fig.height=4, fig.width=5, message=FALSE, warning=FALSE}
 
