@@ -60,7 +60,7 @@ Add abstract here
 			- adults and children ([pre-registration](https://osf.io/ybsc5)) 
 	- `experiment3`
 		- adults and children ([pre-registration](https://osf.io/29k5h)) 
-  - `R` contains the analysis scripts that were used to analyze data and generate figures
+- `R` contains the analysis scripts that were used to analyze data and generate figures
 	 (view a rendered file [here](https://davdrose.github.io/cause_burn_development/)).
 - `data/` contains anonymized data from all experiments
 - `docs/` contains all the experiment code for the adult versions of each experiment. You can preview the experiments below:
