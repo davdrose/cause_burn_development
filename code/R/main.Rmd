@@ -2,7 +2,7 @@
 title: "Cause and Burn in Development"
 author: "David Rose, Siying Zhang, Shaun Nichols, Ellen Markman & Tobias Gerstenberg"
 date: "`r Sys.Date()`"
-output: pdf_document
+output: html_document
 ---
 
 # Load packages
@@ -56,7 +56,7 @@ df.exp1_cause_adults = df.exp1_cause_adults %>%
            col = tmp_name,
            into = c("verb", "question", "tmp"),
            sep = "_") %>% 
-select(-tmp) %>% 
+  select(-tmp) %>% 
   mutate(distal = ifelse(counterbalance == "order_1" & str_detect(response,
                                                                   "Andy|Sophia"), 1, 0),
          distal = ifelse(counterbalance == "order_2" & str_detect(response,
@@ -97,7 +97,7 @@ df.exp1_cause_adults_demo  %>%
 ##### Bayesian Models
 ###### Distal
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 
 
 df.model = df.exp1_cause_adults %>% 
@@ -169,7 +169,7 @@ df.exp1_cause_children = df.exp1_cause_children %>%
          response = str_remove_all(string = response,
                                    pattern = "\\\\n"),
          response = str_to_lower(response)) %>% 
-  select(-(response_id : age_range), -notes, -full_response, -gender) 
+  select(-(response_id : age_range), -notes, -full_response) 
 
 
 # code responses
@@ -198,7 +198,22 @@ df.exp1_cause_children = df.exp1_cause_children %>%
 
 ##### Demographics
 
-```{r}
+```{r message=FALSE, warning=FALSE}
+
+ # gender
+df.exp1_cause_children %>%
+  group_by(gender) %>%
+  summarise(n = n_distinct(participant)) %>%
+  print()
+
+  
+  # language spoken
+df.exp1_cause_children %>%
+    mutate(en_occurrence = ifelse(str_detect(lan_spoken, "en"), "en", "non-en")) %>%
+    group_by(en_occurrence) %>%
+    summarise(n = n_distinct(participant)) %>%
+    print()
+
 
 ```
 
@@ -206,7 +221,7 @@ df.exp1_cause_children = df.exp1_cause_children %>%
 ##### Bayesian Models
 ###### Distal
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 
 df.model = df.exp1_cause_children %>% 
   mutate(question = as_factor(question),
@@ -217,7 +232,7 @@ df.model = df.exp1_cause_children %>%
  contrasts(df.model$question)
 
 
-fit.brm.cause.children.distal = brm(formula = distal ~ 1 + question + (1 | participant) + (1 | scenario), 
+fit.brm.cause.children.distal = brm(formula = distal ~ 1 + question + (1 | participant) + (1 | scenario),
                      data = df.model,
                      family = "bernoulli",
                      seed = 1,
@@ -243,7 +258,7 @@ fit.brm.cause.children.distal.age
 ```
 
 ###### Proximal
-```{r}
+```{r message=FALSE, warning=FALSE}
 
 # removed random intercepts for scenario to avoid divergent transition errors
 fit.brm.cause.children.proximal = brm(formula = proximal ~ 1 + question + (1 | participant),
@@ -297,7 +312,7 @@ df.exp1_made_adults = df.exp1_made_adults %>%
            col = tmp_name,
            into = c("verb", "question", "tmp"),
            sep = "_") %>% 
-select(-tmp) %>% 
+  select(-tmp) %>% 
   mutate(distal = ifelse(counterbalance == "order_1" & str_detect(response,
                                     "Andy|Sophia"), 1, 0),
          distal = ifelse(counterbalance == "order_2" & str_detect(response,
@@ -338,7 +353,7 @@ df.exp1_made_adults_demo %>%
 ##### Bayesian Models
 ###### Distal
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 
 df.model = df.exp1_made_adults %>% 
   mutate(question = as_factor(question),
@@ -355,7 +370,6 @@ fit.brm.made.adult.distal = brm(formula = distal ~ 1 + question + (1 | participa
                      iter = 4000,
                      warmup = 1000,
                      control = list(adapt_delta = .999999),
-                     cores = 8,
                      file = "cache/made_adult_distal") 
 
 fit.brm.made.adult.distal
@@ -367,7 +381,7 @@ fit.brm.made.adult.distal
 
 ###### Proximal
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 
 fit.brm.made.adult.proximal = brm(formula = proximal ~ 1 + question + (1 | participant) + (1 | scenario),
                       data = df.model,
@@ -376,7 +390,6 @@ fit.brm.made.adult.proximal = brm(formula = proximal ~ 1 + question + (1 | parti
                       iter = 4000,
                       warmup = 1000,
                       control = list(adapt_delta = .999999),
-                      cores = 8,
                       file = "cache/made_adult_proximal") 
 
 fit.brm.made.adult.proximal
@@ -405,25 +418,25 @@ df.exp1_made_children = df.exp1_made_children %>%
          question = question_type) %>% 
   mutate(response = str_to_lower(response),
          counterbalance = str_to_lower(counterbalance)) %>% 
-  select(-(response_id : age_range), -notes, -full_response, -gender) 
+  select(-(response_id : age_range), -notes, -full_response) 
 
 #code responses
 df.exp1_made_children = df.exp1_made_children %>% 
   mutate(distal = ifelse(counterbalance == "andy" & str_detect(response, "andy"), 1, 0),
          distal = ifelse(counterbalance == "suzy" & str_detect(response, "suzy"), 1, distal),
-          distal = ifelse(counterbalance == "bobby" & str_detect(response, "bobby"), 1, distal),
-          distal = ifelse(counterbalance == "sophia" & str_detect(response, "sophia"), 1, distal),
+         distal = ifelse(counterbalance == "bobby" & str_detect(response, "bobby"), 1, distal),
+         distal = ifelse(counterbalance == "sophia" & str_detect(response, "sophia"), 1, distal),
          proximal = ifelse(counterbalance == "andy" & str_detect(response, "suzy"), 1, 0),
          proximal = ifelse(counterbalance == "suzy" & str_detect(response, "andy"), 1, proximal),
-          proximal = ifelse(counterbalance == "bobby" & str_detect(response, "sophia"), 1, proximal),
-          proximal = ifelse(counterbalance == "sophia" & str_detect(response, "bobby"), 1, proximal),
+         proximal = ifelse(counterbalance == "bobby" & str_detect(response, "sophia"), 1, proximal),
+         proximal = ifelse(counterbalance == "sophia" & str_detect(response, "bobby"), 1, proximal),
          age = round(rounded_age / 365, digits = 2),
          question = str_replace_all(question, "break|crack", "simple")) %>% 
   na.omit()
 
 # compute age and recode question
 df.exp1_made_children = df.exp1_made_children %>% 
-   mutate(age_whole =as.integer(age)) %>%
+  mutate(age_whole =as.integer(age)) %>%
   mutate(age_character = as.character(age_whole)) %>%
   mutate(age_character = recode(age_character, "7" = "7-9", "8" = "7-9", "9" = "7-9"),
          question = str_replace_all(question, "simple", "lexical")) %>%
@@ -432,7 +445,21 @@ df.exp1_made_children = df.exp1_made_children %>%
 ```
 
 ##### Demographics
-```{r}
+```{r message=FALSE, warning=FALSE}
+
+ # gender
+df.exp1_made_children %>%
+  group_by(gender) %>%
+  summarise(n = n_distinct(participant)) %>%
+  print()
+  
+  
+  # language spoken
+df.exp1_made_children %>%
+    mutate(en_occurrence = ifelse(str_detect(lan_spoken, "en"), "en", "non-en")) %>%
+    group_by(en_occurrence) %>%
+    summarise(n = n_distinct(participant)) %>%
+    print()
 
 ```
 
@@ -440,7 +467,7 @@ df.exp1_made_children = df.exp1_made_children %>%
 
 ##### Bayesian Models
 ###### Distal
-```{r}
+```{r message=FALSE, warning=FALSE}
 
 df.model = df.exp1_made_children %>% 
   mutate(question = as_factor(question),
@@ -458,7 +485,6 @@ fit.brm.made.children.distal = brm(formula = distal ~ 1 + question + (1 | partic
                      iter = 4000,
                      warmup = 1000,
                      control = list(adapt_delta = .999999),
-                     cores = 8,
                      file = "cache/made_children_distal") 
 
 fit.brm.made.children.distal
@@ -471,7 +497,6 @@ fit.brm.made.children.distal.age = brm(formula = distal ~ 1 + question*age + (1 
                      iter = 4000,
                      warmup = 1000,
                      control = list(adapt_delta = .999999),
-                     cores = 8,
                      file = "cache/made_children_distal_age") 
 
 fit.brm.made.children.distal.age
@@ -480,7 +505,7 @@ fit.brm.made.children.distal.age
 
 ###### Proximal
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 
 fit.brm.proximal = brm(formula = proximal ~ 1 + question + (1 | participant) + (1 | scenario),
                       data = df.model,
@@ -489,7 +514,6 @@ fit.brm.proximal = brm(formula = proximal ~ 1 + question + (1 | participant) + (
                       iter = 4000,
                       warmup = 1000,
                       control = list(adapt_delta = .999999),
-                      cores = 8,
                       file = "cache/made_children_proximal") 
 
 fit.brm.proximal
@@ -502,7 +526,6 @@ fit.brm.proximal.age = brm(formula = proximal ~ 1 + question*age + (1 | particip
                       iter = 4000,
                       warmup = 1000,
                       control = list(adapt_delta = .999999),
-                      cores = 8,
                       file = "cache/made_children_proximal_age") 
 
 fit.brm.proximal.age
@@ -579,7 +602,6 @@ fit.brm.chain_cause.difference = brm(formula = difference ~ 1 + question*age + (
                      iter = 4000,
                      warmup = 1000,
                      control = list(adapt_delta = .9999),
-                     cores = 8,
                      file = "cache/chain_cause_difference")
 
 
@@ -596,7 +618,7 @@ df.prediction = fit.brm.chain_cause.difference %>%
 
 
 df.adults = df.exp1_cause_adults %>% 
-    mutate(response_pattern = case_when(
+  mutate(response_pattern = case_when(
     distal == 1 & proximal == 1 ~ "both",
     distal == 0 & proximal == 0 ~ "neither",
     TRUE ~ "different"
@@ -605,7 +627,7 @@ df.adults = df.exp1_cause_adults %>%
   select(-response) %>% 
   mutate(age_whole = rep(10)) %>% 
   mutate(difference = distal - proximal,
-        difference = recode(difference, `-1` = 0))
+         difference = recode(difference, `-1` = 0))
 
 
 
@@ -698,7 +720,6 @@ fit.brm.chain_made.difference = brm(formula = difference ~ 1 + question*age + (1
                      iter = 4000,
                      warmup = 1000,
                      control = list(adapt_delta = .9999),
-                     cores = 8,
                      file = "cache/chain_made_difference")
 
 
@@ -800,7 +821,7 @@ p2 = ggplot(mapping = aes(x = age,
 
 #### Combine Cause and Made Plots
 
-```{r fig.height=5, fig.width=12}
+```{r fig.height=5, fig.width=12, message=FALSE, warning=FALSE}
 
 plot = p1 + p2 + 
 plot_layout(nrow = 1) &
@@ -815,20 +836,19 @@ plot
 ```
 ### All Responses Plots
 #### Cause
-```{r}
+```{r message=FALSE, warning=FALSE}
 
 df.model = df.exp1_cause_children %>% 
   mutate(question = as_factor(question),
          question = fct_relevel(question, "caused"))
 
-fit.brm.distal.cause.age2 = brm(formula = distal ~ 1 + question*age + (1 | participant) + (1 | scenario), 
+fit.brm.distal.cause.age2 = brm(formula = distal ~ 1 + question*age + (1 | participant) + (1 | scenario),
                      data = df.model,
                      family = "bernoulli",
                      seed = 1,
                      iter = 4000,
                      warmup = 1000,
                      control = list(adapt_delta = .9999),
-                     cores = 8,
                      file = "cache/fit.brm.distal.cause.age2")
 
 
@@ -839,7 +859,6 @@ fit.brm.proximal.cause.age2 = brm(formula = proximal ~ 1 + question*age + (1 | p
                      iter = 6000,
                      warmup = 1000,
                      control = list(adapt_delta = .9999),
-                     cores = 8,
                      file = "cache/fit.brm.proximal.cause.age2")
 
 df.data = expand_grid(age = seq(4, 9, 0.1),
@@ -932,7 +951,7 @@ p3 = ggplot(mapping = aes(x = age,
   theme(legend.position = "bottom",
         legend.title = element_blank(),
         text = element_text(size = 18)) +
-   guides(color = guide_legend(reverse = TRUE),
+  guides(color = guide_legend(reverse = TRUE),
          fill = guide_legend(reverse = TRUE),
          shape = guide_legend(reverse = TRUE))
 
@@ -942,7 +961,7 @@ p3 = ggplot(mapping = aes(x = age,
 ```
 #### Made
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 
 
 df.model = df.exp1_made_children %>% 
@@ -957,7 +976,6 @@ fit.brm.distal.age2.made = brm(formula = distal ~ 1 + question*age + (1 | partic
                      iter = 4000,
                      warmup = 1000,
                      control = list(adapt_delta = .9999),
-                     cores = 8,
                      file = "cache/fit.brm.distal.age2.made")
 
 
@@ -968,7 +986,6 @@ fit.brm.proximal.age2.made = brm(formula = proximal ~ 1 + question*age + (1 | pa
                      iter = 4000,
                      warmup = 1000,
                      control = list(adapt_delta = .9999),
-                     cores = 8,
                      file = "cache/fit.brm.proximal.age2.made")
 
 df.data = expand_grid(age = seq(4, 9, 0.1),
@@ -1048,13 +1065,13 @@ p4 = ggplot(mapping = aes(x = age,
                   show.legend = TRUE,
                   alpha = 0.8,
                   position = position_dodge(width = 0.3)) +
-    facet_wrap(~type,
+  facet_wrap(~type,
              labeller = custom_labels) + 
-   scale_fill_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
+  scale_fill_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
   scale_color_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
   scale_shape_manual(values = c(21, 23), breaks=c("made", "lexical")) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
-                      labels = str_c(seq(0, 1, 0.25) * 100, "%"),
+                     labels = str_c(seq(0, 1, 0.25) * 100, "%"),
                      limits = c(0, 1)) +
   scale_x_continuous(breaks = 4:10,
                      labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
@@ -1063,14 +1080,11 @@ p4 = ggplot(mapping = aes(x = age,
         legend.title = element_blank(),
         text = element_text(size = 18)) 
 
-
-
-
   
 ```
 #### Combine Cause and Made Plots
 
-```{r fig.height=5, fig.width=18}
+```{r fig.height=5, fig.width=18, message=FALSE, warning=FALSE}
 
 plot = p3 + p4 + 
 plot_layout(nrow = 1) &
@@ -1174,7 +1188,7 @@ df.exp2_cause_adults_demo %>%
 ##### Bayesian Models
 ###### Direct
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 
 df.model = df.exp2_cause_adults  %>% 
   mutate(question = as_factor(question),
@@ -1253,7 +1267,6 @@ df.exp2_cause_children = df.exp2_cause_children %>%
                                     "^rain$|rain | rain$"), 1, direct),
          absence = ifelse(str_detect(response,
                                      "^sunscreen$|sunscreen | sunscreen$"), 1, 0),
-         # note the first response in the data is 'windows' but this doesn't capture that
          absence = ifelse(str_detect(response,
                                      "^window$|window | window$"), 1, absence),
          absence = ifelse(str_detect(response,
@@ -1270,15 +1283,28 @@ df.exp2_cause_children = df.exp2_cause_children %>%
 
 ##### Demographics
 
-```{r}
+```{r message=FALSE, warning=FALSE}
+
+ # gender
+df.exp2_cause_children %>%
+  group_by(gender) %>%
+  summarise(n = n_distinct(participant)) %>%
+  print()
+  
+  
+  # language spoken
+df.exp2_cause_children %>%
+    mutate(en_occurrence = ifelse(str_detect(lan_spoken, "en"), "en", "non-en")) %>%
+    group_by(en_occurrence) %>%
+    summarise(n = n_distinct(participant)) %>%
+    print()
 
 ```
 
 #### STATS
 ##### Bayesian Models
 ###### Direct
-```{r}
-
+```{r message=FALSE, warning=FALSE}
 
 df.model = df.exp2_cause_children %>% 
   mutate(question = as_factor(question),
@@ -1301,7 +1327,7 @@ fit.brm.direct
 ```
 
 ###### Absent
-```{r}
+```{r message=FALSE, warning=FALSE}
 
 # removed random intercepts for scenario to avoid divergent transition errors
 fit.brm.absent = brm(formula = absence ~ 1 + question*age + (1 | participant),
@@ -1498,14 +1524,29 @@ df.exp2_made_children = df.exp2_made_children %>%
 df.exp2_made_children = df.exp2_made_children %>%
   mutate(age = round(rounded_age / 365, digits = 2),
          age_whole = as.integer(age),
-         question = str_replace_all(question, "simple", "lexical")) 
+         question = str_replace_all(question, "simple", "lexical")) %>% 
+  rename(participant = `participant _number`)
 
 
 ```
 
 ##### Demographics
 
-```{r}
+```{r message=FALSE, warning=FALSE}
+
+ # gender
+df.exp2_made_children %>%
+  group_by(gender) %>%
+  summarise(n = n_distinct(participant)) %>%
+  print()
+  
+  
+  # language spoken
+df.exp2_made_children %>%
+    mutate(en_occurrence = ifelse(str_detect(lan_spoken, "en"), "en", "non-en")) %>%
+    group_by(en_occurrence) %>%
+    summarise(n = n_distinct(participant)) %>%
+    print()
 
 ```
 
@@ -1513,7 +1554,7 @@ df.exp2_made_children = df.exp2_made_children %>%
 ##### Bayesian Models
 ###### Direct
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 
 df.model = df.exp2_made_children %>% 
   mutate(question = as_factor(question),
@@ -1536,7 +1577,7 @@ fit.brm.direct
 ```
 
 ###### Absent
-```{r}
+```{r message=FALSE, warning=FALSE}
 
 # removed random intercepts for scenario to avoid divergent transition errors
 fit.brm.absent = brm(formula = absence ~ 1 + question*age + (1 | participant),
@@ -1694,16 +1735,16 @@ p5 = ggplot(mapping = aes(x = age,
                   alpha = 0.8,
                   position = position_dodge(width = 0.3)) +
   ylab("Probability of selecting \n direct or absent cause") +
-   scale_fill_manual(values = c("cause" = "#E41A1C", 
+  scale_fill_manual(values = c("cause" = "#E41A1C", 
                                "lexical" = "#377EB8")) +
   scale_color_manual(values = c("cause" = "#E41A1C",
                                 "lexical" = "#377EB8")) +
   scale_shape_manual(values = c("cause" = 21, 
-                               "lexical" = 23)) +
+                                "lexical" = 23)) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
                      labels = c("100% \n proximal", "75%", "50%", "75%", "100% \n distal"),
-                      limits = c(0, 1)) +  
- scale_x_continuous(breaks = 4:10,
+                     limits = c(0, 1)) +  
+  scale_x_continuous(breaks = 4:10,
                      labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
@@ -1814,8 +1855,7 @@ p6 = ggplot(mapping = aes(x = age,
                   show.legend = TRUE,
                   alpha = 0.8,
                   position = position_dodge(width = 0.3)) +
-  ylab(element_blank()) +
-    scale_fill_manual(values = c("made" = "#4DAF4A", 
+  scale_fill_manual(values = c("made" = "#4DAF4A", 
                                "lexical" = "#377EB8"),
                     breaks = c("made",
                                "lexical")) +
@@ -1823,7 +1863,7 @@ p6 = ggplot(mapping = aes(x = age,
                                 "lexical" = "#377EB8"),
                      breaks= c("made", "lexical")) +
   scale_shape_manual(values = c("made" = 21, 
-                               "lexical" = 23)) +
+                                "lexical" = 23)) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
                      labels = c("100% \n proximal", "75%", "50%", "75%", "100% \n distal"),
                      limits = c(0, 1)) + 
@@ -1838,12 +1878,10 @@ p6 = ggplot(mapping = aes(x = age,
          shape = guide_legend(override.aes = list(fill = c("#377EB8", "#4DAF4A"))))
 
 
-
-
 ```
 
 #### Combine Cause and Made Plots
-```{r fig.height=4, fig.width=12}
+```{r fig.height=4, fig.width=12, message=FALSE, warning=FALSE}
 
 plot = p5 + p6 + 
 plot_layout(nrow = 1) &
@@ -1859,7 +1897,7 @@ plot
 
 ### All Responses Plots
 #### Cause
-```{r}
+```{r message=FALSE, warning=FALSE}
 
 df.model = df.exp2_cause_children %>% 
   mutate(question = as_factor(question),
@@ -1872,7 +1910,6 @@ fit.brm.present.cause.age2 = brm(formula = direct ~ 1 + question*age + (1 | part
                      seed = 1,
                      iter = 6000,
                      warmup = 1000,
-                     cores = 8,
                      control = list(adapt_delta = .999999,
                                     max_treedepth = 15),
                      file = "cache/fit.brm.present.cause.age2") 
@@ -1885,7 +1922,6 @@ fit.brm.absence.cause.age2 = brm(formula = absence ~ 1 + question*age + (1 | par
                       seed = 1,
                       iter = 6000,
                       warmup = 1000,
-                      cores = 8,
                       control = list(adapt_delta = .999999,
                                      max_treedepth = 15),
                       file = "cache/fit.brm.absence.cause.age2") 
@@ -1994,7 +2030,7 @@ p7 = ggplot(mapping = aes(x = age,
 
 #### Made
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 
 df.model = df.exp2_made_children %>% 
   mutate(question = as_factor(question),
@@ -2007,7 +2043,6 @@ fit.brm.present.made.age2 = brm(formula = direct ~ 1 + question*age + (1 | parti
                      seed = 1,
                      iter = 8000,
                      warmup = 1000,
-                     cores = 8,
                      control = list(adapt_delta = .999999,
                                     max_treedepth = 15),
                      file = "cache/fit.brm.present.made.age2") 
@@ -2019,8 +2054,6 @@ fit.brm.absence.made.age2 = brm(formula = absence ~ 1 + question*age + (1 | part
                       family = "bernoulli",
                       seed = 1,
                       iter = 6000,
-                      warmup = 1000,
-                      cores = 8,
                       control = list(adapt_delta = .999999,
                                      max_treedepth = 15),
                       file = "cache/fit.brm.absence.made.age2") 
@@ -2056,7 +2089,7 @@ df.adults = df.exp2_made_adults %>%
 
 df.children = df.exp2_made_children %>%
   select(-response) %>% 
- pivot_longer(cols = (direct:absence),
+  pivot_longer(cols = (direct:absence),
                names_to = "type",
                values_to = "response")
 
@@ -2107,30 +2140,27 @@ p8 = ggplot(mapping = aes(x = age,
                   show.legend = TRUE,
                   alpha = 0.8,
                   position = position_dodge(width = 0.4)) +
-    facet_wrap(~type,
+  facet_wrap(~type,
              labeller = custom_labels) + 
-   scale_fill_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
+  scale_fill_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
   scale_color_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
   scale_shape_manual(values = c(21, 23), breaks=c("made", "lexical")) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
-                      labels = str_c(seq(0, 1, 0.25) * 100, "%"),
+                     labels = str_c(seq(0, 1, 0.25) * 100, "%"),
                      limits = c(0, 1)) +
   scale_x_continuous(breaks = 4:10,
                      labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
   labs(y = "Probability of selecting \n causal candidate") +
-   theme(legend.position = "bottom",
+  theme(legend.position = "bottom",
         legend.title = element_blank(),
         text = element_text(size = 18)) 
-
-
-
 
 
 ```
 
 #### Combine Cause and Made Plots
 
-```{r fig.height=5, fig.width=18}
+```{r fig.height=5, fig.width=18, message=FALSE, warning=FALSE}
 
 plot = p7 + p8 + 
 plot_layout(nrow = 1) &
@@ -2277,20 +2307,20 @@ df.exp3_children = df.exp3_children %>%
   clean_names() %>% 
   rename(response_1 = full_response_11,
          response_2 = full_response_13) %>% 
-  select(participant_number, rounded_age, scenario_1, scenario_2, response_1, response_2) %>% 
- drop_na() %>% 
- pivot_longer(
-    cols = c(-participant_number, -rounded_age),
+  select(participant_number, rounded_age, scenario_1, scenario_2, response_1, response_2, gender, lan_spoken) %>%
+  drop_na() %>% 
+  pivot_longer(
+    cols = c(-participant_number, -rounded_age, -gender, -lan_spoken),
     names_to = c(".value"),
     names_pattern = "(^scenario|^response)"
   ) %>% 
-mutate(response = str_remove_all(string = response,
+  mutate(response = str_remove_all(string = response,
                                    pattern = "\""),
          response = str_remove_all(string = response,
                                    pattern = ":"),
-       response = str_remove_all(string = response,
+         response = str_remove_all(string = response,
                                    pattern = "\\("),
-       response = str_remove_all(string = response,
+         response = str_remove_all(string = response,
                                    pattern = "\\)"),
          response = str_remove_all(string = response,
                                    pattern = "\\}"),
@@ -2312,36 +2342,49 @@ df.exp3_children = df.exp3_children %>%
                                     "^rain$|rain | rain$"), 1, direct),
          absence = ifelse(str_detect(response,
                                      "^sunscreen$|sunscreen | sunscreen$"), 1, 0),
-         # note the first response in the data is 'windows' but this doesn't capture that
          absence = ifelse(str_detect(response,
                                      "^window$|window | window$"), 1, absence),
          absence = ifelse(str_detect(response,
                                      "^windows$|windows | windows$"), 1, absence),
          absence = ifelse(str_detect(response,
                                      "^latch$|latch | latch$"), 1, absence),
-         age = round(rounded_age / 365, digits = 2)) 
+         age = round(rounded_age / 365, digits = 2)) %>% 
+  rename(participant = participant_number)
 ```
 
 ##### Demographics
 
-```{r}
+```{r message=FALSE, warning=FALSE}
+
+ # gender
+df.exp3_children %>%
+  group_by(gender) %>%
+  summarise(n = n_distinct(participant)) %>%
+  print()
+  
+  
+  # language spoken
+df.exp3_children %>%
+    mutate(en_occurrence = ifelse(str_detect(lan_spoken, "en"), "en", "non-en")) %>%
+    group_by(en_occurrence) %>%
+    summarise(n = n_distinct(participant)) %>%
+    print()
 
 ```
 
 #### STATS
 ##### Bayesian Model
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # dummy coding
 options(contrasts = c("contr.treatment", "contr.poly"))
 
 df.model = df.exp3_children %>% 
   select(-response) %>% 
-  rename(participant = participant_number) %>% 
   pivot_longer(cols = direct:absence,
                names_to = "causal_candidate",
                values_to = "response") %>% 
-mutate(causal_candidate = factor(causal_candidate, levels = c("direct", "absence")))
+  mutate(causal_candidate = factor(causal_candidate, levels = c("direct", "absence")))
 
 
 # check levels of causal_candidate
@@ -2367,11 +2410,10 @@ fit.brm.exp
 
 df.model = df.exp3_children %>% 
   select(-response) %>% 
-  rename(participant = participant_number) %>% 
   pivot_longer(cols = direct:absence,
                names_to = "causal_candidate",
                values_to = "response") %>% 
-mutate(causal_candidate = factor(causal_candidate, levels = c("direct", "absence")))
+  mutate(causal_candidate = factor(causal_candidate, levels = c("direct", "absence")))
 
 
 
@@ -2383,7 +2425,6 @@ fit.brm.explanation = brm(formula = response ~ 1 + causal_candidate*age + (1 | p
                      iter = 6000,
                      warmup = 1000,
                      control = list(adapt_delta = .999999),
-                     cores = 8,
                      file = "cache/explanation_children_age") 
 
 
@@ -2464,17 +2505,17 @@ ggplot(mapping = aes(x = age,
                   show.legend = TRUE,
                   alpha = 0.8,
                   position = position_dodge(width = 0.1)) +
-   scale_fill_manual(values = c("direct" = "#FF7F00", 
+  scale_fill_manual(values = c("direct" = "#FF7F00", 
                                "absent" = "#984EA3"),
                     breaks = c("direct",
                                "absent")) +
   scale_color_manual(values = c("direct" = "#FF7F00", 
-                               "absent" = "#984EA3"),
+                                "absent" = "#984EA3"),
                      breaks= c("direct",
                                "absent")) +
   scale_shape_manual(values = c("absent" = 21, 
-                               "direct" = 23)) +
-scale_y_continuous(breaks = seq(0, 1, 0.25),
+                                "direct" = 23)) +
+  scale_y_continuous(breaks = seq(0, 1, 0.25),
                      labels = str_c(seq(0, 1, 0.25) * 100, "%"),
                      limits = c(0, 1)) +
   scale_x_continuous(breaks = 4:7,
@@ -2486,7 +2527,7 @@ scale_y_continuous(breaks = seq(0, 1, 0.25),
   guides(fill = "none",
          color = "none",
          shape = guide_legend(override.aes = list(fill = c("#FF7F00", "#984EA3")),
-         reverse = T))
+                              reverse = T))
   
   
   

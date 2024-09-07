@@ -61,12 +61,12 @@ Add abstract here
 	- `experiment3`
 		- adults and children ([pre-registration](https://osf.io/29k5h)) 
   - `R` contains the analysis scripts that were used to analyze data and generate figures
-	 (view a rendered file [here](UPDATE)).
+	 (view a rendered file [here](https://davdrose.github.io/cause_burn_development/)).
 - `data/` contains anonymized data from all experiments
 - `docs/` contains all the experiment code for the adult versions of each experiment. You can preview the experiments below:
-    - Experiment 1 - [cause vs lexical](https://davdrose.github.io/cause_burn_devlopement/experiment1/cause/index.html),
-      [made vs lexical](https://davdrose.github.io/cause_burn_devlopement/experiment1/made/index.html)
-    - Experiment 2 - [cause vs lexical](https://davdrose.github.io/cause_burn_devlopement/experiment2/cause/index.html),
-      [made vs lexical](https://davdrose.github.io/cause_burn_devlopement/experiment2/made/index.html)
-	- Experiment 3 - [explanation](https://davdrose.github.io/cause_burn_devlopement/experiment3/index.html)
+    - Experiment 1 - [cause vs lexical](https://davdrose.github.io/cause_burn_development/experiment1/cause/index.html),
+      [made vs lexical](https://davdrose.github.io/cause_burn_development/experiment1/made/index.html)
+    - Experiment 2 - [cause vs lexical](https://davdrose.github.io/cause_burn_development/experiment2/cause/index.html),
+      [made vs lexical](https://davdrose.github.io/cause_burn_development/experiment2/made/index.html)
+	- Experiment 3 - [explanation](https://davdrose.github.io/cause_burn_development/experiment3/index.html)
 - `figures/` contains all the figures from the paper (generated using the script in `code/R/`). 
