@@ -32,12 +32,13 @@ Add abstract here
 │   ├── experiment2
 │   └── experiment3
 ├── docs
+│   ├── experiment1
 │   ├── experiment2
 │   └── experiment3
 ├── figures
 │   ├── experiment1
 │   ├── experiment2
-│   ├── experiment3
+│   └── experiment3
 
 
 ```
@@ -45,19 +46,27 @@ Add abstract here
 - `code/` contains all the code for the experiments, analyzing data and generating figures.
   - `experiments` contains code for each experiment that was run. Pre-registrations for all experiments may be accessed via the Open Science Framework [here](UPDATE). All experiments with adults were run in jsPsych and all experiments with children were run in Lookit. 
 	- `experiment1` 
-		- adults ([pre-registration](UPDATE)) 
-		- childern ([pre-registration](UPDATE)) 
+		- `cause`
+			- adults ([pre-registration](https://osf.io/wfg3p)) 
+			- childern ([pre-registration](https://osf.io/e2buz)) 
+		- `made`
+			- adults ([pre-registration](https://osf.io/achv6)) 
+			- childern ([pre-registration](https://osf.io/ph5tr)) 
 	- `experiment2` 
-		- adults ([pre-registration](UPDATE)) 
-		- childern ([pre-registration](UPDATE)) 
+		- `cause`
+			- adults ([pre-registration](https://osf.io/f7k59)) 
+			- childern (4- 6) ([pre-registration](https://osf.io/u3g8r)) and (7- 9) ([pre-registration](https://osf.io/3ha4k)) 
+		- `made`
+			- adults and children ([pre-registration](https://osf.io/ybsc5)) 
 	- `experiment3`
-		- adults ([pre-registration](UPDATE)) 
-		- childern ([pre-registration](UPDATE)) 
+		- adults and children ([pre-registration](https://osf.io/29k5h)) 
   - `R` contains the analysis scripts that were used to analyze data and generate figures
 	 (view a rendered file [here](UPDATE)).
 - `data/` contains anonymized data from all experiments
 - `docs/` contains all the experiment code for the adult versions of each experiment. You can preview the experiments below:
-	- [Experiment 1](UPDATE)
-	- [Experiment 2](UPDATE)
-	- [Experiment 3](UPDATE)
+    - Experiment 1 - [cause vs lexical](https://davdrose.github.io/cause_burn_devlopement/experiment1/cause/index.html),
+      [made vs lexical](https://davdrose.github.io/cause_burn_devlopement/experiment1/made/index.html)
+    - Experiment 2 - [cause vs lexical](https://davdrose.github.io/cause_burn_devlopement/experiment2/cause/index.html),
+      [made vs lexical](https://davdrose.github.io/cause_burn_devlopement/experiment2/made/index.html)
+	- Experiment 3 - [explanation](https://davdrose.github.io/cause_burn_devlopement/experiment3/index.html)
 - `figures/` contains all the figures from the paper (generated using the script in `code/R/`). 
