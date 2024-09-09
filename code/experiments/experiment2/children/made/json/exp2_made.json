@@ -3,8 +3,7 @@
         "exit-survey": {
             "kind": "exp-lookit-exit-survey",
             "debriefing": {
-                "text": " We want to know if “make break” and “break” mean the same thing. Though many researchers think they do, children may think they don’t.\n\n In this study,  when we ask “What made Suzy’s skin burn”, we expect children to mention “the sun” and “the sunscreen”, but when we ask “What burned Suzy’s skin”, we expect them to say “the sun” but not “the sunscreen”. Likewise, when we ask “What made Andy’s basement flood?”, we expect children to say “the rain/water” and “the broken latch/window”. But when we ask “What flooded the basement?”, we expect them to say “the rain/water” but not “the broken latch/window.” \n\n Although children’s answers can vary, there aren’t any “right” or “wrong” answers to the questions. We are just interested in looking at the average responses from children and we won’t take any specific answers as “good” or “bad”.\n\n If you are interested in learning more about this, please see the following experimental paper with adults <a href=https://philpapers.org/rec/ROSCAB-3 target='_blank' rel='noopener'>here</a>. Thank you again for your participation!",
-
+                "text": " We want to know if “cause to break” and “break” mean the same thing. Though many researchers think they do, children may think they don’t.\n\n In this study,  when we ask “What caused Suzy’s skin to burn”, we expect children to mention “the sun” and “the sunscreen”, but when we ask “What burned Suzy’s skin”, we expect them to say “the sun” but not “the sunscreen”. Likewise, when we ask “What caused Andy’s basement to flood?”, we expect children to say “the rain/water” and “the broken latch/window”. But when we ask “What flooded the basement?”, we expect them to say “the rain/water” but not “the broken latch/window.” \n\n Although children’s answers can vary, there aren’t any “right” or “wrong” answers to the questions. We are just interested in looking at the average responses from children and we won’t take any specific answers as “good” or “bad”.\n\n If you are interested in learning more about this, please see the following experimental paper with adults <a href=https://philpapers.org/rec/ROSCAB-3 target='_blank' rel='noopener'>here</a>. Thank you again for your participation!",
                 "title": "Thank you!"
             }
         },
@@ -33,9 +32,11 @@
         },
         "instructions": {
             "kind": "exp-lookit-instructions",
-            "blocks": [{
+            "blocks": [
+                {
                     "title": "1. Overview of what we're doing today",
-                    "listblocks": [{
+                    "listblocks": [
+                        {
                             "text": "All together, it will take about 6-8 minutes to finish this study."
                         },
                         {
@@ -52,7 +53,8 @@
                     "mediaBlock": {
                         "text": "You should hear 'Ready to go?'",
                         "isVideo": false,
-                        "sources": [{
+                        "sources": [
+                            {
                                 "src": "https://s3.amazonaws.com/lookitcontents/exp-physics-final/audio/ready.mp3",
                                 "type": "audio/mp3"
                             },
@@ -67,16 +69,19 @@
                 }
             ],
             "showWebcam": true,
-            "webcamBlocks": [{
-                "title": "3. Make sure we can see you",
-                "listblocks": [{
-                        "text": "Take a look at your webcam view above. Get comfy, and adjust your own position or the computer as needed so both you and your child are visible."
-                    },
-                    {
-                        "text": "This isn't a Skype call - no one in the lab can see you - but the recorded video of your participation will be sent to the lab to help with data analysis. It's helpful for us to be able to see if your child was pointing or looking confused, for example."
-                    }
-                ]
-            }],
+            "webcamBlocks": [
+                {
+                    "title": "3. Make sure we can see you",
+                    "listblocks": [
+                        {
+                            "text": "Take a look at your webcam view above. Get comfy, and adjust your own position or the computer as needed so both you and your child are visible."
+                        },
+                        {
+                            "text": "This isn't a Skype call - no one in the lab can see you - but the recorded video of your participation will be sent to the lab to help with data analysis. It's helpful for us to be able to see if your child was pointing or looking confused, for example."
+                        }
+                    ]
+                }
+            ],
             "nextButtonText": "Next"
         },
         "video-config": {
@@ -98,7 +103,7 @@
         },
         "introduction": {
             "kind": "exp-lookit-images-audio",
-            "baseDir": "https://raw.githubusercontent.com/syzhang6/causal_verb_study4/master/",
+            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment2/children/made",
             "id": "storybook-group",
             "audioTypes": [
                 "mp3",
@@ -113,37 +118,41 @@
                 "text": "Please help keep your child's attention, but don't talk with them about what you think.",
                 "title": "For parents"
             },
-            "audio": "lookit_intro_new",
-            "images": [{
-                "id": "storybookIllustration",
-                "src": "lookit_intro_new.png",
-                "top": 0,
-                "left": 10,
-                "width": 80
-            }]
+            "audio": "exp2_lookit_intro",
+            "images": [
+                {
+                    "id": "storybookIllustration",
+                    "src": "exp2_lookit_intro.jpeg",
+                    "top": 0,
+                    "left": 10,
+                    "width": 80
+                }
+            ]
         },
         "before-we-get-started": {
             "kind": "exp-lookit-images-audio",
-            "baseDir": "https://raw.githubusercontent.com/syzhang6/causal_verb_study4/master/",
+            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment2/children/made",
             "id": "storybook-group",
             "audioTypes": [
                 "mp3",
                 "ogg"
             ],
             "autoProceed": false,
-            "audio": "before_we_get_started",
+            "audio": "exp2_before_we_get_started",
             "doRecording": false,
-            "images": [{
-                "id": "storybookIllustration",
-                "src": "before_we_start_new.jpg",
-                "top": 0,
-                "left": 10,
-                "width": 80
-            }]
+            "images": [
+                {
+                    "id": "storybookIllustration",
+                    "src": "exp2_before_we_get_started.jpeg",
+                    "top": 0,
+                    "left": 10,
+                    "width": 80
+                }
+            ]
         },
         "end": {
             "kind": "exp-lookit-images-audio",
-            "baseDir": "https://raw.githubusercontent.com/syzhang6/causal_verb_study4/master/",
+            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment2/children/made",
             "id": "storybook-group",
             "audioTypes": [
                 "mp3",
@@ -158,137 +167,161 @@
                 "text": "Thank you very much for your participation. We look forward to seeing you with more research games in the future. ",
                 "title": "For parents"
             },
-            "audio": "end",
-            "images": [{
-                "id": "storybookIllustration",
-                "src": "end.jpeg",
-                "top": 0,
-                "left": 10,
-                "width": 80
-            }]
+            "audio": "exp2_end",
+            "images": [
+                {
+                    "id": "storybookIllustration",
+                    "src": "exp2_end.jpeg",
+                    "top": 0,
+                    "left": 10,
+                    "width": 80
+                }
+            ]
         },
         "warmup": {
             "kind": "group",
-            "frameList": [{
-                "kind": "group",
-                "frameList": [
-                    {
-                        "audio": "warmup_audio_1",
-                        "images": [{
-                            "id": "storybookIllustration",
-                            "src": "warmup_1.jpeg",
-                            "top": 0,
-                            "left": 10,
-                            "width": 80
-                        }]
-                    },
-                    {
-                        "audio": "warmup_audio_2",
-                        "images": [{
-                            "id": "storybookIllustration",
-                            "src": "warmup_2.jpeg",
-                            "top": 0,
-                            "left": 10,
-                            "width": 80
-                        }]
-                    },
-                    {
-                        "audio": "warmup_audio_3",
-                        "images": [{
-                            "id": "storybookIllustration",
-                            "src": "warmup_3.jpeg",
-                            "top": 0,
-                            "left": 10,
-                            "width": 80
-                        }]
-                    },
-                    {
-                        "audio": "warmup_audio_4",
-                        "images": [{
-                            "id": "storybookIllustration",
-                            "src": "warmup_4.jpeg",
-                            "top": 0,
-                            "left": 10,
-                            "width": 80
-                        }]
-                    },
-                    {
-                        "audio": "warmup_audio_5",
-                        "autoProceed": false,
-                        "images": [{
-                            "id": "storybookIllustration",
-                            "src": "warmup_5.jpeg",
-                            "top": 0,
-                            "left": 10,
-                            "width": 80
-                        }]
-                    },
-                    {
-                        "audio": "warmup_audio_6",
-                        "autoProceed": false,
-                        "images": [{
-                            "id": "storybookIllustration",
-                            "src": "warmup_6.jpeg",
-                            "top": 0,
-                            "left": 10,
-                            "width": 80
-                        }]
-                    },
-                    {
-                        "audio": "warmup_audio_7",
-                        "images": [{
-                            "id": "storybookIllustration",
-                            "src": "warmup_7.jpeg",
-                            "top": 0,
-                            "left": 10,
-                            "width": 80
-                        }]
-                    },
-                    {
-                        "audio": "warmup_audio_8",
-                        "autoProceed": false,
-                        "images": [{
-                            "id": "storybookIllustration",
-                            "src": "warmup_8.jpeg",
-                            "top": 0,
-                            "left": 10,
-                            "width": 80
-                        }]
-                    },
-                    {
-                        "audio": "warmup_audio_9",
-                        "autoProceed": false,
-                        "images": [{
-                            "id": "storybookIllustration",
-                            "src": "warmup_9.jpeg",
-                            "top": 0,
-                            "left": 10,
-                            "width": 80
-                        }]
-                    },
-                    {
-                        "audio": "warmup_audio_10",
-                        "images": [{
-                            "id": "storybookIllustration",
-                            "src": "warmup_10_new.jpeg",
-                            "top": 0,
-                            "left": 10,
-                            "width": 80
-                        }]
-                    }
-                ],
-                "commonFrameProperties": {
-                    "kind": "exp-lookit-images-audio",
-                    "baseDir": "https://raw.githubusercontent.com/syzhang6/causal_verb_study4/master/",
-                    "id": "storybook-group",
-                    "audioTypes": [
-                        "mp3",
-                        "ogg"
+            "frameList": [
+                {
+                    "kind": "group",
+                    "frameList": [
+                        {
+                            "audio": "exp2_warmup_audio_1",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_1.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_2",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_2.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_3",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_3.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_4",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_4.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_5",
+                            "autoProceed": false,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_5.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_6",
+                            "autoProceed": false,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_6.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_7",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_7.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_8",
+                            "autoProceed": false,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_8.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_9",
+                            "autoProceed": false,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_9.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_10",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_10.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        }
                     ],
-                    "autoProceed": true,
-                    "doRecording": false
+                    "commonFrameProperties": {
+                        "kind": "exp-lookit-images-audio",
+                        "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment2/children/made",
+                        "id": "storybook-group",
+                        "audioTypes": [
+                            "mp3",
+                            "ogg"
+                        ],
+                        "autoProceed": true,
+                        "doRecording": false
+                    }
                 }
-            }]
+            ]
         },
         "causal-verb-study-story-book": {
             "kind": "choice",
@@ -296,494 +329,582 @@
             "commonFrameProperties": {
                 "id": "storybook-group"
             },
-            "frameOptions": [{
+            "frameOptions": [
+                {
                     "kind": "group",
-                    "frameList": [{
-                        "kind": "group",
-                        "frameList": [{
-                                "audio": "intro_sunburn_new",
-                                "autoProceed": false,
-                                "images": [{
-                                    "id": "storybookIllustration",
-                                    "src": "intro_sunburn_new.png",
-                                    "top": 0,
-                                    "left": 10,
-                                    "width": 80
-                                }]
-                            },
-                            {
-                                "audio": "Sunburn_audio_1",
-                                "durationSeconds": 2.5, 
-                                "images": [{
-                                    "id": "storybookIllustration",
-                                    "src": "sunburn_1.jpeg",
-                                    "top": 0,
-                                    "left": 10,
-                                    "width": 80
-                                }]
-                            },
-                            {
-                                "audio": "Sunburn_audio_2",
-                                "durationSeconds": 4.5, 
-                                "images": [{
-                                    "id": "storybookIllustration",
-                                    "src": "sunburn_2.jpeg",
-                                    "top": 0,
-                                    "left": 10,
-                                    "width": 80
-                                }]
-                            },
-                            {
-                                "audio": "Sunburn_audio_3",
-                                "durationSeconds": 3.5, 
-                                "images": [{
-                                    "id": "storybookIllustration",
-                                    "src": "sunburn_3.jpeg",
-                                    "top": 0,
-                                    "left": 10,
-                                    "width": 80
-                                }]
-                            },
-                            {
-                                "audio": "Sunburn_audio_4",
-                                "durationSeconds": 3.5, 
-                                "images": [{
-                                    "id": "storybookIllustration",
-                                    "src": "sunburn_4.jpeg",
-                                    "top": 0,
-                                    "left": 10,
-                                    "width": 80
-                                }]
-                            },
-                            {
-                                "audio": "Sunburn_audio_5",
-                                "durationSeconds": 3.5, 
-                                "images": [{
-                                    "id": "storybookIllustration",
-                                    "src": "sunburn_5.jpeg",
-                                    "top": 0,
-                                    "left": 10,
-                                    "width": 80
-                                }]
-                            },
-                            {
-                                "audio": "Sunburn_audio_6",
-                                "durationSeconds": 4.5, 
-                                "images": [{
-                                    "id": "storybookIllustration",
-                                    "src": "sunburn_6.jpeg",
-                                    "top": 0,
-                                    "left": 10,
-                                    "width": 80
-                                }]
-                            },
-                            {
-                                "images": [{
-                                    "id": "storybookIllustration",
-                                    "src": "sunburn_7.jpeg",
-                                    "top": 0,
-                                    "left": 10,
-                                    "width": 80
-                                }],
-                                "durationSeconds": 1
-                            },
-                            {
-                                "images": [{
-                                    "id": "storybookIllustration",
-                                    "src": "sunburn_8.jpeg",
-                                    "top": 0,
-                                    "left": 10,
-                                    "width": 80
-                                }],
-                                "durationSeconds": 1
-                            },
-                            {
-                                "audio": "Sunburn_audio_7",
-                                "durationSeconds": 4.5, 
-                                "images": [{
-                                    "id": "storybookIllustration",
-                                    "src": "sunburn_9.jpeg",
-                                    "top": 0,
-                                    "left": 10,
-                                    "width": 80
-                                }]
-                            },
-                            {
-                                "images": [{
-                                    "id": "storybookIllustration",
-                                    "src": "sunburn_10.jpeg",
-                                    "top": "0",
-                                    "left": "10",
-                                    "width": "80"
-                                }],
-                                "audio": "Sunburn_audio_8",
-                                "durationSeconds": 4.5 
-                            },
-                            {
-                                "images": [{
-                                    "id": "storybookIllustration",
-                                    "src": "sunburn_11.jpeg",
-                                    "top": "0",
-                                    "left": "10",
-                                    "width": "80"
-                                }],
-                                "audio": "Sunburn_audio_9",
-                                "durationSeconds": 10
-                            },
-                            {
-                                "images": [{
-                                    "id": "storybookIllustration",
-                                    "src": "sunburn_12.jpeg",
-                                    "top": "0",
-                                    "left": "10",
-                                    "width": "80"
-                                }],
-                                "audio": "Sunburn_audio_10",
-                                "durationSeconds": 4.5
-                            },
-                            {
-                                "images": [{
-                                    "id": "storybookIllustration",
-                                    "src": "sunburn_13.jpeg",
-                                    "top": "0",
-                                    "left": "10",
-                                    "width": "80"
-                                }],
-                                "audio": "Sunburn_audio_11",
-                                "durationSeconds": 6.5
-                            },
-                            {
-                                "images": [{
-                                    "id": "storybookIllustration",
-                                    "src": "sunburn_14.jpeg",
-                                    "top": "0",
-                                    "left": "10",
-                                    "width": "80"
-                                }],
-                                "audio": "Sunburn_audio_12",
-                                "durationSeconds": 4.5
-                            },
-                            {
-                                "images": [{
-                                    "id": "storybookIllustration",
-                                    "src": "sunburn_15.jpeg",
-                                    "top": "0",
-                                    "left": "10",
-                                    "width": "80"
-                                }],
-                                "audio": "Sunburn_audio_13_new",
-                                "durationSeconds": 8
-                            },
-                            {
-                                "kind": "choice",
-                                "sampler": "permute",
-                                "commonFrameProperties": {
-                                    "kind": "exp-lookit-images-audio",
-                                    "baseDir": "https://raw.githubusercontent.com/syzhang6/causal_verb_study4/master/",
-                                    "id": "storybook-group",
-                                    "audioTypes": [
-                                        "mp3",
-                                        "ogg"
-                                    ],
+                    "frameList": [
+                        {
+                            "kind": "group",
+                            "frameList": [
+                                {
+                                    "audio": "exp2_intro_sunburn",
                                     "autoProceed": false,
-                                    "doRecording": false,
-                                    "parentTextBlock": {
-                                        "css": {
-                                            "font-size": "1.8em"
-                                        },
-                                        "text": "Please say your answer out loud. \n When you finish, click \"next\".",
-                                        "title": "Attention"
-                                    }
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_intro_sunburn.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ]
                                 },
-                                "frameOptions": [{
-                                        "images": [{
+                                {
+                                    "audio": "exp2_sunburn_audio_1",
+                                    "durationSeconds": 2.5,
+                                    "images": [
+                                        {
                                             "id": "storybookIllustration",
-                                            "src": "sunburn_burn.jpeg",
+                                            "src": "exp2_sunburn_1.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ]
+                                },
+                                {
+                                    "audio": "exp2_sunburn_audio_2",
+                                    "durationSeconds": 4.5,
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_2.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ]
+                                },
+                                {
+                                    "audio": "exp2_sunburn_audio_3",
+                                    "durationSeconds": 3.5,
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_3.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ]
+                                },
+                                {
+                                    "audio": "exp2_sunburn_audio_4",
+                                    "durationSeconds": 3.5,
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_4.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ]
+                                },
+                                {
+                                    "audio": "exp2_sunburn_audio_5",
+                                    "durationSeconds": 3.5,
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_5.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ]
+                                },
+                                {
+                                    "audio": "exp2_sunburn_audio_6",
+                                    "durationSeconds": 4.5,
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_6.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ]
+                                },
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_7.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ],
+                                    "durationSeconds": 1
+                                },
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_8.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ],
+                                    "durationSeconds": 1
+                                },
+                                {
+                                    "audio": "exp2_sunburn_audio_7",
+                                    "durationSeconds": 4.5,
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_9.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ]
+                                },
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_10.jpeg",
                                             "top": "0",
                                             "left": "10",
                                             "width": "80"
-                                        }],
-                                        "audio": "audio_burn_sunburn",
-                                        "doRecording": false
+                                        }
+                                    ],
+                                    "audio": "exp2_sunburn_audio_8",
+                                    "durationSeconds": 4.5
+                                },
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_11.jpeg",
+                                            "top": "0",
+                                            "left": "10",
+                                            "width": "80"
+                                        }
+                                    ],
+                                    "audio": "exp2_sunburn_audio_9",
+                                    "durationSeconds": 10
+                                },
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_12.jpeg",
+                                            "top": "0",
+                                            "left": "10",
+                                            "width": "80"
+                                        }
+                                    ],
+                                    "audio": "exp2_sunburn_audio_10",
+                                    "durationSeconds": 4.5
+                                },
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_13.jpeg",
+                                            "top": "0",
+                                            "left": "10",
+                                            "width": "80"
+                                        }
+                                    ],
+                                    "audio": "exp2_sunburn_audio_11",
+                                    "durationSeconds": 6.5
+                                },
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_14.jpeg",
+                                            "top": "0",
+                                            "left": "10",
+                                            "width": "80"
+                                        }
+                                    ],
+                                    "audio": "exp2_sunburn_audio_12",
+                                    "durationSeconds": 4.5
+                                },
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_15.jpeg",
+                                            "top": "0",
+                                            "left": "10",
+                                            "width": "80"
+                                        }
+                                    ],
+                                    "audio": "exp2_sunburn_audio_13",
+                                    "durationSeconds": 8
+                                },
+                                {
+                                    "kind": "choice",
+                                    "sampler": "permute",
+                                    "commonFrameProperties": {
+                                        "kind": "exp-lookit-images-audio",
+                                        "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment2/children/made",
+                                        "id": "storybook-group",
+                                        "audioTypes": [
+                                            "mp3",
+                                            "ogg"
+                                        ],
+                                        "autoProceed": false,
+                                        "doRecording": false,
+                                        "parentTextBlock": {
+                                            "css": {
+                                                "font-size": "1.8em"
+                                            },
+                                            "text": "Please say your answer out loud. \n When you finish, click \"next\".",
+                                            "title": "Attention"
+                                        }
                                     },
-                                    {
-                                        "images": [{
-                                            "id": "storybookIllustration",
-                                            "src": "sunburn_made.jpeg",
-                                            "top": "0",
-                                            "left": "10",
-                                            "width": "80"
-                                        }],
-                                        "audio": "audio_made_sunburn",
-                                        "doRecording": false
-                                    }
-                                ]
-                            }
-                        ],
-                        "commonFrameProperties": {
-                            "kind": "exp-lookit-images-audio",
-                            "baseDir": "https://raw.githubusercontent.com/syzhang6/causal_verb_study4/master/",
-                            "id": "storybook-group",
-                            "audioTypes": [
-                                "mp3",
-                                "ogg"
+                                    "frameOptions": [
+                                        {
+                                            "images": [
+                                                {
+                                                    "id": "storybookIllustration",
+                                                    "src": "exp2_sunburn_burn.jpeg",
+                                                    "top": "0",
+                                                    "left": "10",
+                                                    "width": "80"
+                                                }
+                                            ],
+                                            "audio": "exp2_sunburn_burn",
+                                            "doRecording": false
+                                        },
+                                        {
+                                            "images": [
+                                                {
+                                                    "id": "storybookIllustration",
+                                                    "src": "exp2_sunburn_made.jpeg",
+                                                    "top": "0",
+                                                    "left": "10",
+                                                    "width": "80"
+                                                }
+                                            ],
+                                            "audio": "exp2_sunburn_made",
+                                            "doRecording": false
+                                        }
+                                    ]
+                                }
                             ],
-                            "autoProceed": true,
-                            "doRecording": false
+                            "commonFrameProperties": {
+                                "kind": "exp-lookit-images-audio",
+                                "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment2/children/made",
+                                "id": "storybook-group",
+                                "audioTypes": [
+                                    "mp3",
+                                    "ogg"
+                                ],
+                                "autoProceed": true,
+                                "doRecording": false
+                            }
                         }
-                    }]
+                    ]
                 },
                 {
                     "kind": "group",
-                    "frameList": [{
-                            "audio": "intro_flood_new",
+                    "frameList": [
+                        {
+                            "audio": "exp2_intro_flood",
                             "autoProceed": false,
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "intro_flood_new.png",
-                                "top": 0,
-                                "left": 10,
-                                "width": 80
-                            }]
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_intro_flood.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
                         },
                         {
-                            "audio": "Flood_audio_1",
+                            "audio": "exp2_flood_audio_1",
                             "durationSeconds": 2.5,
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_1.jpeg",
-                                "top": 0,
-                                "left": 10,
-                                "width": 80
-                            }]
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_1.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
                         },
                         {
-                            "audio": "Flood_audio_2",
+                            "audio": "exp2_flood_audio_2",
                             "durationSeconds": 4.5,
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_2.jpeg",
-                                "top": 0,
-                                "left": 10,
-                                "width": 80
-                            }]
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_2.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
                         },
                         {
-                            "audio": "Flood_audio_3",
+                            "audio": "exp2_flood_audio_3",
                             "durationSeconds": 3.5,
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_3.jpeg",
-                                "top": 0,
-                                "left": 10,
-                                "width": 80
-                            }]
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_3.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
                         },
                         {
-                            "audio": "Flood_audio_4",
+                            "audio": "exp2_flood_audio_4",
                             "durationSeconds": 3.5,
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_4.jpeg",
-                                "top": 0,
-                                "left": 10,
-                                "width": 80
-                            }]
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_4.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
                         },
                         {
-                            "audio": "Flood_audio_5",
+                            "audio": "exp2_flood_audio_5",
                             "durationSeconds": 5.5,
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_5.jpeg",
-                                "top": 0,
-                                "left": 10,
-                                "width": 80
-                            }]
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_5.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
                         },
                         {
-                            "audio": "Flood_audio_6",
+                            "audio": "exp2_flood_audio_6",
                             "durationSeconds": 5.5,
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_6.jpeg",
-                                "top": 0,
-                                "left": 10,
-                                "width": 80
-                            }]
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_6.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
                         },
                         {
-                            "audio": "Flood_audio_7",
+                            "audio": "exp2_flood_audio_7",
                             "durationSeconds": 4.5,
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_7.jpeg",
-                                "top": 0,
-                                "left": 10,
-                                "width": 80
-                            }]
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_7.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
                         },
                         {
-                            "audio": "Flood_audio_8",
+                            "audio": "exp2_flood_audio_8",
                             "durationSeconds": 5.5,
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_8.jpeg",
-                                "top": 0,
-                                "left": 10,
-                                "width": 80
-                            }]
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_8.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
                         },
                         {
-                            "audio": "Flood_audio_9",
+                            "audio": "exp2_flood_audio_9",
                             "durationSeconds": 5.5,
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_9.jpeg",
-                                "top": 0,
-                                "left": 10,
-                                "width": 80
-                            }]
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_9.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
                         },
                         {
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_10.jpeg",
-                                "top": "0",
-                                "left": "10",
-                                "width": "80"
-                            }],
-                            "audio": "Flood_audio_10",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_10.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_10",
                             "durationSeconds": 3.5
                         },
                         {
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_11.jpeg",
-                                "top": "0",
-                                "left": "10",
-                                "width": "80"
-                            }],
-                            "audio": "Flood_audio_11",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_11.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_11",
                             "durationSeconds": 6.5
                         },
                         {
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_12.jpeg",
-                                "top": "0",
-                                "left": "10",
-                                "width": "80"
-                            }],
-                            "audio": "Flood_audio_12",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_12.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_12",
                             "durationSeconds": 5.5
                         },
                         {
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_13_new.jpeg",
-                                "top": "0",
-                                "left": "10",
-                                "width": "80"
-                            }],
-                            "audio": "Flood_audio_13",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_13.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_13",
                             "durationSeconds": 12
                         },
                         {
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_14_new.jpeg",
-                                "top": "0",
-                                "left": "10",
-                                "width": "80"
-                            }],
-                            "audio": "Flood_audio_14",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_14.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_14",
                             "durationSeconds": 8.5
                         },
                         {
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_15_new.jpeg",
-                                "top": "0",
-                                "left": "10",
-                                "width": "80"
-                            }],
-                            "audio": "Flood_audio_15",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_15.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_15",
                             "durationSeconds": 4.5
                         },
                         {
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_16_new.jpeg",
-                                "top": "0",
-                                "left": "10",
-                                "width": "80"
-                            }],
-                            "audio": "Flood_audio_16",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_16.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_16",
                             "durationSeconds": 4.5
                         },
                         {
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_17_new.jpeg",
-                                "top": "0",
-                                "left": "10",
-                                "width": "80"
-                            }],
-                            "audio": "Flood_audio_17",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_17.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_17",
                             "durationSeconds": 3.5
                         },
                         {
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_18_new.jpeg",
-                                "top": "0",
-                                "left": "10",
-                                "width": "80"
-                            }],
-                            "audio": "Flood_audio_18",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_18.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_18",
                             "durationSeconds": 3.5
                         },
                         {
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_19_new.jpeg",
-                                "top": "0",
-                                "left": "10",
-                                "width": "80"
-                            }],
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_19.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
                             "durationSeconds": 0.5
                         },
                         {
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_20_new.jpeg",
-                                "top": "0",
-                                "left": "10",
-                                "width": "80"
-                            }],
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_20.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
                             "durationSeconds": 0.5
                         },
                         {
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_22_new.jpeg",
-                                "top": "0",
-                                "left": "10",
-                                "width": "80"
-                            }],
-                            "audio": "Flood_audio_19",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_21.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_19",
                             "durationSeconds": 3.5
                         },
                         {
-                            "images": [{
-                                "id": "storybookIllustration",
-                                "src": "flood_23_new.jpeg",
-                                "top": "0",
-                                "left": "10",
-                                "width": "80"
-                            }],
-                            "audio": "Flood_audio_20_new",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_22.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_20",
                             "durationSeconds": 7.5
                         },
                         {
@@ -791,7 +912,7 @@
                             "kind": "choice",
                             "commonFrameProperties": {
                                 "kind": "exp-lookit-images-audio",
-                                "baseDir": "https://raw.githubusercontent.com/syzhang6/causal_verb_study4/master/",
+                                "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment2/children/made",
                                 "id": "storybook-group",
                                 "audioTypes": [
                                     "mp3",
@@ -807,26 +928,31 @@
                                     "title": "Attention"
                                 }
                             },
-                            "frameOptions": [{
-                                    "images": [{
-                                        "id": "storybookIllustration",
-                                        "src": "flood_flooded_new.jpeg",
-                                        "top": "0",
-                                        "left": "10",
-                                        "width": "80"
-                                    }],
-                                    "audio": "audio_flood_flood",
+                            "frameOptions": [
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_flood_flooded.jpeg",
+                                            "top": "0",
+                                            "left": "10",
+                                            "width": "80"
+                                        }
+                                    ],
+                                    "audio": "exp2_flood_flooded",
                                     "doRecording": false
                                 },
                                 {
-                                    "images": [{
-                                        "id": "storybookIllustration",
-                                        "src": "flood_made.jpeg",
-                                        "top": "0",
-                                        "left": "10",
-                                        "width": "80"
-                                    }],
-                                    "audio": "audio_made_flood",
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_flood_made.jpeg",
+                                            "top": "0",
+                                            "left": "10",
+                                            "width": "80"
+                                        }
+                                    ],
+                                    "audio": "exp2_flood_made",
                                     "doRecording": false
                                 }
                             ]
@@ -834,7 +960,7 @@
                     ],
                     "commonFrameProperties": {
                         "kind": "exp-lookit-images-audio",
-                        "baseDir": "https://raw.githubusercontent.com/syzhang6/causal_verb_study4/master/",
+                        "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment2/children/made",
                         "id": "storybook-group",
                         "audioTypes": [
                             "mp3",
