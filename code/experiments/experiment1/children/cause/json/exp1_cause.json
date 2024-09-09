@@ -102,7 +102,7 @@
         },
         "introduction": {
             "kind": "exp-lookit-images-audio",
-            "baseDir": "https://raw.githubusercontent.com/syzhang6/lookit/master/",
+            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
             "id": "storybook-group",
             "audioTypes": [
                 "mp3",
@@ -131,7 +131,7 @@
         },
         "before-we-get-started": {
             "kind": "exp-lookit-images-audio",
-            "baseDir": "https://raw.githubusercontent.com/syzhang6/lookit/master/",
+            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
             "id": "storybook-group",
             "audioTypes": [
                 "mp3",
@@ -153,7 +153,7 @@
         },
         "end": {
             "kind": "exp-lookit-images-audio",
-            "baseDir": "https://raw.githubusercontent.com/syzhang6/lookit/master/",
+            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
             "id": "storybook-group",
             "audioTypes": [
                 "mp3",
@@ -226,11 +226,11 @@
                             ]
                         },
                         {
-                            "audio": "warmup_audio_4",
+                            "audio": "exp1_warmup_4",
                             "images": [
                                 {
                                     "id": "storybookIllustration",
-                                    "src": "warmup_4.jpeg",
+                                    "src": "exp1_warmup_4.jpeg",
                                     "top": 0,
                                     "left": 10,
                                     "width": 80
@@ -238,12 +238,12 @@
                             ]
                         },
                         {
-                            "audio": "warmup_audio_5",
+                            "audio": "exp1_warmup_5",
                             "autoProceed": false,
                             "images": [
                                 {
                                     "id": "storybookIllustration",
-                                    "src": "warmup_5.jpeg",
+                                    "src": "exp1_warmup_5.jpeg",
                                     "top": 0,
                                     "left": 10,
                                     "width": 80
@@ -251,12 +251,12 @@
                             ]
                         },
                         {
-                            "audio": "warmup_audio_6",
+                            "audio": "exp1_warmup_6",
                             "autoProceed": false,
                             "images": [
                                 {
                                     "id": "storybookIllustration",
-                                    "src": "warmup_6.jpeg",
+                                    "src": "exp1_warmup_6.jpeg",
                                     "top": 0,
                                     "left": 10,
                                     "width": 80
@@ -264,11 +264,11 @@
                             ]
                         },
                         {
-                            "audio": "warmup_audio_7",
+                            "audio": "exp1_warmup_7",
                             "images": [
                                 {
                                     "id": "storybookIllustration",
-                                    "src": "warmup_7.jpeg",
+                                    "src": "exp1_warmup_7.jpeg",
                                     "top": 0,
                                     "left": 10,
                                     "width": 80
@@ -276,12 +276,12 @@
                             ]
                         },
                         {
-                            "audio": "warmup_audio_8",
+                            "audio": "exp1_warmup_8",
                             "autoProceed": false,
                             "images": [
                                 {
                                     "id": "storybookIllustration",
-                                    "src": "warmup_8.jpeg",
+                                    "src": "exp1_warmup_8.jpeg",
                                     "top": 0,
                                     "left": 10,
                                     "width": 80
@@ -289,12 +289,12 @@
                             ]
                         },
                         {
-                            "audio": "warmup_audio_9",
+                            "audio": "exp1_warmup_9",
                             "autoProceed": false,
                             "images": [
                                 {
                                     "id": "storybookIllustration",
-                                    "src": "warmup_9.jpeg",
+                                    "src": "exp1_warmup_9.jpeg",
                                     "top": 0,
                                     "left": 10,
                                     "width": 80
@@ -302,12 +302,12 @@
                             ]
                         },
                         {
-                            "audio": "warmup_audio_10",
+                            "audio": "exp1_warmup_10",
                             "autoProceed": false,
                             "images": [
                                 {
                                     "id": "storybookIllustration",
-                                    "src": "warmup_10_new.jpeg",
+                                    "src": "exp1_warmup_10.jpeg",
                                     "top": 0,
                                     "left": 0,
                                     "width": 120
@@ -317,7 +317,7 @@
                     ],
                     "commonFrameProperties": {
                         "kind": "exp-lookit-images-audio",
-                        "baseDir": "https://raw.githubusercontent.com/syzhang6/lookit/master/",
+                        "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
                         "id": "storybook-group",
                         "audioTypes": [
                             "mp3",
@@ -387,7 +387,7 @@
                                         {
                                             "audio": "TRIAL_DISPLAYED#0",
                                             "kind": "exp-lookit-images-audio",
-                                            "baseDir": "https://raw.githubusercontent.com/syzhang6/lookit/master/",
+                                            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
                                             "id": "storybook-group",
                                             "audioTypes": [
                                                 "mp3",
@@ -414,7 +414,7 @@
                                             },
                                             "requireVideoCount": 1,
                                             "doRecording": false,
-                                            "baseDir": "https://raw.githubusercontent.com/syzhang6/lookit/master/",
+                                            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
                                             "videoTypes": [
                                                 "mp4"
                                             ],
@@ -426,7 +426,7 @@
                                             "sampler": "permute",
                                             "commonFrameProperties": {
                                                 "kind": "exp-lookit-images-audio",
-                                                "baseDir": "https://raw.githubusercontent.com/syzhang6/lookit/master/",
+                                                "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
                                                 "id": "storybook-group",
                                                 "audioTypes": [
                                                     "mp3",
@@ -479,7 +479,7 @@
                                         {
                                             "audio": "TRIAL_DISPLAYED#7",
                                             "kind": "exp-lookit-images-audio",
-                                            "baseDir": "https://raw.githubusercontent.com/syzhang6/lookit/master/",
+                                            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
                                             "id": "storybook-group",
                                             "audioTypes": [
                                                 "mp3",
@@ -506,7 +506,7 @@
                                             },
                                             "requireVideoCount": 1,
                                             "doRecording": false,
-                                            "baseDir": "https://raw.githubusercontent.com/syzhang6/lookit/master/",
+                                            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
                                             "videoTypes": [
                                                 "mp4"
                                             ],
@@ -518,7 +518,7 @@
                                             "sampler": "permute",
                                             "commonFrameProperties": {
                                                 "kind": "exp-lookit-images-audio",
-                                                "baseDir": "https://raw.githubusercontent.com/syzhang6/lookit/master/",
+                                                "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
                                                 "id": "storybook-group",
                                                 "audioTypes": [
                                                     "mp3",
