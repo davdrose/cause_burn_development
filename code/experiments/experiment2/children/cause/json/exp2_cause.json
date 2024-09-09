@@ -118,11 +118,11 @@
                 "text": "Please help keep your child's attention, but don't talk with them about what you think.",
                 "title": "For parents"
             },
-            "audio": "lookit_intro_new",
+            "audio": "exp2_lookit_intro",
             "images": [
                 {
                     "id": "storybookIllustration",
-                    "src": "lookit_intro_new.png",
+                    "src": "exp2_lookit_intro.jpeg",
                     "top": 0,
                     "left": 10,
                     "width": 80
