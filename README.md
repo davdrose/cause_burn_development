@@ -48,14 +48,14 @@ Add abstract here
 	- `experiment1` 
 		- `cause`
 			- adults ([pre-registration](https://osf.io/wfg3p)) 
-			- childern ([pre-registration](https://osf.io/e2buz)) 
+			- children ([pre-registration](https://osf.io/e2buz)) 
 		- `made`
 			- adults ([pre-registration](https://osf.io/achv6)) 
-			- childern ([pre-registration](https://osf.io/ph5tr)) 
+			- children ([pre-registration](https://osf.io/ph5tr)) 
 	- `experiment2` 
 		- `cause`
 			- adults ([pre-registration](https://osf.io/f7k59)) 
-			- childern (4- 6) ([pre-registration](https://osf.io/u3g8r)) and (7- 9) ([pre-registration](https://osf.io/3ha4k)) 
+			- children (4- 6) ([pre-registration](https://osf.io/u3g8r)) and (7- 9) ([pre-registration](https://osf.io/3ha4k)) 
 		- `made`
 			- adults and children ([pre-registration](https://osf.io/ybsc5)) 
 	- `experiment3`
