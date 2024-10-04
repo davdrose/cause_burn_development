@@ -97,7 +97,29 @@ df.exp1_cause_adults_demo  %>%
 
 ```
 
+
 #### STATS
+
+##### Descriptives
+
+```{r} 
+
+df.exp1_cause_adults %>% 
+  mutate(response_pattern = case_when(
+    distal == 1 & proximal == 1 ~ "both",
+    distal == 0 & proximal == 0 ~ "neither",
+    distal == 1 & proximal == 0  ~ "distal only",
+    distal == 0 & proximal == 1  ~ "proximal only",
+  )) %>% 
+  group_by(question, response_pattern) %>% 
+  summarize(n = n()) %>% 
+  ungroup() %>%
+  group_by(question) %>%
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup()
+
+
+```
 
 ##### Bayesian Models
 ###### Distal
@@ -223,6 +245,27 @@ df.exp1_cause_children %>%
 ```
 
 #### STATS
+
+##### Descriptives
+
+```{r} 
+
+df.exp1_cause_children %>% 
+  mutate(response_pattern = case_when(
+    distal == 1 & proximal == 1 ~ "both",
+    distal == 0 & proximal == 0 ~ "neither",
+    distal == 1 & proximal == 0  ~ "distal only",
+    distal == 0 & proximal == 1  ~ "proximal only",
+  )) %>% 
+  group_by(question, response_pattern) %>% 
+  summarize(n = n()) %>% 
+  ungroup() %>%
+  group_by(question) %>%
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup()
+
+
+```
 ##### Bayesian Models
 ###### Distal
 
@@ -355,6 +398,28 @@ df.exp1_made_adults_demo %>%
 ```
 
 #### STATS
+
+##### Descriptives
+
+```{r} 
+
+df.exp1_made_adults %>% 
+  mutate(response_pattern = case_when(
+    distal == 1 & proximal == 1 ~ "both",
+    distal == 0 & proximal == 0 ~ "neither",
+    distal == 1 & proximal == 0  ~ "distal only",
+    distal == 0 & proximal == 1  ~ "proximal only",
+  )) %>% 
+  group_by(question, response_pattern) %>% 
+  summarize(n = n()) %>% 
+  ungroup() %>%
+  group_by(question) %>%
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup()
+
+
+```
+
 ##### Bayesian Models
 ###### Distal
 
@@ -469,6 +534,27 @@ df.exp1_made_children %>%
 ```
 
 #### STATS
+
+##### Descriptives
+
+```{r} 
+
+df.exp1_made_children %>% 
+  mutate(response_pattern = case_when(
+    distal == 1 & proximal == 1 ~ "both",
+    distal == 0 & proximal == 0 ~ "neither",
+    distal == 1 & proximal == 0  ~ "distal only",
+    distal == 0 & proximal == 1  ~ "proximal only",
+  )) %>% 
+  group_by(question, response_pattern) %>% 
+  summarize(n = n()) %>% 
+  ungroup() %>%
+  group_by(question) %>%
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup()
+
+
+```
 
 ##### Bayesian Models
 ###### Distal
@@ -671,6 +757,7 @@ fit.brm.cause.made.children.proximal
 ```
 
 ## ORDER EFFECTS
+## FIRST SCENARIO
 ### CHILDREN
 #### DATA
 ##### Wrangle
@@ -840,305 +927,305 @@ lexical_children_proximal_order
 ```
 
 ## PLOTS
-<!-- ### Data -->
-<!-- #### Different Responses -->
+### Data
+#### Different Responses
 
-<!-- ```{r message=FALSE, warning=FALSE} -->
+```{r message=FALSE, warning=FALSE}
 
-<!-- df.exp1_cause_adults_differnece = df.exp1_cause_adults %>%  -->
-<!--   select(question, distal, proximal) %>%  -->
-<!--   mutate(age = rep("adults")) -->
+df.exp1_cause_adults_differnece = df.exp1_cause_adults %>%
+  select(question, distal, proximal) %>%
+  mutate(age = rep("adults"))
 
-<!-- df.exp1_made_adults_difference = df.exp1_made_adults %>%  -->
-<!--   select(question, distal, proximal) %>%  -->
-<!--   mutate(age = rep("adults")) -->
+df.exp1_made_adults_difference = df.exp1_made_adults %>%
+  select(question, distal, proximal) %>%
+  mutate(age = rep("adults"))
 
-<!-- df.exp1_cause_children_difference = df.exp1_cause_children %>%  -->
-<!--   select(question, distal, proximal) %>%  -->
-<!--   mutate(question = str_replace_all(question, "caused", "cause")) %>%  -->
-<!--   mutate(age = rep("children")) -->
+df.exp1_cause_children_difference = df.exp1_cause_children %>%
+  select(question, distal, proximal) %>%
+  mutate(question = str_replace_all(question, "caused", "cause")) %>%
+  mutate(age = rep("children"))
 
-<!-- df.exp1_made_children_difference = df.exp1_made_children %>%  -->
-<!--   select(question, distal, proximal) %>%  -->
-<!--   mutate(age = rep("children")) -->
+df.exp1_made_children_difference = df.exp1_made_children %>%
+  select(question, distal, proximal) %>%
+  mutate(age = rep("children"))
 
-<!-- df.difference_combined = df.exp1_cause_adults_differnece %>%  -->
-<!--   bind_rows(df.exp1_made_adults_difference, -->
-<!--             df.exp1_cause_children_difference, -->
-<!--             df.exp1_made_children_difference) %>%  -->
-<!--    mutate(response_pattern = case_when( -->
-<!--     distal == 1 & proximal == 1 ~ "both", -->
-<!--     distal == 0 & proximal == 0 ~ "neither", -->
-<!--     TRUE ~ "different" -->
-<!--   )) -->
+df.difference_combined = df.exp1_cause_adults_differnece %>%
+  bind_rows(df.exp1_made_adults_difference,
+            df.exp1_cause_children_difference,
+            df.exp1_made_children_difference) %>%
+   mutate(response_pattern = case_when(
+    distal == 1 & proximal == 1 ~ "both",
+    distal == 0 & proximal == 0 ~ "neither",
+    TRUE ~ "different"
+  ))
 
-<!-- df.difference_combined %>%  -->
-<!--   group_by(age, question, response_pattern) %>%  -->
-<!--   summarize(n = n()) %>%  -->
-<!--   ungroup() %>% -->
-<!--   group_by(age, question) %>%  -->
-<!--   mutate(percentage = n / sum(n) * 100)  -->
+df.difference_combined %>%
+  group_by(age, question, response_pattern) %>%
+  summarize(n = n()) %>%
+  ungroup() %>%
+  group_by(age, question) %>%
+  mutate(percentage = n / sum(n) * 100)
 
-<!-- ``` -->
+```
 
-<!-- ### Different Responses Plots -->
-<!-- #### Cause -->
-<!-- ```{r message=FALSE, warning=FALSE} -->
+### Different Responses Plots
+#### Cause
+```{r message=FALSE, warning=FALSE}
 
-<!-- df.cause_children_differnet = df.exp1_cause_children %>%  -->
-<!--   mutate(response_pattern = case_when( -->
-<!--     distal == 1 & proximal == 1 ~ "both", -->
-<!--     distal == 0 & proximal == 0 ~ "neither", -->
-<!--     TRUE ~ "different" -->
-<!--   )) %>%  -->
-<!--   filter(response_pattern == "different") -->
-
-
-<!-- df.model = df.cause_children_differnet %>%  -->
-<!--   mutate(difference = distal - proximal, -->
-<!--         difference = recode(difference, `-1` = 0), -->
-<!--         question = str_replace_all(question, "caused", "cause")) -->
+df.cause_children_differnet = df.exp1_cause_children %>%
+  mutate(response_pattern = case_when(
+    distal == 1 & proximal == 1 ~ "both",
+    distal == 0 & proximal == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "different")
 
 
-<!-- fit.brm.chain_cause.difference = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario),  -->
-<!--                      data = df.model, -->
-<!--                      family = "bernoulli", -->
-<!--                      seed = 1, -->
-<!--                      iter = 4000, -->
-<!--                      warmup = 1000, -->
-<!--                      control = list(adapt_delta = .9999), -->
-<!--                      file = "cache/chain_cause_difference") -->
+df.model = df.cause_children_differnet %>%
+  mutate(difference = distal - proximal,
+        difference = recode(difference, `-1` = 0),
+        question = str_replace_all(question, "caused", "cause"))
 
 
-<!-- df.data = expand_grid(age = seq(4, 9, 0.1), -->
-<!--                       question = c("cause", "lexical")) -->
-
-<!-- df.prediction = fit.brm.chain_cause.difference %>%  -->
-<!--   fitted(newdata = df.data, -->
-<!--          re_formula = NA, -->
-<!--           probs = c(0.1, 0.9)) %>%  -->
-<!--   as_tibble() %>%  -->
-<!--   bind_cols(df.data) %>%  -->
-<!--   clean_names() -->
+fit.brm.chain_cause.difference = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario),
+                     data = df.model,
+                     family = "bernoulli",
+                     seed = 1,
+                     iter = 4000,
+                     warmup = 1000,
+                     control = list(adapt_delta = .9999),
+                     file = "cache/chain_cause_difference")
 
 
-<!-- df.adults = df.exp1_cause_adults %>%  -->
-<!--   mutate(response_pattern = case_when( -->
-<!--     distal == 1 & proximal == 1 ~ "both", -->
-<!--     distal == 0 & proximal == 0 ~ "neither", -->
-<!--     TRUE ~ "different" -->
-<!--   )) %>%  -->
-<!--   filter(response_pattern == "different") %>%  -->
-<!--   select(-response) %>%  -->
-<!--   mutate(age_whole = rep(10)) %>%  -->
-<!--   mutate(difference = distal - proximal, -->
-<!--          difference = recode(difference, `-1` = 0)) -->
+df.data = expand_grid(age = seq(4, 9, 0.1),
+                      question = c("cause", "lexical"))
+
+df.prediction = fit.brm.chain_cause.difference %>%
+  fitted(newdata = df.data,
+         re_formula = NA,
+          probs = c(0.1, 0.9)) %>%
+  as_tibble() %>%
+  bind_cols(df.data) %>%
+  clean_names()
 
 
-
-<!-- df.means = df.model %>%  -->
-<!--   bind_rows(df.adults) %>%  -->
-<!--   mutate(age_whole = factor(age_whole,  -->
-<!--                             levels = c(4, 5, 6, 7, 8, 9, 10),  -->
-<!--                             labels = c("4", "5", "6", "7", "8", "9", "adults"))) %>%  -->
-<!--   group_by(age_whole, question) %>%  -->
-<!--   summarize( -->
-<!--     response = Hmisc::smean.cl.boot(difference)) %>% -->
-<!--     mutate(index = c("response", "low", "high")) %>% -->
-<!--     ungroup() %>%  -->
-<!--     pivot_wider(names_from = index, -->
-<!--                 values_from = response) %>%  -->
-<!--   mutate(age_whole = fct_recode(age_whole, "10" = "adults"), -->
-<!--          age_whole = as.numeric(as.character(age_whole))) -->
+df.adults = df.exp1_cause_adults %>%
+  mutate(response_pattern = case_when(
+    distal == 1 & proximal == 1 ~ "both",
+    distal == 0 & proximal == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "different") %>%
+  select(-response) %>%
+  mutate(age_whole = rep(10)) %>%
+  mutate(difference = distal - proximal,
+         difference = recode(difference, `-1` = 0))
 
 
 
-<!-- p1 = ggplot(mapping = aes(x = age,  -->
-<!--                      y = difference, -->
-<!--                      color = question)) +  -->
-<!--   geom_hline(yintercept = 0.5, linetype = "dashed", color = "black") + -->
-<!--   geom_smooth(data = df.prediction, -->
-<!--               mapping = aes(y = estimate, -->
-<!--                             ymin = q10, -->
-<!--                             ymax = q90, -->
-<!--                             color = question, -->
-<!--                             fill = question), -->
-<!--               stat = "identity", -->
-<!--               alpha = 0.2, -->
-<!--               show.legend = F) + -->
-<!--   geom_pointrange(data = df.means, -->
-<!--                   mapping = aes(x = age_whole, -->
-<!--                                 y = response, -->
-<!--                                 ymin = low, -->
-<!--                                 ymax = high, -->
-<!--                                 fill = question, -->
-<!--                                 shape = question), -->
-<!--                   color = "black", -->
-<!--                   size = 0.5, -->
-<!--                   show.legend = TRUE, -->
-<!--                   alpha = 0.8, -->
-<!--                   position = position_dodge(width = 0.3)) + -->
-<!--   scale_fill_manual(values = c("cause" = "#E41A1C",  -->
-<!--                                "lexical" = "#377EB8")) + -->
-<!--   scale_color_manual(values = c("cause" = "#E41A1C", -->
-<!--                                 "lexical" = "#377EB8")) + -->
-<!--   scale_shape_manual(values = c("cause" = 21,  -->
-<!--                                "lexical" = 23)) + -->
-<!--   scale_y_continuous(breaks = seq(0, 1, 0.25), -->
-<!--                      labels = c("100% \n proximal", "75%", "50%", "75%", "100% \n distal"), -->
-<!--                       limits = c(0, 1)) +   -->
-<!--  scale_x_continuous(breaks = 4:10, -->
-<!--                      labels = c("4", "5", "6", "7", "8", "9", "Adults")) + -->
-<!--   labs(y = "Probability of selecting \n proximal or distal cause") + -->
-<!--   theme(legend.position = "bottom", -->
-<!--         legend.title = element_blank(), -->
-<!--         text = element_text(size = 18)) +  -->
-<!--   guides(fill = "none", -->
-<!--          color = "none", -->
-<!--          shape = guide_legend(override.aes = list(fill = c("#377EB8", "#E41A1C")), -->
-<!--                               reverse = T)) -->
-
-
-<!-- ``` -->
-
-
-<!-- #### Made -->
-<!-- ```{r message=FALSE, warning=FALSE} -->
-
-<!-- df.made_children_differnet = df.exp1_made_children %>% -->
-<!--   mutate(response_pattern = case_when( -->
-<!--     distal == 1 & proximal == 1 ~ "both", -->
-<!--     distal == 0 & proximal == 0 ~ "neither", -->
-<!--     TRUE ~ "different" -->
-<!--   )) %>%  -->
-<!--   filter(response_pattern == "different") -->
-
-<!-- df.model = df.made_children_differnet %>%  -->
-<!--   mutate(difference = distal - proximal, -->
-<!--         difference = recode(difference, `-1` = 0)) -->
-
-
-<!-- fit.brm.chain_made.difference = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario),  -->
-<!--                      data = df.model, -->
-<!--                      family = "bernoulli", -->
-<!--                      seed = 1, -->
-<!--                      iter = 4000, -->
-<!--                      warmup = 1000, -->
-<!--                      control = list(adapt_delta = .9999), -->
-<!--                      file = "cache/chain_made_difference") -->
-
-
-<!-- df.data = expand_grid(age = seq(4, 9, 0.1), -->
-<!--                       question = c("made", "lexical")) -->
-
-<!-- df.prediction = fit.brm.chain_made.difference %>%  -->
-<!--   fitted(newdata = df.data, -->
-<!--          re_formula = NA, -->
-<!--           probs = c(0.1, 0.9)) %>%  -->
-<!--   as_tibble() %>%  -->
-<!--   bind_cols(df.data) %>%  -->
-<!--   clean_names() -->
+df.means = df.model %>%
+  bind_rows(df.adults) %>%
+  mutate(age_whole = factor(age_whole,
+                            levels = c(4, 5, 6, 7, 8, 9, 10),
+                            labels = c("4", "5", "6", "7", "8", "9", "adults"))) %>%
+  group_by(age_whole, question) %>%
+  summarize(
+    response = Hmisc::smean.cl.boot(difference)) %>%
+    mutate(index = c("response", "low", "high")) %>%
+    ungroup() %>%
+    pivot_wider(names_from = index,
+                values_from = response) %>%
+  mutate(age_whole = fct_recode(age_whole, "10" = "adults"),
+         age_whole = as.numeric(as.character(age_whole)))
 
 
 
-<!-- df.adults = df.exp1_made_adults %>%  -->
-<!--     mutate(response_pattern = case_when( -->
-<!--     distal == 1 & proximal == 1 ~ "both", -->
-<!--     distal == 0 & proximal == 0 ~ "neither", -->
-<!--     TRUE ~ "different" -->
-<!--   )) %>%  -->
-<!--   filter(response_pattern == "different") %>%  -->
-<!--   select(-response) %>%  -->
-<!--   mutate(age_whole = rep(10)) %>%  -->
-<!--   mutate(difference = distal - proximal, -->
-<!--         difference = recode(difference, `-1` = 0)) -->
+p1 = ggplot(mapping = aes(x = age,
+                     y = difference,
+                     color = question)) +
+  geom_hline(yintercept = 0.5, linetype = "dashed", color = "black") +
+  geom_smooth(data = df.prediction,
+              mapping = aes(y = estimate,
+                            ymin = q10,
+                            ymax = q90,
+                            color = question,
+                            fill = question),
+              stat = "identity",
+              alpha = 0.2,
+              show.legend = F) +
+  geom_pointrange(data = df.means,
+                  mapping = aes(x = age_whole,
+                                y = response,
+                                ymin = low,
+                                ymax = high,
+                                fill = question,
+                                shape = question),
+                  color = "black",
+                  size = 0.5,
+                  show.legend = TRUE,
+                  alpha = 0.8,
+                  position = position_dodge(width = 0.3)) +
+  scale_fill_manual(values = c("cause" = "#E41A1C",
+                               "lexical" = "#377EB8")) +
+  scale_color_manual(values = c("cause" = "#E41A1C",
+                                "lexical" = "#377EB8")) +
+  scale_shape_manual(values = c("cause" = 21,
+                               "lexical" = 23)) +
+  scale_y_continuous(breaks = seq(0, 1, 0.25),
+                     labels = c("100% \n proximal", "75%", "50%", "75%", "100% \n distal"),
+                      limits = c(0, 1)) +
+ scale_x_continuous(breaks = 4:10,
+                     labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
+  labs(y = "Probability of selecting \n proximal or distal cause") +
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        text = element_text(size = 18)) +
+  guides(fill = "none",
+         color = "none",
+         shape = guide_legend(override.aes = list(fill = c("#377EB8", "#E41A1C")),
+                              reverse = T))
+
+
+```
+
+
+#### Made
+```{r message=FALSE, warning=FALSE}
+
+df.made_children_differnet = df.exp1_made_children %>%
+  mutate(response_pattern = case_when(
+    distal == 1 & proximal == 1 ~ "both",
+    distal == 0 & proximal == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "different")
+
+df.model = df.made_children_differnet %>%
+  mutate(difference = distal - proximal,
+        difference = recode(difference, `-1` = 0))
+
+
+fit.brm.chain_made.difference = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario),
+                     data = df.model,
+                     family = "bernoulli",
+                     seed = 1,
+                     iter = 4000,
+                     warmup = 1000,
+                     control = list(adapt_delta = .9999),
+                     file = "cache/chain_made_difference")
+
+
+df.data = expand_grid(age = seq(4, 9, 0.1),
+                      question = c("made", "lexical"))
+
+df.prediction = fit.brm.chain_made.difference %>%
+  fitted(newdata = df.data,
+         re_formula = NA,
+          probs = c(0.1, 0.9)) %>%
+  as_tibble() %>%
+  bind_cols(df.data) %>%
+  clean_names()
 
 
 
-<!-- df.means = df.model %>%  -->
-<!--   bind_rows(df.adults) %>%  -->
-<!--   mutate(age_whole = factor(age_whole,  -->
-<!--                             levels = c(4, 5, 6, 7, 8, 9, 10),  -->
-<!--                             labels = c("4", "5", "6", "7", "8", "9", "adults"))) %>%  -->
-<!--   group_by(age_whole, question) %>%  -->
-<!--   summarize( -->
-<!--     response = Hmisc::smean.cl.boot(difference)) %>% -->
-<!--     mutate(index = c("response", "low", "high")) %>% -->
-<!--     ungroup() %>%  -->
-<!--     pivot_wider(names_from = index, -->
-<!--                 values_from = response) %>%  -->
-<!--   mutate(age_whole = fct_recode(age_whole, "10" = "adults"), -->
-<!--          age_whole = as.numeric(as.character(age_whole))) -->
+df.adults = df.exp1_made_adults %>%
+    mutate(response_pattern = case_when(
+    distal == 1 & proximal == 1 ~ "both",
+    distal == 0 & proximal == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "different") %>%
+  select(-response) %>%
+  mutate(age_whole = rep(10)) %>%
+  mutate(difference = distal - proximal,
+        difference = recode(difference, `-1` = 0))
+
+
+
+df.means = df.model %>%
+  bind_rows(df.adults) %>%
+  mutate(age_whole = factor(age_whole,
+                            levels = c(4, 5, 6, 7, 8, 9, 10),
+                            labels = c("4", "5", "6", "7", "8", "9", "adults"))) %>%
+  group_by(age_whole, question) %>%
+  summarize(
+    response = Hmisc::smean.cl.boot(difference)) %>%
+    mutate(index = c("response", "low", "high")) %>%
+    ungroup() %>%
+    pivot_wider(names_from = index,
+                values_from = response) %>%
+  mutate(age_whole = fct_recode(age_whole, "10" = "adults"),
+         age_whole = as.numeric(as.character(age_whole)))
 
 
 
 
-<!-- p2 = ggplot(mapping = aes(x = age,  -->
-<!--                           y = difference, -->
-<!--                           color = question)) +  -->
-<!--   geom_hline(yintercept = 0.5,  -->
-<!--              linetype = "dashed",  -->
-<!--              color = "black") + -->
-<!--   geom_smooth(data = df.prediction, -->
-<!--               mapping = aes(y = estimate, -->
-<!--                             ymin = q10, -->
-<!--                             ymax = q90, -->
-<!--                             color = question, -->
-<!--                             fill = question), -->
-<!--               stat = "identity", -->
-<!--               alpha = 0.2, -->
-<!--               show.legend = F) + -->
-<!--   geom_pointrange(data = df.means, -->
-<!--                   mapping = aes(x = age_whole, -->
-<!--                                 y = response, -->
-<!--                                 ymin = low, -->
-<!--                                 ymax = high, -->
-<!--                                 fill = question, -->
-<!--                                 shape = question), -->
-<!--                   color = "black", -->
-<!--                   size = 0.5, -->
-<!--                   show.legend = TRUE, -->
-<!--                   alpha = 0.8, -->
-<!--                   position = position_dodge(width = 0.3)) + -->
-<!--   scale_fill_manual(values = c("made" = "#4DAF4A",  -->
-<!--                                "lexical" = "#377EB8"), -->
-<!--                     breaks = c("made", -->
-<!--                                "lexical")) + -->
-<!--   scale_color_manual(values = c("made" = "#4DAF4A", -->
-<!--                                 "lexical" = "#377EB8"), -->
-<!--                      breaks= c("made", "lexical")) + -->
-<!--   scale_shape_manual(values = c("made" = 21,  -->
-<!--                                "lexical" = 23)) + -->
-<!--   scale_y_continuous(breaks = seq(0, 1, 0.25), -->
-<!--                      labels = c("100% \n proximal", "75%", "50%", "75%", "100% \n distal"), -->
-<!--                      limits = c(0, 1)) +  -->
-<!--   scale_x_continuous(breaks = 4:10, -->
-<!--                      labels = c("4", "5", "6", "7", "8", "9", "Adults")) + -->
-<!--   theme(legend.position = "bottom", -->
-<!--         legend.title = element_blank(), -->
-<!--         axis.title.y = element_blank(), -->
-<!--         text = element_text(size = 18)) + -->
-<!--   guides(fill = "none", -->
-<!--          color = "none", -->
-<!--          shape = guide_legend(override.aes = list(fill = c("#377EB8", "#4DAF4A")))) -->
+p2 = ggplot(mapping = aes(x = age,
+                          y = difference,
+                          color = question)) +
+  geom_hline(yintercept = 0.5,
+             linetype = "dashed",
+             color = "black") +
+  geom_smooth(data = df.prediction,
+              mapping = aes(y = estimate,
+                            ymin = q10,
+                            ymax = q90,
+                            color = question,
+                            fill = question),
+              stat = "identity",
+              alpha = 0.2,
+              show.legend = F) +
+  geom_pointrange(data = df.means,
+                  mapping = aes(x = age_whole,
+                                y = response,
+                                ymin = low,
+                                ymax = high,
+                                fill = question,
+                                shape = question),
+                  color = "black",
+                  size = 0.5,
+                  show.legend = TRUE,
+                  alpha = 0.8,
+                  position = position_dodge(width = 0.3)) +
+  scale_fill_manual(values = c("made" = "#4DAF4A",
+                               "lexical" = "#377EB8"),
+                    breaks = c("made",
+                               "lexical")) +
+  scale_color_manual(values = c("made" = "#4DAF4A",
+                                "lexical" = "#377EB8"),
+                     breaks= c("made", "lexical")) +
+  scale_shape_manual(values = c("made" = 21,
+                               "lexical" = 23)) +
+  scale_y_continuous(breaks = seq(0, 1, 0.25),
+                     labels = c("100% \n proximal", "75%", "50%", "75%", "100% \n distal"),
+                     limits = c(0, 1)) +
+  scale_x_continuous(breaks = 4:10,
+                     labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        axis.title.y = element_blank(),
+        text = element_text(size = 18)) +
+  guides(fill = "none",
+         color = "none",
+         shape = guide_legend(override.aes = list(fill = c("#377EB8", "#4DAF4A"))))
 
-<!-- ``` -->
+```
 
-<!-- #### Combine Cause and Made Plots -->
+#### Combine Cause and Made Plots
 
-<!-- ```{r fig.height=5, fig.width=12, message=FALSE, warning=FALSE} -->
+```{r fig.height=5, fig.width=12, message=FALSE, warning=FALSE}
 
-<!-- plot = p1 + p2 +  -->
-<!-- plot_layout(nrow = 1) & -->
-<!-- plot_annotation(tag_levels = "A") & -->
-<!-- theme(plot.tag = element_text(face = "bold")) -->
+plot = p1 + p2 +
+plot_layout(nrow = 1) &
+plot_annotation(tag_levels = "A") &
+theme(plot.tag = element_text(face = "bold"))
 
-<!-- ggsave(plot, filename = "../../figures/experiment1/chain_different.pdf", height = 5, width = 12) -->
+ggsave(plot, filename = "../../figures/experiment1/chain_different.pdf", height = 5, width = 12)
 
-<!-- plot -->
+plot
 
 
-<!-- ``` -->
+```
 
 ### Response Plots
 #### Cause
@@ -1403,7 +1490,172 @@ plot
 
 ```
 
-### Order Effects
+
+#### Responses Patterns Overall
+```{r}
+
+df.plot = df.exp1_cause_adults %>% 
+  mutate(age = "adults") %>% 
+  bind_rows(df.exp1_made_adults %>% 
+              mutate(age = "adults")) %>% 
+  bind_rows(df.exp1_cause_children %>% 
+              mutate(age = "children")) %>% 
+  bind_rows(df.exp1_made_children %>% 
+              mutate(age = "children")) %>% 
+  mutate(response_pattern = case_when(
+    distal == 1 & proximal == 1 ~ "both",
+    distal == 0 & proximal == 0 ~ "neither",
+    distal == 1 & proximal == 0  ~ "distal only",
+    distal == 0 & proximal == 1  ~ "proximal only",
+  ),
+  question = recode(question, "cause" = "caused")) %>% 
+  group_by(age, question, response_pattern) %>% 
+  summarize(n = n()) %>% 
+  ungroup() %>%
+  group_by(age, question) %>%
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup() %>% 
+  mutate(question = factor(question, levels = c("caused", "made", "lexical")),
+         response_pattern = factor(response_pattern, levels = c("distal only", "proximal only", "both", "neither")))
+
+
+ggplot(data = df.plot,
+       mapping = aes(x = age,
+                     y = percentage,
+                     group = response_pattern,
+                     color = response_pattern,
+                     fill = response_pattern)) +
+  geom_col(color = "black") +
+  scale_fill_brewer(palette = "Set1") + 
+  scale_color_brewer(palette = "Set1") +
+  scale_shape_manual(values = c(21, 23)) +
+  scale_y_continuous(breaks = seq(0, 100, 25),
+                     labels = str_c(seq(0, 100, 25), "%")) +
+  labs(y = "Response pattern \n\ probability") +
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        text = element_text(size = 18),
+        axis.title.x = element_blank()) +
+  facet_wrap(~question)
+
+ggsave("../../figures/experiment1/chain_response_patterns.pdf", height = 4, width = 8)
+
+```
+
+#### Responses Patterns by Age
+##### Cause v Lexical
+```{r}
+
+df.plot = df.exp1_cause_adults %>% 
+  mutate(age_whole = 10) %>% 
+  bind_rows(df.exp1_cause_children) %>% 
+  mutate(response_pattern = case_when(
+    distal == 1 & proximal == 1 ~ "both",
+    distal == 0 & proximal == 0 ~ "neither",
+    distal == 1 & proximal == 0  ~ "distal only",
+    distal == 0 & proximal == 1  ~ "proximal only",
+  ),
+  question = recode(question, "cause" = "caused"),
+  age_whole = as.factor(age_whole)) %>% 
+  group_by(age_whole, question, response_pattern) %>% 
+  summarize(n = n()) %>% 
+  ungroup() %>%
+  group_by(age_whole, question) %>%
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup() %>% 
+  mutate(question = factor(question, levels = c("caused", "lexical")),
+         response_pattern = factor(response_pattern, levels = c("distal only", "proximal only", "both", "neither")))
+
+
+p1 = ggplot(data = df.plot,
+       mapping = aes(x = age_whole,
+                     y = percentage,
+                     group = response_pattern,
+                     color = response_pattern,
+                     fill = response_pattern)) +
+  geom_col(color = "black") +
+  scale_fill_brewer(palette = "Set1") + 
+  scale_color_brewer(palette = "Set1") +
+  scale_shape_manual(values = c(21, 23)) +
+  scale_y_continuous(breaks = seq(0, 100, 25),
+                     labels = str_c(seq(0, 100, 25), "%")) +
+  scale_x_discrete(breaks = 4:10,
+                     labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
+  labs(y = "Response pattern \n\ probability") +
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        text = element_text(size = 18),
+        axis.title.x = element_blank()) +
+  facet_wrap(~question)
+
+# ggsave("../../figures/experiment1/chain_response_patterns_age.pdf", height = 4, width = 8)
+
+```
+
+##### Made v Lexical
+```{r}
+
+df.plot = df.exp1_made_adults %>% 
+  mutate(age_whole = 10) %>% 
+  bind_rows(df.exp1_made_children) %>% 
+  mutate(response_pattern = case_when(
+    distal == 1 & proximal == 1 ~ "both",
+    distal == 0 & proximal == 0 ~ "neither",
+    distal == 1 & proximal == 0  ~ "distal only",
+    distal == 0 & proximal == 1  ~ "proximal only",
+  ),
+  age_whole = as.factor(age_whole)) %>% 
+  group_by(age_whole, question, response_pattern) %>% 
+  summarize(n = n()) %>% 
+  ungroup() %>%
+  group_by(age_whole, question) %>%
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup() %>% 
+  mutate(question = factor(question, levels = c("made", "lexical")),
+         response_pattern = factor(response_pattern, levels = c("distal only", "proximal only", "both", "neither")))
+
+
+p2 = ggplot(data = df.plot,
+       mapping = aes(x = age_whole,
+                     y = percentage,
+                     group = response_pattern,
+                     color = response_pattern,
+                     fill = response_pattern)) +
+  geom_col(color = "black") +
+  scale_fill_brewer(palette = "Set1") + 
+  scale_color_brewer(palette = "Set1") +
+  scale_shape_manual(values = c(21, 23)) +
+  scale_y_continuous(breaks = seq(0, 100, 25),
+                     labels = str_c(seq(0, 100, 25), "%")) +
+  scale_x_discrete(breaks = 4:10,
+                     labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
+  labs(y = "Response pattern \n\ probability") +
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        text = element_text(size = 18),
+        axis.title.x = element_blank()) +
+  facet_wrap(~question)
+
+# ggsave("../../figures/experiment1/chain_response_patterns_age.pdf", height = 4, width = 8)
+
+```
+##### Combine Cause and Made Plots
+```{r fig.height=5, fig.width=18, message=FALSE, warning=FALSE}
+
+plot = p1 + p2 + 
+plot_layout(nrow = 1) &
+plot_annotation(tag_levels = "A") &
+theme(plot.tag = element_text(face = "bold"))
+
+ggsave(plot, filename = "../../figures/experiment1/chain_response_patterns_age.pdf", height = 5, width = 18)
+
+plot
+
+
+```
+
+### Order Effects 
+#### First Scenario
 
 ```{r fig.height=4, fig.width=8, message=FALSE, warning=FALSE}
 
@@ -1446,10 +1698,81 @@ ggplot(data = df.plot,
    facet_wrap(~type,
              labeller = custom_labels) 
 
-ggsave("../../figures/experiment1/chain_order_effect.pdf", height = 4, width = 8)
+ggsave("../../figures/experiment1/chain_order_effect_first_scenario.pdf", height = 4, width = 8)
 
 
 ```
+
+#### Second Scenario
+
+```{r fig.height=4, fig.width=8, message=FALSE, warning=FALSE}
+
+df.exp1_cause_children_order_second = df.exp1_cause_children %>% 
+  mutate(question = as_factor(question),
+         question = fct_relevel(question, "lexical"),
+         caused_question_order = as_factor(caused_question_order),
+         caused_question_order = fct_relevel(caused_question_order, "first")) %>% 
+   group_by(participant) %>%
+   filter(row_number() %in% 3:4) %>%
+  ungroup()
+
+
+
+df.exp1_made_children_order_second = df.exp1_made_children %>% 
+  mutate(question = as_factor(question),
+         question = fct_relevel(question, "lexical"),
+         made_question_order = as_factor(made_question_order),
+         made_question_order = fct_relevel(made_question_order, "first")) %>% 
+   group_by(participant) %>%
+   filter(row_number() %in% 3:4) %>%
+  ungroup()
+
+
+
+df.plot = df.exp1_cause_children_order_second %>% 
+  rename(periphrastic_question_order = caused_question_order) %>% 
+  bind_rows(df.exp1_made_children_order_second %>% 
+              rename(periphrastic_question_order = made_question_order)) %>% 
+  select(-response) %>% 
+  pivot_longer(cols = distal:proximal,
+               names_to = "type",
+               values_to = "response")
+
+custom_labels = as_labeller(c("distal" = "Distal Cause", "proximal" = "Proximal Cause"))
+
+
+ggplot(data = df.plot,
+       mapping = aes(x = factor(question, levels = c("caused", "made", "lexical")),
+                     y = response,
+                     color = periphrastic_question_order,
+                     fill = periphrastic_question_order)) +
+  geom_hline(yintercept = 0.5, linetype = "dashed", color = "black") +
+   stat_summary(fun.data = "mean_cl_boot",
+               position = position_dodge(width = 0.5),
+               shape = 21,
+               color = "black",
+               size = 1) +
+  scale_fill_brewer(palette = "Set3") +
+  scale_color_brewer(palette = "Set3") +
+   scale_y_continuous(breaks = seq(0, 1, 0.25),
+                      labels = str_c(seq(0, 1, 0.25) * 100, "%"),
+                      limits = c(0, 1)) +
+  ylab("Probability of selecting \n causal candidate") +
+  theme(legend.position = "bottom",
+        legend.box = "vertical",
+        axis.title.x = element_blank(),
+        text = element_text(size = 18)) +
+  labs(color = "  periphrastic \n\ question order",
+       fill = "   periphrastic \n\ question order") +
+  guides(color = guide_legend(override.aes = list(fill = NA))) +
+   facet_wrap(~type,
+             labeller = custom_labels) 
+
+ggsave("../../figures/experiment1/chain_order_effect_second_scenario.pdf", height = 4, width = 8)
+
+
+```
+
 
 # EXPERIMENT 2: ABSENCES
 ## CAUSE V LEXICAL (BURN & FLOOD)
@@ -1538,6 +1861,27 @@ df.exp2_cause_adults_demo %>%
 ```
 
 #### STATS
+
+##### Descriptives
+```{r} 
+
+df.exp2_cause_adults %>% 
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    direct == 1 & absence == 0  ~ "direct only",
+    direct == 0 & absence == 1  ~ "absence only",
+  )) %>% 
+  group_by(question, response_pattern) %>% 
+  summarize(n = n()) %>% 
+  ungroup() %>%
+  group_by(question) %>%
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup()
+
+
+```
+
 ##### Bayesian Models
 ###### Direct
 
@@ -1655,6 +1999,28 @@ df.exp2_cause_children %>%
 ```
 
 #### STATS
+
+##### Descriptives
+
+```{r} 
+
+df.exp2_cause_children %>% 
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    direct == 1 & absence == 0  ~ "direct only",
+    direct == 0 & absence == 1  ~ "absence only",
+  )) %>% 
+  group_by(question, response_pattern) %>% 
+  summarize(n = n()) %>% 
+  ungroup() %>%
+  group_by(question) %>%
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup()
+
+
+```
+
 ##### Bayesian Models
 ###### Direct
 ```{r message=FALSE, warning=FALSE}
@@ -1784,6 +2150,25 @@ df.exp2_made_adults_demo %>%
 ```
 
 #### STATS
+##### Descriptives
+```{r} 
+
+df.exp2_made_adults %>% 
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    direct == 1 & absence == 0  ~ "direct only",
+    direct == 0 & absence == 1  ~ "absence only",
+  )) %>% 
+  group_by(question, response_pattern) %>% 
+  summarize(n = n()) %>% 
+  ungroup() %>%
+  group_by(question) %>%
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup()
+
+
+```
 ##### Bayesian Models
 ###### Direct
 
@@ -1904,6 +2289,25 @@ df.exp2_made_children %>%
 ```
 
 #### STATS
+##### Descriptives
+```{r} 
+
+df.exp2_made_children %>% 
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    direct == 1 & absence == 0  ~ "direct only",
+    direct == 0 & absence == 1  ~ "absence only",
+  )) %>% 
+  group_by(question, response_pattern) %>% 
+  summarize(n = n()) %>% 
+  ungroup() %>%
+  group_by(question) %>%
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup()
+
+
+```
 ##### Bayesian Models
 ###### Direct
 
@@ -2078,6 +2482,7 @@ fit.brm.cause.made.children.absent
 
 ```
 ## ORDER EFFECTS
+## FIRST SCENARIO
 ### ADULTS
 #### DATA
 ##### Wrangle
@@ -2443,305 +2848,305 @@ lexical_children_absent_order
 ```
 
 ## PLOTS
-<!-- ### Data -->
-<!-- #### Different Responses -->
+### Data
+#### Different Responses
 
-<!-- ```{r message=FALSE, warning=FALSE} -->
+```{r message=FALSE, warning=FALSE}
 
-<!-- df.exp2_cause_adults_differnece = df.exp2_cause_adults %>%  -->
-<!--   select(question, direct, absence) %>%  -->
-<!--   mutate(age = rep("adults")) -->
+df.exp2_cause_adults_differnece = df.exp2_cause_adults %>%
+  select(question, direct, absence) %>%
+  mutate(age = rep("adults"))
 
-<!-- df.exp2_made_adults_difference = df.exp2_made_adults %>%  -->
-<!--   select(question, direct, absence) %>%  -->
-<!--   mutate(age = rep("adults")) -->
+df.exp2_made_adults_difference = df.exp2_made_adults %>%
+  select(question, direct, absence) %>%
+  mutate(age = rep("adults"))
 
-<!-- df.exp2_cause_children_difference = df.exp2_cause_children %>%  -->
-<!--   select(question, direct, absence) %>%  -->
-<!--   mutate(question = str_replace_all(question, "caused", "cause")) %>%  -->
-<!--   mutate(age = rep("children")) -->
+df.exp2_cause_children_difference = df.exp2_cause_children %>%
+  select(question, direct, absence) %>%
+  mutate(question = str_replace_all(question, "caused", "cause")) %>%
+  mutate(age = rep("children"))
 
-<!-- df.exp2_made_children_difference = df.exp2_made_children %>%  -->
-<!--   select(question, direct, absence) %>%  -->
-<!--   mutate(age = rep("children")) -->
+df.exp2_made_children_difference = df.exp2_made_children %>%
+  select(question, direct, absence) %>%
+  mutate(age = rep("children"))
 
-<!-- df.difference_combined = df.exp2_cause_adults_differnece %>%  -->
-<!--   bind_rows(df.exp2_made_adults_difference, -->
-<!--             df.exp2_cause_children_difference, -->
-<!--             df.exp2_made_children_difference) %>%  -->
-<!--    mutate(response_pattern = case_when( -->
-<!--     direct == 1 & absence == 1 ~ "both", -->
-<!--     direct == 0 & absence == 0 ~ "neither", -->
-<!--     TRUE ~ "different" -->
-<!--   )) -->
+df.difference_combined = df.exp2_cause_adults_differnece %>%
+  bind_rows(df.exp2_made_adults_difference,
+            df.exp2_cause_children_difference,
+            df.exp2_made_children_difference) %>%
+   mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    TRUE ~ "different"
+  ))
 
-<!-- df.difference_combined %>%  -->
-<!--   group_by(age, question, response_pattern) %>%  -->
-<!--   summarize(n = n()) %>%  -->
-<!--   ungroup() %>% -->
-<!--   group_by(age, question) %>%  -->
-<!--   mutate(percentage = n / sum(n) * 100) -->
+df.difference_combined %>%
+  group_by(age, question, response_pattern) %>%
+  summarize(n = n()) %>%
+  ungroup() %>%
+  group_by(age, question) %>%
+  mutate(percentage = n / sum(n) * 100)
 
-<!-- ``` -->
+```
 
-<!-- ### Different Responses Plots -->
-<!-- #### Cause -->
+### Different Responses Plots
+#### Cause
 
-<!-- ```{r message=FALSE, warning=FALSE} -->
+```{r message=FALSE, warning=FALSE}
 
-<!-- df.cause_children_differnet = df.exp2_cause_children %>%  -->
-<!--   mutate(response_pattern = case_when( -->
-<!--     direct == 1 & absence == 1 ~ "both", -->
-<!--     direct == 0 & absence == 0 ~ "neither", -->
-<!--     TRUE ~ "different" -->
-<!--   )) %>%  -->
-<!--   filter(response_pattern == "different") -->
-
-
-
-<!-- df.model = df.cause_children_differnet %>%  -->
-<!--   mutate(difference = absence - direct, -->
-<!--         difference = recode(difference, `-1` = 0), -->
-<!--         question = str_replace_all(question, "caused", "cause")) -->
-
-
-<!-- fit.brm.absence_cause.difference = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario),  -->
-<!--                      data = df.model, -->
-<!--                      family = "bernoulli", -->
-<!--                      seed = 1, -->
-<!--                      iter = 4000, -->
-<!--                      warmup = 1000, -->
-<!--                      control = list(adapt_delta = .9999), -->
-<!--                      file = "cache/absence_cause_difference") -->
-
-
-<!-- df.data = expand_grid(age = seq(4, 9, 0.1), -->
-<!--                       question = c("cause", "lexical")) -->
-
-<!-- df.prediction = fit.brm.absence_cause.difference %>%  -->
-<!--   fitted(newdata = df.data, -->
-<!--          re_formula = NA, -->
-<!--           probs = c(0.1, 0.9)) %>%  -->
-<!--   as_tibble() %>%  -->
-<!--   bind_cols(df.data) %>%  -->
-<!--   clean_names() -->
-
-
-<!-- df.adults = df.exp2_cause_adults %>%  -->
-<!--    mutate(response_pattern = case_when( -->
-<!--     direct == 1 & absence == 1 ~ "both", -->
-<!--     direct == 0 & absence == 0 ~ "neither", -->
-<!--     TRUE ~ "different" -->
-<!--   )) %>%  -->
-<!--   filter(response_pattern == "different") %>%  -->
-<!--   select(-response) %>%  -->
-<!--   mutate(age_whole = rep(10)) %>%  -->
-<!--   mutate(difference = absence - direct, -->
-<!--         difference = recode(difference, `-1` = 0)) -->
+df.cause_children_differnet = df.exp2_cause_children %>%
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "different")
 
 
 
-<!-- df.means = df.model %>%  -->
-<!--   bind_rows(df.adults) %>%  -->
-<!--   mutate(age_whole = factor(age_whole,  -->
-<!--                             levels = c(4, 5, 6, 7, 8, 9, 10),  -->
-<!--                             labels = c("4", "5", "6", "7", "8", "9", "adults"))) %>%  -->
-<!--   group_by(age_whole, question) %>%  -->
-<!--   summarize( -->
-<!--     response = Hmisc::smean.cl.boot(difference)) %>% -->
-<!--     mutate(index = c("response", "low", "high")) %>% -->
-<!--     ungroup() %>%  -->
-<!--     pivot_wider(names_from = index, -->
-<!--                 values_from = response) %>%  -->
-<!--   mutate(age_whole = fct_recode(age_whole, "10" = "adults"), -->
-<!--          age_whole = as.numeric(as.character(age_whole))) -->
+df.model = df.cause_children_differnet %>%
+  mutate(difference = absence - direct,
+        difference = recode(difference, `-1` = 0),
+        question = str_replace_all(question, "caused", "cause"))
+
+
+fit.brm.absence_cause.difference = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario),
+                     data = df.model,
+                     family = "bernoulli",
+                     seed = 1,
+                     iter = 4000,
+                     warmup = 1000,
+                     control = list(adapt_delta = .9999),
+                     file = "cache/absence_cause_difference")
+
+
+df.data = expand_grid(age = seq(4, 9, 0.1),
+                      question = c("cause", "lexical"))
+
+df.prediction = fit.brm.absence_cause.difference %>%
+  fitted(newdata = df.data,
+         re_formula = NA,
+          probs = c(0.1, 0.9)) %>%
+  as_tibble() %>%
+  bind_cols(df.data) %>%
+  clean_names()
+
+
+df.adults = df.exp2_cause_adults %>%
+   mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "different") %>%
+  select(-response) %>%
+  mutate(age_whole = rep(10)) %>%
+  mutate(difference = absence - direct,
+        difference = recode(difference, `-1` = 0))
 
 
 
-<!-- p5 = ggplot(mapping = aes(x = age,  -->
-<!--                      y = difference, -->
-<!--                      color = question)) +  -->
-<!--   geom_hline(yintercept = 0.5, linetype = "dashed", color = "black") + -->
-<!--   geom_smooth(data = df.prediction, -->
-<!--               mapping = aes(y = estimate, -->
-<!--                             ymin = q10, -->
-<!--                             ymax = q90, -->
-<!--                             color = question, -->
-<!--                             fill = question), -->
-<!--               stat = "identity", -->
-<!--               alpha = 0.2) + -->
-<!--   geom_pointrange(data = df.means, -->
-<!--                   mapping = aes(x = age_whole, -->
-<!--                                 y = response, -->
-<!--                                 ymin = low, -->
-<!--                                 ymax = high, -->
-<!--                                 fill = question, -->
-<!--                                 shape = question), -->
-<!--                   color = "black", -->
-<!--                   size = 0.5, -->
-<!--                   show.legend = TRUE, -->
-<!--                   alpha = 0.8, -->
-<!--                   position = position_dodge(width = 0.3)) + -->
-<!--   ylab("Probability of selecting \n direct or absent cause") + -->
-<!--   scale_fill_manual(values = c("cause" = "#E41A1C",  -->
-<!--                                "lexical" = "#377EB8")) + -->
-<!--   scale_color_manual(values = c("cause" = "#E41A1C", -->
-<!--                                 "lexical" = "#377EB8")) + -->
-<!--   scale_shape_manual(values = c("cause" = 21,  -->
-<!--                                 "lexical" = 23)) + -->
-<!--   scale_y_continuous(breaks = seq(0, 1, 0.25), -->
-<!--                      labels = c("100% \n proximal", "75%", "50%", "75%", "100% \n distal"), -->
-<!--                      limits = c(0, 1)) +   -->
-<!--   scale_x_continuous(breaks = 4:10, -->
-<!--                      labels = c("4", "5", "6", "7", "8", "9", "Adults")) + -->
-<!--   theme(legend.position = "bottom", -->
-<!--         legend.title = element_blank(), -->
-<!--         text = element_text(size = 18)) +  -->
-<!--   guides(fill = "none", -->
-<!--          color = "none", -->
-<!--          shape = guide_legend(override.aes = list(fill = c("#377EB8", "#E41A1C")), -->
-<!--                               reverse = T)) -->
+df.means = df.model %>%
+  bind_rows(df.adults) %>%
+  mutate(age_whole = factor(age_whole,
+                            levels = c(4, 5, 6, 7, 8, 9, 10),
+                            labels = c("4", "5", "6", "7", "8", "9", "adults"))) %>%
+  group_by(age_whole, question) %>%
+  summarize(
+    response = Hmisc::smean.cl.boot(difference)) %>%
+    mutate(index = c("response", "low", "high")) %>%
+    ungroup() %>%
+    pivot_wider(names_from = index,
+                values_from = response) %>%
+  mutate(age_whole = fct_recode(age_whole, "10" = "adults"),
+         age_whole = as.numeric(as.character(age_whole)))
 
 
 
-<!-- ``` -->
-
-<!-- #### Made -->
-
-<!-- ```{r message=FALSE, warning=FALSE} -->
-
-<!-- df.made_children_differnet = df.exp2_made_children %>%  -->
-<!--   mutate(response_pattern = case_when( -->
-<!--     direct == 1 & absence == 1 ~ "both", -->
-<!--     direct == 0 & absence == 0 ~ "neither", -->
-<!--     TRUE ~ "different" -->
-<!--   )) %>%  -->
-<!--   filter(response_pattern == "different") -->
-
-<!-- df.model = df.made_children_differnet %>%  -->
-<!--   mutate(difference = absence - direct, -->
-<!--         difference = recode(difference, `-1` = 0), -->
-<!--          age_whole = as.integer(age)) -->
-
-
-<!-- fit.brm.absence_made.difference = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario),  -->
-<!--                      data = df.model, -->
-<!--                      family = "bernoulli", -->
-<!--                      seed = 1, -->
-<!--                      iter = 4000, -->
-<!--                      warmup = 1000, -->
-<!--                      control = list(adapt_delta = .9999), -->
-<!--                      file = "cache/absence_made_difference") -->
-
-
-<!-- df.data = expand_grid(age = seq(4, 9, 0.1), -->
-<!--                       question = c("made", "lexical")) -->
-
-<!-- df.prediction = fit.brm.absence_made.difference %>%  -->
-<!--   fitted(newdata = df.data, -->
-<!--          re_formula = NA, -->
-<!--           probs = c(0.1, 0.9)) %>%  -->
-<!--   as_tibble() %>%  -->
-<!--   bind_cols(df.data) %>%  -->
-<!--   clean_names() -->
-
-
-
-<!-- df.adults = df.exp2_made_adults %>%  -->
-<!--    mutate(response_pattern = case_when( -->
-<!--     direct == 1 & absence == 1 ~ "both", -->
-<!--     direct == 0 & absence == 0 ~ "neither", -->
-<!--     TRUE ~ "different" -->
-<!--   )) %>%  -->
-<!--   filter(response_pattern == "different") %>%  -->
-<!--   select(-response) %>%  -->
-<!--   mutate(age_whole = rep(10)) %>%  -->
-<!--   mutate(difference = absence - direct, -->
-<!--         difference = recode(difference, `-1` = 0)) -->
+p5 = ggplot(mapping = aes(x = age,
+                     y = difference,
+                     color = question)) +
+  geom_hline(yintercept = 0.5, linetype = "dashed", color = "black") +
+  geom_smooth(data = df.prediction,
+              mapping = aes(y = estimate,
+                            ymin = q10,
+                            ymax = q90,
+                            color = question,
+                            fill = question),
+              stat = "identity",
+              alpha = 0.2) +
+  geom_pointrange(data = df.means,
+                  mapping = aes(x = age_whole,
+                                y = response,
+                                ymin = low,
+                                ymax = high,
+                                fill = question,
+                                shape = question),
+                  color = "black",
+                  size = 0.5,
+                  show.legend = TRUE,
+                  alpha = 0.8,
+                  position = position_dodge(width = 0.3)) +
+  ylab("Probability of selecting \n direct or absent cause") +
+  scale_fill_manual(values = c("cause" = "#E41A1C",
+                               "lexical" = "#377EB8")) +
+  scale_color_manual(values = c("cause" = "#E41A1C",
+                                "lexical" = "#377EB8")) +
+  scale_shape_manual(values = c("cause" = 21,
+                                "lexical" = 23)) +
+  scale_y_continuous(breaks = seq(0, 1, 0.25),
+                     labels = c("100% \n proximal", "75%", "50%", "75%", "100% \n distal"),
+                     limits = c(0, 1)) +
+  scale_x_continuous(breaks = 4:10,
+                     labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        text = element_text(size = 18)) +
+  guides(fill = "none",
+         color = "none",
+         shape = guide_legend(override.aes = list(fill = c("#377EB8", "#E41A1C")),
+                              reverse = T))
 
 
 
-<!-- df.means = df.model %>%  -->
-<!--   bind_rows(df.adults) %>%  -->
-<!--   mutate(age_whole = factor(age_whole,  -->
-<!--                             levels = c(4, 5, 6, 7, 8, 9, 10),  -->
-<!--                             labels = c("4", "5", "6", "7", "8", "9", "adults"))) %>%  -->
-<!--   group_by(age_whole, question) %>%  -->
-<!--   summarize( -->
-<!--     response = Hmisc::smean.cl.boot(difference)) %>% -->
-<!--     mutate(index = c("response", "low", "high")) %>% -->
-<!--     ungroup() %>%  -->
-<!--     pivot_wider(names_from = index, -->
-<!--                 values_from = response) %>%  -->
-<!--   mutate(age_whole = fct_recode(age_whole, "10" = "adults"), -->
-<!--          age_whole = as.numeric(as.character(age_whole))) -->
+```
+
+#### Made
+
+```{r message=FALSE, warning=FALSE}
+
+df.made_children_differnet = df.exp2_made_children %>%
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "different")
+
+df.model = df.made_children_differnet %>%
+  mutate(difference = absence - direct,
+        difference = recode(difference, `-1` = 0),
+         age_whole = as.integer(age))
+
+
+fit.brm.absence_made.difference = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario),
+                     data = df.model,
+                     family = "bernoulli",
+                     seed = 1,
+                     iter = 4000,
+                     warmup = 1000,
+                     control = list(adapt_delta = .9999),
+                     file = "cache/absence_made_difference")
+
+
+df.data = expand_grid(age = seq(4, 9, 0.1),
+                      question = c("made", "lexical"))
+
+df.prediction = fit.brm.absence_made.difference %>%
+  fitted(newdata = df.data,
+         re_formula = NA,
+          probs = c(0.1, 0.9)) %>%
+  as_tibble() %>%
+  bind_cols(df.data) %>%
+  clean_names()
+
+
+
+df.adults = df.exp2_made_adults %>%
+   mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "different") %>%
+  select(-response) %>%
+  mutate(age_whole = rep(10)) %>%
+  mutate(difference = absence - direct,
+        difference = recode(difference, `-1` = 0))
+
+
+
+df.means = df.model %>%
+  bind_rows(df.adults) %>%
+  mutate(age_whole = factor(age_whole,
+                            levels = c(4, 5, 6, 7, 8, 9, 10),
+                            labels = c("4", "5", "6", "7", "8", "9", "adults"))) %>%
+  group_by(age_whole, question) %>%
+  summarize(
+    response = Hmisc::smean.cl.boot(difference)) %>%
+    mutate(index = c("response", "low", "high")) %>%
+    ungroup() %>%
+    pivot_wider(names_from = index,
+                values_from = response) %>%
+  mutate(age_whole = fct_recode(age_whole, "10" = "adults"),
+         age_whole = as.numeric(as.character(age_whole)))
 
 
 
 
-<!-- p6 = ggplot(mapping = aes(x = age, -->
-<!--                      y = difference, -->
-<!--                      color = question)) + -->
-<!--   geom_hline(yintercept = 0.5, linetype = "dashed", color = "black") + -->
-<!--   geom_smooth(data = df.prediction, -->
-<!--               mapping = aes(y = estimate, -->
-<!--                             ymin = q10, -->
-<!--                             ymax = q90, -->
-<!--                             color = question, -->
-<!--                             fill = question), -->
-<!--               stat = "identity", -->
-<!--               alpha = 0.2) + -->
-<!--   geom_pointrange(data = df.means, -->
-<!--                   mapping = aes(x = age_whole, -->
-<!--                                 y = response, -->
-<!--                                 ymin = low, -->
-<!--                                 ymax = high, -->
-<!--                                 fill = question, -->
-<!--                                 shape = question), -->
-<!--                   color = "black", -->
-<!--                   size = 0.5, -->
-<!--                   show.legend = TRUE, -->
-<!--                   alpha = 0.8, -->
-<!--                   position = position_dodge(width = 0.3)) + -->
-<!--   scale_fill_manual(values = c("made" = "#4DAF4A",  -->
-<!--                                "lexical" = "#377EB8"), -->
-<!--                     breaks = c("made", -->
-<!--                                "lexical")) + -->
-<!--   scale_color_manual(values = c("made" = "#4DAF4A", -->
-<!--                                 "lexical" = "#377EB8"), -->
-<!--                      breaks= c("made", "lexical")) + -->
-<!--   scale_shape_manual(values = c("made" = 21,  -->
-<!--                                 "lexical" = 23)) + -->
-<!--   scale_y_continuous(breaks = seq(0, 1, 0.25), -->
-<!--                      labels = c("100% \n proximal", "75%", "50%", "75%", "100% \n distal"), -->
-<!--                      limits = c(0, 1)) +  -->
-<!--   scale_x_continuous(breaks = 4:10, -->
-<!--                      labels = c("4", "5", "6", "7", "8", "9", "Adults")) + -->
-<!--   theme(legend.position = "bottom", -->
-<!--         legend.title = element_blank(), -->
-<!--         axis.title.y = element_blank(), -->
-<!--         text = element_text(size = 18)) + -->
-<!--   guides(fill = "none", -->
-<!--          color = "none", -->
-<!--          shape = guide_legend(override.aes = list(fill = c("#377EB8", "#4DAF4A")))) -->
+p6 = ggplot(mapping = aes(x = age,
+                     y = difference,
+                     color = question)) +
+  geom_hline(yintercept = 0.5, linetype = "dashed", color = "black") +
+  geom_smooth(data = df.prediction,
+              mapping = aes(y = estimate,
+                            ymin = q10,
+                            ymax = q90,
+                            color = question,
+                            fill = question),
+              stat = "identity",
+              alpha = 0.2) +
+  geom_pointrange(data = df.means,
+                  mapping = aes(x = age_whole,
+                                y = response,
+                                ymin = low,
+                                ymax = high,
+                                fill = question,
+                                shape = question),
+                  color = "black",
+                  size = 0.5,
+                  show.legend = TRUE,
+                  alpha = 0.8,
+                  position = position_dodge(width = 0.3)) +
+  scale_fill_manual(values = c("made" = "#4DAF4A",
+                               "lexical" = "#377EB8"),
+                    breaks = c("made",
+                               "lexical")) +
+  scale_color_manual(values = c("made" = "#4DAF4A",
+                                "lexical" = "#377EB8"),
+                     breaks= c("made", "lexical")) +
+  scale_shape_manual(values = c("made" = 21,
+                                "lexical" = 23)) +
+  scale_y_continuous(breaks = seq(0, 1, 0.25),
+                     labels = c("100% \n proximal", "75%", "50%", "75%", "100% \n distal"),
+                     limits = c(0, 1)) +
+  scale_x_continuous(breaks = 4:10,
+                     labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        axis.title.y = element_blank(),
+        text = element_text(size = 18)) +
+  guides(fill = "none",
+         color = "none",
+         shape = guide_legend(override.aes = list(fill = c("#377EB8", "#4DAF4A"))))
 
 
-<!-- ``` -->
+```
 
-<!-- #### Combine Cause and Made Plots -->
-<!-- ```{r fig.height=4, fig.width=12, message=FALSE, warning=FALSE} -->
+#### Combine Cause and Made Plots
+```{r fig.height=4, fig.width=12, message=FALSE, warning=FALSE}
 
-<!-- plot = p5 + p6 +  -->
-<!-- plot_layout(nrow = 1) & -->
-<!-- plot_annotation(tag_levels = "A") & -->
-<!-- theme(plot.tag = element_text(face = "bold")) -->
+plot = p5 + p6 +
+plot_layout(nrow = 1) &
+plot_annotation(tag_levels = "A") &
+theme(plot.tag = element_text(face = "bold"))
 
-<!-- ggsave(plot, filename = "../../figures/experiment2/absence_different.pdf", height = 5, width = 12) -->
+ggsave(plot, filename = "../../figures/experiment2/absence_different.pdf", height = 5, width = 12)
 
-<!-- plot -->
+plot
 
 
-<!-- ``` -->
+```
 
 ### Response Plots
 #### Cause
@@ -3022,7 +3427,172 @@ plot
 
 ```
 
+#### Responses Patterns
+```{r}
+
+df.plot = df.exp2_cause_adults %>% 
+  mutate(age = "adults") %>% 
+  bind_rows(df.exp2_made_adults %>% 
+              mutate(age = "adults")) %>% 
+  bind_rows(df.exp2_cause_children %>% 
+              mutate(age = "children")) %>% 
+  bind_rows(df.exp2_made_children %>% 
+              mutate(age = "children")) %>% 
+   mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    direct == 1 & absence == 0  ~ "direct only",
+    direct == 0 & absence == 1  ~ "absence only",
+  ),
+  question = recode(question, "cause" = "caused")) %>% 
+  group_by(age, question, response_pattern) %>% 
+  summarize(n = n()) %>% 
+  ungroup() %>%
+  group_by(age, question) %>%
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup() %>% 
+  mutate(question = factor(question, levels = c("caused", "made", "lexical")),
+         response_pattern = factor(response_pattern, levels = c("absence only", "direct only", "both", "neither")))
+
+
+ggplot(data = df.plot,
+       mapping = aes(x = age,
+                     y = percentage,
+                     group = response_pattern,
+                     color = response_pattern,
+                     fill = response_pattern)) +
+  geom_col(color = "black") +
+  scale_fill_brewer(palette = "Set1") + 
+  scale_color_brewer(palette = "Set1") +
+  scale_shape_manual(values = c(21, 23)) +
+  scale_y_continuous(breaks = seq(0, 100, 25),
+                     labels = str_c(seq(0, 100, 25), "%")) +
+  labs(y = "Response pattern \n\ probability") +
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        text = element_text(size = 18),
+        axis.title.x = element_blank()) +
+  facet_wrap(~question)
+
+ggsave("../../figures/experiment2/absence_response_patterns.pdf", height = 4, width = 8)
+
+```
+
+#### Responses Patterns by Age
+##### Cause v Lexical
+```{r}
+
+df.plot = df.exp2_cause_adults %>% 
+  mutate(age_whole = 10) %>% 
+  bind_rows(df.exp2_cause_children) %>% 
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    direct == 1 & absence == 0  ~ "direct only",
+    direct == 0 & absence == 1  ~ "absence only",
+  ),
+  question = recode(question, "cause" = "caused"),
+  age_whole = as.factor(age_whole)) %>% 
+  group_by(age_whole, question, response_pattern) %>% 
+  summarize(n = n()) %>% 
+  ungroup() %>%
+  group_by(age_whole, question) %>%
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup() %>% 
+  mutate(question = factor(question, levels = c("caused", "lexical")),
+          response_pattern = factor(response_pattern, levels = c("absence only", "direct only", "both", "neither")))
+
+
+p1 = ggplot(data = df.plot,
+       mapping = aes(x = age_whole,
+                     y = percentage,
+                     group = response_pattern,
+                     color = response_pattern,
+                     fill = response_pattern)) +
+  geom_col(color = "black") +
+  scale_fill_brewer(palette = "Set1") + 
+  scale_color_brewer(palette = "Set1") +
+  scale_shape_manual(values = c(21, 23)) +
+  scale_y_continuous(breaks = seq(0, 100, 25),
+                     labels = str_c(seq(0, 100, 25), "%")) +
+  scale_x_discrete(breaks = 4:10,
+                     labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
+  labs(y = "Response pattern \n\ probability") +
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        text = element_text(size = 18),
+        axis.title.x = element_blank()) +
+  facet_wrap(~question)
+
+
+
+```
+
+##### Made v Lexical
+```{r}
+
+df.plot = df.exp2_made_adults %>% 
+  mutate(age_whole = 10) %>% 
+  bind_rows(df.exp2_made_children) %>% 
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    direct == 1 & absence == 0  ~ "direct only",
+    direct == 0 & absence == 1  ~ "absence only",
+  ),
+  age_whole = as.factor(age_whole)) %>% 
+  group_by(age_whole, question, response_pattern) %>% 
+  summarize(n = n()) %>% 
+  ungroup() %>%
+  group_by(age_whole, question) %>%
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup() %>% 
+  mutate(question = factor(question, levels = c("made", "lexical")),
+         response_pattern = factor(response_pattern, levels = c("absence only", "direct only", "both", "neither")))
+
+
+p2 = ggplot(data = df.plot,
+       mapping = aes(x = age_whole,
+                     y = percentage,
+                     group = response_pattern,
+                     color = response_pattern,
+                     fill = response_pattern)) +
+  geom_col(color = "black") +
+  scale_fill_brewer(palette = "Set1") + 
+  scale_color_brewer(palette = "Set1") +
+  scale_shape_manual(values = c(21, 23)) +
+  scale_y_continuous(breaks = seq(0, 100, 25),
+                     labels = str_c(seq(0, 100, 25), "%")) +
+  scale_x_discrete(breaks = 4:10,
+                     labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
+  labs(y = "Response pattern \n\ probability") +
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        text = element_text(size = 18),
+        axis.title.x = element_blank()) +
+  facet_wrap(~question)
+
+
+
+```
+##### Combine Cause and Made Plots
+```{r fig.height=5, fig.width=18, message=FALSE, warning=FALSE}
+
+plot = p1 + p2 + 
+plot_layout(nrow = 1) &
+plot_annotation(tag_levels = "A") &
+theme(plot.tag = element_text(face = "bold"))
+
+ggsave(plot, filename = "../../figures/experiment2/absence_response_patterns_age.pdf", height = 5, width = 18)
+
+plot
+
+
+```
+
+
 ### Order Effects
+#### First Scenario
 
 ```{r fig.height=4, fig.width=9.5, message=FALSE, warning=FALSE}
 
@@ -3045,7 +3615,8 @@ df.plot = df.exp2_cause_children_order %>%
   pivot_longer(cols = direct:absence,
                names_to = "type",
                values_to = "response") %>% 
-  mutate(question = str_replace_all(question, "\\bcause\\b", "caused"))
+  mutate(question = str_replace_all(question, "\\bcause\\b", "caused"),
+          age = factor(age, levels = c("children", "adults")))
 
 custom_labels = as_labeller(c("direct" = "Direct Cause", "absence" = "Absent Cause"))
 
@@ -3058,7 +3629,7 @@ ggplot(data = df.plot,
                      shape = age)) + 
   geom_hline(yintercept = 0.5, linetype = "dashed", color = "black") +
   stat_summary(fun.data = "mean_cl_boot",
-               position = position_dodge(width = 0.55),
+               position = position_dodge(width = 0.8),
                size = .9,
                color = "black") +  
   scale_fill_brewer(palette = "Set3") +
@@ -3068,8 +3639,8 @@ ggplot(data = df.plot,
                       limits = c(0, 1)) +
   ylab("Probability of selecting \n causal candidate") + 
  scale_shape_manual(values = c(21, 23)) +
-  guides(fill = guide_legend(order = 1, override.aes = list(shape = 21, color = "black")),
-         color = guide_legend(order = 1, override.aes = list(shape = 21, color = "black")),
+  guides(fill = guide_legend(order = 1, override.aes = list(shape = 22, color = NA)),
+         color = guide_legend(order = 1, override.aes = list(shape = 22, color = NA)),
          shape = guide_legend(order = 2, override.aes = list(color = "black"))) +
   ylab("Probability of selecting \n causal candidate") +
   theme(legend.position = "bottom",
@@ -3082,7 +3653,145 @@ ggplot(data = df.plot,
    facet_wrap(~type,
              labeller = custom_labels) 
 
-ggsave("../../figures/experiment2/absent_order_effect.pdf", height = 4, width = 9.5)
+ggsave("../../figures/experiment2/absent_order_effect_first_scenario.pdf", height = 4, width = 9.5)
+
+
+```
+
+#### Second Scenario
+
+```{r fig.height=4, fig.width=9.5, message=FALSE, warning=FALSE}
+
+df.exp2_cause_children_order_second = df.exp2_cause_children %>% 
+  mutate(question = as_factor(question),
+         question = fct_relevel(question, "lexical"),
+         caused_question_order = as_factor(cause_question_order),
+         caused_question_order = fct_relevel(caused_question_order, "first")) %>% 
+   group_by(participant) %>%
+   filter(row_number() %in% 3:4) %>%
+  ungroup()
+
+
+
+df.exp2_made_children_order_second = df.exp2_made_children %>% 
+  mutate(question = as_factor(question),
+         question = fct_relevel(question, "lexical"),
+         made_question_order = str_replace_all(made_question_order, "frst", "first"),
+         made_question_order = str_replace_all(made_question_order, "scond", "second"),
+         made_question_order = as_factor(made_question_order),
+         made_question_order = fct_relevel(made_question_order, "first")) %>% 
+   group_by(participant) %>%
+   filter(row_number() %in% 3:4) %>%
+  ungroup()
+
+# code order
+df.tmp = df.exp2_cause_adults %>% 
+  group_by(participant) %>% 
+  filter(row_number() == 1) %>% 
+  mutate(scenario_order = str_c(scenario, "_first"),
+         question_order = str_c(question, "_first")) %>% 
+  select(participant,
+         contains("order"))
+
+df.exp2_cause_adults_order_second = df.exp2_cause_adults %>% 
+  left_join(df.tmp,
+            by = "participant") %>% 
+  relocate(contains("order"), .after = question) %>% 
+  mutate(caused_question_order = case_when(question_order == "lexical_first" ~ "second",
+                                          question_order == "cause_first" ~ "first"),
+         question = as_factor(question),
+         question = fct_relevel(question, "lexical"),
+         caused_question_order = as_factor(caused_question_order),
+         caused_question_order = fct_relevel(caused_question_order, "first")) %>% 
+   group_by(participant) %>%
+   filter(row_number() %in% 3:4) %>%
+  ungroup()
+
+
+# code order
+df.tmp = df.exp2_made_adults %>% 
+  group_by(participant) %>% 
+  filter(row_number() == 1) %>% 
+  mutate(scenario_order = str_c(scenario, "_first"),
+         question_order = str_c(question, "_first")) %>% 
+  select(participant,
+         contains("order"))
+
+df.exp2_made_adults_order_second = df.exp2_made_adults %>% 
+  left_join(df.tmp,
+            by = "participant") %>% 
+  relocate(contains("order"), .after = question) %>% 
+  mutate(made_question_order = case_when(question_order == "lexical_first" ~ "second",
+                                          question_order == "made_first" ~ "first"),
+         question = as_factor(question),
+         question = fct_relevel(question, "lexical"),
+         made_question_order = as_factor(made_question_order),
+         made_question_order = fct_relevel(made_question_order, "first")) %>% 
+   group_by(participant) %>%
+   filter(row_number() %in% 3:4) %>%
+  ungroup()
+
+
+
+df.plot = df.exp2_cause_children_order_second %>% 
+  rename(periphrastic_question_order = caused_question_order) %>% 
+  select(question, direct, absence, periphrastic_question_order) %>% 
+  mutate(age = rep("children")) %>% 
+  bind_rows(df.exp2_made_children_order_second %>% 
+              rename(periphrastic_question_order = made_question_order) %>% 
+              select(question, direct, absence, periphrastic_question_order) %>% 
+  mutate(age = rep("children")),
+            df.exp2_cause_adults_order_second %>% 
+              rename(periphrastic_question_order = caused_question_order) %>% 
+              select(question, direct, absence, periphrastic_question_order) %>% 
+  mutate(age = rep("adults")),
+            df.exp2_made_adults_order_second %>% 
+              rename(periphrastic_question_order = made_question_order) %>% 
+    select(question, direct, absence, periphrastic_question_order) %>% 
+  mutate(age = rep("adults"))) %>% 
+  pivot_longer(cols = direct:absence,
+               names_to = "type",
+               values_to = "response") %>% 
+  mutate(question = str_replace_all(question, "\\bcause\\b", "caused"),
+         age = factor(age, levels = c("children", "adults")))
+  
+
+custom_labels = as_labeller(c("direct" = "Direct Cause", "absence" = "Absent Cause"))
+
+ggplot(data = df.plot,
+       mapping = aes(x = factor(question, levels = c("caused", "made", "lexical")),
+                     y = response,
+                     group = interaction(periphrastic_question_order, age),
+                     color = periphrastic_question_order,
+                     fill = periphrastic_question_order,
+                     shape = age)) + 
+  geom_hline(yintercept = 0.5, linetype = "dashed", color = "black") +
+  stat_summary(fun.data = "mean_cl_boot",
+               position = position_dodge(width = 0.8),
+               size = .9,
+               color = "black") +  
+  scale_fill_brewer(palette = "Set3") +
+  scale_color_brewer(palette = "Set3") +
+ scale_y_continuous(breaks = seq(0, 1, 0.25),
+                      labels = str_c(seq(0, 1, 0.25) * 100, "%"),
+                      limits = c(0, 1)) +
+  ylab("Probability of selecting \n causal candidate") + 
+ scale_shape_manual(values = c(21, 23)) +
+  guides(fill = guide_legend(order = 1, override.aes = list(shape = 22, color = NA)),
+         color = guide_legend(order = 1, override.aes = list(shape = 22, color = NA)),
+         shape = guide_legend(order = 2, override.aes = list(color = "black"))) +
+  ylab("Probability of selecting \n causal candidate") +
+  theme(legend.position = "bottom",
+        legend.box = "vertical",
+        axis.title.x = element_blank(),
+        text = element_text(size = 18)) +  
+  labs(color = "  periphrastic \n\ question order", 
+       fill = "   periphrastic \n\ question order",
+       shape = "age") +
+   facet_wrap(~type,
+             labeller = custom_labels) 
+
+ggsave("../../figures/experiment2/absent_order_effect_second_scenario.pdf", height = 4, width = 9.5)
 
 
 ```
@@ -3172,6 +3881,23 @@ df.exp3_adults_demo %>%
 ```
 
 #### STATS
+##### Descriptives
+```{r} 
+
+df.exp3_adults %>% 
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    direct == 1 & absence == 0  ~ "direct only",
+    direct == 0 & absence == 1  ~ "absence only",
+  )) %>% 
+  group_by(response_pattern) %>% 
+  summarize(n = n()) %>% 
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup()
+
+
+```
 ##### Bayesian Model
 
 ```{r}
@@ -3286,6 +4012,23 @@ df.exp3_children %>%
 ```
 
 #### STATS
+##### Descriptives
+```{r} 
+
+df.exp3_children %>% 
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    direct == 1 & absence == 0  ~ "direct only",
+    direct == 0 & absence == 1  ~ "absence only",
+  )) %>% 
+  group_by(response_pattern) %>% 
+  summarize(n = n()) %>% 
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup()
+
+
+```
 ##### Bayesian Model
 
 ```{r message=FALSE, warning=FALSE}
@@ -3446,5 +4189,105 @@ ggplot(mapping = aes(x = age,
   
 
 ggsave("../../figures/experiment3/explanation.pdf", height = 4, width = 5)
+
+```
+
+#### Responses Patterns
+```{r}
+
+df.plot = df.exp3_adults %>% 
+  mutate(age = "adults") %>% 
+  bind_rows(df.exp3_children %>% 
+              mutate(age = "children")) %>% 
+   mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    direct == 1 & absence == 0  ~ "direct only",
+    direct == 0 & absence == 1  ~ "absence only",
+  ),
+  question = recode(question, "cause" = "caused")) %>% 
+  group_by(age, response_pattern) %>% 
+  summarize(n = n()) %>% 
+  ungroup() %>%
+  group_by(age) %>%
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup() %>% 
+  mutate(response_pattern = factor(response_pattern, levels = c("absence only", "direct only", "both", "neither")))
+
+
+ggplot(data = df.plot,
+       mapping = aes(x = age,
+                     y = percentage,
+                     group = response_pattern,
+                     color = response_pattern,
+                     fill = response_pattern)) +
+  geom_col(color = "black") +
+  scale_fill_brewer(palette = "Set1") + 
+  scale_color_brewer(palette = "Set1") +
+  scale_shape_manual(values = c(21, 23)) +
+  scale_y_continuous(breaks = seq(0, 100, 25),
+                     labels = str_c(seq(0, 100, 25), "%")) +
+  labs(y = "Response pattern \n\ probability") +
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        text = element_text(size = 18),
+        axis.title.x = element_blank()) 
+
+ggsave("../../figures/experiment3/explanation_response_patterns.pdf", height = 4, width = 6)
+
+```
+#### Responses Patterns by Age
+##### Cause v Lexical
+```{r}
+
+df.plot = df.exp3_adults %>% 
+  mutate(age_whole = 7) %>% 
+  bind_rows(df.exp3_children %>% 
+               mutate(age_whole = as.integer(age))) %>% 
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    direct == 1 & absence == 0  ~ "direct only",
+    direct == 0 & absence == 1  ~ "absence only",
+  ),
+  question = recode(question, "cause" = "caused"),
+  age_whole = as.factor(age_whole)) %>% 
+  group_by(age_whole, response_pattern) %>% 
+  summarize(n = n()) %>% 
+  ungroup() %>%
+  group_by(age_whole) %>%
+  mutate(percentage = n / sum(n) * 100) %>%
+  ungroup() %>% 
+  mutate(response_pattern = factor(response_pattern, levels = c("absence only", "direct only", "both", "neither")))
+
+
+ggplot(data = df.plot,
+       mapping = aes(x = age_whole,
+                     y = percentage,
+                     group = response_pattern,
+                     color = response_pattern,
+                     fill = response_pattern)) +
+  geom_col(color = "black") +
+  scale_fill_brewer(palette = "Set1") + 
+  scale_color_brewer(palette = "Set1") +
+  scale_shape_manual(values = c(21, 23)) +
+  scale_y_continuous(breaks = seq(0, 100, 25),
+                     labels = str_c(seq(0, 100, 25), "%")) +
+  scale_x_discrete(breaks = 4:7,
+                     labels = c("4", "5", "6", "Adults")) +
+  labs(y = "Response pattern \n\ probability") +
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        text = element_text(size = 18),
+        axis.title.x = element_blank()) 
+
+
+ggsave("../../figures/experiment3/explanation_response_patterns_age.pdf", height = 4, width = 6)
+
+```
+# SESSION INFO
+```{r}
+
+sessionInfo()
 
 ```
