@@ -129,8 +129,11 @@ df.cause_adults_both = df.cause_adults_both %>%
   bind_rows(df.cause_adults_both %>% 
               mutate(difference = 0)) 
 
-df.model = df.cause_adults_differnet %>% 
-  bind_rows(df.cause_adults_both) %>% 
+df.chain_cause_adults = df.cause_adults_differnet %>% 
+  bind_rows(df.cause_adults_both)
+  
+  
+df.model = df.chain_cause_adults %>% 
   mutate(question = as_factor(question),
          question = fct_relevel(question, "caused"))
 
@@ -138,7 +141,7 @@ df.model = df.cause_adults_differnet %>%
  contrasts(df.model$question)
 
 
-fit.brm.cause.adult = brm(formula = difference ~ 1 + question + (1 | participant) + (1 | scenario), 
+fit.brm.chain.cause.adults = brm(formula = difference ~ 1 + question + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
                      seed = 1,
@@ -147,7 +150,7 @@ fit.brm.cause.adult = brm(formula = difference ~ 1 + question + (1 | participant
                      control = list(adapt_delta = .999999),
                      file = "cache/chain_cause_adult_difference") 
 
-fit.brm.cause.adult
+fit.brm.chain.cause.adults
 
 
 ```
@@ -263,8 +266,11 @@ df.cause_children_both = df.exp1_cause_children %>%
   bind_rows(df.cause_children_both %>% 
               mutate(difference = 0)) 
 
-df.model = df.cause_children_differnet %>% 
-  bind_rows(df.cause_children_both) %>% 
+df.chain_cause_children = df.cause_children_differnet %>% 
+  bind_rows(df.cause_children_both) 
+  
+  
+df.model = df.chain_cause_children %>% 
   mutate(question = as_factor(question),
          question = fct_relevel(question, "caused"))
 
@@ -274,7 +280,7 @@ df.model = df.cause_children_differnet %>%
  contrasts(df.model$question)
 
 
-fit.brm.cause.children = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario), 
+fit.brm.chain.cause.children = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
                      seed = 1,
@@ -283,7 +289,7 @@ fit.brm.cause.children = brm(formula = difference ~ 1 + question*age + (1 | part
                      control = list(adapt_delta = .999999),
                      file = "cache/chain_cause_children_difference") 
 
-fit.brm.cause.children
+fit.brm.chain.cause.children
 
 
 ```
@@ -383,8 +389,10 @@ df.made_adults_both = df.made_adults_both %>%
   bind_rows(df.made_adults_both %>% 
               mutate(difference = 0)) 
 
-df.model = df.made_adults_differnet %>% 
-  bind_rows(df.made_adults_both) %>% 
+df.chain_made_adults = df.made_adults_differnet %>% 
+  bind_rows(df.made_adults_both) 
+
+df.model = df.chain_made_adults %>% 
   mutate(question = as_factor(question),
          question = fct_relevel(question, "caused"))
 
@@ -392,7 +400,7 @@ df.model = df.made_adults_differnet %>%
  contrasts(df.model$question)
 
 
-fit.brm.made.adult = brm(formula = difference ~ 1 + question + (1 | participant) + (1 | scenario), 
+fit.brm.chain.made.adults = brm(formula = difference ~ 1 + question + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
                      seed = 1,
@@ -401,7 +409,7 @@ fit.brm.made.adult = brm(formula = difference ~ 1 + question + (1 | participant)
                      control = list(adapt_delta = .999999),
                      file = "cache/chain_made_adult_difference") 
 
-fit.brm.made.adult
+fit.brm.chain.made.adults
 
 
 ```
@@ -504,8 +512,10 @@ df.made_children_both = df.made_children_both %>%
   bind_rows(df.made_children_both %>% 
               mutate(difference = 0)) 
 
-df.model = df.made_children_differnet %>% 
-  bind_rows(df.made_children_both) %>% 
+df.chain_made_children = df.made_children_differnet %>% 
+  bind_rows(df.made_children_both) 
+  
+df.model = df.chain_made_children %>% 
   mutate(question = as_factor(question),
          question = fct_relevel(question, "caused"))
 
@@ -515,7 +525,7 @@ df.model = df.made_children_differnet %>%
  
 
 
-fit.brm.made.children = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario), 
+fit.brm.chain.made.children = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
                      seed = 1,
@@ -524,86 +534,21 @@ fit.brm.made.children = brm(formula = difference ~ 1 + question*age + (1 | parti
                      control = list(adapt_delta = .999999),
                      file = "cache/chain_made_children_difference") 
 
-fit.brm.made.children
+fit.brm.chain.made.children
 
 
 ```
 
 ## PLOTS
-### Data
-#### Different Responses
-
-```{r message=FALSE, warning=FALSE}
-
-df.exp1_cause_adults_differnece = df.exp1_cause_adults %>%
-  select(question, distal, proximal) %>%
-  mutate(age = rep("adults"))
-
-df.exp1_made_adults_difference = df.exp1_made_adults %>%
-  select(question, distal, proximal) %>%
-  mutate(age = rep("adults"))
-
-df.exp1_cause_children_difference = df.exp1_cause_children %>%
-  select(question, distal, proximal) %>%
-  mutate(question = str_replace_all(question, "caused", "cause")) %>%
-  mutate(age = rep("children"))
-
-df.exp1_made_children_difference = df.exp1_made_children %>%
-  select(question, distal, proximal) %>%
-  mutate(age = rep("children"))
-
-df.difference_combined = df.exp1_cause_adults_differnece %>%
-  bind_rows(df.exp1_made_adults_difference,
-            df.exp1_cause_children_difference,
-            df.exp1_made_children_difference) %>%
-   mutate(response_pattern = case_when(
-    distal == 1 & proximal == 1 ~ "both",
-    distal == 0 & proximal == 0 ~ "neither",
-    TRUE ~ "different"
-  ))
-
-df.difference_combined %>%
-  group_by(age, question, response_pattern) %>%
-  summarize(n = n()) %>%
-  ungroup() %>%
-  group_by(age, question) %>%
-  mutate(percentage = n / sum(n) * 100)
-
-```
-
-### Different Responses Plots
+### Responses Plots
 #### Cause
 ```{r message=FALSE, warning=FALSE}
 
-df.cause_children_differnet = df.exp1_cause_children %>%
-  mutate(response_pattern = case_when(
-    distal == 1 & proximal == 1 ~ "both",
-    distal == 0 & proximal == 0 ~ "neither",
-    TRUE ~ "different"
-  )) %>%
-  filter(response_pattern == "different")
-
-
-df.model = df.cause_children_differnet %>%
-  mutate(difference = distal - proximal,
-        difference = recode(difference, `-1` = 0),
-        question = str_replace_all(question, "caused", "cause"))
-
-
-fit.brm.chain_cause.difference = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario),
-                     data = df.model,
-                     family = "bernoulli",
-                     seed = 1,
-                     iter = 4000,
-                     warmup = 1000,
-                     control = list(adapt_delta = .9999),
-                     file = "cache/chain_cause_difference")
-
 
 df.data = expand_grid(age = seq(4, 9, 0.1),
-                      question = c("cause", "lexical"))
+                      question = c("caused", "lexical"))
 
-df.prediction = fit.brm.chain_cause.difference %>%
+df.prediction = fit.brm.chain.cause.children %>%
   fitted(newdata = df.data,
          re_formula = NA,
           probs = c(0.1, 0.9)) %>%
@@ -612,22 +557,9 @@ df.prediction = fit.brm.chain_cause.difference %>%
   clean_names()
 
 
-df.adults = df.exp1_cause_adults %>%
-  mutate(response_pattern = case_when(
-    distal == 1 & proximal == 1 ~ "both",
-    distal == 0 & proximal == 0 ~ "neither",
-    TRUE ~ "different"
-  )) %>%
-  filter(response_pattern == "different") %>%
-  select(-response) %>%
-  mutate(age_whole = rep(10)) %>%
-  mutate(difference = distal - proximal,
-         difference = recode(difference, `-1` = 0))
-
-
-
-df.means = df.model %>%
-  bind_rows(df.adults) %>%
+df.means = df.chain_cause_adults %>% 
+  mutate(age_whole = rep(10)) %>% 
+  bind_rows(df.chain_cause_children) %>% 
   mutate(age_whole = factor(age_whole,
                             levels = c(4, 5, 6, 7, 8, 9, 10),
                             labels = c("4", "5", "6", "7", "8", "9", "adults"))) %>%
@@ -643,7 +575,7 @@ df.means = df.model %>%
 
 
 
-p1 = ggplot(mapping = aes(x = age,
+ ggplot(mapping = aes(x = age,
                      y = difference,
                      color = question)) +
   geom_hline(yintercept = 0.5, linetype = "dashed", color = "black") +
@@ -661,18 +593,18 @@ p1 = ggplot(mapping = aes(x = age,
                                 y = response,
                                 ymin = low,
                                 ymax = high,
-                                fill = question,
+                                fill = "white",
                                 shape = question),
                   color = "black",
                   size = 0.5,
                   show.legend = TRUE,
                   alpha = 0.8,
                   position = position_dodge(width = 0.3)) +
-  scale_fill_manual(values = c("cause" = "#E41A1C",
-                               "lexical" = "#377EB8")) +
-  scale_color_manual(values = c("cause" = "#E41A1C",
-                                "lexical" = "#377EB8")) +
-  scale_shape_manual(values = c("cause" = 21,
+  scale_fill_manual(values = c("caused" = "black",
+                               "lexical" = "black")) +
+  scale_color_manual(values = c("caused" = "black",
+                                "lexical" = "black")) +
+  scale_shape_manual(values = c("caused" = 21,
                                "lexical" = 23)) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
                      labels = c("100% \n proximal", "75%", "50%", "75%", "100% \n distal"),
@@ -680,13 +612,13 @@ p1 = ggplot(mapping = aes(x = age,
  scale_x_continuous(breaks = 4:10,
                      labels = c("4", "5", "6", "7", "8", "9", "Adults")) +
   labs(y = "Probability of selecting \n proximal or distal cause") +
-  theme(legend.position = "bottom",
+  theme(legend.position = "none",
         legend.title = element_blank(),
         text = element_text(size = 18)) +
-  guides(fill = "none",
-         color = "none",
-         shape = guide_legend(override.aes = list(fill = c("#377EB8", "#E41A1C")),
-                              reverse = T))
+  facet_wrap(~factor(question,
+             levels = c("lexical", "caused")))
+ 
+
 
 
 ```
