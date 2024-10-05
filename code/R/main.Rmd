@@ -13,13 +13,14 @@ output:
 # Load packages
 ```{r eval=TRUE, include=FALSE, message=FALSE, warning=FALSE}
 
-library("janitor")        # for cleaning variable nqmes
-library("emmeans")        # for comparing means
-library("brms")           # for Bayesian data analysis
-library("patchwork")      # for combining figures
-library("knitr")          # for knitting 
-library("tidyverse")      # for everything else
-
+library("janitor")         # for cleaning variable names
+library("emmeans")         # for comparing means
+library("brms")            # for Bayesian data analysis
+library("patchwork")       # for combining figures
+library("knitr")           # for knitting 
+library("marginaleffects") # for marginaleffects
+library("emmeans")         # for marginaleffects
+library("tidyverse")       # for everything else
 ```
 
 # Settings
@@ -100,12 +101,12 @@ df.exp1_cause_adults_demo  %>%
 
 
 #### STATS
+
 ##### Bayesian Model
 
 ```{r message=FALSE, warning=FALSE}
 
-
-df.cause_adults_differnet = df.exp1_cause_adults %>%
+df.cause_adults_different = df.exp1_cause_adults %>%
   mutate(response_pattern = case_when(
     distal == 1 & proximal == 1 ~ "both",
     distal == 0 & proximal == 0 ~ "neither",
@@ -129,7 +130,7 @@ df.cause_adults_both = df.cause_adults_both %>%
   bind_rows(df.cause_adults_both %>% 
               mutate(difference = 0)) 
 
-df.chain_cause_adults = df.cause_adults_differnet %>% 
+df.chain_cause_adults = df.cause_adults_different %>% 
   bind_rows(df.cause_adults_both)
   
   
@@ -147,33 +148,39 @@ fit.brm.chain.cause.adults = brm(formula = difference ~ 1 + question + (1 | part
                      seed = 1,
                      iter = 4000,
                      warmup = 1000,
-                     control = list(adapt_delta = .999999),
                      file = "cache/chain_cause_adult_difference") 
 
 fit.brm.chain.cause.adults
+```
 
+##### Follow-up analysis 
 
+- difference on the response scale (which ranges from 0 to 1)
+
+```{r}
+fit.brm.chain.cause.adults %>% 
+  emmeans(consec ~ question, 
+          type = "response")
 ```
 
 
+
 ### CHILDREN
+
 #### DATA
+
 ##### Read in data
 
 ```{r message=FALSE, warning=FALSE}
-
 df.exp1_cause_children = read_csv("../../data/experiment1/cause/children/exp1_cause_children.csv")
-
 ```
 
 ##### Wrangle
 ```{r message=FALSE, warning=FALSE}
-
 #clean data
 df.exp1_cause_children = df.exp1_cause_children %>% 
   clean_names() %>% 
-  rename(
-         question = question_type) %>% 
+  rename(question = question_type) %>% 
   mutate(response = str_remove_all(string = response,
                                    pattern = "\""),
          response = str_remove_all(string = response,
@@ -211,38 +218,31 @@ df.exp1_cause_children = df.exp1_cause_children %>%
   mutate(age_character = recode(age_character, "7" = "7-9", "8" = "7-9", "9" = "7-9"),
          question = str_replace_all(question, "simple", "lexical")) %>%
   rename(participant = participant_number) 
- 
+
 ```
 
 ##### Demographics
 
 ```{r message=FALSE, warning=FALSE}
-
- # gender
+# gender
 df.exp1_cause_children %>%
   group_by(gender) %>%
   summarise(n = n_distinct(participant)) %>%
   print()
 
-  
-  # language spoken
+# language spoken
 df.exp1_cause_children %>%
     mutate(en_occurrence = ifelse(str_detect(lan_spoken, "en"), "en", "non-en")) %>%
     group_by(en_occurrence) %>%
     summarise(n = n_distinct(participant)) %>%
     print()
-
-
 ```
 
 #### STATS
 
-
 ##### Bayesian Model
 ```{r message=FALSE, warning=FALSE}
-
-
-df.cause_children_differnet = df.exp1_cause_children %>%
+df.cause_children_different = df.exp1_cause_children %>%
   mutate(response_pattern = case_when(
     distal == 1 & proximal == 1 ~ "both",
     distal == 0 & proximal == 0 ~ "neither",
@@ -266,21 +266,14 @@ df.cause_children_both = df.exp1_cause_children %>%
   bind_rows(df.cause_children_both %>% 
               mutate(difference = 0)) 
 
-df.chain_cause_children = df.cause_children_differnet %>% 
+df.chain_cause_children = df.cause_children_different %>% 
   bind_rows(df.cause_children_both) 
-  
   
 df.model = df.chain_cause_children %>% 
   mutate(question = as_factor(question),
          question = fct_relevel(question, "caused"))
 
-
-
-# Check contrast values
- contrasts(df.model$question)
-
-
-fit.brm.chain.cause.children = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario), 
+fit.brm.chain.cause.children = brm(formula = difference ~ 1 + question * age + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
                      seed = 1,
@@ -289,13 +282,27 @@ fit.brm.chain.cause.children = brm(formula = difference ~ 1 + question*age + (1 
                      file = "cache/chain_cause_children_difference") 
 
 fit.brm.chain.cause.children 
-
-
-pairs(emmeans(fit.brm.chain.cause.children,
-              ~question))
-
-
 ```
+
+##### Follow-up analysis 
+
+```{r}
+# effect of question 
+fit.brm.chain.cause.children %>% 
+  emmeans(spec = pairwise ~ question, 
+          type = "response")
+
+# effect of age 
+fit.brm.chain.cause.children %>% 
+  avg_slopes(variable = "age",
+             type = "link")
+  
+# interaction effect 
+fit.brm.chain.cause.children %>% 
+  emtrends(specs = pairwise ~ question,
+           var = "age")
+```
+
 
 ## MADE v LEXICAL (BREAK & CRACK)
 ### ADULTS
@@ -368,7 +375,7 @@ df.exp1_made_adults_demo %>%
 ```{r message=FALSE, warning=FALSE}
 
 
-df.made_adults_differnet = df.exp1_made_adults %>%
+df.made_adults_different = df.exp1_made_adults %>%
   mutate(response_pattern = case_when(
     distal == 1 & proximal == 1 ~ "both",
     distal == 0 & proximal == 0 ~ "neither",
@@ -392,7 +399,7 @@ df.made_adults_both = df.made_adults_both %>%
   bind_rows(df.made_adults_both %>% 
               mutate(difference = 0)) 
 
-df.chain_made_adults = df.made_adults_differnet %>% 
+df.chain_made_adults = df.made_adults_different %>% 
   bind_rows(df.made_adults_both) 
 
 df.model = df.chain_made_adults %>% 
@@ -492,7 +499,7 @@ df.exp1_made_children %>%
 ```{r message=FALSE, warning=FALSE}
 
 
-df.made_children_differnet = df.exp1_made_children %>%
+df.made_children_different = df.exp1_made_children %>%
   mutate(response_pattern = case_when(
     distal == 1 & proximal == 1 ~ "both",
     distal == 0 & proximal == 0 ~ "neither",
@@ -515,7 +522,7 @@ df.made_children_both = df.made_children_both %>%
   bind_rows(df.made_children_both %>% 
               mutate(difference = 0)) 
 
-df.chain_made_children = df.made_children_differnet %>% 
+df.chain_made_children = df.made_children_different %>% 
   bind_rows(df.made_children_both) 
   
 df.model = df.chain_made_children %>% 
@@ -655,7 +662,7 @@ ggsave("../../figures/experiment1/chain_cause_response_gradient.pdf", height = 4
 #### Made
 ```{r message=FALSE, warning=FALSE}
 
-df.made_children_differnet = df.exp1_made_children %>%
+df.made_children_different = df.exp1_made_children %>%
   mutate(response_pattern = case_when(
     distal == 1 & proximal == 1 ~ "both",
     distal == 0 & proximal == 0 ~ "neither",
@@ -663,7 +670,7 @@ df.made_children_differnet = df.exp1_made_children %>%
   )) %>%
   filter(response_pattern == "different")
 
-df.model = df.made_children_differnet %>%
+df.model = df.made_children_different %>%
   mutate(difference = distal - proximal,
         difference = recode(difference, `-1` = 0))
 
@@ -2080,7 +2087,7 @@ df.difference_combined %>%
 
 ```{r message=FALSE, warning=FALSE}
 
-df.cause_children_differnet = df.exp2_cause_children %>%
+df.cause_children_different = df.exp2_cause_children %>%
   mutate(response_pattern = case_when(
     direct == 1 & absence == 1 ~ "both",
     direct == 0 & absence == 0 ~ "neither",
@@ -2090,7 +2097,7 @@ df.cause_children_differnet = df.exp2_cause_children %>%
 
 
 
-df.model = df.cause_children_differnet %>%
+df.model = df.cause_children_different %>%
   mutate(difference = absence - direct,
         difference = recode(difference, `-1` = 0),
         question = str_replace_all(question, "caused", "cause"))
@@ -2201,7 +2208,7 @@ p5 = ggplot(mapping = aes(x = age,
 
 ```{r message=FALSE, warning=FALSE}
 
-df.made_children_differnet = df.exp2_made_children %>%
+df.made_children_different = df.exp2_made_children %>%
   mutate(response_pattern = case_when(
     direct == 1 & absence == 1 ~ "both",
     direct == 0 & absence == 0 ~ "neither",
@@ -2209,7 +2216,7 @@ df.made_children_differnet = df.exp2_made_children %>%
   )) %>%
   filter(response_pattern == "different")
 
-df.model = df.made_children_differnet %>%
+df.model = df.made_children_different %>%
   mutate(difference = absence - direct,
         difference = recode(difference, `-1` = 0),
          age_whole = as.integer(age))
