@@ -286,10 +286,13 @@ fit.brm.chain.cause.children = brm(formula = difference ~ 1 + question*age + (1 
                      seed = 1,
                      iter = 4000,
                      warmup = 1000,
-                     control = list(adapt_delta = .999999),
                      file = "cache/chain_cause_children_difference") 
 
-fit.brm.chain.cause.children
+fit.brm.chain.cause.children 
+
+
+pairs(emmeans(fit.brm.chain.cause.children,
+              ~question))
 
 
 ```
@@ -575,9 +578,34 @@ df.means = df.chain_cause_adults %>%
 
 
 
+# gradient_segments = data.frame(
+#   x = rep(min(df.means$age_whole), 100),
+#   xend = rep(max(df.means$age_whole), 100),
+#   y = seq(0, 1, length.out = 100),
+#   yend = seq(0, 1, length.out = 100),
+#   color = scales::gradient_n_pal(c("#377EB8", "#E41A1C"))(seq(0, 1, length.out = 100))
+# )
+
+gradient_segments = data.frame(
+  x = rep(min(df.means$age_whole), 100),
+  xend = rep(max(df.means$age_whole), 100),
+  y = seq(0, 1, length.out = 100),
+  yend = seq(0, 1, length.out = 100),
+  color = scales::gradient_n_pal(c("#377EB8", "#377EB8","#377EB8", "#377EB8", "#E41A1C", "#E41A1C", "#E41A1C"))(seq(0, 1, length.out = 100))
+)
+
+
+
  ggplot(mapping = aes(x = age,
                      y = difference,
                      color = question)) +
+    geom_segment(data = gradient_segments,
+               aes(x = x, 
+                   xend = xend, 
+                   y = y, 
+                   yend = yend, 
+                   color = I(color)),
+               size = 12) +
   geom_hline(yintercept = 0.5, linetype = "dashed", color = "black") +
   geom_smooth(data = df.prediction,
               mapping = aes(y = estimate,
@@ -619,7 +647,7 @@ df.means = df.chain_cause_adults %>%
              levels = c("lexical", "caused")))
  
 
-
+ggsave("../../figures/experiment1/chain_cause_response_gradient.pdf", height = 4, width = 8)
 
 ```
 
