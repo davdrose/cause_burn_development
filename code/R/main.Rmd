@@ -3696,11 +3696,11 @@ fit.brm.df.exp2.made.adults.order
 ```{r}
 
 fit.brm.df.exp2.cause.adults.order%>% 
-  emmeans(spec = pairwise ~ order | question, 
+  emmeans(spec = pairwise ~ order | question,
           type = "response")
 
 fit.brm.df.exp2.made.adults.order%>% 
-  emmeans(spec = pairwise ~ order | question, 
+  emmeans(spec = pairwise ~ order | question,
           type = "response")
 ```
 
@@ -3714,7 +3714,7 @@ df.tmp = df.exp2_cause_children %>%
   mutate(question = as_factor(question),
          question = fct_relevel(question, "lexical"),
          order = as_factor(cause_question_order),
-         order = fct_relevel(order, "second")) %>% 
+         order = fct_relevel(order, "first")) %>% 
    group_by(participant) %>%
    filter(row_number() <= 2) %>%
   ungroup()  %>% 
@@ -3731,7 +3731,7 @@ df.tmp2 = df.exp2_cause_children %>%
          order = str_replace_all(order, "second", "first"),
          order = str_replace_all(order, "temp_placeholder", "second"),
          order = as_factor(order),
-         order = fct_relevel(order, "second")) %>% 
+         order = fct_relevel(order, "first")) %>% 
   group_by(participant) %>%
   filter(row_number() <= 2) %>%
   ungroup() %>% 
@@ -3740,7 +3740,8 @@ df.tmp2 = df.exp2_cause_children %>%
          difference = recode(difference, `-1` = 0))
 
 df.exp2_cause_children_order = df.tmp %>% 
-  bind_rows(df.tmp2)
+  bind_rows(df.tmp2) %>% 
+  mutate(order = fct_relevel(order, "second"))
 
 
 
@@ -3748,7 +3749,7 @@ df.tmp = df.exp2_made_children %>%
   mutate(question = as_factor(question),
          question = fct_relevel(question, "lexical"),
          order = as_factor(made_question_order),
-         order = fct_relevel(order, "second")) %>% 
+         order = fct_relevel(order, "first")) %>% 
    group_by(participant) %>%
    filter(row_number() <= 2) %>%
   ungroup()  %>% 
@@ -3765,7 +3766,7 @@ df.tmp2 = df.exp2_made_children %>%
          order = str_replace_all(order, "second", "first"),
          order = str_replace_all(order, "temp_placeholder", "second"),
          order = as_factor(order),
-         order = fct_relevel(order, "second")) %>% 
+         order = fct_relevel(order, "first")) %>% 
   group_by(participant) %>%
   filter(row_number() <= 2) %>%
   ungroup() %>% 
@@ -3828,11 +3829,11 @@ fit.brm.df.exp2.made.children.order
 ```{r}
 
 fit.brm.df.exp2.cause.children.order %>% 
-  emmeans(spec = pairwise ~ order | question, 
+  emmeans(spec = pairwise ~ order | question,
           type = "response")
 
 fit.brm.df.exp2.made.children.order %>% 
-  emmeans(spec = pairwise ~ order | question, 
+  emmeans(spec = pairwise ~ order | question,
           type = "response")
 ```
 
