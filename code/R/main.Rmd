@@ -111,6 +111,10 @@ df.exp1_cause_adults = df.exp1_cause_adults %>%
          question = str_replace_all(question, "cause", "caused")) %>% 
   rename(scenario = verb)
 
+
+df.exp1_cause_adults %>% 
+  summarise(n_distinct(participant))
+
 ```
 
 ##### Demographics
