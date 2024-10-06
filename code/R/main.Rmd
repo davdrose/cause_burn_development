@@ -44,7 +44,8 @@ options(dplyr.summarise.inform = F)
 # Helper functions 
 
 ```{r}
-# for color gradients 
+
+# for color gradients
 make_gradient = function(deg = 45, n = 100, cols = blues9) {
   cols = colorRampPalette(cols)(n + 1)
   rad = deg / (180 / pi)
@@ -65,7 +66,7 @@ make_gradient = function(deg = 45, n = 100, cols = blues9) {
   grid::rasterGrob(
     image = mat,
     width = unit(1, "npc"),
-    height = unit(1, "npc"), 
+    height = unit(1, "npc"),
     interpolate = TRUE
   )
 }
@@ -651,14 +652,15 @@ df.textboxes = tibble(
   difference = c(Inf, Inf)
 )
 
+
 p1 = ggplot(mapping = aes(x = age,
                           y = difference,
-                          color = question)) + 
+                          color = question)) +
   annotation_custom(grob = gradient,
                     xmin = -Inf,
                     xmax = Inf,
                     ymin = -Inf,
-                    ymax = Inf) + 
+                    ymax = Inf) +
   geom_textbox(data = df.textboxes,
                mapping = aes(label = question,
                              fill = question),
@@ -669,7 +671,7 @@ p1 = ggplot(mapping = aes(x = age,
                width = unit(7.6, "cm"),
                box.size = unit(0.5, "cm"),
                color = "black",
-               alpha = 0.8) + 
+               alpha = 0.8) +
   geom_hline(yintercept = 0.5,
              linetype = "dashed",
              color = "black") +
@@ -693,14 +695,13 @@ p1 = ggplot(mapping = aes(x = age,
                   size = 0.75) +
   facet_wrap(~ factor(question,
                      levels = c("lexical",
-                                "caused"))) + 
+                                "caused"))) +
   scale_fill_manual(values = c("lexical" = "#4DAF4A",
-                               "caused" = "#FF7F00")) + 
+                               "caused" = "#FF7F00")) +
   scale_shape_manual(values = c("child" = 21,
                                 "adult" = 23)) +
   scale_x_continuous(breaks = 4:10,
-                     limits = c(3.8, 10.2),
-                     expand = expansion(add = c(0, 0))) +
+                     limits = c(3.8, 10.2)) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
                      labels = c("100% \n proximal", "75%", "50%", "75%", "100% \n distal"),
                      limits = c(0, 1),
@@ -710,13 +711,13 @@ p1 = ggplot(mapping = aes(x = age,
   theme(legend.position = "none",
         axis.text.y = element_text(size = 12),
         axis.title.y = element_text(size = 16),
-        axis.text.x = element_blank(),
         strip.background = element_blank(),
         strip.text = element_blank(),
+        axis.text.x = element_blank(),
         axis.title.x = element_blank(),
         plot.margin = margin(t = 1.2, r = 0.1, b = 0.5, l = 0, "cm"))
-  
-p1
+
+
 ```
 
 
@@ -749,115 +750,83 @@ df.means = df.chain_made_adults %>%
     pivot_wider(names_from = index,
                 values_from = response) %>%
   mutate(age_whole = fct_recode(age_whole, "10" = "adults"),
-         age_whole = as.numeric(as.character(age_whole)))
+         age_whole = as.numeric(as.character(age_whole)),
+         age_index = ifelse(age_whole == 10, "adult", "child"))
 
 
-gradient_segments = data.frame(
-  x = rep(min(df.means$age_whole), 100),
-  xend = rep(max(df.means$age_whole), 100),
-  y = seq(0, 1, length.out = 100),
-  yend = seq(0, 1, length.out = 100),
-  color = scales::gradient_n_pal(c("#377EB8", "#E41A1C"))(seq(0, 1, length.out = 100))
+
+gradient = make_gradient(deg = 90, n = 500, cols = brewer.pal(9, "RdBu"))
+df.textboxes = tibble(
+  question = c("lexical", "made"),
+  age = c(-Inf, -Inf),
+  difference = c(Inf, Inf)
 )
-
-# custom_labels = function(breaks) {
-#   counts = df.chain_made_adults %>% 
-#   mutate(age_whole = rep(10)) %>% 
-#   bind_rows(df.chain_made_children) %>% 
-#   mutate(age_whole = factor(age_whole,
-#                             levels = c(4, 5, 6, 7, 8, 9, 10),
-#                             labels = c("4", "5", "6", "7", "8", "9", "Adults"))) %>%
-#   group_by(age_whole) %>%
-#   summarize(count = n_distinct(participant)) %>%
-#     pull(count)
-#   labels = c("4", "5", "6", "7", "8", "9", "Adults")
-#   paste0(labels, "<br><span style='font-size:10px;'>n=", counts, "</span>")
-# }
-
-
-custom_labels = function(breaks) {
-  counts = df.chain_made_adults %>% 
-    mutate(age_whole = rep(10)) %>% 
-    bind_rows(df.chain_made_children) %>% 
-    mutate(age_whole = factor(age_whole,
-                              levels = c(4, 5, 6, 7, 8, 9, 10),
-                              labels = c("4", "5", "6", "7", "8", "9", "Adults"))) %>%
-    group_by(age_whole) %>%
-    summarize(count = n_distinct(participant)) %>%
-    pull(count)
-  labels = c(paste0("<span style='font-size:10px;'>(n=", counts[1], ")</span>"),
-             paste0("<span style='font-size:10px;'>(", counts[-1], ")</span>"))
-  return(labels)
-}
-
-
 
 
 p2 = ggplot(mapping = aes(x = age,
-                     y = difference,
-                     color = question)) +
-    geom_segment(data = gradient_segments,
-               aes(x = 3.8, 
-                   xend = 10.2, 
-                   y = y, 
-                   yend = yend, 
-                   color = I(color)),
-               size = 1.1,
-               alpha = .9) +
-  geom_hline(yintercept = 0.5, linetype = "dashed", color = "black") +
+                          y = difference,
+                          color = question)) +
+  annotation_custom(grob = gradient,
+                    xmin = -Inf,
+                    xmax = Inf,
+                    ymin = -Inf,
+                    ymax = Inf) +
+  geom_textbox(data = df.textboxes,
+               mapping = aes(label = question,
+                             fill = question),
+               hjust = 0,
+               vjust = -0.1,
+               halign = 0.5,
+               size = 6,
+               width = unit(7.6, "cm"),
+               box.size = unit(0.5, "cm"),
+               color = "black",
+               alpha = 0.8) +
+  geom_hline(yintercept = 0.5,
+             linetype = "dashed",
+             color = "black") +
   geom_smooth(data = df.prediction,
               mapping = aes(y = estimate,
                             ymin = q10,
-                            ymax = q90,
-                            color = question,
-                            fill = question),
+                            ymax = q90),
               stat = "identity",
-              alpha = 0.2,
+              color = "black",
+              fill = "gray80",
+              alpha = 0.5,
               show.legend = F) +
   geom_pointrange(data = df.means,
                   mapping = aes(x = age_whole,
                                 y = response,
                                 ymin = low,
                                 ymax = high,
-                                shape = question),
+                                shape = age_index),
                   color = "black",
                   fill = "white",
-                  size = 0.5,
-                  show.legend = TRUE,
-                  alpha = 0.8,
-                  position = position_dodge(width = 0.3)) +
-  scale_fill_manual(values = c("made" = "black",
-                               "lexical" = "black")) +
-  scale_color_manual(values = c("made" = "black",
-                                "lexical" = "black")) +
-  scale_shape_manual(values = c("made" = 21,
-                               "lexical" = 23)) +
+                  size = 0.75) +
+  facet_wrap(~ factor(question,
+                     levels = c("lexical",
+                                "caused"))) +
+  scale_fill_manual(values = c("lexical" = "#4DAF4A",
+                               "made" = "#FFFF33")) +
+  scale_shape_manual(values = c("child" = 21,
+                                "adult" = 23)) +
+  scale_x_continuous(breaks = 4:10,
+                     limits = c(3.8, 10.2)) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
                      labels = c("100% \n proximal", "75%", "50%", "75%", "100% \n distal"),
-                      limits = c(0, 1)) +
- scale_x_continuous(breaks = 4:10,
-                    labels = custom_labels(labels),
-                    limits = c(3.8, 10.2)) +
+                     limits = c(0, 1),
+                     expand = expansion(add = c(0, 0))) +
+  coord_cartesian(clip = "off") +
   labs(y = "Probability of selecting \n proximal or distal cause") +
   theme(legend.position = "none",
-        legend.title = element_blank(),
-        text = element_text(size = 18),
-        axis.text.x = element_markdown(),
-        axis.title.x = element_blank()) +
-  facet_wrap(~factor(question,
-             levels = c("lexical", "made"))) 
+        axis.text.y = element_text(size = 12),
+        axis.title.y = element_text(size = 16),
+        strip.background = element_blank(),
+        strip.text = element_blank(),
+        axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        plot.margin = margin(t = 1.2, r = 0.1, b = 0.5, l = 0, "cm"))
 
-p2 
-
-
-question == "lexical" = "#4DAF4A",  "made" ~ "#FFFF33"
-                                                         
-
-display.brewer.pal(n = 8, name = 'Set1')
- 
-brewer.pal(n = 8, name = 'Set1')
-
-lexcial = "#4DAF4A", caused = "#FF7F00", made = "#FFFF33"
 
 ```
 
@@ -885,21 +854,6 @@ df.plot = df.exp1_cause_adults %>%
   mutate(question = factor(question, levels = c("lexical", "caused")),
          response_pattern = factor(response_pattern, levels = c("distal only", "proximal only", "both", "neither")))
 
-# custom_labels = function(breaks) {
-#   counts = df.exp1_cause_adults %>%
-#   mutate(age_whole = rep(10)) %>%
-#   bind_rows(df.exp1_cause_children) %>%
-#   mutate(age_whole = factor(age_whole,
-#                             levels = c(4, 5, 6, 7, 8, 9, 10),
-#                             labels = c("4", "5", "6", "7", "8", "9", "Adults"))) %>%
-#   group_by(age_whole) %>%
-#   summarize(count = n_distinct(participant)) %>%
-#     pull(count)
-#   labels = c("4", "5", "6", "7", "8", "9", "Adults")
-#   paste0(labels, "<br><span style='font-size:10px;'>n=", counts, "</span>")
-# }
-
-
 
 
 custom_labels = function(breaks) {
@@ -914,11 +868,12 @@ custom_labels = function(breaks) {
     pull(count)
   
   labels = c("4", "5", "6", "7", "8", "9", "Adults")
-  counts_label1 = paste0("<span style='font-size:10px;'>(n=", counts[1], ")</span>")
-  counts_label2 = paste0("<span style='font-size:10px;'>(", counts[-1], ")</span>")
+  labels_with_size = paste0("<span style='font-size:16px;'>", labels, "</span>")
+  counts_label1 = paste0("<span style='font-size:12px;'>(n=", counts[1], ")</span>")
+  counts_label2 = paste0("<span style='font-size:12px;'>(", counts[-1], ")</span>")
   
-  combined_labels = c(paste0(labels[1], "<br>", counts_label1), 
-                       paste0(labels[-1], "<br>", counts_label2))
+  combined_labels = c(paste0(labels_with_size[1], "<br>", counts_label1), 
+                       paste0(labels_with_size[-1], "<br>", counts_label2))
   return(combined_labels)
 }
 
@@ -942,21 +897,27 @@ p3 = ggplot(data = df.plot,
                                 "neither" = "#999999")) +
   scale_shape_manual(values = c(21, 23)) +
   scale_y_continuous(breaks = seq(0, 100, 25),
-                     labels = str_c(seq(0, 100, 25), "%")) +
+                     labels = str_c(seq(0, 100, 25), "%"),
+                     expand = expansion(add = c(0, 0))) +
   scale_x_discrete(breaks = 4:10,
-                  labels = custom_labels(labels)) +
+                  labels = custom_labels(labels),
+                  expand = expansion(add = c(0, 0))) +
+  coord_cartesian(clip = "off") +
   labs(y = "Response pattern \n\ probability") +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
-        text = element_text(size = 18),
+        axis.text.y = element_text(size = 12),
+        axis.title.y = element_text(size = 16),
         axis.text.x = element_markdown(),
         axis.title.x = element_blank(),
         strip.background = element_blank(),
         strip.text = element_blank()) +
   facet_wrap(~question)
 
-p3
 
+
+
+     
 ```
 
 ##### Made v Lexical
@@ -981,19 +942,6 @@ df.plot = df.exp1_made_adults %>%
   mutate(question = factor(question, levels = c("lexical", "made")),
          response_pattern = factor(response_pattern, levels = c("distal only", "proximal only", "both", "neither")))
 
-# custom_labels = function(breaks) {
-#   counts = df.exp1_made_adults %>% 
-#   mutate(age_whole = rep(10)) %>% 
-#   bind_rows(df.exp1_made_children) %>% 
-#   mutate(age_whole = factor(age_whole,
-#                             levels = c(4, 5, 6, 7, 8, 9, 10),
-#                             labels = c("4", "5", "6", "7", "8", "9", "Adults"))) %>%
-#   group_by(age_whole) %>%
-#   summarize(count = n_distinct(participant)) %>%
-#     pull(count)
-#   labels = c("4", "5", "6", "7", "8", "9", "Adults")
-#   paste0(labels, "<br><span style='font-size:10px;'>n=", counts, "</span>")
-# }
 
 custom_labels = function(breaks) {
   counts = df.exp1_made_adults %>%
@@ -1007,11 +955,12 @@ custom_labels = function(breaks) {
     pull(count)
   
   labels = c("4", "5", "6", "7", "8", "9", "Adults")
-  counts_label1 = paste0("<span style='font-size:10px;'>(n=", counts[1], ")</span>")
-  counts_label2 = paste0("<span style='font-size:10px;'>(", counts[-1], ")</span>")
+   labels_with_size = paste0("<span style='font-size:16px;'>", labels, "</span>")
+  counts_label1 = paste0("<span style='font-size:12px;'>(n=", counts[1], ")</span>")
+  counts_label2 = paste0("<span style='font-size:12px;'>(", counts[-1], ")</span>")
   
-  combined_labels = c(paste0(labels[1], "<br>", counts_label1), 
-                       paste0(labels[-1], "<br>", counts_label2))
+  combined_labels = c(paste0(labels_with_size[1], "<br>", counts_label1), 
+                       paste0(labels_with_size[-1], "<br>", counts_label2))
   return(combined_labels)
 }
 
@@ -1032,35 +981,45 @@ p4 = ggplot(data = df.plot,
                                 "both" = "#984EA3",
                                 "neither" = "#999999")) +
   scale_shape_manual(values = c(21, 23)) +
-  scale_y_continuous(breaks = seq(0, 100, 25),
-                     labels = str_c(seq(0, 100, 25), "%")) +
+scale_y_continuous(breaks = seq(0, 100, 25),
+                     labels = str_c(seq(0, 100, 25), "%"),
+                     expand = expansion(add = c(0, 0))) +
   scale_x_discrete(breaks = 4:10,
-                    labels = custom_labels(labels)) +
+                  labels = custom_labels(labels),
+                  expand = expansion(add = c(0, 0))) +
+  coord_cartesian(clip = "off") +
   labs(y = "Response pattern \n\ probability") +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
-        text = element_text(size = 18),
+        axis.text.y = element_text(size = 12),
+        axis.title.y = element_text(size = 16),
         axis.text.x = element_markdown(),
         axis.title.x = element_blank(),
         strip.background = element_blank(),
         strip.text = element_blank()) +
   facet_wrap(~question)
 
-p4
-
 
 ```
 ### Combine Cause and Made Plots
-```{r fig.height=5, fig.width=18, message=FALSE, warning=FALSE}
+```{r fig.height=8, fig.width=15.2, message=FALSE, warning=FALSE}
 
+design = "
+1122
+3344
+5555
+"    
 plot = p1 + p2 + p3 + p4 +
-plot_layout(nrow = 2) &
+guide_area() + plot_layout(design=design, guides = "collect", heights = c(1, 1, 0.2)) &
 plot_annotation(tag_levels = "A") &
 theme(plot.tag = element_text(face = "bold"))
 
-ggsave(plot, filename = "../../figures/experiment1/chain_response_patterns_age.pdf", height = 8, width = 16)
+ggsave(plot, filename = "../../figures/experiment1/chain_response_patterns.pdf", height = 8, width = 15.2)
 
 plot
+
+
+
 
 
 ```
@@ -1692,85 +1651,81 @@ df.means = df.absence_cause_adults %>%
     pivot_wider(names_from = index,
                 values_from = response) %>%
   mutate(age_whole = fct_recode(age_whole, "10" = "adults"),
-         age_whole = as.numeric(as.character(age_whole)))
+         age_whole = as.numeric(as.character(age_whole)),
+         age_index = ifelse(age_whole == 10, "adult", "child"))
 
-
-gradient_segments = data.frame(
-  x = rep(min(df.means$age_whole), 100),
-  xend = rep(max(df.means$age_whole), 100),
-  y = seq(0, 1, length.out = 100),
-  yend = seq(0, 1, length.out = 100),
-  color = scales::gradient_n_pal(c("#377EB8", "#E41A1C"))(seq(0, 1, length.out = 100))
+gradient = make_gradient(deg = 90, n = 500, cols = brewer.pal(9, "RdBu"))
+df.textboxes = tibble(
+  question = c("lexical", "caused"),
+  age = c(-Inf, -Inf),
+  difference = c(Inf, Inf)
 )
-
-custom_labels = function(breaks) {
-  counts = df.absence_cause_adults %>% 
-  mutate(age_whole = rep(10)) %>% 
-  bind_rows(df.absence_cause_children) %>% 
-  mutate(age_whole = factor(age_whole,
-                            levels = c(4, 5, 6, 7, 8, 9, 10),
-                            labels = c("4", "5", "6", "7", "8", "9", "Adults"))) %>%
-  group_by(age_whole) %>%
-  summarize(count = n_distinct(participant)) %>%
-    pull(count)
-  labels = c("4", "5", "6", "7", "8", "9", "Adults")
-  paste0(labels, "<br><span style='font-size:10px;'>n=", counts, "</span>")
-}
 
 
 p5 = ggplot(mapping = aes(x = age,
-                     y = difference,
-                     color = question)) +
-    geom_segment(data = gradient_segments,
-               aes(x = 3.9, 
-                   xend = 10.1, 
-                   y = y, 
-                   yend = yend, 
-                   color = I(color)),
-               size = 1.1) +
-  geom_hline(yintercept = 0.5, linetype = "dashed", color = "black") +
+                          y = difference,
+                          color = question)) +
+  annotation_custom(grob = gradient,
+                    xmin = -Inf,
+                    xmax = Inf,
+                    ymin = -Inf,
+                    ymax = Inf) +
+  geom_textbox(data = df.textboxes,
+               mapping = aes(label = question,
+                             fill = question),
+               hjust = 0,
+               vjust = -0.1,
+               halign = 0.5,
+               size = 6,
+               width = unit(7.6, "cm"),
+               box.size = unit(0.5, "cm"),
+               color = "black",
+               alpha = 0.8) +
+  geom_hline(yintercept = 0.5,
+             linetype = "dashed",
+             color = "black") +
   geom_smooth(data = df.prediction,
               mapping = aes(y = estimate,
                             ymin = q10,
-                            ymax = q90,
-                            color = question,
-                            fill = question),
+                            ymax = q90),
               stat = "identity",
-              alpha = 0.2,
+              color = "black",
+              fill = "gray80",
+              alpha = 0.5,
               show.legend = F) +
   geom_pointrange(data = df.means,
                   mapping = aes(x = age_whole,
                                 y = response,
                                 ymin = low,
                                 ymax = high,
-                                shape = question),
+                                shape = age_index),
                   color = "black",
                   fill = "white",
-                  size = 0.5,
-                  show.legend = TRUE,
-                  alpha = 0.8,
-                  position = position_dodge(width = 0.3)) +
-  scale_fill_manual(values = c("caused" = "black",
-                               "lexical" = "black")) +
-  scale_color_manual(values = c("caused" = "black",
-                                "lexical" = "black")) +
-  scale_shape_manual(values = c("caused" = 21,
-                               "lexical" = 23)) +
+                  size = 0.75) +
+  facet_wrap(~ factor(question,
+                     levels = c("lexical",
+                                "caused"))) +
+  scale_fill_manual(values = c("lexical" = "#4DAF4A",
+                               "caused" = "#FF7F00")) +
+  scale_shape_manual(values = c("child" = 21,
+                                "adult" = 23)) +
+  scale_x_continuous(breaks = 4:10,
+                     limits = c(3.8, 10.2)) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
                      labels = c("100% \n direct", "75%", "50%", "75%", "100% \n absent"),
-                      limits = c(0, 1)) +
- scale_x_continuous(breaks = 4:10,
-                    labels = custom_labels(labels),
-                    limits = c(3.9, 10.1)) +
+                     limits = c(0, 1),
+                     expand = expansion(add = c(0, 0))) +
+  coord_cartesian(clip = "off") +
   labs(y = "Probability of selecting \n direct or absent cause") +
   theme(legend.position = "none",
-        legend.title = element_blank(),
-        text = element_text(size = 18),
-        axis.text.x = element_markdown(),
-        axis.title.x = element_blank()) +
-  facet_wrap(~factor(question,
-             levels = c("lexical", "caused"))) 
- 
+        axis.text.y = element_text(size = 12),
+        axis.title.y = element_text(size = 16),
+        strip.background = element_blank(),
+        strip.text = element_blank(),
+        axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        plot.margin = margin(t = 1.2, r = 0.1, b = 0.5, l = 0, "cm"))
+
 
 ```
 
@@ -1804,85 +1759,81 @@ df.means = df.absence_made_adults %>%
     pivot_wider(names_from = index,
                 values_from = response) %>%
   mutate(age_whole = fct_recode(age_whole, "10" = "adults"),
-         age_whole = as.numeric(as.character(age_whole)))
+         age_whole = as.numeric(as.character(age_whole)),
+         age_index = ifelse(age_whole == 10, "adult", "child"))
 
-
-gradient_segments = data.frame(
-  x = rep(min(df.means$age_whole), 100),
-  xend = rep(max(df.means$age_whole), 100),
-  y = seq(0, 1, length.out = 100),
-  yend = seq(0, 1, length.out = 100),
-  color = scales::gradient_n_pal(c("#377EB8", "#E41A1C"))(seq(0, 1, length.out = 100))
+gradient = make_gradient(deg = 90, n = 500, cols = brewer.pal(9, "RdBu"))
+df.textboxes = tibble(
+  question = c("lexical", "made"),
+  age = c(-Inf, -Inf),
+  difference = c(Inf, Inf)
 )
-
-custom_labels = function(breaks) {
-  counts = df.absence_made_adults %>% 
-  mutate(age_whole = rep(10)) %>% 
-  bind_rows(df.absence_made_children) %>% 
-  mutate(age_whole = factor(age_whole,
-                            levels = c(4, 5, 6, 7, 8, 9, 10),
-                            labels = c("4", "5", "6", "7", "8", "9", "Adults"))) %>%
-  group_by(age_whole) %>%
-  summarize(count = n_distinct(participant)) %>%
-    pull(count)
-  labels = c("4", "5", "6", "7", "8", "9", "Adults")
-  paste0(labels, "<br><span style='font-size:10px;'>n=", counts, "</span>")
-}
 
 
 p6 = ggplot(mapping = aes(x = age,
-                     y = difference,
-                     color = question)) +
-    geom_segment(data = gradient_segments,
-               aes(x = 3.9, 
-                   xend = 10.1, 
-                   y = y, 
-                   yend = yend, 
-                   color = I(color)),
-               size = 1.1) +
-  geom_hline(yintercept = 0.5, linetype = "dashed", color = "black") +
+                          y = difference,
+                          color = question)) +
+  annotation_custom(grob = gradient,
+                    xmin = -Inf,
+                    xmax = Inf,
+                    ymin = -Inf,
+                    ymax = Inf) +
+  geom_textbox(data = df.textboxes,
+               mapping = aes(label = question,
+                             fill = question),
+               hjust = 0,
+               vjust = -0.1,
+               halign = 0.5,
+               size = 6,
+               width = unit(7.6, "cm"),
+               box.size = unit(0.5, "cm"),
+               color = "black",
+               alpha = 0.8) +
+  geom_hline(yintercept = 0.5,
+             linetype = "dashed",
+             color = "black") +
   geom_smooth(data = df.prediction,
               mapping = aes(y = estimate,
                             ymin = q10,
-                            ymax = q90,
-                            color = question,
-                            fill = question),
+                            ymax = q90),
               stat = "identity",
-              alpha = 0.2,
+              color = "black",
+              fill = "gray80",
+              alpha = 0.5,
               show.legend = F) +
   geom_pointrange(data = df.means,
                   mapping = aes(x = age_whole,
                                 y = response,
                                 ymin = low,
                                 ymax = high,
-                                shape = question),
+                                shape = age_index),
                   color = "black",
                   fill = "white",
-                  size = 0.5,
-                  show.legend = TRUE,
-                  alpha = 0.8,
-                  position = position_dodge(width = 0.3)) +
-  scale_fill_manual(values = c("made" = "black",
-                               "lexical" = "black")) +
-  scale_color_manual(values = c("made" = "black",
-                                "lexical" = "black")) +
-  scale_shape_manual(values = c("made" = 21,
-                               "lexical" = 23)) +
+                  size = 0.75) +
+  facet_wrap(~ factor(question,
+                     levels = c("lexical",
+                                "caused"))) +
+  scale_fill_manual(values = c("lexical" = "#4DAF4A",
+                               "made" = "#FFFF33")) +
+  scale_shape_manual(values = c("child" = 21,
+                                "adult" = 23)) +
+  scale_x_continuous(breaks = 4:10,
+                     limits = c(3.8, 10.2)) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
                      labels = c("100% \n direct", "75%", "50%", "75%", "100% \n absent"),
-                      limits = c(0, 1)) +
- scale_x_continuous(breaks = 4:10,
-                    labels = custom_labels(labels),
-                    limits = c(3.9, 10.1)) +
+                     limits = c(0, 1),
+                     expand = expansion(add = c(0, 0))) +
+  coord_cartesian(clip = "off") +
   labs(y = "Probability of selecting \n direct or absent cause") +
   theme(legend.position = "none",
-        legend.title = element_blank(),
-        text = element_text(size = 18),
-        axis.text.x = element_markdown(),
-        axis.title.x = element_blank()) +
-  facet_wrap(~factor(question,
-             levels = c("lexical", "made"))) 
- 
+        axis.text.y = element_text(size = 12),
+        axis.title.y = element_text(size = 16),
+        strip.background = element_blank(),
+        strip.text = element_blank(),
+        axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        plot.margin = margin(t = 1.2, r = 0.1, b = 0.5, l = 0, "cm"))
+
 
 ```
 
@@ -1910,18 +1861,27 @@ df.plot = df.exp2_cause_adults %>%
   mutate(question = factor(question, levels = c("lexical", "caused")),
          response_pattern = factor(response_pattern, levels = c("absence only", "direct only", "both", "neither")))
 
+
+
 custom_labels = function(breaks) {
-  counts = df.exp2_cause_adults %>% 
-  mutate(age_whole = rep(10)) %>% 
-  bind_rows(df.exp2_cause_children) %>% 
-  mutate(age_whole = factor(age_whole,
-                            levels = c(4, 5, 6, 7, 8, 9, 10),
-                            labels = c("4", "5", "6", "7", "8", "9", "Adults"))) %>%
-  group_by(age_whole) %>%
-  summarize(count = n_distinct(participant)) %>%
+  counts = df.exp2_cause_adults %>%
+    mutate(age_whole = 10) %>%
+    bind_rows(df.exp2_cause_children) %>%
+    mutate(age_whole = factor(age_whole,
+                              levels = c(4, 5, 6, 7, 8, 9, 10),
+                              labels = c("4", "5", "6", "7", "8", "9", "Adults"))) %>%
+    group_by(age_whole) %>%
+    summarize(count = n_distinct(participant)) %>%
     pull(count)
+  
   labels = c("4", "5", "6", "7", "8", "9", "Adults")
-  paste0(labels, "<br><span style='font-size:10px;'>n=", counts, "</span>")
+  labels_with_size = paste0("<span style='font-size:16px;'>", labels, "</span>")
+  counts_label1 = paste0("<span style='font-size:12px;'>(n=", counts[1], ")</span>")
+  counts_label2 = paste0("<span style='font-size:12px;'>(", counts[-1], ")</span>")
+  
+  combined_labels = c(paste0(labels_with_size[1], "<br>", counts_label1), 
+                       paste0(labels_with_size[-1], "<br>", counts_label2))
+  return(combined_labels)
 }
 
 
@@ -1942,16 +1902,24 @@ p7 = ggplot(data = df.plot,
                                 "neither" = "#999999")) +
   scale_shape_manual(values = c(21, 23)) +
   scale_y_continuous(breaks = seq(0, 100, 25),
-                     labels = str_c(seq(0, 100, 25), "%")) +
-  scale_x_discrete(breaks = 4:10,
-                  labels = custom_labels(labels)) +
+                     labels = str_c(seq(0, 100, 25), "%"),
+                     expand = expansion(add = c(0, 0))) +
+ scale_x_discrete(breaks = 4:10,
+                  labels = custom_labels(labels),
+                  expand = expansion(add = c(0, 0))) +
+  coord_cartesian(clip = "off") +
   labs(y = "Response pattern \n\ probability") +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
-        text = element_text(size = 18),
+        axis.text.y = element_text(size = 12),
+        axis.title.y = element_text(size = 16),
         axis.text.x = element_markdown(),
-        axis.title.x = element_blank()) +
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        strip.text = element_blank()) +
   facet_wrap(~question)
+
+
 
 ```
 
@@ -1977,18 +1945,26 @@ df.plot = df.exp2_made_adults %>%
   mutate(question = factor(question, levels = c("lexical", "made")),
          response_pattern = factor(response_pattern, levels = c("absence only", "direct only", "both", "neither")))
 
+
 custom_labels = function(breaks) {
-  counts = df.exp2_made_adults %>% 
-  mutate(age_whole = rep(10)) %>% 
-  bind_rows(df.exp2_made_children) %>% 
-  mutate(age_whole = factor(age_whole,
-                            levels = c(4, 5, 6, 7, 8, 9, 10),
-                            labels = c("4", "5", "6", "7", "8", "9", "Adults"))) %>%
-  group_by(age_whole) %>%
-  summarize(count = n_distinct(participant)) %>%
+  counts = df.exp2_made_adults %>%
+    mutate(age_whole = 10) %>%
+    bind_rows(df.exp2_made_children) %>%
+    mutate(age_whole = factor(age_whole,
+                              levels = c(4, 5, 6, 7, 8, 9, 10),
+                              labels = c("4", "5", "6", "7", "8", "9", "Adults"))) %>%
+    group_by(age_whole) %>%
+    summarize(count = n_distinct(participant)) %>%
     pull(count)
+  
   labels = c("4", "5", "6", "7", "8", "9", "Adults")
-  paste0(labels, "<br><span style='font-size:10px;'>n=", counts, "</span>")
+  labels_with_size = paste0("<span style='font-size:16px;'>", labels, "</span>")
+  counts_label1 = paste0("<span style='font-size:12px;'>(n=", counts[1], ")</span>")
+  counts_label2 = paste0("<span style='font-size:12px;'>(", counts[-1], ")</span>")
+  
+  combined_labels = c(paste0(labels_with_size[1], "<br>", counts_label1), 
+                       paste0(labels_with_size[-1], "<br>", counts_label2))
+  return(combined_labels)
 }
 
 
@@ -2008,31 +1984,40 @@ p8 = ggplot(data = df.plot,
                                 "both" = "#984EA3",
                                 "neither" = "#999999")) +
   scale_shape_manual(values = c(21, 23)) +
-  scale_y_continuous(breaks = seq(0, 100, 25),
-                     labels = str_c(seq(0, 100, 25), "%")) +
-  scale_x_discrete(breaks = 4:10,
-                    labels = custom_labels(labels)) +
+   scale_y_continuous(breaks = seq(0, 100, 25),
+                     labels = str_c(seq(0, 100, 25), "%"),
+                     expand = expansion(add = c(0, 0))) +
+ scale_x_discrete(breaks = 4:10,
+                  labels = custom_labels(labels),
+                  expand = expansion(add = c(0, 0))) +
+  coord_cartesian(clip = "off") +
   labs(y = "Response pattern \n\ probability") +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
-        text = element_text(size = 18),
+        axis.text.y = element_text(size = 12),
+        axis.title.y = element_text(size = 16),
         axis.text.x = element_markdown(),
-        axis.title.x = element_blank()) +
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        strip.text = element_blank()) +
   facet_wrap(~question)
 
 
 ```
 ### Combine Cause and Made Plots
-```{r fig.height=5, fig.width=18, message=FALSE, warning=FALSE}
+```{r fig.height=8, fig.width=14.95, message=FALSE, warning=FALSE}
 
+design = "
+1122
+3344
+5555
+"    
 plot = p5 + p6 + p7 + p8 +
-plot_layout(nrow = 2) &
+guide_area() + plot_layout(design=design, guides = "collect", heights = c(1, 1, 0.2)) &
 plot_annotation(tag_levels = "A") &
 theme(plot.tag = element_text(face = "bold"))
 
-ggsave(plot, filename = "../../figures/experiment2/absence_response_patterns_age.pdf", height = 8, width = 16)
-
-plot
+ggsave(plot, filename = "../../figures/experiment2/absence_response_patterns.pdf", height = 8, width = 14.95)
 
 
 ```
@@ -2327,7 +2312,13 @@ custom_labels = function(breaks) {
     summarize(count = n_distinct(participant)) %>%
     pull(count)
   labels = c("4", "5", "6", "Adults")
-  paste0(labels, "<br><span style='font-size:10px;'>n=", counts, "</span>")
+  labels_with_size = paste0("<span style='font-size:16px;'>", labels, "</span>")
+  counts_label1 = paste0("<span style='font-size:12px;'>(n=", counts[1], ")</span>")
+  counts_label2 = paste0("<span style='font-size:12px;'>(", counts[-1], ")</span>")
+  
+  combined_labels = c(paste0(labels_with_size[1], "<br>", counts_label1), 
+                       paste0(labels_with_size[-1], "<br>", counts_label2))
+  return(combined_labels)
 }
 
 
@@ -2347,19 +2338,25 @@ ggplot(data = df.plot,
                                 "both" = "#984EA3",
                                 "neither" = "#999999")) +
   scale_shape_manual(values = c(21, 23)) +
-  scale_y_continuous(breaks = seq(0, 100, 25),
-                     labels = str_c(seq(0, 100, 25), "%")) +
-  scale_x_discrete(breaks = 4:7,
-                   labels = custom_labels(labels)) +
+   scale_y_continuous(breaks = seq(0, 100, 25),
+                     labels = str_c(seq(0, 100, 25), "%"),
+                     expand = expansion(add = c(0, 0))) +
+ scale_x_discrete(breaks = 4:7,
+                  labels = custom_labels(labels),
+                  expand = expansion(add = c(0, 0))) +
+  coord_cartesian(clip = "off") +
   labs(y = "Response pattern \n\ probability") +
- theme(legend.position = "bottom",
+  theme(legend.position = "bottom",
         legend.title = element_blank(),
-        text = element_text(size = 18),
+        axis.text.y = element_text(size = 12),
+        axis.title.y = element_text(size = 16),
         axis.text.x = element_markdown(),
-        axis.title.x = element_blank())
+        axis.title.x = element_blank(),
+        strip.background = element_blank(),
+        strip.text = element_blank()) 
 
 
-ggsave("../../figures/experiment3/explanation_response_patterns_age.pdf", height = 4, width = 6)
+ggsave("../../figures/experiment3/explanation_response_patterns.pdf", height = 4, width = 6)
 
 ```
 
