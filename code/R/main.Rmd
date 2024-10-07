@@ -2745,65 +2745,104 @@ fit.brm.cause.made.children.proximal
 
 ```{r}
 
-df.exp1_cause_children_order = df.exp1_cause_children %>% 
-  mutate(question = as_factor(question),
-         question = fct_relevel(question, "lexical"),
-         order = as_factor(caused_question_order),
-         order = fct_relevel(order, "second")) %>% 
-  group_by(participant) %>%
-  filter(row_number() <= 2) %>%
-  ungroup() %>% 
-  filter(question == "caused") %>% 
-  mutate(difference = distal - proximal,
-         difference = recode(difference, `-1` = 0))
 
-df.exp1_cause_lexical_children_order = df.exp1_cause_children %>% 
-  mutate(question = as_factor(question),
-         question = fct_relevel(question, "lexical"),
-         order = as_factor(caused_question_order),
-         order = fct_relevel(order, "second"),
-         order = str_replace_all(order, "first", "temp_placeholder"),
-         order = str_replace_all(order, "second", "first"),
-         order = str_replace_all(order, "temp_placeholder", "second"),
-         order = as_factor(order),
-         order = fct_relevel(order, "second")) %>% 
+
+#### CAUSE #####
+
+df.tmp1 = df.exp1_cause_children %>% 
+  mutate(order = as_factor(caused_question_order)) %>% 
+   group_by(participant) %>%
+   filter(row_number() <= 2) %>%
+  ungroup()  %>% 
+  filter(question == "caused") 
+
+df.tmp2 = df.exp1_cause_children %>% 
   group_by(participant) %>%
   filter(row_number() <= 2) %>%
   ungroup() %>% 
   filter(question == "lexical") %>% 
+   mutate(order = case_when(caused_question_order == "second" ~ "first",
+                           caused_question_order == "first" ~ "second"))
+
+df.exp1_cause_children_order_different = df.tmp1 %>% 
+  bind_rows(df.tmp2)  %>%
+  mutate(response_pattern = case_when(
+    distal == 1 & proximal == 1 ~ "both",
+    distal == 0 & proximal == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "different") %>%
   mutate(difference = distal - proximal,
-         difference = recode(difference, `-1` = 0))
+        difference = recode(difference, `-1` = 0))
+
+df.exp1_cause_children_order_both = df.tmp1 %>% 
+  bind_rows(df.tmp2)  %>%
+  mutate(response_pattern = case_when(
+    distal == 1 & proximal == 1 ~ "both",
+    distal == 0 & proximal == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "both")
+  
+  
+df.exp1_cause_children_order_both = df.exp1_cause_children_order_both %>% 
+  mutate(difference = 1) %>%
+  bind_rows(df.exp1_cause_children_order_both %>% 
+              mutate(difference = 0)) 
+
+df.exp1_cause_children_order = df.exp1_cause_children_order_different %>% 
+  bind_rows(df.exp1_cause_children_order_both) %>% 
+  mutate(order = as_factor(order),
+         order = fct_relevel(order, "second"))
 
 
-df.exp1_made_children_order = df.exp1_made_children %>% 
-  mutate(question = as_factor(question),
-         question = fct_relevel(question, "lexical"),
-         order = as_factor(made_question_order),
-         order = fct_relevel(order, "second")) %>% 
-  group_by(participant) %>%
-  filter(row_number() <= 2) %>%
-  ungroup() %>% 
-  filter(question == "made") %>% 
-  mutate(difference = distal - proximal,
-         difference = recode(difference, `-1` = 0))
+#### MADE #####
 
-df.exp1_made_lexical_children_order = df.exp1_made_children %>% 
-  mutate(question = as_factor(question),
-         question = fct_relevel(question, "lexical"),
-         order = as_factor(made_question_order),
-         order = fct_relevel(order, "second"),
-         order = str_replace_all(order, "first", "temp_placeholder"),
-         order = str_replace_all(order, "second", "first"),
-         order = str_replace_all(order, "temp_placeholder", "second"),
-         order = as_factor(order),
-         order = fct_relevel(order, "second")) %>% 
+df.tmp1 = df.exp1_made_children %>% 
+  mutate(order = as_factor(made_question_order)) %>% 
+   group_by(participant) %>%
+   filter(row_number() <= 2) %>%
+  ungroup()  %>% 
+  filter(question == "made") 
+
+df.tmp2 = df.exp1_made_children %>% 
   group_by(participant) %>%
   filter(row_number() <= 2) %>%
   ungroup() %>% 
   filter(question == "lexical") %>% 
-mutate(difference = distal - proximal,
-       difference = recode(difference, `-1` = 0))
+   mutate(order = case_when(made_question_order == "second" ~ "first",
+                           made_question_order == "first" ~ "second"))
 
+df.exp1_made_children_order_different = df.tmp1 %>% 
+  bind_rows(df.tmp2)  %>%
+  mutate(response_pattern = case_when(
+    distal == 1 & proximal == 1 ~ "both",
+    distal == 0 & proximal == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "different") %>%
+  mutate(difference = distal - proximal,
+        difference = recode(difference, `-1` = 0))
+
+df.exp1_made_children_order_both = df.tmp1 %>% 
+  bind_rows(df.tmp2)  %>%
+  mutate(response_pattern = case_when(
+    distal == 1 & proximal == 1 ~ "both",
+    distal == 0 & proximal == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "both")
+  
+  
+df.exp1_made_children_order_both = df.exp1_made_children_order_both %>% 
+  mutate(difference = 1) %>%
+  bind_rows(df.exp1_made_children_order_both %>% 
+              mutate(difference = 0)) 
+
+df.exp1_made_children_order = df.exp1_made_children_order_different %>% 
+  bind_rows(df.exp1_made_children_order_both) %>% 
+  mutate(order = as_factor(order),
+         order = fct_relevel(order, "second"))
 
 
 
@@ -2820,7 +2859,7 @@ mutate(difference = distal - proximal,
 # Check contrast values
 contrasts(df.exp1_cause_children_order$order)
 
-fit.brm.df.exp1.cause.children.order = brm(formula = difference ~ 1 + order + (1 | participant) + (1 | scenario), 
+fit.brm.exp1.cause.children.order = brm(formula = difference ~ 1 + question*order + (1 | participant) + (1 | scenario), 
                      data = df.exp1_cause_children_order,
                      family = "bernoulli",
                      seed = 1,
@@ -2828,30 +2867,15 @@ fit.brm.df.exp1.cause.children.order = brm(formula = difference ~ 1 + order + (1
                      warmup = 1000,
                      file = "cache/exp1_cause_children_order") 
 
-fit.brm.df.exp1.cause.children.order
+fit.brm.exp1.cause.children.order
 
-
-
-# Check contrast values
-contrasts(df.exp1_cause_lexical_children_order$order)
-
-
-fit.brm.df.exp1.cause.lexical.children.order = brm(formula = difference ~ 1 + order + (1 | participant) + (1 | scenario), 
-                     data = df.exp1_cause_lexical_children_order,
-                     family = "bernoulli",
-                     seed = 1,
-                     iter = 4000,
-                     warmup = 1000,
-                     file = "cache/exp1_cause_lexical_children_order") 
-
-fit.brm.df.exp1.cause.lexical.children.order
 
 
 
 # Check contrast values
 contrasts(df.exp1_made_children_order$order)
 
-fit.brm.df.exp1.made.children.order = brm(formula = difference ~ 1 + order + (1 | participant) + (1 | scenario), 
+fit.brm.exp1.made.children.order = brm(formula = difference ~ 1 + question*order + (1 | participant) + (1 | scenario), 
                      data = df.exp1_made_children_order,
                      family = "bernoulli",
                      seed = 1,
@@ -2859,22 +2883,9 @@ fit.brm.df.exp1.made.children.order = brm(formula = difference ~ 1 + order + (1 
                      warmup = 1000,
                      file = "cache/exp1_made_children_order") 
 
-fit.brm.df.exp1.made.children.order
+fit.brm.exp1.made.children.order
 
 
-
-# Check contrast values
-contrasts(df.exp1_made_lexical_children_order$order)
-
-fit.brm.df.exp1.made.lexical.children.order = brm(formula = difference ~ 1 + order + (1 | participant) + (1 | scenario), 
-                     data = df.exp1_made_lexical_children_order,
-                     family = "bernoulli",
-                     seed = 1,
-                     iter = 4000,
-                     warmup = 1000,
-                     file = "cache/exp1_made_lexical_children_order") 
-
-fit.brm.df.exp1.made.lexical.children.order
 
 ```
 
@@ -2882,20 +2893,12 @@ fit.brm.df.exp1.made.lexical.children.order
 
 ```{r}
 
-fit.brm.df.exp1.cause.children.order %>% 
-  emmeans(spec = pairwise ~ order, 
+fit.brm.exp1.cause.children.order %>% 
+  emmeans(spec = pairwise ~ order | question,
           type = "response")
 
-fit.brm.df.exp1.cause.lexical.children.order %>% 
-  emmeans(spec = pairwise ~ order, 
-          type = "response")
-
-fit.brm.df.exp1.made.children.order %>% 
-  emmeans(spec = pairwise ~ order, 
-          type = "response")
-
-fit.brm.df.exp1.made.lexical.children.order %>% 
-  emmeans(spec = pairwise ~ order, 
+fit.brm.exp1.made.children.order %>% 
+  emmeans(spec = pairwise ~ order | question,
           type = "response")
 
 ```
@@ -3570,8 +3573,9 @@ fit.brm.cause.made.children.absent
 
 ```{r}
 
+#####CAUSE######
 # code order
-df.tmp = df.exp2_cause_adults %>% 
+df.tmp1 = df.exp2_cause_adults %>% 
   group_by(participant) %>% 
   filter(row_number() == 1) %>% 
   mutate(scenario_order = str_c(scenario, "_first"),
@@ -3580,7 +3584,7 @@ df.tmp = df.exp2_cause_adults %>%
          contains("order"))
 
 df.exp2_cause_adults_order = df.exp2_cause_adults %>% 
-  left_join(df.tmp,
+  left_join(df.tmp1,
             by = "participant") %>% 
   relocate(contains("order"), .after = question) %>% 
   mutate(caused_question_order = case_when(question_order == "lexical_first" ~ "second",
@@ -3593,25 +3597,52 @@ df.exp2_cause_adults_order = df.exp2_cause_adults %>%
    filter(row_number() <= 2) %>%
   ungroup()
 
-df.tmp = df.exp2_cause_adults_order %>% 
+df.tmp2 = df.exp2_cause_adults_order %>% 
   filter(question == "caused") %>% 
   mutate(order = caused_question_order)
 
-df.tmp2 = df.exp2_cause_adults_order %>% 
+df.tmp3 = df.exp2_cause_adults_order %>% 
   filter(question == "lexical") %>% 
   mutate(order = case_when(caused_question_order == "second" ~ "first",
                            caused_question_order == "first" ~ "second"))
 
-df.exp2_cause_adults_order = df.tmp %>% 
-  bind_rows(df.tmp2) %>% 
+df.exp2_cause_adults_order_different = df.tmp2 %>% 
+  bind_rows(df.tmp3)  %>%
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "different") %>%
+  mutate(difference = absence - direct,
+        difference = recode(difference, `-1` = 0))
+
+df.exp2_cause_adults_order_both = df.tmp2 %>% 
+  bind_rows(df.tmp3)  %>%
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "both")
+  
+  
+df.exp2_cause_adults_order_both = df.exp2_cause_adults_order_both %>% 
+  mutate(difference = 1) %>%
+  bind_rows(df.exp2_cause_adults_order_both %>% 
+              mutate(difference = 0)) 
+
+df.exp2_cause_adults_order = df.exp2_cause_adults_order_different %>% 
+  bind_rows(df.exp2_cause_adults_order_both) %>% 
   mutate(order = as_factor(order),
-         order = fct_relevel(order, "second"),
-         difference = absence - direct,
-         difference = recode(difference, `-1` = 0))
+         order = fct_relevel(order, "second"))
 
 
+
+
+#####MADE######
 # code order
-df.tmp = df.exp2_made_adults %>% 
+df.tmp1 = df.exp2_made_adults %>% 
   group_by(participant) %>% 
   filter(row_number() == 1) %>% 
   mutate(scenario_order = str_c(scenario, "_first"),
@@ -3620,7 +3651,7 @@ df.tmp = df.exp2_made_adults %>%
          contains("order"))
 
 df.exp2_made_adults_order = df.exp2_made_adults %>% 
-  left_join(df.tmp,
+  left_join(df.tmp1,
             by = "participant") %>% 
   relocate(contains("order"), .after = question) %>% 
   mutate(made_question_order = case_when(question_order == "lexical_first" ~ "second",
@@ -3633,21 +3664,48 @@ df.exp2_made_adults_order = df.exp2_made_adults %>%
    filter(row_number() <= 2) %>%
   ungroup()
 
-df.tmp = df.exp2_made_adults_order %>% 
+df.tmp2 = df.exp2_made_adults_order %>% 
   filter(question == "made") %>% 
   mutate(order = made_question_order)
 
-df.tmp2 = df.exp2_made_adults_order %>% 
+df.tmp3 = df.exp2_made_adults_order %>% 
   filter(question == "lexical") %>% 
   mutate(order = case_when(made_question_order == "second" ~ "first",
                            made_question_order == "first" ~ "second"))
 
-df.exp2_made_adults_order = df.tmp %>% 
-  bind_rows(df.tmp2) %>% 
+df.exp2_made_adults_order_different = df.tmp2 %>% 
+  bind_rows(df.tmp3)  %>%
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "different") %>%
+  mutate(difference = absence - direct,
+        difference = recode(difference, `-1` = 0))
+
+df.exp2_made_adults_order_both = df.tmp2 %>% 
+  bind_rows(df.tmp3)  %>%
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "both")
+  
+  
+df.exp2_made_adults_order_both = df.exp2_made_adults_order_both %>% 
+  mutate(difference = 1) %>%
+  bind_rows(df.exp2_made_adults_order_both %>% 
+              mutate(difference = 0)) 
+
+df.exp2_made_adults_order = df.exp2_made_adults_order_different %>% 
+  bind_rows(df.exp2_made_adults_order_both) %>% 
   mutate(order = as_factor(order),
-         order = fct_relevel(order, "second"),
-         difference = absence - direct,
-         difference = recode(difference, `-1` = 0))
+         order = fct_relevel(order, "second"))
+
+
+
 
 ```
 
@@ -3662,7 +3720,7 @@ df.exp2_made_adults_order = df.tmp %>%
 # Check contrast values
 contrasts(df.exp2_cause_adults_order$order)
 
-fit.brm.df.exp2.cause.adults.order = brm(formula = difference ~ 1 + question*order + (1 | participant) + (1 | scenario), 
+fit.brm.exp2.cause.adults.order = brm(formula = difference ~ 1 + question*order + (1 | participant) + (1 | scenario), 
                      data = df.exp2_cause_adults_order,
                      family = "bernoulli",
                      seed = 1,
@@ -3670,7 +3728,7 @@ fit.brm.df.exp2.cause.adults.order = brm(formula = difference ~ 1 + question*ord
                      warmup = 1000,
                      file = "cache/exp2_cause_adults_order") 
 
-fit.brm.df.exp2.cause.adults.order
+fit.brm.exp2.cause.adults.order
 
 
 
@@ -3678,7 +3736,7 @@ fit.brm.df.exp2.cause.adults.order
 contrasts(df.exp2_made_adults_order$order)
 
 
-fit.brm.df.exp2.made.adults.order = brm(formula = difference ~ 1 + question*order + (1 | participant) + (1 | scenario), 
+fit.brm.exp2.made.adults.order = brm(formula = difference ~ 1 + question*order + (1 | participant) + (1 | scenario), 
                      data = df.exp2_made_adults_order,
                      family = "bernoulli",
                      seed = 1,
@@ -3686,7 +3744,7 @@ fit.brm.df.exp2.made.adults.order = brm(formula = difference ~ 1 + question*orde
                      warmup = 1000,
                      file = "cache/exp2_made_adults_order") 
 
-fit.brm.df.exp2.made.adults.order
+fit.brm.exp2.made.adults.order
 
 
 ```
@@ -3695,11 +3753,11 @@ fit.brm.df.exp2.made.adults.order
 
 ```{r}
 
-fit.brm.df.exp2.cause.adults.order%>% 
+fit.brm.exp2.cause.adults.order%>% 
   emmeans(spec = pairwise ~ order | question,
           type = "response")
 
-fit.brm.df.exp2.made.adults.order%>% 
+fit.brm.exp2.made.adults.order%>% 
   emmeans(spec = pairwise ~ order | question,
           type = "response")
 ```
@@ -3710,76 +3768,107 @@ fit.brm.df.exp2.made.adults.order%>%
 
 ```{r}
 
-df.tmp = df.exp2_cause_children %>% 
-  mutate(question = as_factor(question),
-         question = fct_relevel(question, "lexical"),
-         order = as_factor(cause_question_order),
-         order = fct_relevel(order, "first")) %>% 
+#### CAUSE #####
+
+df.tmp1 = df.exp2_cause_children %>% 
+  mutate(order = as_factor(cause_question_order)) %>% 
    group_by(participant) %>%
    filter(row_number() <= 2) %>%
   ungroup()  %>% 
-  filter(question == "caused") %>% 
-  mutate(difference = absence - direct,
-         difference = recode(difference, `-1` = 0))
+  filter(question == "caused") 
 
 df.tmp2 = df.exp2_cause_children %>% 
-  mutate(question = as_factor(question),
-         question = fct_relevel(question, "lexical"),
-         order = as_factor(cause_question_order),
-         order = fct_relevel(order, "second"),
-         order = str_replace_all(order, "first", "temp_placeholder"),
-         order = str_replace_all(order, "second", "first"),
-         order = str_replace_all(order, "temp_placeholder", "second"),
-         order = as_factor(order),
-         order = fct_relevel(order, "first")) %>% 
   group_by(participant) %>%
   filter(row_number() <= 2) %>%
   ungroup() %>% 
   filter(question == "lexical") %>% 
+   mutate(order = case_when(cause_question_order == "second" ~ "first",
+                           cause_question_order == "first" ~ "second"))
+
+df.exp2_cause_children_order_different = df.tmp1 %>% 
+  bind_rows(df.tmp2)  %>%
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "different") %>%
   mutate(difference = absence - direct,
-         difference = recode(difference, `-1` = 0))
+        difference = recode(difference, `-1` = 0))
 
-df.exp2_cause_children_order = df.tmp %>% 
-  bind_rows(df.tmp2) %>% 
-  mutate(order = fct_relevel(order, "second"))
+df.exp2_cause_children_order_both = df.tmp1 %>% 
+  bind_rows(df.tmp2)  %>%
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "both")
+  
+  
+df.exp2_cause_children_order_both = df.exp2_cause_children_order_both %>% 
+  mutate(difference = 1) %>%
+  bind_rows(df.exp2_cause_children_order_both %>% 
+              mutate(difference = 0)) 
+
+df.exp2_cause_children_order = df.exp2_cause_children_order_different %>% 
+  bind_rows(df.exp2_cause_children_order_both) %>% 
+  mutate(order = as_factor(order),
+         order = fct_relevel(order, "second"))
 
 
 
-df.tmp = df.exp2_made_children %>% 
-  mutate(question = as_factor(question),
-         question = fct_relevel(question, "lexical"),
-         order = as_factor(made_question_order),
-         order = fct_relevel(order, "first")) %>% 
+#### MADE #####
+
+df.tmp1 = df.exp2_made_children %>% 
+  mutate(order = as_factor(made_question_order)) %>% 
    group_by(participant) %>%
    filter(row_number() <= 2) %>%
   ungroup()  %>% 
-  filter(question == "made") %>% 
-  mutate(difference = absence - direct,
-         difference = recode(difference, `-1` = 0))
+  filter(question == "made") 
 
 df.tmp2 = df.exp2_made_children %>% 
-  mutate(question = as_factor(question),
-         question = fct_relevel(question, "lexical"),
-         order = as_factor(made_question_order),
-         order = fct_relevel(order, "second"),
-         order = str_replace_all(order, "first", "temp_placeholder"),
-         order = str_replace_all(order, "second", "first"),
-         order = str_replace_all(order, "temp_placeholder", "second"),
-         order = as_factor(order),
-         order = fct_relevel(order, "first")) %>% 
   group_by(participant) %>%
   filter(row_number() <= 2) %>%
   ungroup() %>% 
   filter(question == "lexical") %>% 
-  mutate(difference = absence - direct,
-         difference = recode(difference, `-1` = 0))
+   mutate(order = case_when(made_question_order == "second" ~ "first",
+                            made_question_order == "scond" ~ "first",
+                           made_question_order == "first" ~ "second"))
 
-df.exp2_made_children_order = df.tmp %>% 
-  bind_rows(df.tmp2) %>% 
+df.exp2_made_children_order_different = df.tmp1 %>% 
+  bind_rows(df.tmp2)  %>%
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "different") %>%
+  mutate(difference = absence - direct,
+        difference = recode(difference, `-1` = 0))
+
+df.exp2_made_children_order_both = df.tmp1 %>% 
+  bind_rows(df.tmp2)  %>%
+  mutate(response_pattern = case_when(
+    direct == 1 & absence == 1 ~ "both",
+    direct == 0 & absence == 0 ~ "neither",
+    TRUE ~ "different"
+  )) %>%
+  filter(response_pattern == "both")
+  
+  
+df.exp2_made_children_order_both = df.exp2_made_children_order_both %>% 
+  mutate(difference = 1) %>%
+  bind_rows(df.exp2_made_children_order_both %>% 
+              mutate(difference = 0)) 
+
+df.exp2_made_children_order = df.exp2_made_children_order_different %>% 
+  bind_rows(df.exp2_made_children_order_both) %>% 
   mutate(order = str_replace_all(order, "frst", "first"),
-         order = str_replace_all(order, "scond", "second"),
          order = as_factor(order),
          order = fct_relevel(order, "second"))
+  
+
 
 
 ```
@@ -3795,15 +3884,15 @@ df.exp2_made_children_order = df.tmp %>%
 # Check contrast values
 contrasts(df.exp2_cause_children_order$order)
 
-fit.brm.df.exp2.cause.children.order = brm(formula = difference ~ 1 + question*order + (1 | participant) + (1 | scenario), 
-                     data = df.exp2_cause_adults_order,
+fit.brm.exp2.cause.children.order = brm(formula = difference ~ 1 + question*order + (1 | participant) + (1 | scenario), 
+                     data = df.exp2_cause_children_order,
                      family = "bernoulli",
                      seed = 1,
                      iter = 4000,
                      warmup = 1000,
                      file = "cache/exp2_cause_children_order") 
 
-fit.brm.df.exp2.cause.children.order
+fit.brm.exp2.cause.children.order
 
 
 
@@ -3811,15 +3900,15 @@ fit.brm.df.exp2.cause.children.order
 contrasts(df.exp2_made_children_order$order)
 
 
-fit.brm.df.exp2.made.children.order = brm(formula = difference ~ 1 + question*order + (1 | participant) + (1 | scenario), 
-                     data = df.exp2_made_adults_order,
+fit.brm.exp2.made.children.order = brm(formula = difference ~ 1 + question*order + (1 | participant) + (1 | scenario), 
+                     data = df.exp2_made_children_order,
                      family = "bernoulli",
                      seed = 1,
                      iter = 4000,
                      warmup = 1000,
                      file = "cache/exp2_made_children_order") 
 
-fit.brm.df.exp2.made.children.order
+fit.brm.exp2.made.children.order
 
 
 ```
@@ -3828,11 +3917,11 @@ fit.brm.df.exp2.made.children.order
 
 ```{r}
 
-fit.brm.df.exp2.cause.children.order %>% 
+fit.brm.exp2.cause.children.order %>% 
   emmeans(spec = pairwise ~ order | question,
           type = "response")
 
-fit.brm.df.exp2.made.children.order %>% 
+fit.brm.exp2.made.children.order %>% 
   emmeans(spec = pairwise ~ order | question,
           type = "response")
 ```
