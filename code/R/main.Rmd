@@ -3814,7 +3814,7 @@ df.exp2_cause_children_order_both = df.exp2_cause_children_order_both %>%
 df.exp2_cause_children_order = df.exp2_cause_children_order_different %>% 
   bind_rows(df.exp2_cause_children_order_both) %>% 
   mutate(order = as_factor(order),
-         order = fct_relevel(order, "second"))
+         order = fct_relevel(order, "first"))
 
 
 
@@ -3866,7 +3866,7 @@ df.exp2_made_children_order = df.exp2_made_children_order_different %>%
   bind_rows(df.exp2_made_children_order_both) %>% 
   mutate(order = str_replace_all(order, "frst", "first"),
          order = as_factor(order),
-         order = fct_relevel(order, "second"))
+         order = fct_relevel(order, "first"))
   
 
 
