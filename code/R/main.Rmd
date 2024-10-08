@@ -611,6 +611,113 @@ fit.brm.chain.made.children %>%
   emtrends(specs = pairwise ~ question,
            var = "age")
 ```
+##  CAUSE v MADE (BREAK & CRACK)
+### ADULTS
+#### DATA
+##### Wrangle
+
+```{r}
+
+df.chain_cause_made_adults = df.chain_cause_adults %>% 
+  filter(question == "caused") %>% 
+  bind_rows(df.chain_made_adults %>% 
+              filter(question == "made"))
+
+```
+
+#### STATS
+##### Bayesian Model
+
+```{r message=FALSE, warning=FALSE}
+
+df.model = df.chain_cause_made_adults %>% 
+  mutate(question = as_factor(question),
+         question = fct_relevel(question, "caused"))
+
+# Check contrast values
+ contrasts(df.model$question)
+
+
+fit.brm.chain.cause.made.adults = brm(formula = difference ~ 1 + question + (1 | participant) + (1 | scenario), 
+                     data = df.model,
+                     family = "bernoulli",
+                     seed = 1,
+                     iter = 4000,
+                     warmup = 1000,
+                     file = "cache/chain_cause_made_adult_difference") 
+
+fit.brm.chain.cause.made.adults
+
+
+```
+
+##### Follow-up analysis 
+
+```{r}
+fit.brm.chain.cause.made.adults %>% 
+  emmeans(spec = pairwise ~ question, 
+          type = "response")
+
+```
+
+### CHILDREN
+#### DATA
+##### Wrangle
+
+```{r}
+
+df.chain_cause_made_children = df.chain_cause_children %>% 
+  filter(question == "caused") %>% 
+  bind_rows(df.chain_made_children %>% 
+              filter(question == "made"))
+
+```
+
+#### STATS
+##### Bayesian Model
+
+```{r message=FALSE, warning=FALSE}
+
+df.model = df.chain_cause_made_children %>% 
+  mutate(question = as_factor(question),
+         question = fct_relevel(question, "caused"))
+
+# Check contrast values
+ contrasts(df.model$question)
+
+
+fit.brm.chain.cause.made.children = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario), 
+                     data = df.model,
+                     family = "bernoulli",
+                     seed = 1,
+                     iter = 4000,
+                     warmup = 1000,
+                     file = "cache/chain_cause_made_children_difference") 
+
+fit.brm.chain.cause.made.children
+
+
+```
+
+##### Follow-up analysis 
+
+```{r}
+
+# effect of question 
+fit.brm.chain.cause.made.children %>% 
+  emmeans(spec = pairwise ~ question, 
+          type = "response")
+
+# effect of age 
+fit.brm.chain.cause.made.children %>% 
+  avg_slopes(variable = "age",
+             type = "link")
+  
+# interaction effect 
+fit.brm.chain.cause.made.children %>% 
+  emtrends(specs = pairwise ~ question,
+           var = "age")
+```
 
 ## PLOTS
 
@@ -719,6 +826,7 @@ p1 = ggplot(mapping = aes(x = age,
         strip.text = element_blank(),
         axis.text.x = element_blank(),
         axis.title.x = element_blank(),
+        panel.spacing = unit(.4, "cm"),
         plot.margin = margin(t = 1.2, r = 0.1, b = 0.5, l = 0, "cm"))
 
 
@@ -824,11 +932,12 @@ p2 = ggplot(mapping = aes(x = age,
   labs(y = "Probability of selecting \n proximal or distal cause") +
   theme(legend.position = "none",
         axis.text.y = element_text(size = 12),
-        axis.title.y = element_text(size = 16),
+        axis.title.y = element_blank(),
         strip.background = element_blank(),
         strip.text = element_blank(),
         axis.text.x = element_blank(),
         axis.title.x = element_blank(),
+        panel.spacing = unit(.4, "cm"),
         plot.margin = margin(t = 1.2, r = 0.1, b = 0.5, l = 0, "cm"))
 
 
@@ -910,12 +1019,14 @@ p3 = ggplot(data = df.plot,
   labs(y = "Response pattern \n\ probability") +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
+        legend.text = element_text(size = 14),
         axis.text.y = element_text(size = 12),
         axis.title.y = element_text(size = 16),
         axis.text.x = element_markdown(),
         axis.title.x = element_blank(),
         strip.background = element_blank(),
-        strip.text = element_blank()) +
+        strip.text = element_blank(),
+        panel.spacing = unit(.4, "cm")) +
   facet_wrap(~question)
 
 
@@ -957,16 +1068,18 @@ custom_labels = function(breaks) {
     group_by(age_whole) %>%
     summarize(count = n_distinct(participant)) %>%
     pull(count)
-  
+
   labels = c("4", "5", "6", "7", "8", "9", "Adults")
    labels_with_size = paste0("<span style='font-size:16px;'>", labels, "</span>")
   counts_label1 = paste0("<span style='font-size:12px;'>(n=", counts[1], ")</span>")
   counts_label2 = paste0("<span style='font-size:12px;'>(", counts[-1], ")</span>")
-  
-  combined_labels = c(paste0(labels_with_size[1], "<br>", counts_label1), 
+
+  combined_labels = c(paste0(labels_with_size[1], "<br>", counts_label1),
                        paste0(labels_with_size[-1], "<br>", counts_label2))
   return(combined_labels)
 }
+
+
 
 
 p4 = ggplot(data = df.plot,
@@ -995,18 +1108,22 @@ scale_y_continuous(breaks = seq(0, 100, 25),
   labs(y = "Response pattern \n\ probability") +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
+        legend.text = element_text(size = 14),
         axis.text.y = element_text(size = 12),
-        axis.title.y = element_text(size = 16),
+        axis.title.y = element_blank(),
         axis.text.x = element_markdown(),
         axis.title.x = element_blank(),
         strip.background = element_blank(),
-        strip.text = element_blank()) +
+        strip.text = element_blank(),
+        panel.spacing = unit(.4, "cm")) +
   facet_wrap(~question)
+
+p4
 
 
 ```
 ### Combine Cause and Made Plots
-```{r fig.height=8, fig.width=15.2, message=FALSE, warning=FALSE}
+```{r fig.height=8, fig.width=15, message=FALSE, warning=FALSE}
 
 design = "
 1122
@@ -1018,7 +1135,7 @@ guide_area() + plot_layout(design=design, guides = "collect", heights = c(1, 1, 
 plot_annotation(tag_levels = "A") &
 theme(plot.tag = element_text(face = "bold"))
 
-ggsave(plot, filename = "../../figures/experiment1/chain_response_patterns.pdf", height = 8, width = 15.2)
+ggsave(plot, filename = "../../figures/experiment1/chain_response_patterns.pdf", height = 8, width = 15)
 
 plot
 
@@ -1617,6 +1734,115 @@ fit.brm.absence.made.children %>%
   
 # interaction effect 
 fit.brm.absence.made.children %>% 
+  emtrends(specs = pairwise ~ question,
+           var = "age")
+```
+
+
+##  CAUSE v MADE (BURN & FLOOD)
+### ADULTS
+#### DATA
+##### Wrangle
+
+```{r}
+
+df.absence_cause_made_adults = df.absence_cause_adults %>% 
+  filter(question == "caused") %>% 
+  bind_rows(df.absence_made_adults %>% 
+              filter(question == "made"))
+
+```
+
+#### STATS
+##### Bayesian Model
+
+```{r message=FALSE, warning=FALSE}
+
+df.model = df.absence_cause_made_adults %>% 
+  mutate(question = as_factor(question),
+         question = fct_relevel(question, "caused"))
+
+# Check contrast values
+ contrasts(df.model$question)
+
+
+fit.brm.absence.cause.made.adults = brm(formula = difference ~ 1 + question + (1 | participant) + (1 | scenario), 
+                     data = df.model,
+                     family = "bernoulli",
+                     seed = 1,
+                     iter = 4000,
+                     warmup = 1000,
+                     file = "cache/absence_cause_made_adult_difference") 
+
+fit.brm.absence.cause.made.adults
+
+
+```
+
+##### Follow-up analysis 
+
+```{r}
+fit.brm.absence.cause.made.adults %>% 
+  emmeans(spec = pairwise ~ question, 
+          type = "response")
+
+```
+
+### CHILDREN
+#### DATA
+##### Wrangle
+
+```{r}
+
+df.absence_cause_made_children = df.absence_cause_children %>% 
+  filter(question == "caused") %>% 
+  bind_rows(df.absence_made_children %>% 
+              filter(question == "made"))
+
+```
+
+#### STATS
+##### Bayesian Model
+
+```{r message=FALSE, warning=FALSE}
+
+df.model = df.absence_cause_made_children %>% 
+  mutate(question = as_factor(question),
+         question = fct_relevel(question, "caused"))
+
+# Check contrast values
+ contrasts(df.model$question)
+
+
+fit.brm.absence.cause.made.children = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario), 
+                     data = df.model,
+                     family = "bernoulli",
+                     seed = 1,
+                     iter = 4000,
+                     warmup = 1000,
+                     file = "cache/absence_cause_made_children_difference") 
+
+fit.brm.absence.cause.made.children
+
+
+```
+
+##### Follow-up analysis 
+
+```{r}
+
+# effect of question 
+fit.brm.absence.cause.made.children %>% 
+  emmeans(spec = pairwise ~ question, 
+          type = "response")
+
+# effect of age 
+fit.brm.absence.cause.made.children %>% 
+  avg_slopes(variable = "age",
+             type = "link")
+  
+# interaction effect 
+fit.brm.absence.cause.made.children %>% 
   emtrends(specs = pairwise ~ question,
            var = "age")
 ```
