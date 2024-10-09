@@ -944,9 +944,10 @@ p2 = ggplot(mapping = aes(x = age,
 ```
 
 ### Responses Patterns by Age
-##### Cause v Lexical
-```{r}
 
+##### Cause v Lexical
+
+```{r}
 df.plot = df.exp1_cause_adults %>% 
   mutate(age_whole = 10) %>% 
   bind_rows(df.exp1_cause_children) %>% 
@@ -968,39 +969,37 @@ df.plot = df.exp1_cause_adults %>%
          response_pattern = factor(response_pattern, levels = c("distal only", "proximal only", "both", "neither")))
 
 
+df.labels = df.plot %>% 
+  group_by(age_whole, question) %>%
+  summarize(count = sum(n)/2) %>% 
+  ungroup() %>% 
+  mutate(age = as.character(factor(age_whole,
+                                   levels = c(4, 5, 6, 7, 8, 9, 10),
+                                   labels = c("4", "5", "6", "7", "8", "9", "Adults"))),
+         count = ifelse(question == "lexical" & age_whole == 4, str_c("n=", count), count),
+         label = str_c("<span style='font-size:16px;'>", age, "</span>"),
+         label = ifelse(question == "lexical", 
+                        str_c("<span style='font-size:16px;'>", age, "</span>", "<br>",
+                              "<span style='font-size:12px;'>(", count, ")", "</span>"), label),
+         question = factor(question, levels = c("lexical", "caused")))
 
-custom_labels = function(breaks) {
-  counts = df.exp1_cause_adults %>%
-    mutate(age_whole = 10) %>%
-    bind_rows(df.exp1_cause_children) %>%
-    mutate(age_whole = factor(age_whole,
-                              levels = c(4, 5, 6, 7, 8, 9, 10),
-                              labels = c("4", "5", "6", "7", "8", "9", "Adults"))) %>%
-    group_by(age_whole) %>%
-    summarize(count = n_distinct(participant)) %>%
-    pull(count)
-  
-  labels = c("4", "5", "6", "7", "8", "9", "Adults")
-  labels_with_size = paste0("<span style='font-size:16px;'>", labels, "</span>")
-  counts_label1 = paste0("<span style='font-size:12px;'>(n=", counts[1], ")</span>")
-  counts_label2 = paste0("<span style='font-size:12px;'>(", counts[-1], ")</span>")
-  
-  combined_labels = c(paste0(labels_with_size[1], "<br>", counts_label1), 
-                       paste0(labels_with_size[-1], "<br>", counts_label2))
-  return(combined_labels)
-}
-
-
+df.plot = df.plot %>% 
+  left_join(df.labels %>% 
+              select(age_whole, question, label), 
+            by = c("age_whole", "question")) %>% 
+  mutate(label = factor(label, levels = df.labels$label))
 
 
 p3 = ggplot(data = df.plot,
-       mapping = aes(x = age_whole,
-                     y = percentage,
-                     group = response_pattern,
-                     color = response_pattern,
-                     fill = response_pattern)) +
+            mapping = aes(x = label,
+                          y = percentage,
+                          group = response_pattern,
+                          color = response_pattern,
+                          fill = response_pattern)) +
   geom_col(color = "black") +
- scale_fill_manual(values = c("distal only" = "#E41A1C",
+  facet_wrap(~question, 
+             scales = "free_x") + 
+  scale_fill_manual(values = c("distal only" = "#E41A1C",
                                "proximal only" = "#377EB8",
                                "both" = "#984EA3",
                                "neither" = "#999999")) +
@@ -1012,9 +1011,6 @@ p3 = ggplot(data = df.plot,
   scale_y_continuous(breaks = seq(0, 100, 25),
                      labels = str_c(seq(0, 100, 25), "%"),
                      expand = expansion(add = c(0, 0))) +
-  scale_x_discrete(breaks = 4:10,
-                  labels = custom_labels(labels),
-                  expand = expansion(add = c(0, 0))) +
   coord_cartesian(clip = "off") +
   labs(y = "Response pattern \n\ probability") +
   theme(legend.position = "bottom",
@@ -1026,18 +1022,14 @@ p3 = ggplot(data = df.plot,
         axis.title.x = element_blank(),
         strip.background = element_blank(),
         strip.text = element_blank(),
-        panel.spacing = unit(.4, "cm")) +
-  facet_wrap(~question)
+        panel.spacing = unit(.4, "cm"))
 
-
-
-
-     
+p3
 ```
 
 ##### Made v Lexical
-```{r}
 
+```{r}
 df.plot = df.exp1_made_adults %>% 
   mutate(age_whole = 10) %>% 
   bind_rows(df.exp1_made_children) %>% 
@@ -1045,9 +1037,8 @@ df.plot = df.exp1_made_adults %>%
     distal == 1 & proximal == 1 ~ "both",
     distal == 0 & proximal == 0 ~ "neither",
     distal == 1 & proximal == 0  ~ "distal only",
-    distal == 0 & proximal == 1  ~ "proximal only",
-  ),
-  age_whole = as.factor(age_whole)) %>% 
+    distal == 0 & proximal == 1  ~ "proximal only"),
+    age_whole = as.factor(age_whole)) %>% 
   group_by(age_whole, question, response_pattern) %>% 
   summarize(n = n()) %>% 
   ungroup() %>%
@@ -1055,40 +1046,39 @@ df.plot = df.exp1_made_adults %>%
   mutate(percentage = n / sum(n) * 100) %>%
   ungroup() %>% 
   mutate(question = factor(question, levels = c("lexical", "made")),
-         response_pattern = factor(response_pattern, levels = c("distal only", "proximal only", "both", "neither")))
+         response_pattern = factor(response_pattern, levels = c("distal only",
+                                                                "proximal only",
+                                                                "both",
+                                                                "neither")))
+df.labels = df.plot %>% 
+  group_by(age_whole, question) %>%
+  summarize(count = sum(n)/2) %>% 
+  ungroup() %>% 
+  mutate(age = as.character(factor(age_whole,
+                                   levels = c(4, 5, 6, 7, 8, 9, 10),
+                                   labels = c("4", "5", "6", "7", "8", "9", "Adults"))),
+         count = ifelse(question == "lexical" & age_whole == 4, str_c("n=", count), count),
+         label = str_c("<span style='font-size:16px;'>", age, "</span>"),
+         label = ifelse(question == "lexical", 
+                        str_c("<span style='font-size:16px;'>", age, "</span>", "<br>",
+                              "<span style='font-size:12px;'>(", count, ")", "</span>"), label),
+         question = factor(question, levels = c("lexical", "made")))
 
-
-custom_labels = function(breaks) {
-  counts = df.exp1_made_adults %>%
-    mutate(age_whole = 10) %>%
-    bind_rows(df.exp1_made_children) %>%
-    mutate(age_whole = factor(age_whole,
-                              levels = c(4, 5, 6, 7, 8, 9, 10),
-                              labels = c("4", "5", "6", "7", "8", "9", "Adults"))) %>%
-    group_by(age_whole) %>%
-    summarize(count = n_distinct(participant)) %>%
-    pull(count)
-
-  labels = c("4", "5", "6", "7", "8", "9", "Adults")
-   labels_with_size = paste0("<span style='font-size:16px;'>", labels, "</span>")
-  counts_label1 = paste0("<span style='font-size:12px;'>(n=", counts[1], ")</span>")
-  counts_label2 = paste0("<span style='font-size:12px;'>(", counts[-1], ")</span>")
-
-  combined_labels = c(paste0(labels_with_size[1], "<br>", counts_label1),
-                       paste0(labels_with_size[-1], "<br>", counts_label2))
-  return(combined_labels)
-}
-
-
-
-
+df.plot = df.plot %>% 
+  left_join(df.labels %>% 
+              select(age_whole, question, label), 
+            by = c("age_whole", "question")) %>% 
+  mutate(label = factor(label, levels = df.labels$label))
+  
 p4 = ggplot(data = df.plot,
-       mapping = aes(x = age_whole,
+       mapping = aes(x = label,
                      y = percentage,
                      group = response_pattern,
                      color = response_pattern,
                      fill = response_pattern)) +
   geom_col(color = "black") +
+  facet_wrap(~ question,
+             scales = "free_x") + 
   scale_fill_manual(values = c("distal only" = "#E41A1C",
                                "proximal only" = "#377EB8",
                                "both" = "#984EA3",
@@ -1098,12 +1088,9 @@ p4 = ggplot(data = df.plot,
                                 "both" = "#984EA3",
                                 "neither" = "#999999")) +
   scale_shape_manual(values = c(21, 23)) +
-scale_y_continuous(breaks = seq(0, 100, 25),
+  scale_y_continuous(breaks = seq(0, 100, 25),
                      labels = str_c(seq(0, 100, 25), "%"),
                      expand = expansion(add = c(0, 0))) +
-  scale_x_discrete(breaks = 4:10,
-                  labels = custom_labels(labels),
-                  expand = expansion(add = c(0, 0))) +
   coord_cartesian(clip = "off") +
   labs(y = "Response pattern \n\ probability") +
   theme(legend.position = "bottom",
@@ -1115,34 +1102,46 @@ scale_y_continuous(breaks = seq(0, 100, 25),
         axis.title.x = element_blank(),
         strip.background = element_blank(),
         strip.text = element_blank(),
-        panel.spacing = unit(.4, "cm")) +
-  facet_wrap(~question)
+        panel.spacing = unit(.4, "cm"))
 
 p4
-
-
 ```
-### Combine Cause and Made Plots
-```{r fig.height=8, fig.width=15, message=FALSE, warning=FALSE}
 
+```{r}
+df <- tibble(var = c("Grass cover", "River depth", "Canis familiaris", "Canis lupus", "Canis latrans"),
+             coef = c(0.6, 0.4, 0.8, 0.1, 0.5),
+             se = c(0.3, 0.4, 0.4, 0.05, 0.2),
+             panel = c(rep("Environment", 2), rep("Canid abundance", 3)))
+
+df %>%
+  mutate(lab = map2_chr(var, panel, 
+                        ~ifelse(.y == "Canid abundance", 
+                                paste0('italic("', .x,'")'), 
+                                paste0('"', .x,'"')))) %>%
+  ggplot(aes(y = lab, x = coef, xmin = coef - se, xmax = coef + se)) + 
+  geom_pointrange() +
+  facet_wrap(~ panel, scales = "free_y", ncol = 1) +
+  labs(y = NULL) +
+  scale_y_discrete(label = function(x) parse(text = x))
+```
+
+
+### Combine Cause and Made Plots
+
+```{r fig.height=8, fig.width=15, message=FALSE, warning=FALSE}
 design = "
 1122
 3344
 5555
 "    
 plot = p1 + p2 + p3 + p4 +
-guide_area() + plot_layout(design=design, guides = "collect", heights = c(1, 1, 0.2)) &
-plot_annotation(tag_levels = "A") &
-theme(plot.tag = element_text(face = "bold"))
+  guide_area() + plot_layout(design=design, guides = "collect", heights = c(1, 1, 0.2)) &
+  plot_annotation(tag_levels = "A") &
+  theme(plot.tag = element_text(face = "bold"))
 
 ggsave(plot, filename = "../../figures/experiment1/chain_response_patterns.pdf", height = 8, width = 15)
 
 plot
-
-
-
-
-
 ```
 
 
