@@ -3498,7 +3498,6 @@ plot
 ```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
 
 df.plot = df.exp1_cause_children_order %>% 
-  bind_rows(df.exp1_cause_lexical_children_order) %>% 
   mutate(order = factor(order, levels = c("first", "second")))
 
 
@@ -3534,7 +3533,6 @@ p3 = ggplot(data = df.plot,
 ```{r fig.height=4, fig.width=8, message=FALSE, warning=FALSE}
 
 df.plot = df.exp1_made_children_order %>% 
-  bind_rows(df.exp1_made_lexical_children_order) %>% 
   mutate(order = factor(order, levels = c("first", "second")))
 
 
