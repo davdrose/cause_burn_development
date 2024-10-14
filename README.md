@@ -2,7 +2,7 @@
 
 This repository contains the experiments, data, analyses, and figures for the paper "Cause and burn in development," by David Rose, Siying Zhang, Shaun Nichols, Ellen Markman and Tobias Gerstenberg.
 
-The preprint can be found [here](update link)
+<!-- The preprint can be found [here](update link) -->
 
 __Contents__:
 - [Introduction](#Introduction)
