@@ -6,6 +6,7 @@ output:
   bookdown::html_document2:
     toc: true
     toc_depth: 6
+    toc_float: true
     theme: cosmo
     highlight: tango
 ---
@@ -3304,6 +3305,8 @@ df.means = df.children %>%
   mutate(age_whole = fct_recode(age_whole, "10" = "adults"),
          age_whole = as.numeric(as.character(age_whole)))
 
+df.means = df.means %>%
+  mutate(question = factor(question, levels = c("caused", "lexical")))
 
 custom_labels = as_labeller(c("distal" = "Distal Cause", "proximal" = "Proximal Cause"))
 
@@ -3334,8 +3337,8 @@ p3 = ggplot(mapping = aes(x = age,
                   position = position_dodge(width = 0.1)) +
     facet_wrap(~type,
              labeller = custom_labels) + 
-  scale_fill_brewer(palette = "Set1") + 
-  scale_color_brewer(palette = "Set1") +
+  scale_fill_manual(values = c("caused" = "#FF7F00", "lexical" = "#4DAF4A"), breaks=c("caused", "lexical")) +
+  scale_color_manual(values = c("caused" = "#FF7F00", "lexical" = "#4DAF4A"), breaks=c("caused", "lexical")) +
   scale_shape_manual(values = c(21, 23)) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
                       labels = str_c(seq(0, 1, 0.25) * 100, "%")) +
@@ -3344,13 +3347,7 @@ p3 = ggplot(mapping = aes(x = age,
   labs(y = "Probability of selecting \n causal candidate") +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
-        text = element_text(size = 18)) +
-  guides(color = guide_legend(reverse = TRUE),
-         fill = guide_legend(reverse = TRUE),
-         shape = guide_legend(reverse = TRUE))
-
-
-
+        text = element_text(size = 18)) 
 
 ```
 
@@ -3461,8 +3458,8 @@ p4 = ggplot(mapping = aes(x = age,
                   position = position_dodge(width = 0.3)) +
   facet_wrap(~type,
              labeller = custom_labels) + 
-  scale_fill_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
-  scale_color_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
+  scale_fill_manual(values = c("made" = "#FFFF33", "lexical" = "#4DAF4A"), breaks=c("made", "lexical")) +
+  scale_color_manual(values = c("made" = "#FFFF33", "lexical" = "#4DAF4A"), breaks=c("made", "lexical")) +
   scale_shape_manual(values = c(21, 23), breaks=c("made", "lexical")) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
                      labels = str_c(seq(0, 1, 0.25) * 100, "%"),
@@ -4361,8 +4358,8 @@ p7 = ggplot(mapping = aes(x = age,
                   position = position_dodge(width = 0.5)) +
     facet_wrap(~type,
              labeller = custom_labels) + 
-  scale_fill_brewer(palette = "Set1") + 
-  scale_color_brewer(palette = "Set1") +
+  scale_fill_manual(values = c("caused" = "#FF7F00", "lexical" = "#4DAF4A"), breaks=c("caused", "lexical")) +
+  scale_color_manual(values = c("caused" = "#FF7F00", "lexical" = "#4DAF4A"), breaks=c("caused", "lexical")) +
   scale_shape_manual(values = c(21, 23)) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
                       labels = str_c(seq(0, 1, 0.25) * 100, "%")) +
@@ -4371,12 +4368,8 @@ p7 = ggplot(mapping = aes(x = age,
   labs(y = "Probability of selecting \n causal candidate") +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
-        text = element_text(size = 18)) +
-  guides(color = guide_legend(reverse = TRUE),
-         fill = guide_legend(reverse = TRUE),
-         shape = guide_legend(reverse = TRUE))
+        text = element_text(size = 18)) 
 
-  
 ```
 
 #### Made
@@ -4493,8 +4486,8 @@ p8 = ggplot(mapping = aes(x = age,
                   position = position_dodge(width = 0.4)) +
   facet_wrap(~type,
              labeller = custom_labels) + 
-  scale_fill_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
-  scale_color_manual(values = c("made" = "#4DAF4A", "lexical" = "#377EB8"), breaks=c("made", "lexical")) +
+  scale_fill_manual(values = c("made" = "#FFFF33", "lexical" = "#4DAF4A"), breaks=c("made", "lexical")) +
+  scale_color_manual(values = c("made" = "#FFFF33", "lexical" = "#4DAF4A"), breaks=c("made", "lexical")) +
   scale_shape_manual(values = c(21, 23), breaks=c("made", "lexical")) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
                      labels = str_c(seq(0, 1, 0.25) * 100, "%"),
