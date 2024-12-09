@@ -3458,8 +3458,8 @@ p4 = ggplot(mapping = aes(x = age,
                   position = position_dodge(width = 0.3)) +
   facet_wrap(~type,
              labeller = custom_labels) + 
-  scale_fill_manual(values = c("made" = "#FFFF33", "lexical" = "#4DAF4A"), breaks=c("made", "lexical")) +
-  scale_color_manual(values = c("made" = "#FFFF33", "lexical" = "#4DAF4A"), breaks=c("made", "lexical")) +
+  scale_fill_manual(values = c("made" = "#FFEA00", "lexical" = "#4DAF4A"), breaks=c("made", "lexical")) +
+  scale_color_manual(values = c("made" = "#FFEA00", "lexical" = "#4DAF4A"), breaks=c("made", "lexical")) +
   scale_shape_manual(values = c(21, 23), breaks=c("made", "lexical")) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
                      labels = str_c(seq(0, 1, 0.25) * 100, "%"),
@@ -4486,8 +4486,8 @@ p8 = ggplot(mapping = aes(x = age,
                   position = position_dodge(width = 0.4)) +
   facet_wrap(~type,
              labeller = custom_labels) + 
-  scale_fill_manual(values = c("made" = "#FFFF33", "lexical" = "#4DAF4A"), breaks=c("made", "lexical")) +
-  scale_color_manual(values = c("made" = "#FFFF33", "lexical" = "#4DAF4A"), breaks=c("made", "lexical")) +
+  scale_fill_manual(values = c("made" = "#FFEA00", "lexical" = "#4DAF4A"), breaks=c("made", "lexical")) +
+  scale_color_manual(values = c("made" = "#FFEA00", "lexical" = "#4DAF4A"), breaks=c("made", "lexical")) +
   scale_shape_manual(values = c(21, 23), breaks=c("made", "lexical")) +
   scale_y_continuous(breaks = seq(0, 1, 0.25),
                      labels = str_c(seq(0, 1, 0.25) * 100, "%"),
