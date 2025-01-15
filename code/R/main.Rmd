@@ -80,7 +80,6 @@ make_gradient = function(deg = 45, n = 100, cols = blues9) {
 softmax = function(x, beta = 1) {
   return(exp(x * beta) / sum(exp(x * beta)))
 }
-
 ```
 
 
@@ -5034,9 +5033,66 @@ fun.overall_grid = function(data, df_parameters, fun_model){
 
 ```
 
+
+### Model fit
+
+```{r, fig.width=10, fig.height=6}
+# beta = 1:2
+# chain = 3
+# absence 4
+# caused = 5:6
+# made = 7:8
+df.parameters = df.data %>% 
+  distinct(version, alternative) %>% 
+  mutate(parameters = list(c(1:2, 3, 5:6), 
+                           c(1:2, 3, 7:8),
+                           c(1:2, 4, 5:6),
+                           c(1:2, 4, 7:8)))
+
+fun.model = function(par, age){
+  beta = par[1] + par[2] * age
+  p_nonstandard = par[3] 
+  cost = par[4] + par[5] * age
+  
+  if(p_nonstandard <= 0){
+    p_nonstandard = 0.001
+  }
+  if(p_nonstandard >= 1){
+    p_nonstandard = 0.999
+  }
+  prior = c(prototypical = 1-p_nonstandard,
+            nonstandard = p_nonstandard)
+  
+  l0 = fun.l0(prior = prior)
+  s1 = fun.s1(l0,
+              cost = cost,
+              beta = beta)
+  l1 = fun.l1(s1,
+              prior = prior)
+  return(l1)
+}
+
+# # best fitting parameters (converging solution!)
+par = c(-0.0971210, 0.0623497, 0.3595724, 0.1530933, -0.1393184,  0.5599144, -1.2883752,  0.3481894)
+
+# optimization
+# fit = optim(par = rep(0, max(unlist(df.parameters$parameters))),
+#             fn = fun.overall,
+#             data = df.data,
+#             fun_model = fun.model,
+#             df_parameters = df.parameters,
+#             method = "Nelder-Mead",
+#             control = list(maxit = 2000))
+
+# results 
+
+```
+
 ### Plots 
 
-#### Results
+#### Plotting Functions
+
+##### Results
 
 ```{r, fig.width=10, fig.height = 7}
 fun.plot_results = function(params){
@@ -5092,7 +5148,7 @@ fun.plot_results = function(params){
                        breaks = c("lexical", "made", "caused"),
                        guide = guide_legend(reverse = T)) +
     scale_y_continuous(breaks = seq(0, 1, 0.25),
-                       labels = c("100% PT", "75%", "50%", "75%", "100% NS"),
+                       labels = c("100% \n direct", "75%", "50%", "75%", "100% \n non-direct"),
                        limits = c(0, 1)) + 
     labs(y = "probability of selecting\neach cause") + 
     theme(panel.spacing.y = unit(0.5, "cm"))
@@ -5104,7 +5160,7 @@ fun.plot_results = function(params){
 
 ```
 
-#### Parameters 
+##### Parameters 
 
 ```{r, fig.width=12, fig.height = 5}
 fun.plot_params = function(params, nbeta, nprior, ncost){
@@ -5205,66 +5261,21 @@ fun.plot_params = function(params, nbeta, nprior, ncost){
 }
 ```
 
-### Model fits 
 
-#### Optimization 
-
-##### Beta: variable; prior: constant; cost: variable 
-
-```{r, fig.width=10, fig.height=6}
-# beta = 1:2
-# chain = 3
-# absence 4
-# caused = 5:6
-# made = 7:8
-df.parameters = df.data %>% 
-  distinct(version, alternative) %>% 
-  mutate(parameters = list(c(1:2, 3, 5:6), 
-                           c(1:2, 3, 7:8),
-                           c(1:2, 4, 5:6),
-                           c(1:2, 4, 7:8)))
-
-fun.model = function(par, age){
-  beta = par[1] + par[2] * age
-  p_nonstandard = par[3] 
-  cost = par[4] + par[5] * age
-  
-  if(p_nonstandard <= 0){
-    p_nonstandard = 0.001
-  }
-  if(p_nonstandard >= 1){
-    p_nonstandard = 0.999
-  }
-  prior = c(prototypical = 1-p_nonstandard,
-            nonstandard = p_nonstandard)
-  
-  l0 = fun.l0(prior = prior)
-  s1 = fun.s1(l0,
-              cost = cost,
-              beta = beta)
-  l1 = fun.l1(s1,
-              prior = prior)
-  return(l1)
-}
-
-# # best fitting parameters (converging solution!)
-par = c(-0.0971210, 0.0623497, 0.3595724, 0.1530933, -0.1393184,  0.5599144, -1.2883752,  0.3481894)
-
-# optimization
-# fit = optim(par = rep(0, max(unlist(df.parameters$parameters))),
-#             fn = fun.overall,
-#             data = df.data,
-#             fun_model = fun.model,
-#             df_parameters = df.parameters,
-#             method = "Nelder-Mead",
-#             control = list(maxit = 2000))
-
-# results 
+#### Result Plot
+```{r}
 
 fun.plot_results(params = par)
 ggsave("../../figures/rsa/model_fits.pdf",
        width = 10,
        height = 7)
+
+
+```
+
+#### Parameters Plot
+
+```{r}
 
 # # parameters
 # # fun.plot_params(params = fit$par,
@@ -5276,393 +5287,12 @@ fun.plot_params(params = par,
 ggsave("../../figures/rsa/model_parameters.pdf",
        width = 12,
        height = 5)
+
+
 ```
 
-#### Alternative models 
 
-##### Beta: constant; prior: constant; cost: constant 
-
-```{r, fig.width=10, fig.height=6}
-# beta = 1
-# chain = 2
-# absence 3
-# caused = 4
-# made = 5
-df.parameters = df.data %>% 
-  distinct(version, alternative) %>% 
-  mutate(parameters = list(c(1, 2, 4), 
-                           c(1, 2, 5),
-                           c(1, 3, 4),
-                           c(1, 3, 5)))
-
-fun.model = function(par, age){
-  beta = par[1] 
-  p_nonstandard = par[2] 
-  cost = par[3]
-  
-  if(p_nonstandard <= 0){
-    p_nonstandard = 0.001
-  }
-  if(p_nonstandard >= 1){
-    p_nonstandard = 0.999
-  }
-  prior = c(prototypical = 1-p_nonstandard,
-            nonstandard = p_nonstandard)
-  
-  l0 = fun.l0(prior = prior)
-  s1 = fun.s1(l0,
-              cost = cost,
-              beta = beta)
-  l1 = fun.l1(s1,
-              prior = prior)
-  return(l1)
-}
-
-par = c(0.5, 0.1, 0.5)
-
-# optimization
-fit = optim(par = rep(0, 5),
-            fn = fun.overall,
-            data = df.data,
-            fun_model = fun.model,
-            df_parameters = df.parameters,
-            method = "Nelder-Mead")
-
-# results 
-fun.plot_results(params = fit$par)
-
-# parameters
-fun.plot_params(params = fit$par,
-                nbeta = 1,
-                nprior = 2,
-                ncost = 2)
-```
-
-##### Beta: variable; prior: constant; cost: constant 
-
-```{r, fig.width=10, fig.height=6}
-# beta = 1:2
-# chain = 3
-# absence 4
-# caused = 5
-# made = 6
-df.parameters = df.data %>% 
-  distinct(version, alternative) %>% 
-  mutate(parameters = list(c(1:2, 3, 5), 
-                           c(1:2, 3, 6),
-                           c(1:2, 4, 5),
-                           c(1:2, 4, 6)))
-
-fun.model = function(par, age){
-  beta = par[1] + par[2] * age
-  p_nonstandard = par[3] 
-  cost = par[4]
-  
-  if(p_nonstandard <= 0){
-    p_nonstandard = 0.001
-  }
-  if(p_nonstandard >= 1){
-    p_nonstandard = 0.999
-  }
-  prior = c(prototypical = 1-p_nonstandard,
-            nonstandard = p_nonstandard)
-  
-  l0 = fun.l0(prior = prior)
-  s1 = fun.s1(l0,
-              cost = cost,
-              beta = beta)
-  l1 = fun.l1(s1,
-              prior = prior)
-  return(l1)
-}
-
-# optimization
-fit = optim(par = rep(0, 6),
-            fn = fun.overall,
-            data = df.data,
-            fun_model = fun.model,
-            df_parameters = df.parameters,
-            method = "Nelder-Mead")
-
-# results 
-fun.plot_results(params = fit$par)
-
-# parameters
-fun.plot_params(params = fit$par,
-                nbeta = 2,
-                nprior = 2,
-                ncost = 2)
-```
-
-##### Beta: constant; prior: constant; cost: variable 
-
-```{r, fig.width=10, fig.height=6}
-# beta = 1
-# chain = 2
-# absence 3
-# caused = 4:5
-# made = 6:7
-df.parameters = df.data %>% 
-  distinct(version, alternative) %>% 
-  mutate(parameters = list(c(1, 2, 4, 5), 
-                           c(1, 2, 6, 7),
-                           c(1, 3, 4, 5), 
-                           c(1, 3, 6, 7)))
-
-fun.model = function(par, age){
-  beta = par[1]
-  p_nonstandard = par[2] 
-  cost = par[3] + par[4] * age
-  
-  if(p_nonstandard <= 0){
-    p_nonstandard = 0.001
-  }
-  if(p_nonstandard >= 1){
-    p_nonstandard = 0.999
-  }
-  prior = c(prototypical = 1-p_nonstandard,
-            nonstandard = p_nonstandard)
-  
-  l0 = fun.l0(prior = prior)
-  s1 = fun.s1(l0,
-              cost = cost,
-              beta = beta)
-  l1 = fun.l1(s1,
-              prior = prior)
-  return(l1)
-}
-
-# best fitting parameters
-# par = c(0.37389834,
-#         0.24199678,
-#         0.10174182,
-#         -0.07839857,
-#         1.16558207,
-#         -3.41787156,
-#         1.18943229)
-
-# optimization
-fit = optim(par = rep(0, max(unlist(df.parameters$parameters))),
-            fn = fun.overall,
-            data = df.data,
-            fun_model = fun.model,
-            df_parameters = df.parameters,
-            method = "Nelder-Mead",
-            control = list(maxit = 1000))
-
-# results 
-fun.plot_results(params = fit$par)
-
-# parameters
-fun.plot_params(params = fit$par,
-                nbeta = 1,
-                nprior = 2,
-                ncost = 4)
-```
-
-#### Grid search 
-
-##### Beta: constant; prior: constant; cost: constant 
-
-```{r, fig.width=10, fig.height=6}
-# beta = 1
-# chain = 2
-# absence 3
-# caused = 4
-# made = 5
-
-variables = c("beta",
-              "chain",
-              "absence",
-              "caused",
-              "made")
-
-df.parameters = df.data %>% 
-  distinct(version, alternative) %>% 
-  mutate(parameters = list(c(1, 2, 4), 
-                           c(1, 2, 5),
-                           c(1, 3, 4),
-                           c(1, 3, 5)))
-
-df.parameter_values = expand_grid(beta = seq(0.5, 2, 0.5),
-                                  chain = seq(0.1, 0.9, 0.2),
-                                  absence = seq(0.1, 0.9, 0.2),
-                                  caused = seq(0.5, 2, 0.5),
-                                  made = seq(0.5, 2, 0.5))
-
-# df.parameter_values = df.parameter_values %>% 
-#   filter(row_number() %in% c(1, 100, 200))
-
-fun.model = function(par, age){
-  beta = par[1] 
-  p_nonstandard = par[2] 
-  cost = par[3]
-  
-  prior = c(prototypical = 1-p_nonstandard,
-            nonstandard = p_nonstandard)
-  
-  l0 = fun.l0(prior = prior)
-  s1 = fun.s1(l0,
-              cost = cost,
-              beta = beta)
-  l1 = fun.l1(s1,
-              prior = prior)
-  return(l1)
-}
-
-df.loss = df.parameters %>% 
-  unnest(parameters) %>% 
-  mutate(parameters = variables[parameters]) %>% 
-  expand_grid(index = 1:nrow(df.parameter_values)) %>% 
-  arrange(index) %>% 
-  left_join(df.parameter_values %>% 
-              mutate(index = 1:n()) %>% 
-              pivot_longer(cols = -index), 
-            by = c("index", "parameters" = "name")) %>% 
-  group_by(index, version, alternative) %>% 
-  mutate(parameters = list(value)) %>% 
-  distinct(index, version, alternative, parameters) %>% 
-  ungroup() %>% 
-  nest(data = -index) %>% 
-  mutate(loss = map_dbl(.x = data,
-                        .f = ~ fun.overall_grid(data = df.data,
-                                                df_parameters = .x,
-                                                fun_model = fun.model)))
-
-
-# fun.overall_grid(df.data,
-#                  df_parameters,
-#                  fun.model)
-
-# save(df.loss, file = "loss.RData")
-
-df.best_fit = df.loss %>% 
-  ungroup() %>% 
-  filter(loss == min(loss)) %>% 
-  unnest(data) %>% 
-  select(version, alternative, parameters) %>% 
-  unnest(parameters) %>% 
-  bind_cols(df.parameters %>% 
-              unnest(parameters) %>% 
-              select(index = parameters)) %>% 
-  distinct(index, parameters) %>% 
-  arrange(index)
-
-# results 
-fun.plot_results(params = df.best_fit$parameters)
-
-# parameters
-fun.plot_params(params = df.best_fit$parameters,
-                nbeta = 1,
-                nprior = 2,
-                ncost = 2)
-```
-
-##### Beta: variable; prior: constant; cost: variable 
-
-```{r, fig.width=10, fig.height=6}
-# beta = 1:2
-# chain = 3
-# absence 4
-# caused = 5:6
-# made = 7:8
-df.parameters = df.data %>% 
-  distinct(version, alternative) %>% 
-  mutate(parameters = list(c(1:2, 3, 5:6), 
-                           c(1:2, 3, 7:8),
-                           c(1:2, 4, 5:6),
-                           c(1:2, 4, 7:8)))
-
-variables = c("beta_intercept",
-              "beta_slope",
-              "chain",
-              "absence",
-              "caused_intercept",
-              "caused_slope",
-              "made_intercept",
-              "made_slope")
-
-# best fitting parameters from optim 
-params = c(-0.10348257,
-           0.06281879,
-           0.35939409,
-           0.15519388,
-           -0.14396582,
-           0.56518446,
-           -1.28347795,
-           0.34417906)
-
-delta = seq(-0.1, 0.1, 0.1)
-
-df.parameter_values = expand_grid(beta_intercept = params[1] + delta,
-                                  beta_slope = params[2] + delta,
-                                  chain = params[3] + delta,
-                                  absence = params[4] + delta,
-                                  caused_intercept = params[5] + delta,
-                                  caused_slope = params[6] + delta,
-                                  made_intercept = params[7] + delta,
-                                  made_slope = params[8] + delta)
-
-fun.model = function(par, age){
-  beta = par[1] + par[2] * age
-  p_nonstandard = par[3] 
-  cost = par[4] + par[5] * age
-  prior = c(prototypical = 1-p_nonstandard,
-            nonstandard = p_nonstandard)
-  
-  l0 = fun.l0(prior = prior)
-  s1 = fun.s1(l0,
-              cost = cost,
-              beta = beta)
-  l1 = fun.l1(s1,
-              prior = prior)
-  return(l1)
-}
-
-df.loss = df.parameters %>% 
-  unnest(parameters) %>% 
-  mutate(parameters = variables[parameters]) %>% 
-  expand_grid(index = 1:nrow(df.parameter_values)) %>% 
-  arrange(index) %>% 
-  left_join(df.parameter_values %>% 
-              mutate(index = 1:n()) %>% 
-              pivot_longer(cols = -index), 
-            by = c("index", "parameters" = "name")) %>% 
-  group_by(index, version, alternative) %>% 
-  mutate(parameters = list(value)) %>% 
-  distinct(index, version, alternative, parameters) %>% 
-  ungroup() %>% 
-  nest(data = -index) %>% 
-  mutate(loss = map_dbl(.x = data,
-                        .f = ~ fun.overall_grid(data = df.data,
-                                                df_parameters = .x,
-                                                fun_model = fun.model)))
-
-# save(df.loss, file = "loss.RData")
-
-df.best_fit = df.loss %>% 
-  ungroup() %>% 
-  filter(loss == min(loss)) %>% 
-  unnest(data) %>% 
-  select(version, alternative, parameters) %>% 
-  unnest(parameters) %>% 
-  bind_cols(df.parameters %>% 
-              unnest(parameters) %>% 
-              select(index = parameters)) %>% 
-  distinct(index, parameters) %>% 
-  arrange(index)
-
-# results 
-fun.plot_results(params = df.best_fit$parameters)
-
-# parameters
-fun.plot_params(params = df.best_fit$parameters,
-                nbeta = 2,
-                nprior = 2,
-                ncost = 4)
-```
-
-#### Scatter plot 
+#### Scatter Plot 
 
 ```{r, fig.width=9, fig.height=6}
 df.plot = df.data %>% 
@@ -5726,10 +5356,10 @@ ggplot(data = df.plot,
                        breaks = c("lexical", "made", "caused"),
                        guide = guide_legend(reverse = T)) + 
   scale_x_continuous(breaks = seq(0, 1, 0.25),
-                       labels = c("100% PT", "75%", "50%", "75%", "100% NS"),
+                       labels = c("100% \n direct", "75%", "50%", "75%", "100% \n non-direct"),
                      limits = c(0, 1)) + 
   scale_y_continuous(breaks = seq(0, 1, 0.25),
-                       labels = c("100% PT", "75%", "50%", "75%", "100% NS"),
+                       labels = c("100% \n direct", "75%", "50%", "75%", "100% \n non-direct"),
                      limits = c(0, 1)) +
   guides(fill = guide_legend(override.aes = list(shape = 21, size = 3)),
          shape = guide_legend(override.aes = list(size = 3)))
