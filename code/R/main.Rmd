@@ -1015,10 +1015,10 @@ df.plot = df.exp1_cause_adults %>%
   mutate(age_whole = 10) %>% 
   bind_rows(df.exp1_cause_children) %>% 
   mutate(response_pattern = case_when(
-    distal == 1 & proximal == 1 ~ "both",
-    distal == 0 & proximal == 0 ~ "neither",
-    distal == 1 & proximal == 0  ~ "distal only",
-    distal == 0 & proximal == 1  ~ "proximal only",
+    distal == 1 & proximal == 1 ~ "both causes",
+    distal == 0 & proximal == 0 ~ "neither cause",
+    distal == 1 & proximal == 0  ~ "distal cause only",
+    distal == 0 & proximal == 1  ~ "proximal cause only",
   ),
   question = recode(question, "cause" = "caused"),
   age_whole = as.factor(age_whole)) %>% 
@@ -1029,7 +1029,7 @@ df.plot = df.exp1_cause_adults %>%
   mutate(percentage = n / sum(n) * 100) %>%
   ungroup() %>% 
   mutate(question = factor(question, levels = c("lexical", "caused")),
-         response_pattern = factor(response_pattern, levels = c("distal only", "proximal only", "both", "neither")))
+         response_pattern = factor(response_pattern, levels = c("distal cause only", "proximal cause only", "both causes", "neither cause")))
 
 
 df.labels = df.plot %>% 
@@ -1062,14 +1062,14 @@ p3 = ggplot(data = df.plot,
   geom_col(color = "black") +
   facet_wrap(~question, 
              scales = "free_x") + 
-  scale_fill_manual(values = c("distal only" = "#E41A1C",
-                               "proximal only" = "#377EB8",
-                               "both" = "#984EA3",
-                               "neither" = "#999999")) +
-  scale_color_manual(values = c("distal only" = "#E41A1C",
-                                "proximal only" = "#377EB8",
-                                "both" = "#984EA3",
-                                "neither" = "#999999")) +
+  scale_fill_manual(values = c("distal cause only" = "#E41A1C",
+                               "proximal cause only" = "#377EB8",
+                               "both causes" = "#984EA3",
+                               "neither cause" = "#999999")) +
+  scale_color_manual(values = c("distal cause only" = "#E41A1C",
+                                "proximal cause only" = "#377EB8",
+                                "both causes" = "#984EA3",
+                                "neither cause" = "#999999")) +
   scale_shape_manual(values = c(21, 23)) +
   scale_y_continuous(breaks = seq(0, 100, 25),
                      labels = str_c(seq(0, 100, 25), "%"),
@@ -1098,10 +1098,10 @@ df.plot = df.exp1_made_adults %>%
   mutate(age_whole = 10) %>% 
   bind_rows(df.exp1_made_children) %>% 
   mutate(response_pattern = case_when(
-    distal == 1 & proximal == 1 ~ "both",
-    distal == 0 & proximal == 0 ~ "neither",
-    distal == 1 & proximal == 0  ~ "distal only",
-    distal == 0 & proximal == 1  ~ "proximal only"),
+    distal == 1 & proximal == 1 ~ "both causes",
+    distal == 0 & proximal == 0 ~ "neither cause",
+    distal == 1 & proximal == 0  ~ "distal cause only",
+    distal == 0 & proximal == 1  ~ "proximal cause only"),
     age_whole = as.factor(age_whole)) %>% 
   group_by(age_whole, question, response_pattern) %>% 
   summarize(n = n()) %>% 
@@ -1110,10 +1110,10 @@ df.plot = df.exp1_made_adults %>%
   mutate(percentage = n / sum(n) * 100) %>%
   ungroup() %>% 
   mutate(question = factor(question, levels = c("lexical", "made")),
-         response_pattern = factor(response_pattern, levels = c("distal only",
-                                                                "proximal only",
-                                                                "both",
-                                                                "neither")))
+         response_pattern = factor(response_pattern, levels = c("distal cause only",
+                                                                "proximal cause only",
+                                                                "both causes",
+                                                                "neither cause")))
 df.labels = df.plot %>% 
   group_by(age_whole, question) %>%
   summarize(count = sum(n)/2) %>% 
@@ -1143,14 +1143,14 @@ p4 = ggplot(data = df.plot,
   geom_col(color = "black") +
   facet_wrap(~ question,
              scales = "free_x") + 
-  scale_fill_manual(values = c("distal only" = "#E41A1C",
-                               "proximal only" = "#377EB8",
-                               "both" = "#984EA3",
-                               "neither" = "#999999")) +
-  scale_color_manual(values = c("distal only" = "#E41A1C",
-                                "proximal only" = "#377EB8",
-                                "both" = "#984EA3",
-                                "neither" = "#999999")) +
+  scale_fill_manual(values = c("distal cause only" = "#E41A1C",
+                               "proximal cause only" = "#377EB8",
+                               "both causes" = "#984EA3",
+                               "neither cause" = "#999999")) +
+  scale_color_manual(values = c("distal cause only" = "#E41A1C",
+                                "proximal cause only" = "#377EB8",
+                                "both causes" = "#984EA3",
+                                "neither cause" = "#999999")) +
   scale_shape_manual(values = c(21, 23)) +
   scale_y_continuous(breaks = seq(0, 100, 25),
                      labels = str_c(seq(0, 100, 25), "%"),
@@ -2174,10 +2174,10 @@ df.plot = df.exp2_cause_adults %>%
   mutate(age_whole = 10) %>% 
   bind_rows(df.exp2_cause_children) %>% 
   mutate(response_pattern = case_when(
-    direct == 1 & absence == 1 ~ "both",
-    direct == 0 & absence == 0 ~ "neither",
-    direct == 1 & absence == 0  ~ "direct only",
-    direct == 0 & absence == 1  ~ "absence only",
+    direct == 1 & absence == 1 ~ "both causes",
+    direct == 0 & absence == 0 ~ "neither cause",
+    direct == 1 & absence == 0  ~ "direct cause only",
+    direct == 0 & absence == 1  ~ "absence cause only",
   ),
   question = recode(question, "cause" = "caused"),
   age_whole = as.factor(age_whole)) %>% 
@@ -2188,7 +2188,7 @@ df.plot = df.exp2_cause_adults %>%
   mutate(percentage = n / sum(n) * 100) %>%
   ungroup() %>% 
   mutate(question = factor(question, levels = c("lexical", "caused")),
-         response_pattern = factor(response_pattern, levels = c("absence only", "direct only", "both", "neither")))
+         response_pattern = factor(response_pattern, levels = c("absence cause only", "direct cause only", "both causes", "neither cause")))
 
 
 
@@ -2223,14 +2223,14 @@ p7 = ggplot(data = df.plot,
   facet_wrap(~question, 
              scales = "free_x") + 
   geom_col(color = "black") +
- scale_fill_manual(values = c("absence only" = "#E41A1C",
-                               "direct only" = "#377EB8",
-                               "both" = "#984EA3",
-                               "neither" = "#999999")) +
-  scale_color_manual(values = c("absence only" = "#E41A1C",
-                                "direct only" = "#377EB8",
-                                "both" = "#984EA3",
-                                "neither" = "#999999")) +
+ scale_fill_manual(values = c("absence cause only" = "#E41A1C",
+                               "direct cause only" = "#377EB8",
+                               "both causes" = "#984EA3",
+                               "neither cause" = "#999999")) +
+  scale_color_manual(values = c("absence cause only" = "#E41A1C",
+                                "direct cause only" = "#377EB8",
+                                "both causes" = "#984EA3",
+                                "neither cause" = "#999999")) +
   scale_shape_manual(values = c(21, 23)) +
   scale_y_continuous(breaks = seq(0, 100, 25),
                      labels = str_c(seq(0, 100, 25), "%"),
@@ -2260,10 +2260,10 @@ df.plot = df.exp2_made_adults %>%
   mutate(age_whole = 10) %>% 
   bind_rows(df.exp2_made_children) %>% 
   mutate(response_pattern = case_when(
-    direct == 1 & absence == 1 ~ "both",
-    direct == 0 & absence == 0 ~ "neither",
-    direct == 1 & absence == 0  ~ "direct only",
-    direct == 0 & absence == 1  ~ "absence only",
+    direct == 1 & absence == 1 ~ "both causes",
+    direct == 0 & absence == 0 ~ "neither cause",
+    direct == 1 & absence == 0  ~ "direct cause only",
+    direct == 0 & absence == 1  ~ "absence cause only",
   ),
   age_whole = as.factor(age_whole)) %>% 
   group_by(age_whole, question, response_pattern) %>% 
@@ -2273,7 +2273,7 @@ df.plot = df.exp2_made_adults %>%
   mutate(percentage = n / sum(n) * 100) %>%
   ungroup() %>% 
   mutate(question = factor(question, levels = c("lexical", "made")),
-         response_pattern = factor(response_pattern, levels = c("absence only", "direct only", "both", "neither")))
+         response_pattern = factor(response_pattern, levels = c("absence cause only", "direct cause only", "both causes", "neither cause")))
 
 
 df.labels = df.plot %>% 
@@ -2307,14 +2307,14 @@ p8 = ggplot(data = df.plot,
   facet_wrap(~question, 
              scales = "free_x") + 
   geom_col(color = "black") +
- scale_fill_manual(values = c("absence only" = "#E41A1C",
-                               "direct only" = "#377EB8",
-                               "both" = "#984EA3",
-                               "neither" = "#999999")) +
-  scale_color_manual(values = c("absence only" = "#E41A1C",
-                                "direct only" = "#377EB8",
-                                "both" = "#984EA3",
-                                "neither" = "#999999")) +
+ scale_fill_manual(values = c("absence cause only" = "#E41A1C",
+                               "direct cause only" = "#377EB8",
+                               "both causes" = "#984EA3",
+                               "neither cause" = "#999999")) +
+  scale_color_manual(values = c("absence cause only" = "#E41A1C",
+                                "direct cause only" = "#377EB8",
+                                "both causes" = "#984EA3",
+                                "neither cause" = "#999999")) +
   scale_shape_manual(values = c(21, 23)) +
   scale_y_continuous(breaks = seq(0, 100, 25),
                      labels = str_c(seq(0, 100, 25), "%"),
@@ -2652,10 +2652,10 @@ df.plot = df.exp3_adults %>%
   bind_rows(df.exp3_children %>% 
                mutate(age_whole = as.integer(age))) %>% 
   mutate(response_pattern = case_when(
-    direct == 1 & absence == 1 ~ "both",
-    direct == 0 & absence == 0 ~ "neither",
-    direct == 1 & absence == 0  ~ "direct only",
-    direct == 0 & absence == 1  ~ "absence only",
+    direct == 1 & absence == 1 ~ "both causes",
+    direct == 0 & absence == 0 ~ "neither cause",
+    direct == 1 & absence == 0  ~ "direct cause only",
+    direct == 0 & absence == 1  ~ "absence cause only",
   ),
   question = recode(question, "cause" = "caused"),
   age_whole = as.factor(age_whole)) %>% 
@@ -2665,7 +2665,7 @@ df.plot = df.exp3_adults %>%
   group_by(age_whole) %>%
   mutate(percentage = n / sum(n) * 100) %>%
   ungroup() %>% 
-  mutate(response_pattern = factor(response_pattern, levels = c("absence only", "direct only", "both", "neither"))) %>% 
+  mutate(response_pattern = factor(response_pattern, levels = c("absence cause only", "direct cause only", "both causes", "neither cause"))) %>% 
   filter(!is.na(age_whole))
 
 custom_labels = function(breaks) {
@@ -2698,14 +2698,14 @@ ggplot(data = df.plot,
                      color = response_pattern,
                      fill = response_pattern)) +
   geom_col(color = "black") +
-    scale_fill_manual(values = c("absence only" = "#E41A1C",
-                               "direct only" = "#377EB8",
-                               "both" = "#984EA3",
-                               "neither" = "#999999")) +
-  scale_color_manual(values = c("absence only" = "#E41A1C",
-                                "direct only" = "#377EB8",
-                                "both" = "#984EA3",
-                                "neither" = "#999999")) +
+    scale_fill_manual(values = c("absence cause only" = "#E41A1C",
+                               "direct cause only" = "#377EB8",
+                               "both causes" = "#984EA3",
+                               "neither cause" = "#999999")) +
+  scale_color_manual(values = c("absence cause only" = "#E41A1C",
+                                "direct cause only" = "#377EB8",
+                                "both causes" = "#984EA3",
+                                "neither cause" = "#999999")) +
   scale_shape_manual(values = c(21, 23)) +
    scale_y_continuous(breaks = seq(0, 100, 25),
                      labels = str_c(seq(0, 100, 25), "%"),
@@ -2726,7 +2726,7 @@ ggplot(data = df.plot,
         strip.text = element_blank()) 
 
 
-ggsave("../../figures/experiment3/explanation_response_patterns.pdf", height = 4, width = 6)
+ggsave("../../figures/experiment3/explanation_response_patterns.pdf", height = 4, width = 8)
 
 ```
 
@@ -5269,10 +5269,11 @@ fun.plot_params = function(params, nbeta, nprior, ncost){
 #### Result Plot
 ```{r}
 
-fun.plot_results(params = par)
-ggsave("../../figures/rsa/model_fits.pdf",
-       width = 10,
-       height = 7)
+rsa.overall.plot = fun.plot_results(params = par)
+rsa.overall.plot
+# ggsave("../../figures/rsa/model_fits.pdf",
+#        width = 10,
+#        height = 7)
 
 
 ```
@@ -5283,18 +5284,34 @@ ggsave("../../figures/rsa/model_fits.pdf",
 
 # # parameters
 # # fun.plot_params(params = fit$par,
-fun.plot_params(params = par,
+rsa.sub.plot = fun.plot_params(params = par,
                  nbeta = 2,
                  nprior = 2,
                  ncost = 4)
 
-ggsave("../../figures/rsa/model_parameters.pdf",
-       width = 12,
-       height = 5)
+rsa.sub.plot
+
+# ggsave("../../figures/rsa/model_parameters.pdf",
+#        width = 12,
+#        height = 5)
 
 
 ```
 
+#### Combine result and parameters plot
+
+```{r, fig.width=16, fig.height=5}
+
+plot = rsa.overall.plot + rsa.sub.plot + 
+plot_layout(nrow = 1) &
+plot_annotation(tag_levels = "A") &
+theme(plot.tag = element_text(face = "bold"))
+
+ggsave(plot, filename = "../../figures/rsa/rsa_combined.pdf", height = 5, width = 16)
+
+plot
+
+```
 
 #### Scatter Plot 
 
