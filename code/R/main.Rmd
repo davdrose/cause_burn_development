@@ -30,6 +30,7 @@ library("boot")            # for bootstrapping
 library("rsample")         # for resampling
 library("latex2exp")       # for adding LaTeX to plots
 library("tidyverse")       # for everything else
+
 ```
 
 # Settings
@@ -44,6 +45,7 @@ options(contrasts = c("contr.sum","contr.poly"))
 
 # suppress grouping warning 
 options(dplyr.summarise.inform = F)
+
 ```
 
 # Helper functions 
@@ -80,6 +82,7 @@ make_gradient = function(deg = 45, n = 100, cols = blues9) {
 softmax = function(x, beta = 1) {
   return(exp(x * beta) / sum(exp(x * beta)))
 }
+
 ```
 
 
@@ -125,7 +128,6 @@ df.exp1_cause_adults = df.exp1_cause_adults %>%
          question = str_replace_all(question, "simple", "lexical"),
          question = str_replace_all(question, "cause", "caused")) %>% 
   rename(scenario = verb)
-
 
 df.exp1_cause_adults %>% 
   summarise(n_distinct(participant))
@@ -177,8 +179,7 @@ df.cause_adults_both = df.exp1_cause_adults %>%
     TRUE ~ "different"
   )) %>%
   filter(response_pattern == "both")
-  
-  
+
 df.cause_adults_both = df.cause_adults_both %>% 
   mutate(difference = 1) %>%
   bind_rows(df.cause_adults_both %>% 
@@ -187,14 +188,12 @@ df.cause_adults_both = df.cause_adults_both %>%
 df.chain_cause_adults = df.cause_adults_different %>% 
   bind_rows(df.cause_adults_both)
 
-
 df.model = df.chain_cause_adults %>% 
   mutate(question = as_factor(question),
          question = fct_relevel(question, "caused"))
 
 # Check contrast values
  contrasts(df.model$question)
-
 
 fit.brm.chain.cause.adults = brm(formula = difference ~ 1 + question + (1 | participant) + (1 | scenario), 
                      data = df.model,
@@ -205,11 +204,13 @@ fit.brm.chain.cause.adults = brm(formula = difference ~ 1 + question + (1 | part
                      file = "cache/chain_cause_adult_difference") 
 
 fit.brm.chain.cause.adults
+
 ```
 
 ##### Follow-up analysis 
 
 ```{r}
+
 fit.brm.chain.cause.adults %>% 
   emmeans(spec = pairwise ~ question, 
           type = "response")
@@ -219,6 +220,7 @@ fit.brm.chain.cause.adults %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+
 set.seed(1)
 
 df.chain_cause_adults %>% 
@@ -238,11 +240,14 @@ df.chain_cause_adults %>%
 ##### Read in data
 
 ```{r message=FALSE, warning=FALSE}
+
 df.exp1_cause_children = read_csv("../../data/experiment1/cause/children/exp1_cause_children.csv")
+
 ```
 
 ##### Wrangle
 ```{r message=FALSE, warning=FALSE}
+
 #clean data
 df.exp1_cause_children = df.exp1_cause_children %>% 
   clean_names() %>% 
@@ -261,7 +266,6 @@ df.exp1_cause_children = df.exp1_cause_children %>%
                                    pattern = "\\\\n"),
          response = str_to_lower(response)) %>% 
   select(-(response_id : age_range), -notes, -full_response) 
-
 
 # code responses
 df.exp1_cause_children = df.exp1_cause_children %>% 
@@ -289,6 +293,7 @@ df.exp1_cause_children = df.exp1_cause_children %>%
 ##### Demographics
 
 ```{r message=FALSE, warning=FALSE}
+
 # gender
 df.exp1_cause_children %>%
   group_by(gender) %>%
@@ -301,6 +306,7 @@ df.exp1_cause_children %>%
     group_by(en_occurrence) %>%
     summarise(n = n_distinct(participant)) %>%
     print()
+
 ```
 
 #### STATS
@@ -308,6 +314,7 @@ df.exp1_cause_children %>%
 ##### Bayesian Model
 
 ```{r message=FALSE, warning=FALSE}
+
 df.cause_children_different = df.exp1_cause_children %>%
   mutate(response_pattern = case_when(
     distal == 1 & proximal == 1 ~ "both",
@@ -325,7 +332,6 @@ df.cause_children_both = df.exp1_cause_children %>%
     TRUE ~ "different"
   )) %>%
   filter(response_pattern == "both") 
-
 
  df.cause_children_both = df.cause_children_both %>% 
   mutate(difference = 1) %>%
@@ -348,11 +354,13 @@ fit.brm.chain.cause.children = brm(formula = difference ~ 1 + question * age + (
                      file = "cache/chain_cause_children_difference") 
 
 fit.brm.chain.cause.children 
+
 ```
 
 ##### Follow-up analysis 
 
 ```{r}
+
 # effect of question 
 fit.brm.chain.cause.children %>% 
   emmeans(spec = pairwise ~ question, 
@@ -367,11 +375,13 @@ fit.brm.chain.cause.children %>%
 fit.brm.chain.cause.children %>% 
   emtrends(specs = pairwise ~ question,
            var = "age")
+
 ```
 
 ##### Means and Confidence Interval  
 
 ```{r}
+
 set.seed(1)
 
 df.chain_cause_children %>% 
@@ -455,7 +465,6 @@ df.exp1_made_adults_demo %>%
 
 ```{r message=FALSE, warning=FALSE}
 
-
 df.made_adults_different = df.exp1_made_adults %>%
   mutate(response_pattern = case_when(
     distal == 1 & proximal == 1 ~ "both",
@@ -474,7 +483,6 @@ df.made_adults_both = df.exp1_made_adults %>%
   )) %>%
   filter(response_pattern == "both")
 
-
 df.made_adults_both = df.made_adults_both %>% 
   mutate(difference = 1) %>%
   bind_rows(df.made_adults_both %>% 
@@ -490,7 +498,6 @@ df.model = df.chain_made_adults %>%
 # Check contrast values
  contrasts(df.model$question)
 
-
 fit.brm.chain.made.adults = brm(formula = difference ~ 1 + question + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
@@ -501,12 +508,12 @@ fit.brm.chain.made.adults = brm(formula = difference ~ 1 + question + (1 | parti
 
 fit.brm.chain.made.adults
 
-
 ```
 
 ##### Follow-up analysis 
 
 ```{r}
+
 fit.brm.chain.made.adults %>% 
   emmeans(spec = pairwise ~ question, 
           type = "response")
@@ -516,6 +523,7 @@ fit.brm.chain.made.adults %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+
 set.seed(1)
 
 df.chain_made_adults %>% 
@@ -575,7 +583,6 @@ df.exp1_made_children = df.exp1_made_children %>%
          scenario = str_replace_all(scenario, "mirror_break", "mirror_crack")) %>%
   rename(participant = participant_number) 
 
-
 ```
 
 ##### Demographics
@@ -588,8 +595,7 @@ df.exp1_made_children %>%
   summarise(n = n_distinct(participant)) %>%
   print()
   
-  
-  # language spoken
+ # language spoken
 df.exp1_made_children %>%
     mutate(en_occurrence = ifelse(str_detect(lan_spoken, "en"), "en", "non-en")) %>%
     group_by(en_occurrence) %>%
@@ -603,7 +609,6 @@ df.exp1_made_children %>%
 ##### Bayesian Model
 
 ```{r message=FALSE, warning=FALSE}
-
 
 df.made_children_different = df.exp1_made_children %>%
   mutate(response_pattern = case_when(
@@ -635,12 +640,9 @@ df.model = df.chain_made_children %>%
   mutate(question = as_factor(question),
          question = fct_relevel(question, "made"))
 
-
 # Check contrast values
  contrasts(df.model$question)
  
-
-
 fit.brm.chain.made.children = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
@@ -650,7 +652,6 @@ fit.brm.chain.made.children = brm(formula = difference ~ 1 + question*age + (1 |
                      file = "cache/chain_made_children_difference") 
 
 fit.brm.chain.made.children
-
 
 ```
 
@@ -672,11 +673,13 @@ fit.brm.chain.made.children %>%
 fit.brm.chain.made.children %>% 
   emtrends(specs = pairwise ~ question,
            var = "age")
+
 ```
 
 ##### Means and Confidence Interval  
 
 ```{r}
+
 set.seed(1)
 
 df.chain_made_children %>% 
@@ -719,7 +722,6 @@ df.model = df.chain_cause_made_adults %>%
 # Check contrast values
  contrasts(df.model$question)
 
-
 fit.brm.chain.cause.made.adults = brm(formula = difference ~ 1 + question + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
@@ -730,12 +732,12 @@ fit.brm.chain.cause.made.adults = brm(formula = difference ~ 1 + question + (1 |
 
 fit.brm.chain.cause.made.adults
 
-
 ```
 
 ##### Follow-up analysis 
 
 ```{r}
+
 fit.brm.chain.cause.made.adults %>% 
   emmeans(spec = pairwise ~ question, 
           type = "response")
@@ -770,7 +772,6 @@ df.model = df.chain_cause_made_children %>%
 # Check contrast values
  contrasts(df.model$question)
 
-
 fit.brm.chain.cause.made.children = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
@@ -780,7 +781,6 @@ fit.brm.chain.cause.made.children = brm(formula = difference ~ 1 + question*age 
                      file = "cache/chain_cause_made_children_difference") 
 
 fit.brm.chain.cause.made.children
-
 
 ```
 
@@ -802,6 +802,7 @@ fit.brm.chain.cause.made.children %>%
 fit.brm.chain.cause.made.children %>% 
   emtrends(specs = pairwise ~ question,
            var = "age")
+
 ```
 
 ## PLOTS
@@ -824,7 +825,6 @@ df.prediction = fit.brm.chain.cause.children %>%
   bind_cols(df.data) %>%
   clean_names()
 
-
 df.means = df.chain_cause_adults %>% 
   mutate(age_whole = rep(10)) %>% 
   bind_rows(df.chain_cause_children) %>% 
@@ -842,14 +842,12 @@ df.means = df.chain_cause_adults %>%
          age_whole = as.numeric(as.character(age_whole)),
          age_index = ifelse(age_whole == 10, "adult", "child"))
 
-
 gradient = make_gradient(deg = 90, n = 500, cols = brewer.pal(9, "RdBu"))
 df.textboxes = tibble(
   question = c("lexical", "caused"),
   age = c(-Inf, -Inf),
   difference = c(Inf, Inf)
 )
-
 
 p1 = ggplot(mapping = aes(x = age,
                           y = difference,
@@ -915,11 +913,13 @@ p1 = ggplot(mapping = aes(x = age,
         axis.title.x = element_blank(),
         panel.spacing = unit(.4, "cm"),
         plot.margin = margin(t = 1.2, r = 0.1, b = 0.5, l = 0, "cm"))
+
 ```
 
 #### Made v Lexical
 
 ```{r message=FALSE, warning=FALSE}
+
 set.seed(1)
 
 df.data = expand_grid(age = seq(4, 9, 0.1),
@@ -932,7 +932,6 @@ df.prediction = fit.brm.chain.made.children %>%
   as_tibble() %>%
   bind_cols(df.data) %>%
   clean_names()
-
 
 df.means = df.chain_made_adults %>% 
   mutate(age_whole = rep(10)) %>% 
@@ -951,15 +950,12 @@ df.means = df.chain_made_adults %>%
          age_whole = as.numeric(as.character(age_whole)),
          age_index = ifelse(age_whole == 10, "adult", "child"))
 
-
-
 gradient = make_gradient(deg = 90, n = 500, cols = brewer.pal(9, "RdBu"))
 df.textboxes = tibble(
   question = c("lexical", "made"),
   age = c(-Inf, -Inf),
   difference = c(Inf, Inf)
 )
-
 
 p2 = ggplot(mapping = aes(x = age,
                           y = difference,
@@ -1025,6 +1021,7 @@ p2 = ggplot(mapping = aes(x = age,
         axis.title.x = element_blank(),
         panel.spacing = unit(.4, "cm"),
         plot.margin = margin(t = 1.2, r = 0.1, b = 0.5, l = 0, "cm"))
+
 ```
 
 ### Responses Patterns by Age
@@ -1032,6 +1029,7 @@ p2 = ggplot(mapping = aes(x = age,
 ##### Caused vs. Lexical
 
 ```{r}
+
 df.plot = df.exp1_cause_adults %>% 
   mutate(age_whole = 10) %>% 
   bind_rows(df.exp1_cause_children) %>% 
@@ -1052,7 +1050,6 @@ df.plot = df.exp1_cause_adults %>%
   mutate(question = factor(question, levels = c("lexical", "caused")),
          response_pattern = factor(response_pattern, levels = c("distal cause only", "proximal cause only", "both causes", "neither cause")))
 
-
 df.labels = df.plot %>% 
   group_by(age_whole, question) %>%
   summarize(count = sum(n)/2) %>% 
@@ -1072,7 +1069,6 @@ df.plot = df.plot %>%
               select(age_whole, question, label), 
             by = c("age_whole", "question")) %>% 
   mutate(label = factor(label, levels = df.labels$label))
-
 
 p3 = ggplot(data = df.plot,
             mapping = aes(x = label,
@@ -1109,12 +1105,12 @@ p3 = ggplot(data = df.plot,
         strip.text = element_blank(),
         panel.spacing = unit(.4, "cm"))
 
-
 ```
 
 ##### Made vs. Lexical
 
 ```{r}
+
 df.plot = df.exp1_made_adults %>% 
   mutate(age_whole = 10) %>% 
   bind_rows(df.exp1_made_children) %>% 
@@ -1196,6 +1192,7 @@ p4 = ggplot(data = df.plot,
 #### Combine Cause and Made Plots
 
 ```{r fig.height=8, fig.width=15, message=FALSE, warning=FALSE}
+
 design = "
 1122
 3344
@@ -1214,6 +1211,7 @@ plot = p1 + p2 + p3 + p4 +
 plot
 
 ggsave(plot, filename = "../../figures/experiment1/chain_response_patterns.pdf", height = 8, width = 15)
+
 ```
 
 # EXPERIMENT 2: ABSENCES
@@ -1279,7 +1277,6 @@ df.exp2_cause_adults = df.exp2_cause_adults %>%
   mutate(question = str_replace_all(question, "simple", "lexical"),
          question = str_replace_all(question, "cause", "caused"))
 
-
 ```
 
 ##### Demographics
@@ -1332,7 +1329,6 @@ df.cause_adults_both = df.exp2_cause_adults %>%
   )) %>%
   filter(response_pattern == "both")
   
-  
 df.cause_adults_both = df.cause_adults_both %>% 
   mutate(difference = 1) %>%
   bind_rows(df.cause_adults_both %>% 
@@ -1341,14 +1337,12 @@ df.cause_adults_both = df.cause_adults_both %>%
 df.absence_cause_adults = df.cause_adults_different %>% 
   bind_rows(df.cause_adults_both)
 
-
 df.model = df.absence_cause_adults %>% 
   mutate(question = as_factor(question),
          question = fct_relevel(question, "caused"))
 
 # Check contrast values
  contrasts(df.model$question)
-
 
 fit.brm.absence.cause.adults = brm(formula = difference ~ 1 + question + (1 | participant) + (1 | scenario), 
                      data = df.model,
@@ -1359,11 +1353,13 @@ fit.brm.absence.cause.adults = brm(formula = difference ~ 1 + question + (1 | pa
                      file = "cache/absence_cause_adult_difference") 
 
 fit.brm.absence.cause.adults
+
 ```
 
 ##### Follow-up analysis 
 
 ```{r}
+
 fit.brm.absence.cause.adults %>% 
   emmeans(spec = pairwise ~ question, 
           type = "response")
@@ -1373,6 +1369,7 @@ fit.brm.absence.cause.adults %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+
 set.seed(1)
 
 df.absence_cause_adults %>% 
@@ -1419,7 +1416,6 @@ df.exp2_cause_children = df.exp2_cause_children %>%
                                    pattern = "\\\\n"),
          response = str_to_lower(response))
 
-
 # code responses
 df.exp2_cause_children = df.exp2_cause_children %>%
   mutate(direct = ifelse(str_detect(response,
@@ -1435,13 +1431,11 @@ df.exp2_cause_children = df.exp2_cause_children %>%
          absence = ifelse(str_detect(response,
                                      "^latch$|latch | latch$"), 1, absence)) 
 
-
 # compute age and replace simple with lexical
 df.exp2_cause_children = df.exp2_cause_children %>%
   mutate(age = round(rounded_age / 365, digits = 2),
          age_whole =as.integer(age),
          question = str_replace_all(question, "simple", "lexical"))
-
 
 ```
 
@@ -1454,7 +1448,6 @@ df.exp2_cause_children %>%
   group_by(gender) %>%
   summarise(n = n_distinct(participant)) %>%
   print()
-  
   
   # language spoken
 df.exp2_cause_children %>%
@@ -1470,6 +1463,7 @@ df.exp2_cause_children %>%
 ##### Bayesian Model
 
 ```{r message=FALSE, warning=FALSE}
+
 df.cause_children_different = df.exp2_cause_children %>%
   mutate(response_pattern = case_when(
    direct == 1 & absence == 1 ~ "both",
@@ -1488,12 +1482,11 @@ df.cause_children_both = df.exp2_cause_children %>%
   )) %>%
   filter(response_pattern == "both") 
 
-
  df.cause_children_both = df.cause_children_both %>% 
   mutate(difference = 1) %>%
   bind_rows(df.cause_children_both %>% 
               mutate(difference = 0)) 
-
+ 
 df.absence_cause_children = df.cause_children_different %>% 
   bind_rows(df.cause_children_both) 
   
@@ -1510,11 +1503,13 @@ fit.brm.absence.cause.children = brm(formula = difference ~ 1 + question * age +
                      file = "cache/absence_cause_children_difference") 
 
 fit.brm.absence.cause.children 
+
 ```
 
 ##### Follow-up analysis 
 
 ```{r}
+
 # effect of question 
 fit.brm.absence.cause.children %>% 
   emmeans(spec = pairwise ~ question, 
@@ -1529,11 +1524,13 @@ fit.brm.absence.cause.children %>%
 fit.brm.absence.cause.children %>% 
   emtrends(specs = pairwise ~ question,
            var = "age")
+
 ```
 
 ##### Means and Confidence Interval  
 
 ```{r}
+
 set.seed(1)
 
 df.absence_cause_children %>% 
@@ -1602,11 +1599,9 @@ df.exp2_made_adults = df.exp2_made_adults %>%
          absence = ifelse(str_detect(response,
                                      "^latch$|latch | latch$"), 1, absence))
 
-
 ## replace simple with lexical
 df.exp2_made_adults = df.exp2_made_adults %>% 
   mutate(question = str_replace_all(question, "simple", "lexical"))
-
 
 ```
 
@@ -1660,7 +1655,6 @@ df.made_adults_both = df.exp2_made_adults %>%
   )) %>%
   filter(response_pattern == "both")
   
-  
 df.made_adults_both = df.made_adults_both %>% 
   mutate(difference = 1) %>%
   bind_rows(df.made_adults_both %>% 
@@ -1669,14 +1663,12 @@ df.made_adults_both = df.made_adults_both %>%
 df.absence_made_adults = df.made_adults_different %>% 
   bind_rows(df.made_adults_both)
 
-
 df.model = df.absence_made_adults %>% 
   mutate(question = as_factor(question),
          question = fct_relevel(question, "caused"))
 
 # Check contrast values
  contrasts(df.model$question)
-
 
 fit.brm.absence.made.adults = brm(formula = difference ~ 1 + question + (1 | participant) + (1 | scenario), 
                      data = df.model,
@@ -1687,11 +1679,13 @@ fit.brm.absence.made.adults = brm(formula = difference ~ 1 + question + (1 | par
                      file = "cache/absence_made_adult_difference") 
 
 fit.brm.absence.made.adults
+
 ```
 
 ##### Follow-up analysis 
 
 ```{r}
+
 fit.brm.absence.made.adults %>% 
   emmeans(spec = pairwise ~ question, 
           type = "response")
@@ -1701,6 +1695,7 @@ fit.brm.absence.made.adults %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+
 set.seed(1)
 
 df.absence_made_adults %>% 
@@ -1763,14 +1758,12 @@ df.exp2_made_children = df.exp2_made_children %>%
          absence = ifelse(str_detect(response,
                                      "^latch$|latch | latch$"), 1, absence)) 
 
-
 # compute age and replace simple with lexical
 df.exp2_made_children = df.exp2_made_children %>%
   mutate(age = round(rounded_age / 365, digits = 2),
          age_whole = as.integer(age),
          question = str_replace_all(question, "simple", "lexical")) %>% 
   rename(participant = `participant _number`)
-
 
 ```
 
@@ -1784,8 +1777,7 @@ df.exp2_made_children %>%
   summarise(n = n_distinct(participant)) %>%
   print()
   
-  
-  # language spoken
+ # language spoken
 df.exp2_made_children %>%
     mutate(en_occurrence = ifelse(str_detect(lan_spoken, "en"), "en", "non-en")) %>%
     group_by(en_occurrence) %>%
@@ -1799,7 +1791,6 @@ df.exp2_made_children %>%
 ##### Bayesian Model
 
 ```{r message=FALSE, warning=FALSE}
-
 
 df.made_children_different = df.exp2_made_children %>%
   mutate(response_pattern = case_when(
@@ -1831,12 +1822,9 @@ df.model = df.absence_made_children %>%
   mutate(question = as_factor(question),
          question = fct_relevel(question, "made"))
 
-
 # Check contrast values
  contrasts(df.model$question)
  
-
-
 fit.brm.absence.made.children = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
@@ -1846,7 +1834,6 @@ fit.brm.absence.made.children = brm(formula = difference ~ 1 + question*age + (1
                      file = "cache/absence_made_children_difference") 
 
 fit.brm.absence.made.children
-
 
 ```
 
@@ -1868,11 +1855,13 @@ fit.brm.absence.made.children %>%
 fit.brm.absence.made.children %>% 
   emtrends(specs = pairwise ~ question,
            var = "age")
+
 ```
 
 ##### Means and Confidence Interval  
 
 ```{r}
+
 set.seed(1)
 
 df.absence_made_children %>% 
@@ -1915,7 +1904,6 @@ df.model = df.absence_cause_made_adults %>%
 # Check contrast values
  contrasts(df.model$question)
 
-
 fit.brm.absence.cause.made.adults = brm(formula = difference ~ 1 + question + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
@@ -1926,12 +1914,12 @@ fit.brm.absence.cause.made.adults = brm(formula = difference ~ 1 + question + (1
 
 fit.brm.absence.cause.made.adults
 
-
 ```
 
 ##### Follow-up analysis 
 
 ```{r}
+
 fit.brm.absence.cause.made.adults %>% 
   emmeans(spec = pairwise ~ question, 
           type = "response")
@@ -1966,7 +1954,6 @@ df.model = df.absence_cause_made_children %>%
 # Check contrast values
  contrasts(df.model$question)
 
-
 fit.brm.absence.cause.made.children = brm(formula = difference ~ 1 + question*age + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
@@ -1976,7 +1963,6 @@ fit.brm.absence.cause.made.children = brm(formula = difference ~ 1 + question*ag
                      file = "cache/absence_cause_made_children_difference") 
 
 fit.brm.absence.cause.made.children
-
 
 ```
 
@@ -1998,6 +1984,7 @@ fit.brm.absence.cause.made.children %>%
 fit.brm.absence.cause.made.children %>% 
   emtrends(specs = pairwise ~ question,
            var = "age")
+
 ```
 
 
@@ -2008,6 +1995,7 @@ fit.brm.absence.cause.made.children %>%
 #### Caused vs. Lexical
 
 ```{r message=FALSE, warning=FALSE}
+
 set.seed(1)
 
 df.data = expand_grid(age = seq(4, 9, 0.1),
@@ -2020,7 +2008,6 @@ df.prediction = fit.brm.absence.cause.children %>%
   as_tibble() %>%
   bind_cols(df.data) %>%
   clean_names()
-
 
 df.means = df.absence_cause_adults %>% 
   mutate(age_whole = rep(10)) %>% 
@@ -2045,7 +2032,6 @@ df.textboxes = tibble(
   age = c(-Inf, -Inf),
   difference = c(Inf, Inf)
 )
-
 
 p5 = ggplot(mapping = aes(x = age,
                           y = difference,
@@ -2111,11 +2097,13 @@ p5 = ggplot(mapping = aes(x = age,
         axis.title.x = element_blank(),
         panel.spacing = unit(.4, "cm"),
         plot.margin = margin(t = 1.2, r = 0.1, b = 0.5, l = 0, "cm"))
+
 ```
 
 #### Made vs. Lexical
 
 ```{r message=FALSE, warning=FALSE}
+
 set.seed(1)
 
 df.data = expand_grid(age = seq(4, 9, 0.1),
@@ -2128,7 +2116,6 @@ df.prediction = fit.brm.absence.made.children %>%
   as_tibble() %>%
   bind_cols(df.data) %>%
   clean_names()
-
 
 df.means = df.absence_made_adults %>% 
   mutate(age_whole = rep(10)) %>% 
@@ -2153,7 +2140,6 @@ df.textboxes = tibble(
   age = c(-Inf, -Inf),
   difference = c(Inf, Inf)
 )
-
 
 p6 = ggplot(mapping = aes(x = age,
                           y = difference,
@@ -2219,6 +2205,7 @@ p6 = ggplot(mapping = aes(x = age,
         axis.title.x = element_blank(),
         panel.spacing = unit(.4, "cm"),
         plot.margin = margin(t = 1.2, r = 0.1, b = 0.5, l = 0, "cm"))
+
 ```
 
 ### Responses Patterns by Age
@@ -2247,8 +2234,6 @@ df.plot = df.exp2_cause_adults %>%
   mutate(question = factor(question, levels = c("lexical", "caused")),
          response_pattern = factor(response_pattern, levels = c("absence cause only", "direct cause only", "both causes", "neither cause")))
 
-
-
 df.labels = df.plot %>% 
   group_by(age_whole, question) %>%
   summarize(count = sum(n)/2) %>% 
@@ -2268,7 +2253,6 @@ df.plot = df.plot %>%
               select(age_whole, question, label), 
             by = c("age_whole", "question")) %>% 
   mutate(label = factor(label, levels = df.labels$label))
-
 
 p7 = ggplot(data = df.plot,
             mapping = aes(x = label,
@@ -2305,6 +2289,7 @@ p7 = ggplot(data = df.plot,
         strip.background = element_blank(),
         strip.text = element_blank(),
         panel.spacing = unit(.4, "cm"))
+
 ```
 
 ##### Made vs. Lexical
@@ -2330,7 +2315,6 @@ df.plot = df.exp2_made_adults %>%
   mutate(question = factor(question, levels = c("lexical", "made")),
          response_pattern = factor(response_pattern, levels = c("absence cause only", "direct cause only", "both causes", "neither cause")))
 
-
 df.labels = df.plot %>% 
   group_by(age_whole, question) %>%
   summarize(count = sum(n)/2) %>% 
@@ -2350,7 +2334,6 @@ df.plot = df.plot %>%
               select(age_whole, question, label), 
             by = c("age_whole", "question")) %>% 
   mutate(label = factor(label, levels = df.labels$label))
-
 
 p8 = ggplot(data = df.plot,
             mapping = aes(x = label,
@@ -2386,6 +2369,7 @@ p8 = ggplot(data = df.plot,
         strip.background = element_blank(),
         strip.text = element_blank(),
         panel.spacing = unit(.4, "cm"))
+
 ```
 
 #### Combine Cause and Made Plots
@@ -2411,6 +2395,7 @@ plot = p5 + p6 + p7 + p8 +
 plot
 
 ggsave(plot, filename = "../../figures/experiment2/absence_response_patterns.pdf", height = 8, width = 15)
+
 ```
 
 # EXPERIMENT 3: ABSENCES 
@@ -2470,6 +2455,7 @@ df.exp3_adults = df.exp3_adults %>%
                                      "^window$|window | window$"), 1, absence),
          absence = ifelse(str_detect(response,
                                      "^latch$|latch | latch$"), 1, absence))
+
 ```
 
 ##### Demographics
@@ -2494,7 +2480,6 @@ df.exp3_adults_demo %>%
 df.exp3_adults_demo %>% 
   group_by(ethnicity) %>% 
   count() 
-
 
 ```
 
@@ -2530,6 +2515,7 @@ fit.brm.exp.adults
 ##### Follow-up analysis 
 
 ```{r}
+
 fit.brm.exp.adults %>% 
   emmeans(spec = pairwise ~ causal_candidate, 
           type = "response")
@@ -2539,6 +2525,7 @@ fit.brm.exp.adults %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+
 set.seed(1)
 
 df.exp3_adults %>% 
@@ -2619,9 +2606,9 @@ df.exp3_children = df.exp3_children %>%
          age = round(rounded_age / 365, digits = 2)) %>% 
   rename(participant = participant_number)
 
-
 df.exp3_children %>% 
   summarise(n_distinct(participant))
+
 ```
 
 ##### Demographics
@@ -2634,9 +2621,8 @@ df.exp3_children %>%
   summarise(n = n_distinct(participant)) %>%
   drop_na() %>% 
   print()
-  
-  
-  # language spoken
+
+ # language spoken
 df.exp3_children %>%
     mutate(en_occurrence = ifelse(str_detect(lan_spoken, "en"), "en", "non-en")) %>%
     group_by(en_occurrence) %>%
@@ -2659,7 +2645,6 @@ df.model = df.exp3_children %>%
   mutate(causal_candidate = factor(causal_candidate, levels = c("direct", "absence")),
          causal_candidate= fct_relevel(causal_candidate, "absence"))
 
-
 # check levels of causal_candidate
 contrasts(df.model$causal_candidate)
 
@@ -2680,6 +2665,7 @@ fit.brm.exp.children
 ##### Follow-up analysis 
 
 ```{r}
+
 fit.brm.exp.children %>% 
   emmeans(spec = pairwise ~ causal_candidate, 
           type = "response")
@@ -2689,6 +2675,7 @@ fit.brm.exp.children %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+
 set.seed(1)
 
 df.exp3_children %>% 
@@ -2720,7 +2707,7 @@ df.plot = df.exp3_adults %>%
     direct == 1 & absence == 1 ~ "both causes",
     direct == 0 & absence == 0 ~ "neither cause",
     direct == 1 & absence == 0  ~ "direct cause only",
-    direct == 0 & absence == 1  ~ "absence cause only",
+    direct == 0 & absence == 1  ~ "absent cause only",
   ),
   question = recode(question, "cause" = "caused"),
   age_whole = as.factor(age_whole)) %>% 
@@ -2730,7 +2717,7 @@ df.plot = df.exp3_adults %>%
   group_by(age_whole) %>%
   mutate(percentage = n / sum(n) * 100) %>%
   ungroup() %>% 
-  mutate(response_pattern = factor(response_pattern, levels = c("absence cause only", "direct cause only", "both causes", "neither cause"))) %>% 
+  mutate(response_pattern = factor(response_pattern, levels = c("absent cause only", "direct cause only", "both causes", "neither cause"))) %>% 
   filter(!is.na(age_whole))
 
 custom_labels = function(breaks) {
@@ -2755,7 +2742,6 @@ custom_labels = function(breaks) {
   return(combined_labels)
 }
 
-
 ggplot(data = df.plot,
        mapping = aes(x = age_whole,
                      y = percentage,
@@ -2763,11 +2749,11 @@ ggplot(data = df.plot,
                      color = response_pattern,
                      fill = response_pattern)) +
   geom_col(color = "black") +
-    scale_fill_manual(values = c("absence cause only" = "#E41A1C",
+    scale_fill_manual(values = c("absent cause only" = "#E41A1C",
                                "direct cause only" = "#377EB8",
                                "both causes" = "#984EA3",
                                "neither cause" = "#999999")) +
-  scale_color_manual(values = c("absence cause only" = "#E41A1C",
+  scale_color_manual(values = c("absent cause only" = "#E41A1C",
                                 "direct cause only" = "#377EB8",
                                 "both causes" = "#984EA3",
                                 "neither cause" = "#999999")) +
@@ -2789,7 +2775,6 @@ ggplot(data = df.plot,
         axis.title.x = element_blank(),
         strip.background = element_blank(),
         strip.text = element_blank()) 
-
 
 ggsave("../../figures/experiment3/explanation_response_patterns.pdf", height = 4, width = 8)
 
@@ -2813,7 +2798,6 @@ ggsave("../../figures/experiment3/explanation_response_patterns.pdf", height = 4
 
 ```{r message=FALSE, warning=FALSE}
 
-
 df.model = df.exp1_cause_adults %>% 
   mutate(question = as_factor(question),
          question = fct_relevel(question, "cause"))
@@ -2830,8 +2814,8 @@ fit.brm.cause.adult.distal = brm(formula = distal ~ 1 + question + (1 | particip
                      warmup = 1000,
                      control = list(adapt_delta = .999999),
                      file = "cache/cause_adult_distal") 
-fit.brm.cause.adult.distal
 
+fit.brm.cause.adult.distal
 
 ```
 
@@ -2870,7 +2854,6 @@ df.model = df.exp1_cause_children %>%
 # Check contrast values
  contrasts(df.model$question)
 
-
 fit.brm.cause.children.distal = brm(formula = distal ~ 1 + question + (1 | participant) + (1 | scenario),
                      data = df.model,
                      family = "bernoulli",
@@ -2881,7 +2864,6 @@ fit.brm.cause.children.distal = brm(formula = distal ~ 1 + question + (1 | parti
                      file = "cache/cause_children_distal") 
 
 fit.brm.cause.children.distal
-
 
 fit.brm.cause.children.distal.age = brm(formula = distal ~ 1 + question*age + (1 | participant) + (1 | scenario), 
                      data = df.model,
@@ -2912,7 +2894,6 @@ fit.brm.cause.children.proximal = brm(formula = proximal ~ 1 + question + (1 | p
 
 fit.brm.cause.children.proximal
 
-
 fit.brm.cause.children.proximal.age = brm(formula = proximal ~ 1 + question*age + (1 | participant) + (1 | scenario),
                       data = df.model,
                       family = "bernoulli",
@@ -2923,7 +2904,6 @@ fit.brm.cause.children.proximal.age = brm(formula = proximal ~ 1 + question*age 
                       file = "cache/cause_children_proximal_age") 
 
 fit.brm.cause.children.proximal.age
-
 
 ```
 
@@ -2946,7 +2926,6 @@ df.model = df.exp1_made_adults %>%
 # Check contrast values
  contrasts(df.model$question)
 
-
 fit.brm.made.adult.distal = brm(formula = distal ~ 1 + question + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
@@ -2957,9 +2936,6 @@ fit.brm.made.adult.distal = brm(formula = distal ~ 1 + question + (1 | participa
                      file = "cache/made_adult_distal") 
 
 fit.brm.made.adult.distal
-
-
-
 
 ```
 
@@ -2977,7 +2953,6 @@ fit.brm.made.adult.proximal = brm(formula = proximal ~ 1 + question + (1 | parti
                       file = "cache/made_adult_proximal") 
 
 fit.brm.made.adult.proximal
-
 
 ```
 
@@ -2999,7 +2974,6 @@ df.model = df.exp1_made_children %>%
 # Check contrast values
  contrasts(df.model$question)
 
-
 fit.brm.made.children.distal = brm(formula = distal ~ 1 + question + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
@@ -3010,7 +2984,6 @@ fit.brm.made.children.distal = brm(formula = distal ~ 1 + question + (1 | partic
                      file = "cache/made_children_distal") 
 
 fit.brm.made.children.distal
-
 
 fit.brm.made.children.distal.age = brm(formula = distal ~ 1 + question*age + (1 | participant) + (1 | scenario), 
                      data = df.model,
@@ -3040,7 +3013,6 @@ fit.brm.proximal = brm(formula = proximal ~ 1 + question + (1 | participant) + (
 
 fit.brm.proximal
 
-
 fit.brm.proximal.age = brm(formula = proximal ~ 1 + question*age + (1 | participant) + (1 | scenario),
                       data = df.model,
                       family = "bernoulli",
@@ -3051,8 +3023,6 @@ fit.brm.proximal.age = brm(formula = proximal ~ 1 + question*age + (1 | particip
                       file = "cache/made_children_proximal_age") 
 
 fit.brm.proximal.age
-
-
 
 ```
 
@@ -3074,7 +3044,6 @@ df.exp1_cause_made_adults = df.exp1_cause_adults %>%
   select(-participant)) %>% 
   mutate(participant = rep(1:(n()/2), each = 2))
 
-
 ```
 
 #### STATS
@@ -3092,7 +3061,6 @@ df.model = df.exp1_cause_made_adults %>%
 # Check contrast values
  contrasts(df.model$question)
 
-
 fit.brm.cause.made.adult.distal = brm(formula = distal ~ 1 + question + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
@@ -3103,8 +3071,6 @@ fit.brm.cause.made.adult.distal = brm(formula = distal ~ 1 + question + (1 | par
                      file = "cache/cause_made_adult_distal") 
 
 fit.brm.cause.made.adult.distal
-
-
 
 ```
 
@@ -3141,7 +3107,6 @@ df.exp1_cause_made_children = df.exp1_cause_children %>%
   select(-made_question_order, participant)) %>% 
   mutate(participant = rep(1:(n()/2), each = 2))
 
-
 ```
 
 #### STATS
@@ -3159,8 +3124,6 @@ df.model = df.exp1_cause_made_children %>%
 # Check contrast values
  contrasts(df.model$question)
 
-
-
 fit.brm.cause.made.children.distal = brm(formula = distal ~ 1 + question*age + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
@@ -3171,7 +3134,6 @@ fit.brm.cause.made.children.distal = brm(formula = distal ~ 1 + question*age + (
                      file = "cache/cause_made_children_distal.rds") 
 
 fit.brm.cause.made.children.distal
-
 
 ```
 
@@ -3190,8 +3152,6 @@ fit.brm.cause.made.children.proximal = brm(formula = proximal ~ 1 + question*age
 
 fit.brm.cause.made.children.proximal
 
-
-
 ```
 
 ## PLOTS
@@ -3199,6 +3159,7 @@ fit.brm.cause.made.children.proximal
 ### Caused vs. Lexical
 
 ```{r message=FALSE, warning=FALSE}
+set.seed(1)
 
 df.model = df.exp1_cause_children %>% 
   mutate(question = as_factor(question),
@@ -3212,7 +3173,6 @@ fit.brm.distal.cause.age2 = brm(formula = distal ~ 1 + question*age + (1 | parti
                      warmup = 1000,
                      control = list(adapt_delta = .9999),
                      file = "cache/fit.brm.distal.cause.age2")
-
 
 fit.brm.proximal.cause.age2 = brm(formula = proximal ~ 1 + question*age + (1 | participant) + (1 | scenario), 
                      data = df.model,
@@ -3321,11 +3281,9 @@ p3 = ggplot(mapping = aes(x = age,
 
 ```{r message=FALSE, warning=FALSE}
 
-
 df.model = df.exp1_made_children %>% 
   mutate(question = as_factor(question),
          question = fct_relevel(question, "made"))
-
 
 fit.brm.distal.age2.made = brm(formula = distal ~ 1 + question*age + (1 | participant) + (1 | scenario), 
                      data = df.model,
@@ -3335,7 +3293,6 @@ fit.brm.distal.age2.made = brm(formula = distal ~ 1 + question*age + (1 | partic
                      warmup = 1000,
                      control = list(adapt_delta = .9999),
                      file = "cache/fit.brm.distal.age2.made")
-
 
 fit.brm.proximal.age2.made = brm(formula = proximal ~ 1 + question*age + (1 | participant) + (1 | scenario), 
                      data = df.model,
@@ -3438,7 +3395,6 @@ p4 = ggplot(mapping = aes(x = age,
         legend.title = element_blank(),
         text = element_text(size = 18)) 
 
-  
 ```
 
 ### Combine Cause and Made Plots
@@ -3453,7 +3409,6 @@ theme(plot.tag = element_text(face = "bold"))
 ggsave(plot, filename = "../../figures/experiment1/chain_all.pdf", height = 5, width = 18)
 
 plot
-
 
 ```
 
@@ -3550,7 +3505,6 @@ fit.brm.absent = brm(formula = absence ~ 1 + question*age + (1 | participant),
                       warmup = 1000,
                       control = list(adapt_delta = .999999),
                       file = "cache/cause_children_absent") 
-
 
 fit.brm.absent
 
@@ -3669,7 +3623,6 @@ df.exp2_cause_made_adults = df.exp2_cause_adults %>%
   select(-participant)) %>% 
   mutate(participant = rep(1:(n()/2), each = 2))
 
-
 ```
 
 #### STATS
@@ -3687,7 +3640,6 @@ df.model = df.exp2_cause_made_adults %>%
 # Check contrast values
  contrasts(df.model$question)
 
-
 fit.brm.cause.made.adult.direct = brm(formula = direct ~ 1 + question + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
@@ -3698,8 +3650,6 @@ fit.brm.cause.made.adult.direct = brm(formula = direct ~ 1 + question + (1 | par
                      file = "cache/cause_made_adult_direct") 
 
 fit.brm.cause.made.adult.direct
-
-
 
 ```
 
@@ -3736,7 +3686,6 @@ df.exp2_cause_made_children = df.exp2_cause_children %>%
   select(-made_question_order, participant)) %>% 
   mutate(participant = rep(1:(n()/2), each = 2))
 
-
 ```
 
 #### STATS
@@ -3754,8 +3703,6 @@ df.model = df.exp2_cause_made_children %>%
 # Check contrast values
  contrasts(df.model$question)
 
-
-
 fit.brm.cause.made.children.direct = brm(formula = direct ~ 1 + question*age + (1 | participant) + (1 | scenario), 
                      data = df.model,
                      family = "bernoulli",
@@ -3767,13 +3714,11 @@ fit.brm.cause.made.children.direct = brm(formula = direct ~ 1 + question*age + (
 
 fit.brm.cause.made.children.direct
 
-
 ```
 
 ###### Absent
 
 ```{r message=FALSE, warning=FALSE}
-
 
 fit.brm.cause.made.children.absent = brm(formula = absence ~ 1 + question*age + (1 | participant) + (1 | scenario), 
                      data = df.model,
@@ -3786,7 +3731,6 @@ fit.brm.cause.made.children.absent = brm(formula = absence ~ 1 + question*age + 
 
 fit.brm.cause.made.children.absent
 
-
 ```
 
 ## PLOTS
@@ -3794,6 +3738,8 @@ fit.brm.cause.made.children.absent
 ### Caused vs. Lexical
 
 ```{r message=FALSE, warning=FALSE}
+
+set.seed(1)
 
 df.model = df.exp2_cause_children %>% 
   mutate(question = as_factor(question),
@@ -3810,8 +3756,6 @@ fit.brm.present.cause.age2 = brm(formula = direct ~ 1 + question*age + (1 | part
                                     max_treedepth = 15),
                      file = "cache/fit.brm.present.cause.age2") 
 
-
-
 fit.brm.absence.cause.age2 = brm(formula = absence ~ 1 + question*age + (1 | participant) + (1 | scenario),
                       data = df.model,
                       family = "bernoulli",
@@ -3821,8 +3765,6 @@ fit.brm.absence.cause.age2 = brm(formula = absence ~ 1 + question*age + (1 | par
                       control = list(adapt_delta = .999999,
                                      max_treedepth = 15),
                       file = "cache/fit.brm.absence.cause.age2") 
-
-
 
 df.data = expand_grid(age = seq(4, 9, 0.1),
                       question = c("caused", "lexical"))
@@ -3850,8 +3792,6 @@ df.adults = df.exp2_cause_adults %>%
     names_to = "type",
     values_to = "response")
 
-
-
 df.children = df.exp2_cause_children%>%
   select(-response) %>% 
  pivot_longer(cols = (direct:absence),
@@ -3874,8 +3814,6 @@ df.means = df.children %>%
                 values_from = response) %>% 
   mutate(age_whole = fct_recode(age_whole, "10" = "adults"),
          age_whole = as.numeric(as.character(age_whole)))
-
-
 
 custom_labels = as_labeller(c("absence" = "Absent Cause", "presence" = "Direct Cause"))
 
@@ -3924,10 +3862,11 @@ p7 = ggplot(mapping = aes(x = age,
 
 ```{r message=FALSE, warning=FALSE}
 
+set.seed(1)
+
 df.model = df.exp2_made_children %>% 
   mutate(question = as_factor(question),
          question = fct_relevel(question, "made"))
-
 
 fit.brm.present.made.age2 = brm(formula = direct ~ 1 + question*age + (1 | participant) + (1 | scenario), 
                      data = df.model,
@@ -3939,8 +3878,6 @@ fit.brm.present.made.age2 = brm(formula = direct ~ 1 + question*age + (1 | parti
                                     max_treedepth = 15),
                      file = "cache/fit.brm.present.made.age2") 
 
-
-
 fit.brm.absence.made.age2 = brm(formula = absence ~ 1 + question*age + (1 | participant) + (1 | scenario),
                       data = df.model,
                       family = "bernoulli",
@@ -3949,8 +3886,6 @@ fit.brm.absence.made.age2 = brm(formula = absence ~ 1 + question*age + (1 | part
                       control = list(adapt_delta = .999999,
                                      max_treedepth = 15),
                       file = "cache/fit.brm.absence.made.age2") 
-
-
 
 df.data = expand_grid(age = seq(4, 9, 0.1),
                       question = c("made", "lexical"))
@@ -3978,7 +3913,6 @@ df.adults = df.exp2_made_adults %>%
     names_to = "type",
     values_to = "response")
 
-
 df.children = df.exp2_made_children %>%
   select(-response) %>% 
   pivot_longer(cols = (direct:absence),
@@ -4003,9 +3937,7 @@ df.means = df.children %>%
          age_whole = as.numeric(as.character(age_whole)),
          question = factor(question, levels = c("made", "lexical")))
 
-
 custom_labels = as_labeller(c("absence" = "Absent Cause", "presence" = "Direct Cause"))
-
 
 p8 = ggplot(mapping = aes(x = age, 
                      y = response,
@@ -4047,7 +3979,6 @@ p8 = ggplot(mapping = aes(x = age,
         legend.title = element_blank(),
         text = element_text(size = 18)) 
 
-
 ```
 
 ### Combine Cause and Made Plots
@@ -4062,7 +3993,6 @@ theme(plot.tag = element_text(face = "bold"))
 ggsave(plot, filename = "../../figures/experiment2/absence_all.pdf", height = 5, width = 18)
 
 plot
-
 
 ```
 
@@ -4116,7 +4046,6 @@ df.exp1_cause_children_order_both = df.tmp1 %>%
   )) %>%
   filter(response_pattern == "both")
   
-  
 df.exp1_cause_children_order_both = df.exp1_cause_children_order_both %>% 
   mutate(difference = 1) %>%
   bind_rows(df.exp1_cause_children_order_both %>% 
@@ -4163,6 +4092,7 @@ fit.brm.exp1.cause.children.order %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+
 set.seed(1)
 
 df.exp1_cause_children_order %>% 
@@ -4187,7 +4117,6 @@ df.exp1_cause_children_order %>%
 ```{r}
 
 #### MADE #####
-
 df.tmp1 = df.exp1_made_children %>% 
   mutate(order = as_factor(made_question_order)) %>% 
    group_by(participant) %>%
@@ -4223,7 +4152,6 @@ df.exp1_made_children_order_both = df.tmp1 %>%
   )) %>%
   filter(response_pattern == "both")
   
-  
 df.exp1_made_children_order_both = df.exp1_made_children_order_both %>% 
   mutate(difference = 1) %>%
   bind_rows(df.exp1_made_children_order_both %>% 
@@ -4233,7 +4161,6 @@ df.exp1_made_children_order = df.exp1_made_children_order_different %>%
   bind_rows(df.exp1_made_children_order_both) %>% 
   mutate(order = as_factor(order),
          order = fct_relevel(order, "second"))
-
 
 ```
 
@@ -4256,8 +4183,6 @@ fit.brm.exp1.made.children.order = brm(formula = difference ~ 1 + question*order
 
 fit.brm.exp1.made.children.order
 
-
-
 ```
 
 ##### Follow-up analysis 
@@ -4273,6 +4198,7 @@ fit.brm.exp1.made.children.order %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+
 set.seed(1)
 
 df.exp1_made_children_order %>% 
@@ -4290,12 +4216,11 @@ df.exp1_made_children_order %>%
 ### Caused vs. Lexical
 
 ```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+
 set.seed(1)
 
 df.plot = df.exp1_cause_children_order %>% 
   mutate(order = factor(order, levels = c("first", "second")))
-
-
 
 p3 = ggplot(data = df.plot,
        mapping = aes(x = factor(question, levels = c("lexical", "caused")),
@@ -4318,17 +4243,17 @@ p3 = ggplot(data = df.plot,
         legend.box = "vertical",
         axis.title.x = element_blank(),
         text = element_text(size = 18)) 
+
 ```
 
 ### Made vs. Lexical
 
 ```{r fig.height=4, fig.width=8, message=FALSE, warning=FALSE}
+
 set.seed(1)
 
 df.plot = df.exp1_made_children_order %>% 
   mutate(order = factor(order, levels = c("first", "second")))
-
-
 
 p4 = ggplot(data = df.plot,
        mapping = aes(x = factor(question, levels = c("lexical", "made")),
@@ -4351,6 +4276,7 @@ p4 = ggplot(data = df.plot,
         legend.box = "vertical",
         axis.title.x = element_blank(),
         text = element_text(size = 18)) 
+
 ```
 
 ### Combine Cause and Made Plots
@@ -4365,6 +4291,7 @@ theme(plot.tag = element_text(face = "bold"))
 ggsave(plot, filename = "../../figures/experiment1/chain_order_effect.pdf", height = 5, width = 12)
 
 plot
+
 ```
 
 
@@ -4432,7 +4359,6 @@ df.exp2_cause_adults_order_both = df.tmp2 %>%
   )) %>%
   filter(response_pattern == "both")
   
-  
 df.exp2_cause_adults_order_both = df.exp2_cause_adults_order_both %>% 
   mutate(difference = 1) %>%
   bind_rows(df.exp2_cause_adults_order_both %>% 
@@ -4463,7 +4389,6 @@ fit.brm.exp2.cause.adults.order = brm(formula = difference ~ 1 + question*order 
                      file = "cache/exp2_cause_adults_order") 
 
 fit.brm.exp2.cause.adults.order
-
 
 ```
 
@@ -4535,7 +4460,6 @@ df.exp2_cause_children_order_both = df.tmp1 %>%
   )) %>%
   filter(response_pattern == "both")
   
-  
 df.exp2_cause_children_order_both = df.exp2_cause_children_order_both %>% 
   mutate(difference = 1) %>%
   bind_rows(df.exp2_cause_children_order_both %>% 
@@ -4567,7 +4491,6 @@ fit.brm.exp2.cause.children.order = brm(formula = difference ~ 1 + question*orde
 
 fit.brm.exp2.cause.children.order
 
-
 ```
 
 ##### Follow-up analysis 
@@ -4583,6 +4506,7 @@ fit.brm.exp2.cause.children.order %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+
 set.seed(1)
 
 df.exp2_cause_children_order %>% 
@@ -4656,7 +4580,6 @@ df.exp2_made_adults_order_both = df.tmp2 %>%
   )) %>%
   filter(response_pattern == "both")
   
-  
 df.exp2_made_adults_order_both = df.exp2_made_adults_order_both %>% 
   mutate(difference = 1) %>%
   bind_rows(df.exp2_made_adults_order_both %>% 
@@ -4666,7 +4589,6 @@ df.exp2_made_adults_order = df.exp2_made_adults_order_different %>%
   bind_rows(df.exp2_made_adults_order_both) %>% 
   mutate(order = as_factor(order),
          order = fct_relevel(order, "second"))
-
 
 ```
 
@@ -4679,7 +4601,6 @@ df.exp2_made_adults_order = df.exp2_made_adults_order_different %>%
 # Check contrast values
 contrasts(df.exp2_made_adults_order$order)
 
-
 fit.brm.exp2.made.adults.order = brm(formula = difference ~ 1 + question*order + (1 | participant) + (1 | scenario), 
                      data = df.exp2_made_adults_order,
                      family = "bernoulli",
@@ -4690,7 +4611,6 @@ fit.brm.exp2.made.adults.order = brm(formula = difference ~ 1 + question*order +
 
 fit.brm.exp2.made.adults.order
 
-
 ```
 
 ##### Follow-up analysis 
@@ -4700,11 +4620,13 @@ fit.brm.exp2.made.adults.order
 fit.brm.exp2.made.adults.order %>% 
   emmeans(spec = pairwise ~ order | question,
           type = "response")
+
 ```
 
 ##### Means and Confidence Interval  
 
 ```{r}
+
 set.seed(1)
 
 df.exp2_made_adults_order %>% 
@@ -4761,7 +4683,6 @@ df.exp2_made_children_order_both = df.tmp1 %>%
   )) %>%
   filter(response_pattern == "both")
   
-  
 df.exp2_made_children_order_both = df.exp2_made_children_order_both %>% 
   mutate(difference = 1) %>%
   bind_rows(df.exp2_made_children_order_both %>% 
@@ -4784,7 +4705,6 @@ df.exp2_made_children_order = df.exp2_made_children_order_different %>%
 # Check contrast values
 contrasts(df.exp2_made_children_order$order)
 
-
 fit.brm.exp2.made.children.order = brm(formula = difference ~ 1 + question*order + (1 | participant) + (1 | scenario), 
                      data = df.exp2_made_children_order,
                      family = "bernoulli",
@@ -4795,7 +4715,6 @@ fit.brm.exp2.made.children.order = brm(formula = difference ~ 1 + question*order
 
 fit.brm.exp2.made.children.order
 
-
 ```
 
 ##### Follow-up analysis 
@@ -4805,11 +4724,13 @@ fit.brm.exp2.made.children.order
 fit.brm.exp2.made.children.order %>% 
   emmeans(spec = pairwise ~ order | question,
           type = "response")
+
 ```
 
 ##### Means and Confidence Interval  
 
 ```{r}
+
 set.seed(1)
 
 df.exp2_made_children_order %>% 
@@ -4827,6 +4748,7 @@ df.exp2_made_children_order %>%
 ### Caused vs. Lexical
 
 ```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+
 set.seed(1)
 
 df.plot = df.exp2_cause_children_order %>% 
@@ -4834,8 +4756,6 @@ df.plot = df.exp2_cause_children_order %>%
   bind_rows(df.exp2_cause_adults_order %>% 
               mutate(age = "adults")) %>% 
   mutate(order = factor(order, levels = c("first", "second")))
-
-
 
 p5 = ggplot(data = df.plot,
        mapping = aes(x = factor(question, levels = c("lexical", "caused")),
@@ -4860,13 +4780,12 @@ p5 = ggplot(data = df.plot,
         text = element_text(size = 18)) +
   facet_wrap(~age)
 
-
-
 ```
 
 ### Made vs. Lexical
 
 ```{r fig.height=4, fig.width=8, message=FALSE, warning=FALSE}
+
 set.seed(1)
 
 df.plot = df.exp2_made_children_order %>% 
@@ -4897,6 +4816,7 @@ p6 = ggplot(data = df.plot,
         axis.title.x = element_blank(),
         text = element_text(size = 18)) +
   facet_wrap(~age)
+
 ```
 
 
@@ -4913,7 +4833,6 @@ ggsave(plot, filename = "../../figures/experiment2/absence_order_effect.pdf", he
 
 plot
 
-
 ```
 
 
@@ -4926,6 +4845,7 @@ plot
 #### Caused vs. lexical 
 
 ```{r}
+
 df.chain_caused = read.csv("../../data/experiment1/cause/children/chain_cause_different_responses.csv") %>% 
   count(age_whole, question, distal) %>% 
   group_by(age_whole, question) %>%
@@ -4963,6 +4883,7 @@ df.chain_made = read.csv("../../data/experiment1/made/children/chain_made_differ
   mutate(event = ifelse(distal == "yes", "distal", "proximal"),
          alternative = "made") %>% 
   select(age, question, event, probability, version, -distal, alternative)
+
 ```
 
 ### Absence
@@ -4970,6 +4891,7 @@ df.chain_made = read.csv("../../data/experiment1/made/children/chain_made_differ
 #### Caused vs. lexical
 
 ```{r}
+
 df.absence_caused = read.csv("../../data/experiment2/cause/children/absence_cause_different_responses.csv") %>% 
   rename(absent = absence) %>% 
   count(age_whole, question, absent) %>% 
@@ -4987,11 +4909,13 @@ df.absence_caused = read.csv("../../data/experiment2/cause/children/absence_caus
   mutate(event = ifelse(absent == "yes", "absent", "direct"),
          alternative = "caused") %>% 
   select(age, question, event, probability, version, -absent, alternative)
+
 ```
 
 #### Made vs. lexical
 
 ```{r}
+
 df.absence_made = read.csv("../../data/experiment2/made/children/absence_made_different_responses.csv") %>% 
   rename(absent = absence) %>% 
   mutate(age_whole = as.integer(age)) %>% 
@@ -5010,11 +4934,13 @@ df.absence_made = read.csv("../../data/experiment2/made/children/absence_made_di
   mutate(event = ifelse(absent == "yes", "absent", "direct"),
          alternative = "made") %>% 
   select(age, question, event, probability, version, -absent, alternative)
+
 ```
 
 ### Bootstrapped confidence intervals 
 
 ```{r}
+
 set.seed(1)
 
 fun_bootstraps = function(df, variable, scenario, alternative, nboots){
@@ -5081,11 +5007,13 @@ df.boot = bind_rows(
                  alternative = "made",
                  nboots = nboots)) %>% 
   rename(age = age_whole)
+
 ```
 
 ### Combined data 
 
 ```{r}
+
 df.data = bind_rows(df.chain_caused, 
                     df.chain_made, 
                     df.absence_caused,
@@ -5100,6 +5028,7 @@ df.data = bind_rows(df.chain_caused,
          version = factor(version, levels = c("chain", "absence"))) %>%
   relocate(probability, .after = alternative) %>% 
   arrange(version, age, question, event, alternative)
+
 ```
 
 ## MODEL
@@ -5109,6 +5038,7 @@ df.data = bind_rows(df.chain_caused,
 #### Listener and speaker functions
 
 ```{r}
+
 fun.l0 = function(prior){
   l0 = tibble(question = c("lexical", "alternative"),
               prototypical = c(1, 1),
@@ -5197,6 +5127,7 @@ fun.overall_grid = function(data, df_parameters, fun_model){
 ### Model fit
 
 ```{r, fig.width=10, fig.height=6}
+
 # beta = 1:2
 # chain = 3
 # absence 4
@@ -5255,6 +5186,7 @@ par = c(-0.0971210, 0.0623497, 0.3595724, 0.1530933, -0.1393184,  0.5599144, -1.
 ##### Results
 
 ```{r, fig.width=10, fig.height = 7}
+
 fun.plot_results = function(params){
   
   df.model = df.data %>% 
@@ -5324,11 +5256,13 @@ fun.plot_results = function(params){
   
   return(p)
 }
+
 ```
 
 ##### Parameters 
 
 ```{r, fig.width=12, fig.height = 7}
+
 fun.plot_params = function(params, nbeta, nprior, ncost){
   n_params = length(params)
   
@@ -5385,7 +5319,6 @@ fun.plot_params = function(params, nbeta, nprior, ncost){
       guides(color = guide_legend(reverse = T))
   }
   
-  
   if(ncost == 2){
     p.cost = ggplot() + 
       geom_col(mapping = aes(x = 1,
@@ -5433,30 +5366,36 @@ fun.plot_params = function(params, nbeta, nprior, ncost){
     theme(text = element_text(size = 24),
           plot.tag = element_text(face = "bold"))
 }
+
 ```
 
 
 #### Result Plot
 
 ```{r fig.width=10, fig.height = 7}
+
 rsa.overall.plot = fun.plot_results(params = par)
 rsa.overall.plot
+
 ```
 
 #### Parameters Plot
 
 ```{r fig.width=12, fig.height = 7}
+
 rsa.sub.plot = fun.plot_params(params = par,
                  nbeta = 2,
                  nprior = 2,
                  ncost = 4)
 
 rsa.sub.plot
+
 ```
 
 #### Combine result and parameters plot
 
 ```{r, fig.width=22, fig.height=7}
+
 plot = rsa.sub.plot + rsa.overall.plot +
   plot_layout(nrow = 1,
               widths = c(1, 1, 1, 3)) &
@@ -5470,11 +5409,13 @@ ggsave(plot,
        filename = "../../figures/rsa/rsa_combined.pdf",
        height = 7,
        width = 22)
+
 ```
 
 #### Scatter Plot 
 
 ```{r, fig.width=9, fig.height=6}
+
 df.plot = df.data %>% 
   group_by(alternative, version, age) %>%
   nest() %>% 
@@ -5547,6 +5488,7 @@ ggplot(data = df.plot,
 ggsave("../../figures/rsa/scatterplot.pdf",
        width = 9,
        height = 6)
+
 ```
 
 # SESSION INFO
