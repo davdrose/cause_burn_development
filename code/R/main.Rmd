@@ -12,6 +12,7 @@ output:
 ---
 
 # Load packages
+
 ```{r eval=TRUE, include=FALSE, message=FALSE, warning=FALSE}
 
 library("janitor")         # for cleaning variable names
@@ -29,7 +30,6 @@ library("boot")            # for bootstrapping
 library("rsample")         # for resampling
 library("latex2exp")       # for adding LaTeX to plots
 library("tidyverse")       # for everything else
-
 ```
 
 # Settings
@@ -68,7 +68,7 @@ make_gradient = function(deg = 45, n = 100, cols = blues9) {
   mat = mat / max(mat)
   mat = 1 + mat * n
   mat = matrix(data = cols[round(mat)], ncol = n)
-  grid::rasterGrob(
+  rasterGrob(
     image = mat,
     width = unit(1, "npc"),
     height = unit(1, "npc"),
@@ -84,10 +84,15 @@ softmax = function(x, beta = 1) {
 
 
 # EXPERIMENT 1: CHAINS
+
 ## CAUSED VS. LEXICAL (BREAK & CRACK)
+
 ### ADULTS
+
 #### DATA
+
 ##### Read in data
+
 ```{r message=FALSE, warning=FALSE}
 
 df.exp1_cause_adults = read_csv("../../data/experiment1/cause/adults/exp1_cause_adults.csv")
@@ -148,7 +153,6 @@ df.exp1_cause_adults_demo  %>%
   count() 
 
 ```
-
 
 #### STATS
 
@@ -211,9 +215,11 @@ fit.brm.chain.cause.adults %>%
           type = "response")
 
 ```
+
 ##### Means and Confidence Interval  
 
 ```{r}
+set.seed(1)
 
 df.chain_cause_adults %>% 
   group_by(question) %>% 
@@ -224,7 +230,6 @@ df.chain_cause_adults %>%
   )
 
 ```
-
 
 ### CHILDREN
 
@@ -301,6 +306,7 @@ df.exp1_cause_children %>%
 #### STATS
 
 ##### Bayesian Model
+
 ```{r message=FALSE, warning=FALSE}
 df.cause_children_different = df.exp1_cause_children %>%
   mutate(response_pattern = case_when(
@@ -366,6 +372,7 @@ fit.brm.chain.cause.children %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+set.seed(1)
 
 df.chain_cause_children %>% 
   group_by(question) %>% 
@@ -378,8 +385,11 @@ df.chain_cause_children %>%
 ```
 
 ## MADE VS. LEXICAL (BREAK & CRACK)
+
 ### ADULTS
+
 #### DATA
+
 ##### Read in data
 
 ```{r message=FALSE, warning=FALSE}
@@ -440,8 +450,6 @@ df.exp1_made_adults_demo %>%
 ```
 
 #### STATS
-
-
 
 ##### Bayesian Model
 
@@ -504,9 +512,11 @@ fit.brm.chain.made.adults %>%
           type = "response")
 
 ```
+
 ##### Means and Confidence Interval  
 
 ```{r}
+set.seed(1)
 
 df.chain_made_adults %>% 
   group_by(question) %>% 
@@ -519,7 +529,9 @@ df.chain_made_adults %>%
 ```
 
 ### CHILDREN
+
 #### DATA
+
 ##### Read in data
 
 ```{r message=FALSE, warning=FALSE}
@@ -567,6 +579,7 @@ df.exp1_made_children = df.exp1_made_children %>%
 ```
 
 ##### Demographics
+
 ```{r message=FALSE, warning=FALSE}
 
  # gender
@@ -588,6 +601,7 @@ df.exp1_made_children %>%
 #### STATS
 
 ##### Bayesian Model
+
 ```{r message=FALSE, warning=FALSE}
 
 
@@ -663,6 +677,7 @@ fit.brm.chain.made.children %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+set.seed(1)
 
 df.chain_made_children %>% 
   group_by(question) %>% 
@@ -675,8 +690,11 @@ df.chain_made_children %>%
 ```
 
 ##  CAUSED VS. MADE (BREAK & CRACK)
+
 ### ADULTS
+
 #### DATA
+
 ##### Wrangle
 
 ```{r}
@@ -689,6 +707,7 @@ df.chain_cause_made_adults = df.chain_cause_adults %>%
 ```
 
 #### STATS
+
 ##### Bayesian Model
 
 ```{r message=FALSE, warning=FALSE}
@@ -724,7 +743,9 @@ fit.brm.chain.cause.made.adults %>%
 ```
 
 ### CHILDREN
+
 #### DATA
+
 ##### Wrangle
 
 ```{r}
@@ -737,6 +758,7 @@ df.chain_cause_made_children = df.chain_cause_children %>%
 ```
 
 #### STATS
+
 ##### Bayesian Model
 
 ```{r message=FALSE, warning=FALSE}
@@ -789,6 +811,8 @@ fit.brm.chain.cause.made.children %>%
 #### Cause v Lexical
 
 ```{r message=FALSE, warning=FALSE}
+set.seed(1)
+
 df.data = expand_grid(age = seq(4, 9, 0.1),
                       question = c("caused", "lexical"))
 
@@ -842,7 +866,7 @@ p1 = ggplot(mapping = aes(x = age,
                vjust = -0.1,
                halign = 0.5,
                size = 6,
-               width = unit(7.6, "cm"),
+               width = unit(7.5, "cm"),
                box.size = unit(0.5, "cm"),
                color = "black",
                alpha = 0.8) +
@@ -891,13 +915,12 @@ p1 = ggplot(mapping = aes(x = age,
         axis.title.x = element_blank(),
         panel.spacing = unit(.4, "cm"),
         plot.margin = margin(t = 1.2, r = 0.1, b = 0.5, l = 0, "cm"))
-
-
 ```
 
-
 #### Made v Lexical
+
 ```{r message=FALSE, warning=FALSE}
+set.seed(1)
 
 df.data = expand_grid(age = seq(4, 9, 0.1),
                       question = c("made", "lexical"))
@@ -953,7 +976,7 @@ p2 = ggplot(mapping = aes(x = age,
                vjust = -0.1,
                halign = 0.5,
                size = 6,
-               width = unit(7.6, "cm"),
+               width = unit(7.5, "cm"),
                box.size = unit(0.5, "cm"),
                color = "black",
                alpha = 0.8) +
@@ -1002,8 +1025,6 @@ p2 = ggplot(mapping = aes(x = age,
         axis.title.x = element_blank(),
         panel.spacing = unit(.4, "cm"),
         plot.margin = margin(t = 1.2, r = 0.1, b = 0.5, l = 0, "cm"))
-
-
 ```
 
 ### Responses Patterns by Age
@@ -1181,21 +1202,28 @@ design = "
 5555
 "    
 plot = p1 + p2 + p3 + p4 +
-  guide_area() + plot_layout(design=design, guides = "collect", heights = c(1, 1, 0.2)) &
+  guide_area() + 
+  plot_layout(design = design,
+              guides = "collect",
+              heights = c(1, 1, 0.2)) &
   plot_annotation(tag_levels = "A") &
-  theme(plot.tag = element_text(face = "bold", size = 20))
-
-ggsave(plot, filename = "../../figures/experiment1/chain_response_patterns.pdf", height = 8, width = 15)
+  theme(plot.tag = element_text(face = "bold",
+                                size = 24),
+        text = element_text(size = 20))
 
 plot
+
+ggsave(plot, filename = "../../figures/experiment1/chain_response_patterns.pdf", height = 8, width = 15)
 ```
 
-
-
 # EXPERIMENT 2: ABSENCES
+
 ## CAUSED VS. LEXICAL (BURN & FLOOD)
+
 ### ADULTS
+
 #### DATA
+
 ##### Read in data
 
 ```{r message=FALSE, warning=FALSE}
@@ -1205,6 +1233,7 @@ df.exp2_cause_adults = read_csv("../../data/experiment2/cause/adults/exp2_cause_
 ```
 
 ##### Wrangle
+
 ```{r message=FALSE, warning=FALSE}
 
 # clean data
@@ -1280,6 +1309,7 @@ df.exp2_cause_adults_demo %>%
 ```
 
 #### STATS
+
 ##### Bayesian Model
 
 ```{r message=FALSE, warning=FALSE}
@@ -1343,6 +1373,7 @@ fit.brm.absence.cause.adults %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+set.seed(1)
 
 df.absence_cause_adults %>% 
   group_by(question) %>% 
@@ -1355,7 +1386,9 @@ df.absence_cause_adults %>%
 ```
 
 ### CHILDREN
+
 #### DATA
+
 ##### Read in data
 
 ```{r message=FALSE, warning=FALSE}
@@ -1365,6 +1398,7 @@ df.exp2_cause_children = read_csv("../../data/experiment2/cause/children/exp2_ca
 ```
 
 ##### Wrangle
+
 ```{r message=FALSE, warning=FALSE}
 
 # clean responses
@@ -1432,7 +1466,9 @@ df.exp2_cause_children %>%
 ```
 
 #### STATS
+
 ##### Bayesian Model
+
 ```{r message=FALSE, warning=FALSE}
 df.cause_children_different = df.exp2_cause_children %>%
   mutate(response_pattern = case_when(
@@ -1498,6 +1534,7 @@ fit.brm.absence.cause.children %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+set.seed(1)
 
 df.absence_cause_children %>% 
   group_by(question) %>% 
@@ -1510,8 +1547,11 @@ df.absence_cause_children %>%
 ```
 
 ## MADE VS. LEXICAL (BURN & FLOOD)
+
 ### ADULTS
+
 #### DATA
+
 ##### Read in data
 
 ```{r message=FALSE, warning=FALSE}
@@ -1597,6 +1637,7 @@ df.exp2_made_adults_demo %>%
 ```
 
 #### STATS
+
 ##### Bayesian Model
 
 ```{r message=FALSE, warning=FALSE}
@@ -1656,9 +1697,11 @@ fit.brm.absence.made.adults %>%
           type = "response")
 
 ```
+
 ##### Means and Confidence Interval  
 
 ```{r}
+set.seed(1)
 
 df.absence_made_adults %>% 
   group_by(question) %>% 
@@ -1671,7 +1714,9 @@ df.absence_made_adults %>%
 ```
 
 ### CHILDREN
+
 #### DATA
+
 ##### Read in data
 
 ```{r message=FALSE, warning=FALSE}
@@ -1681,6 +1726,7 @@ df.exp2_made_children = read_csv("../../data/experiment2/made/children/exp2_made
 ```
 
 ##### Wrangle
+
 ```{r message=FALSE, warning=FALSE}
 
 # clean responses
@@ -1749,7 +1795,9 @@ df.exp2_made_children %>%
 ```
 
 #### STATS
+
 ##### Bayesian Model
+
 ```{r message=FALSE, warning=FALSE}
 
 
@@ -1825,6 +1873,7 @@ fit.brm.absence.made.children %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+set.seed(1)
 
 df.absence_made_children %>% 
   group_by(question) %>% 
@@ -1837,8 +1886,11 @@ df.absence_made_children %>%
 ```
 
 ##  CAUSED VS. MADE (BURN & FLOOD)
+
 ### ADULTS
+
 #### DATA
+
 ##### Wrangle
 
 ```{r}
@@ -1851,6 +1903,7 @@ df.absence_cause_made_adults = df.absence_cause_adults %>%
 ```
 
 #### STATS
+
 ##### Bayesian Model
 
 ```{r message=FALSE, warning=FALSE}
@@ -1886,7 +1939,9 @@ fit.brm.absence.cause.made.adults %>%
 ```
 
 ### CHILDREN
+
 #### DATA
+
 ##### Wrangle
 
 ```{r}
@@ -1899,6 +1954,7 @@ df.absence_cause_made_children = df.absence_cause_children %>%
 ```
 
 #### STATS
+
 ##### Bayesian Model
 
 ```{r message=FALSE, warning=FALSE}
@@ -1948,9 +2004,11 @@ fit.brm.absence.cause.made.children %>%
 ## PLOTS
 
 ### Responses Plots
-#### Caused vs. Lexical
-```{r message=FALSE, warning=FALSE}
 
+#### Caused vs. Lexical
+
+```{r message=FALSE, warning=FALSE}
+set.seed(1)
 
 df.data = expand_grid(age = seq(4, 9, 0.1),
                       question = c("caused", "lexical"))
@@ -2053,13 +2111,12 @@ p5 = ggplot(mapping = aes(x = age,
         axis.title.x = element_blank(),
         panel.spacing = unit(.4, "cm"),
         plot.margin = margin(t = 1.2, r = 0.1, b = 0.5, l = 0, "cm"))
-
-
 ```
 
-
 #### Made vs. Lexical
+
 ```{r message=FALSE, warning=FALSE}
+set.seed(1)
 
 df.data = expand_grid(age = seq(4, 9, 0.1),
                       question = c("made", "lexical"))
@@ -2162,12 +2219,12 @@ p6 = ggplot(mapping = aes(x = age,
         axis.title.x = element_blank(),
         panel.spacing = unit(.4, "cm"),
         plot.margin = margin(t = 1.2, r = 0.1, b = 0.5, l = 0, "cm"))
-
-
 ```
 
 ### Responses Patterns by Age
+
 ##### Caused vs. Lexical
+
 ```{r}
 
 df.plot = df.exp2_cause_adults %>% 
@@ -2248,12 +2305,10 @@ p7 = ggplot(data = df.plot,
         strip.background = element_blank(),
         strip.text = element_blank(),
         panel.spacing = unit(.4, "cm"))
-
-
-
 ```
 
 ##### Made vs. Lexical
+
 ```{r}
 
 df.plot = df.exp2_made_adults %>% 
@@ -2331,36 +2386,41 @@ p8 = ggplot(data = df.plot,
         strip.background = element_blank(),
         strip.text = element_blank(),
         panel.spacing = unit(.4, "cm"))
-
-
-
 ```
 
 #### Combine Cause and Made Plots
-```{r fig.height=8, fig.width=15.2, message=FALSE, warning=FALSE}
+
+```{r fig.height=8, fig.width=15, message=FALSE, warning=FALSE}
 
 design = "
 1122
 3344
 5555
-"    
+"
+
 plot = p5 + p6 + p7 + p8 +
-guide_area() + plot_layout(design=design, guides = "collect", heights = c(1, 1, 0.2)) &
-plot_annotation(tag_levels = "A") &
-theme(plot.tag = element_text(face = "bold", size = 20))
-
-ggsave(plot, filename = "../../figures/experiment2/absence_response_patterns.pdf", height = 8, width = 15.2)
-
+  guide_area() + 
+  plot_layout(design = design,
+              guides = "collect",
+              heights = c(1, 1, 0.2)) &
+  plot_annotation(tag_levels = "A") &
+  theme(plot.tag = element_text(face = "bold",
+                                size = 24),
+        text = element_text(size = 20))
 
 plot
 
+ggsave(plot, filename = "../../figures/experiment2/absence_response_patterns.pdf", height = 8, width = 15)
 ```
 
-
 # EXPERIMENT 3: ABSENCES 
+
 ## EXPLANATION
+
 ### ADULTS
+
 #### DATA
+
 ##### Read in data
 
 ```{r message=FALSE, warning=FALSE}
@@ -2410,10 +2470,6 @@ df.exp3_adults = df.exp3_adults %>%
                                      "^window$|window | window$"), 1, absence),
          absence = ifelse(str_detect(response,
                                      "^latch$|latch | latch$"), 1, absence))
-
-
-
-
 ```
 
 ##### Demographics
@@ -2443,6 +2499,7 @@ df.exp3_adults_demo %>%
 ```
 
 #### STATS
+
 ##### Bayesian Model
 
 ```{r}
@@ -2478,9 +2535,11 @@ fit.brm.exp.adults %>%
           type = "response")
 
 ```
+
 ##### Means and Confidence Interval  
 
 ```{r}
+set.seed(1)
 
 df.exp3_adults %>% 
   select(-response) %>% 
@@ -2497,7 +2556,9 @@ df.exp3_adults %>%
 ```
 
 ### CHILDREN
+
 #### DATA
+
 ##### Read in Data
 
 ```{r message=FALSE, warning=FALSE}
@@ -2624,9 +2685,11 @@ fit.brm.exp.children %>%
           type = "response")
 
 ```
+
 ##### Means and Confidence Interval  
 
 ```{r}
+set.seed(1)
 
 df.exp3_children %>% 
   select(-response) %>% 
@@ -2642,8 +2705,11 @@ df.exp3_children %>%
   )
 
 ```
+
 ### PLOTS
+
 #### Responses Patterns by Age
+
 ```{r}
 
 df.plot = df.exp3_adults %>% 
@@ -2729,14 +2795,20 @@ ggsave("../../figures/experiment3/explanation_response_patterns.pdf", height = 4
 
 ```
 
-
 # APPENDIX
+
 # PREREGISTERED ANALYSES
+
 # EXPERIMENT 1: CHAINS
+
 ## CAUSED VS. LEXICAL (BREAK & CRACK)
+
 ### ADULTS
+
 #### STATS
+
 ##### Bayesian Models
+
 ###### Distal
 
 ```{r message=FALSE, warning=FALSE}
@@ -2781,8 +2853,11 @@ fit.brm.cause.adult.proximal
 ```
 
 ### CHILDREN
+
 #### STATS
+
 ##### Bayesian Models
+
 ###### Distal
 
 ```{r message=FALSE, warning=FALSE}
@@ -2822,6 +2897,7 @@ fit.brm.cause.children.distal.age
 ```
 
 ###### Proximal
+
 ```{r message=FALSE, warning=FALSE}
 
 # removed random intercepts for scenario to avoid divergent transition errors
@@ -2852,9 +2928,13 @@ fit.brm.cause.children.proximal.age
 ```
 
 ## MADE VS. LEXICAL (BREAK & CRACK)
+
 ### ADULTS
+
 #### STATS
+
 ##### Bayesian Models
+
 ###### Distal
 
 ```{r message=FALSE, warning=FALSE}
@@ -2902,9 +2982,13 @@ fit.brm.made.adult.proximal
 ```
 
 ### CHILDREN
+
 #### STATS
+
 ##### Bayesian Models
+
 ###### Distal
+
 ```{r message=FALSE, warning=FALSE}
 
 df.model = df.exp1_made_children %>% 
@@ -2973,8 +3057,11 @@ fit.brm.proximal.age
 ```
 
 ## CAUSED VS. MADE
+
 ### ADULTS
+
 #### DATA
+
 ##### Wrangle
 
 ```{r message=FALSE, warning=FALSE}
@@ -2993,6 +3080,7 @@ df.exp1_cause_made_adults = df.exp1_cause_adults %>%
 #### STATS
 
 ##### Bayesian Models
+
 ###### Distal
 
 ```{r message=FALSE, warning=FALSE}
@@ -3038,7 +3126,9 @@ fit.brm.cause.made.adult.proximal
 ```
 
 ### CHILDREN
+
 #### DATA
+
 ##### Wrangle
 
 ```{r message=FALSE, warning=FALSE}
@@ -3057,6 +3147,7 @@ df.exp1_cause_made_children = df.exp1_cause_children %>%
 #### STATS
 
 ##### Bayesian Models
+
 ###### Distal
 
 ```{r message=FALSE, warning=FALSE}
@@ -3104,7 +3195,9 @@ fit.brm.cause.made.children.proximal
 ```
 
 ## PLOTS
+
 ### Caused vs. Lexical
+
 ```{r message=FALSE, warning=FALSE}
 
 df.model = df.exp1_cause_children %>% 
@@ -3225,6 +3318,7 @@ p3 = ggplot(mapping = aes(x = age,
 ```
 
 ### Made vs. Lexical
+
 ```{r message=FALSE, warning=FALSE}
 
 
@@ -3348,6 +3442,7 @@ p4 = ggplot(mapping = aes(x = age,
 ```
 
 ### Combine Cause and Made Plots
+
 ```{r fig.height=5, fig.width=18, message=FALSE, warning=FALSE}
 
 plot = p3 + p4 + 
@@ -3363,10 +3458,15 @@ plot
 ```
 
 # EXPERIMENT 2: ABSENCES
+
 ## CAUSED VS. LEXICAL (BURN & FLOOD)
+
 ### ADULTS
+
 #### STATS
+
 ##### Bayesian Models
+
 ###### Direct
 
 ```{r message=FALSE, warning=FALSE}
@@ -3391,6 +3491,7 @@ fit.brm.direct
 ```
 
 ###### Absent
+
 ```{r}
 
 fit.brm.absent = brm(formula = absence ~ 1 + question + (1 | participant) + (1 | scenario),
@@ -3407,10 +3508,13 @@ fit.brm.absent
 ```
 
 ### CHILDREN
+
 #### STATS
 
 ##### Bayesian Models
+
 ###### Direct
+
 ```{r message=FALSE, warning=FALSE}
 
 df.model = df.exp2_cause_children %>% 
@@ -3434,6 +3538,7 @@ fit.brm.direct
 ```
 
 ###### Absent
+
 ```{r message=FALSE, warning=FALSE}
 
 # removed random intercepts for scenario to avoid divergent transition errors
@@ -3452,8 +3557,11 @@ fit.brm.absent
 ```
 
 ## MADE VS. LEXICAL (BURN & FLOOD)
+
 ### ADULTS
+
 ##### Bayesian Models
+
 ###### Direct
 
 ```{r}
@@ -3495,8 +3603,11 @@ fit.brm.absent
 ```
 
 ### CHILDREN
+
 #### STATS
+
 ##### Bayesian Models
+
 ###### Direct
 
 ```{r message=FALSE, warning=FALSE}
@@ -3522,6 +3633,7 @@ fit.brm.direct
 ```
 
 ###### Absent
+
 ```{r message=FALSE, warning=FALSE}
 
 # removed random intercepts for scenario to avoid divergent transition errors
@@ -3540,8 +3652,11 @@ fit.brm.absent
 ```
 
 ## CAUSED VS. MADE
+
 ### ADULTS
+
 #### DATA
+
 ##### Wrangle
 
 ```{r message=FALSE, warning=FALSE}
@@ -3560,6 +3675,7 @@ df.exp2_cause_made_adults = df.exp2_cause_adults %>%
 #### STATS
 
 ##### Bayesian Models
+
 ###### Direct
 
 ```{r message=FALSE, warning=FALSE}
@@ -3605,7 +3721,9 @@ fit.brm.cause.made.adult.absent
 ```
 
 ### CHILDREN
+
 #### DATA
+
 ##### Wrangle
 
 ```{r message=FALSE, warning=FALSE}
@@ -3624,6 +3742,7 @@ df.exp2_cause_made_children = df.exp2_cause_children %>%
 #### STATS
 
 ##### Bayesian Models
+
 ###### Direct
 
 ```{r message=FALSE, warning=FALSE}
@@ -3671,7 +3790,9 @@ fit.brm.cause.made.children.absent
 ```
 
 ## PLOTS
+
 ### Caused vs. Lexical
+
 ```{r message=FALSE, warning=FALSE}
 
 df.model = df.exp2_cause_children %>% 
@@ -3947,10 +4068,15 @@ plot
 
 
 # ORDER EFFECTS
+
 # EXPERIMENT 1: CHAINS
+
 ## CAUSED VS. LEXICAL (BREAK & CRACK)
+
 ### CHILDREN
+
 #### DATA
+
 ##### Wrangle
 
 ```{r}
@@ -4004,6 +4130,7 @@ df.exp1_cause_children_order = df.exp1_cause_children_order_different %>%
 ```
 
 #### STATS
+
 ##### Bayesian Models
 
 ```{r message=FALSE, warning=FALSE}
@@ -4036,6 +4163,7 @@ fit.brm.exp1.cause.children.order %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+set.seed(1)
 
 df.exp1_cause_children_order %>% 
   group_by(order, question) %>% 
@@ -4047,9 +4175,13 @@ df.exp1_cause_children_order %>%
 
 ```
 
+
 ## MADE VS. LEXICAL (BREAK & CRACK)
+
 ### CHILDREN
+
 #### DATA
+
 ##### Wrangle
 
 ```{r}
@@ -4106,6 +4238,7 @@ df.exp1_made_children_order = df.exp1_made_children_order_different %>%
 ```
 
 #### STATS
+
 ##### Bayesian Models
 
 ```{r message=FALSE, warning=FALSE}
@@ -4140,6 +4273,7 @@ fit.brm.exp1.made.children.order %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+set.seed(1)
 
 df.exp1_made_children_order %>% 
   group_by(order, question) %>% 
@@ -4152,9 +4286,11 @@ df.exp1_made_children_order %>%
 ```
 
 ## PLOTS
+
 ### Caused vs. Lexical
 
 ```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+set.seed(1)
 
 df.plot = df.exp1_cause_children_order %>% 
   mutate(order = factor(order, levels = c("first", "second")))
@@ -4182,14 +4318,12 @@ p3 = ggplot(data = df.plot,
         legend.box = "vertical",
         axis.title.x = element_blank(),
         text = element_text(size = 18)) 
-
-
-
 ```
 
 ### Made vs. Lexical
 
 ```{r fig.height=4, fig.width=8, message=FALSE, warning=FALSE}
+set.seed(1)
 
 df.plot = df.exp1_made_children_order %>% 
   mutate(order = factor(order, levels = c("first", "second")))
@@ -4217,11 +4351,10 @@ p4 = ggplot(data = df.plot,
         legend.box = "vertical",
         axis.title.x = element_blank(),
         text = element_text(size = 18)) 
-
-
 ```
 
 ### Combine Cause and Made Plots
+
 ```{r fig.height=5, fig.width=12, message=FALSE, warning=FALSE}
 
 plot = p3 + p4 + 
@@ -4232,15 +4365,17 @@ theme(plot.tag = element_text(face = "bold"))
 ggsave(plot, filename = "../../figures/experiment1/chain_order_effect.pdf", height = 5, width = 12)
 
 plot
-
-
 ```
 
 
 # EXPERIMENT 2: ABSENCES
+
 ## CAUSED VS. LEXICAL (BURN & FLOOD)
+
 ### ADULTS
+
 #### DATA
+
 ##### Wrangle
 
 ```{r}
@@ -4311,6 +4446,7 @@ df.exp2_cause_adults_order = df.exp2_cause_adults_order_different %>%
 ```
 
 #### STATS
+
 ##### Bayesian Models
 
 ```{r message=FALSE, warning=FALSE}
@@ -4344,6 +4480,7 @@ fit.brm.exp2.cause.adults.order %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+set.seed(1)
 
 df.exp2_cause_adults_order %>% 
   group_by(order, question) %>% 
@@ -4356,7 +4493,9 @@ df.exp2_cause_adults_order %>%
 ```
 
 ### CHILDREN
+
 #### DATA
+
 ##### Wrangle
 
 ```{r}
@@ -4410,6 +4549,7 @@ df.exp2_cause_children_order = df.exp2_cause_children_order_different %>%
 ```
 
 #### STATS
+
 ##### Bayesian Models
 
 ```{r message=FALSE, warning=FALSE}
@@ -4443,6 +4583,7 @@ fit.brm.exp2.cause.children.order %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+set.seed(1)
 
 df.exp2_cause_children_order %>% 
   group_by(order, question) %>% 
@@ -4455,8 +4596,11 @@ df.exp2_cause_children_order %>%
 ```
 
 ## MADE VS. LEXICAL (BURN & FLOOD)
+
 ### ADULTS
+
 #### DATA
+
 ##### Wrangle
 
 ```{r}
@@ -4527,6 +4671,7 @@ df.exp2_made_adults_order = df.exp2_made_adults_order_different %>%
 ```
 
 #### STATS
+
 ##### Bayesian Models
 
 ```{r message=FALSE, warning=FALSE}
@@ -4560,6 +4705,7 @@ fit.brm.exp2.made.adults.order %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+set.seed(1)
 
 df.exp2_made_adults_order %>% 
   group_by(order, question) %>% 
@@ -4572,7 +4718,9 @@ df.exp2_made_adults_order %>%
 ```
 
 ### CHILDREN
+
 #### DATA
+
 ##### Wrangle
 
 ```{r}
@@ -4628,6 +4776,7 @@ df.exp2_made_children_order = df.exp2_made_children_order_different %>%
 ```
 
 #### STATS
+
 ##### Bayesian Models
 
 ```{r message=FALSE, warning=FALSE}
@@ -4661,6 +4810,7 @@ fit.brm.exp2.made.children.order %>%
 ##### Means and Confidence Interval  
 
 ```{r}
+set.seed(1)
 
 df.exp2_made_children_order %>% 
   group_by(order, question) %>% 
@@ -4673,9 +4823,11 @@ df.exp2_made_children_order %>%
 ```
 
 ## PLOTS
+
 ### Caused vs. Lexical
 
 ```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+set.seed(1)
 
 df.plot = df.exp2_cause_children_order %>% 
   mutate(age = "children") %>% 
@@ -4715,14 +4867,13 @@ p5 = ggplot(data = df.plot,
 ### Made vs. Lexical
 
 ```{r fig.height=4, fig.width=8, message=FALSE, warning=FALSE}
+set.seed(1)
 
 df.plot = df.exp2_made_children_order %>% 
   mutate(age = "children") %>% 
   bind_rows(df.exp2_made_adults_order %>% 
               mutate(age = "adults")) %>% 
   mutate(order = factor(order, levels = c("first", "second")))
-
-
 
 p6 = ggplot(data = df.plot,
        mapping = aes(x = factor(question, levels = c("lexical", "made")),
@@ -4746,11 +4897,11 @@ p6 = ggplot(data = df.plot,
         axis.title.x = element_blank(),
         text = element_text(size = 18)) +
   facet_wrap(~age)
-
-
 ```
 
+
 ### Combine Cause and Made Plots
+
 ```{r fig.height=5, fig.width=12, message=FALSE, warning=FALSE}
 
 plot = p5 + p6 + 
@@ -4767,8 +4918,11 @@ plot
 
 
 # RSA
+
 ## DATA
+
 ### Chain
+
 #### Caused vs. lexical 
 
 ```{r}
@@ -4861,6 +5015,8 @@ df.absence_made = read.csv("../../data/experiment2/made/children/absence_made_di
 ### Bootstrapped confidence intervals 
 
 ```{r}
+set.seed(1)
+
 fun_bootstraps = function(df, variable, scenario, alternative, nboots){
   df = df %>% 
     bootstraps(times = nboots,
@@ -4947,7 +5103,9 @@ df.data = bind_rows(df.chain_caused,
 ```
 
 ## MODEL
+
 ### Helper functions
+
 #### Listener and speaker functions
 
 ```{r}
@@ -5036,7 +5194,6 @@ fun.overall_grid = function(data, df_parameters, fun_model){
 
 ```
 
-
 ### Model fit
 
 ```{r, fig.width=10, fig.height=6}
@@ -5075,7 +5232,7 @@ fun.model = function(par, age){
   return(l1)
 }
 
-# # best fitting parameters (converging solution!)
+# # best fitting parameters
 par = c(-0.0971210, 0.0623497, 0.3595724, 0.1530933, -0.1393184,  0.5599144, -1.2883752,  0.3481894)
 
 # optimization
@@ -5153,19 +5310,25 @@ fun.plot_results = function(params){
     scale_y_continuous(breaks = seq(0, 1, 0.25),
                        labels = c("100% \n direct", "75%", "50%", "75%", "100% \n non-direct"),
                        limits = c(0, 1)) + 
-    labs(y = "probability of selecting\neach cause") + 
-    theme(panel.spacing.y = unit(0.5, "cm"))
+    labs(y = "probability of selecting\neach cause",
+         color = "word") + 
+    theme(panel.spacing.y = unit(1, "cm"),
+          text = element_text(size = 20),
+          legend.position = "inside",
+          legend.background = element_rect(color = "black",
+                                           linewidth = 0.2),
+          legend.position.inside = c(0.02, 0.47),
+          legend.justification = c("left", "top"),
+          legend.direction = "vertical")
   p
   
   return(p)
 }
-
-
 ```
 
 ##### Parameters 
 
-```{r, fig.width=12, fig.height = 5}
+```{r, fig.width=12, fig.height = 7}
 fun.plot_params = function(params, nbeta, nprior, ncost){
   n_params = length(params)
   
@@ -5184,7 +5347,8 @@ fun.plot_params = function(params, nbeta, nprior, ncost){
                 color = "black",
                 linewidth = 1.5) + 
       scale_y_continuous(breaks = seq(0, 0.5, 0.1),
-                         limits = c(0, 0.5)) + 
+                         limits = c(0, 0.5),
+                         expand = expansion(add = c(0, 0))) + 
       labs(x = "age",
            y = TeX(r"(speaker optimality $\alpha$)"))
   }
@@ -5192,18 +5356,17 @@ fun.plot_params = function(params, nbeta, nprior, ncost){
   if(nprior == 2){
     p.prior = ggplot() + 
       geom_col(mapping = aes(x = 1:2,
-                             y = c(params[nbeta + 1], params[nbeta + 2]),
-                             fill = c("chain", "absence")),
+                             y = c(params[nbeta + 1], params[nbeta + 2])),
                color = "black", 
+               fill = "gray80",
                show.legend = F) + 
       scale_x_continuous(breaks = c(1, 2),
                          labels = c("chain", "absence")) +
-      scale_fill_manual(values = c("chain" = "#377EB8",
-                                   "absence" = "#E41A1C")) + 
-      scale_y_continuous(breaks = seq(0, 0.5, 0.1),
-                         limits = c(0, 0.5)) + 
+      scale_y_continuous(breaks = seq(0, 1, 0.25),
+                         limits = c(0, 1),
+                         expand = expansion(add = c(0, 0))) +
       labs(x = "scenario",
-           y = TeX(r"(prior $\it{P}(\it{r})$)"))
+           y = TeX(r"(prior $\it{P}$(non-direct))"))
   }else{
     p.prior = ggplot(data = tibble(x = 4:9),
                     mapping = aes(x = x)) + 
@@ -5215,8 +5378,6 @@ fun.plot_params = function(params, nbeta, nprior, ncost){
                 linewidth = 1) + 
       scale_x_continuous(breaks = c(1, 2),
                          labels = c("chain", "absence")) +
-      scale_fill_manual(values = c("chain" = "#377EB8",
-                                   "absence" = "#E41A1C")) + 
       labs(x = "age",
            y = "prior") +
       theme(legend.position = "right",
@@ -5252,64 +5413,63 @@ fun.plot_params = function(params, nbeta, nprior, ncost){
                 linewidth = 1.5) + 
       scale_color_manual(values = c("caused" = "#FF7F00",
                                    "made" = "#FFEA00")) +
+      scale_y_continuous(breaks = 0:5,
+                         labels = 0:5,
+                         limits = c(0, 5),
+                         expand = expansion(add = c(0, 0))) + 
       labs(x = "age",
            y = TeX(r"(cost $\it{u}$)"),
            color = "alternative") +
-      theme(legend.position = "right",
+      theme(legend.position = "inside",
+            legend.background = element_rect(color = "black",
+                                             linewidth = 0.2),
+            legend.position.inside = c(0.02, 0.99),
+            legend.justification = c("left", "top"),
             legend.direction = "vertical")
   }
   
   p.beta + p.prior + p.cost +  
-    plot_annotation(tag_levels = "A")
+    plot_annotation(tag_levels = "A") &
+    theme(text = element_text(size = 24),
+          plot.tag = element_text(face = "bold"))
 }
 ```
 
 
 #### Result Plot
-```{r}
 
+```{r fig.width=10, fig.height = 7}
 rsa.overall.plot = fun.plot_results(params = par)
 rsa.overall.plot
-# ggsave("../../figures/rsa/model_fits.pdf",
-#        width = 10,
-#        height = 7)
-
-
 ```
 
 #### Parameters Plot
 
-```{r}
-
-# # parameters
-# # fun.plot_params(params = fit$par,
+```{r fig.width=12, fig.height = 7}
 rsa.sub.plot = fun.plot_params(params = par,
                  nbeta = 2,
                  nprior = 2,
                  ncost = 4)
 
 rsa.sub.plot
-
-# ggsave("../../figures/rsa/model_parameters.pdf",
-#        width = 12,
-#        height = 5)
-
-
 ```
 
 #### Combine result and parameters plot
 
-```{r, fig.width=16, fig.height=5}
-
-plot = rsa.overall.plot + rsa.sub.plot + 
-plot_layout(nrow = 1) &
-plot_annotation(tag_levels = "A") &
-theme(plot.tag = element_text(face = "bold"))
-
-ggsave(plot, filename = "../../figures/rsa/rsa_combined.pdf", height = 5, width = 16)
+```{r, fig.width=22, fig.height=7}
+plot = rsa.sub.plot + rsa.overall.plot +
+  plot_layout(nrow = 1,
+              widths = c(1, 1, 1, 3)) &
+  plot_annotation(tag_levels = "A") &
+  theme(plot.tag = element_text(face = "bold"),
+        text = element_text(size = 21))
 
 plot
 
+ggsave(plot,
+       filename = "../../figures/rsa/rsa_combined.pdf",
+       height = 7,
+       width = 22)
 ```
 
 #### Scatter Plot 
@@ -5389,8 +5549,8 @@ ggsave("../../figures/rsa/scatterplot.pdf",
        height = 6)
 ```
 
-
 # SESSION INFO
+
 ```{r}
 
 sessionInfo()
