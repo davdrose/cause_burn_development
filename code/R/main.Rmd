@@ -1183,7 +1183,7 @@ design = "
 plot = p1 + p2 + p3 + p4 +
   guide_area() + plot_layout(design=design, guides = "collect", heights = c(1, 1, 0.2)) &
   plot_annotation(tag_levels = "A") &
-  theme(plot.tag = element_text(face = "bold"))
+  theme(plot.tag = element_text(face = "bold", size = 20))
 
 ggsave(plot, filename = "../../figures/experiment1/chain_response_patterns.pdf", height = 8, width = 15)
 
@@ -2321,12 +2321,11 @@ p8 = ggplot(data = df.plot,
                      expand = expansion(add = c(0, 0))) +
   scale_x_discrete(expand = expansion(add = c(0, 0))) +
   coord_cartesian(clip = "off") +
-  labs(y = "Response pattern \n\ probability") +
   theme(legend.position = "bottom",
         legend.title = element_blank(),
         legend.text = element_text(size = 14),
         axis.text.y = element_text(size = 12),
-        axis.title.y = element_text(size = 16),
+        axis.title.y = element_blank(),
         axis.text.x = element_markdown(),
         axis.title.x = element_blank(),
         strip.background = element_blank(),
@@ -2348,7 +2347,7 @@ design = "
 plot = p5 + p6 + p7 + p8 +
 guide_area() + plot_layout(design=design, guides = "collect", heights = c(1, 1, 0.2)) &
 plot_annotation(tag_levels = "A") &
-theme(plot.tag = element_text(face = "bold"))
+theme(plot.tag = element_text(face = "bold", size = 20))
 
 ggsave(plot, filename = "../../figures/experiment2/absence_response_patterns.pdf", height = 8, width = 15.2)
 
