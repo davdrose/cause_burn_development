@@ -1,0 +1,588 @@
+{
+    "frames": {
+        "exit-survey": {
+            "kind": "exp-lookit-exit-survey",
+            "debriefing": {
+                "text": "We want to know if “cause to break” and “break” mean the same thing. Though many researchers think they do, children may think they don’t.\n\n In this study,  when we ask “Who caused the fence to break?”, we expect children to mention the distal character, but when we ask “What broke the fence?”, we expect them to say the proximal character. Likewise, when we ask “Who caused the mirror to crack?”, we expect children to say the distal character. But when we ask “Who cracked the mirror?”, we expect them to say the proximal character but not the distal character.\n\n Although children’s answers can vary, there aren’t any “right” or “wrong” answers to the questions. We are just interested in looking at the average responses from children and we won’t take any specific answers as “good” or “bad”.\n\n If you are interested in learning more about this, please see the following experimental paper with adults <a href=https://philpapers.org/rec/ROSCAB-3 target='_blank' rel='noopener'>here</a>. Thank you again for your participation!",
+                "title": "Thank you!"
+            }
+        },
+        "start-recording-with-image": {
+            "kind": "exp-lookit-start-recording",
+            "baseDir": "https://www.mit.edu/~kimscott/placeholderstimuli/",
+            "videoTypes": [
+                "webm",
+                "mp4"
+            ],
+            "image": "peekaboo_remy.jpg",
+            "imageAnimation": "spin",
+            "displayFullscreen": true
+        },
+        "stop-recording-with-video": {
+            "kind": "exp-lookit-stop-recording",
+            "baseDir": "https://www.mit.edu/~kimscott/placeholderstimuli/",
+            "videoTypes": [
+                "webm",
+                "mp4"
+            ],
+            "video": "attentiongrabber",
+            "displayFullscreen": true,
+            "showProgressBar": true,
+            "waitForUploadMessage": " "
+        },
+        "instructions": {
+            "kind": "exp-lookit-instructions",
+            "blocks": [
+                {
+                    "title": "1. Overview of what we're doing today",
+                    "listblocks": [
+                        {
+                            "text": "All together, it will take about 8-10 minutes to finish this study."
+                        },
+                        {
+                            "text": "I’m going to ask you some questions and I just want to know what you think."
+                        },
+                        {
+                            "text": "There aren’t any right or wrong answers, so just tell me what you think ! "
+                        }
+                    ]
+                },
+                {
+                    "text": "Please try playing this sample audio to make sure you'll be able to hear the story.",
+                    "title": "2. Adjust your speakers",
+                    "mediaBlock": {
+                        "text": "You should hear 'Ready to go?'",
+                        "isVideo": false,
+                        "sources": [
+                            {
+                                "src": "https://s3.amazonaws.com/lookitcontents/exp-physics-final/audio/ready.mp3",
+                                "type": "audio/mp3"
+                            },
+                            {
+                                "src": "https://s3.amazonaws.com/lookitcontents/exp-physics-final/audio/ready.ogg",
+                                "type": "audio/ogg"
+                            }
+                        ],
+                        "mustPlay": true,
+                        "warningText": "Please try playing the sample audio."
+                    }
+                }
+            ],
+            "showWebcam": true,
+            "webcamBlocks": [
+                {
+                    "title": "3. Make sure we can see you",
+                    "listblocks": [
+                        {
+                            "text": "Take a look at your webcam view above. Get comfy, and adjust your own position or the computer as needed so both you and your child are visible."
+                        },
+                        {
+                            "text": "This isn't a Skype call - no one in the lab can see you - but the recorded video of your participation will be sent to the lab to help with data analysis. It's helpful for us to be able to see if your child was pointing or looking confused, for example."
+                        }
+                    ]
+                }
+            ],
+            "nextButtonText": "Next"
+        },
+        "video-config": {
+            "kind": "exp-video-config"
+        },
+        "video-consent": {
+            "kind": "exp-lookit-video-consent",
+            "template": "consent_005",
+            "PIName": "Lookit Tutorial Participant",
+            "PIContact": "Ellen Markman at markman@stanford.edu",
+            "include_databrary": true,
+            "risk_statement": "There are no expected risks to participation.",
+            "datause": "A research assistant will watch your video and mark down your child's answer to the question at the end of the story, and as well as other information such as interactions between you and your child during the story.",
+            "payment": "After you finish the study, we will email you a $5 Amazon gift card within approximately 3-5 business days. To be eligible for the gift card your child must be in the age range for this study, you need to submit a valid consent statement, and we need to see that there is a child with you. But we will send a gift card even if you do not finish the whole study or we are not able to use your child's data! There are no other direct benefits to you or your child from participating, but we hope you will enjoy the experience.",
+            "purpose": "This study is about how children use causal verbs in language, how children think about causation and even issues about how they think about direct and indirect action.",
+            "procedures": "In this study your child will view a digital 'storybook' about Suzy, Andy, Sophia and Bobby. Suzy and Andy were in the park. One of them was riding the bike very fast and running into the other one. At the end, someone fell into the fence. Sophia and Bobby were in a room. One of them decided to play a trick on the other one. At the end, someone fell into the mirror. We are interested in how children use different causal verbs to describe the two incidents. We will ask you (the parent) to avoid discussing with your child until the end of the study. There are no anticipated risks associated with participating.",
+            "institution": "The Markman Lab of Stanford University"
+        },
+        "introduction": {
+            "kind": "exp-lookit-images-audio",
+            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
+            "id": "storybook-group",
+            "audioTypes": [
+                "mp3",
+                "ogg"
+            ],
+            "autoProceed": false,
+            "doRecording": false,
+            "parentTextBlock": {
+                "css": {
+                    "font-size": "1.5em"
+                },
+                "text": "Please help keep your child's attention, but don't talk with them about what you think.",
+                "title": "For parents"
+            },
+            "audio": "exp1_welcome",
+            "position": "fill",
+            "images": [
+                {
+                    "id": "storybookIllustration",
+                    "src": "exp1_welcome.jpeg",
+                    "top": 0,
+                    "left": 0,
+                    "width": 120
+                }
+            ]
+        },
+        "before-we-get-started": {
+            "kind": "exp-lookit-images-audio",
+            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
+            "id": "storybook-group",
+            "audioTypes": [
+                "mp3",
+                "ogg"
+            ],
+            "autoProceed": false,
+            "displayFullscreen": true,
+            "audio": "exp1_before_we_get_started",
+            "doRecording": false,
+            "images": [
+                {
+                    "id": "storybookIllustration",
+                    "src": "exp1_before_we_get_started.jpeg",
+                    "top": 0,
+                    "left": 0,
+                    "width": 120
+                }
+            ]
+        },
+        "end": {
+            "kind": "exp-lookit-images-audio",
+            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
+            "id": "storybook-group",
+            "audioTypes": [
+                "mp3",
+                "ogg"
+            ],
+            "autoProceed": false,
+            "doRecording": false,
+            "displayFullscreen": true,
+            "parentTextBlock": {
+                "css": {
+                    "font-size": "1.5 em"
+                },
+                "text": "Thank you very much for your participation. We look forward to seeing you with more research games in the future. ",
+                "title": "For parents"
+            },
+            "audio": "exp1_end",
+            "images": [
+                {
+                    "id": "storybookIllustration",
+                    "src": "exp1_end.jpeg",
+                    "top": 0,
+                    "left": 0,
+                    "width": 120
+                }
+            ]
+        },
+        "warmup": {
+            "kind": "group",
+            "frameList": [
+                {
+                    "kind": "group",
+                    "frameList": [
+                        {
+                            "audio": "exp1_warmup_1",
+                            "autoProceed": false,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp1_warmup_1.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp1_warmup_2",
+                            "autoProceed": false,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp1_warmup_2.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp1_warmup_3",
+                            "autoProceed": false,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp1_warmup_3.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp1_warmup_4",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp1_warmup_4.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp1_warmup_5",
+                            "autoProceed": false,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp1_warmup_5.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp1_warmup_6",
+                            "autoProceed": false,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp1_warmup_6.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp1_warmup_7",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp1_warmup_7.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp1_warmup_8",
+                            "autoProceed": false,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp1_warmup_8.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp1_warmup_9",
+                            "autoProceed": false,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp1_warmup_9.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp1_warmup_10",
+                            "autoProceed": false,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp1_warmup_10.jpeg",
+                                    "top": 0,
+                                    "left": 0,
+                                    "width": 120
+                                }
+                            ]
+                        }
+                    ],
+                    "commonFrameProperties": {
+                        "kind": "exp-lookit-images-audio",
+                        "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
+                        "id": "storybook-group",
+                        "audioTypes": [
+                            "mp3",
+                            "ogg"
+                        ],
+                        "autoProceed": true,
+                        "doRecording": false
+                    }
+                }
+            ]
+        },
+        "causal-verb-study-story-book": {
+            "kind": "group",
+            "parameters": {
+                "CANDS": [
+                    [
+                        "exp1_break_intro",
+                        "exp1_break_intro.jpeg",
+                        "exp1_break_story",
+                        "exp1_break_break.jpeg",
+                        "exp1_break_break",
+                        "exp1_break_caused.jpeg",
+                        "exp1_break_caused",
+                        "exp1_crack_intro",
+                        "exp1_crack_intro.jpeg",
+                        "exp1_crack_story",
+                        "exp1_crack_crack.jpeg",
+                        "exp1_crack_crack",
+                        "exp1_crack_caused.jpeg",
+                        "exp1_crack_caused"
+                    ],
+                    [
+                        "exp1_break_intro",
+                        "exp1_break_intro.jpeg",
+                        "exp1_break_story_suzy_left",
+                        "exp1_break_break_suzy_left.jpeg",
+                        "exp1_break_break",
+                        "exp1_break_caused_suzy_left.jpeg",
+                        "exp1_break_caused",
+                        "exp1_crack_intro",
+                        "exp1_crack_intro.jpeg",
+                        "exp1_crack_story_bobby_left",
+                        "exp1_crack_crack_bobby_left.jpeg",
+                        "exp1_crack_crack",
+                        "exp1_crack_caused_bobby_left.jpeg",
+                        "exp1_crack_caused"
+                    ]
+                ]
+            },
+            "frameList": [
+                {
+                    "kind": "group",
+                    "parameters": {
+                        "TRIAL_DISPLAYED": "CANDS#UNIQ"
+                    },
+                    "frameList": [
+                        {
+                            "kind": "choice",
+                            "sampler": "permute",
+                            "commonFrameProperties": {
+                                "id": "storybook-group"
+                            },
+                            "frameOptions": [
+                                {
+                                    "kind": "group",
+                                    "frameList": [
+                                        {
+                                            "audio": "TRIAL_DISPLAYED#0",
+                                            "kind": "exp-lookit-images-audio",
+                                            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
+                                            "id": "storybook-group",
+                                            "audioTypes": [
+                                                "mp3",
+                                                "ogg"
+                                            ],
+                                            "autoProceed": false,
+                                            "doRecording": false,
+                                            "images": [
+                                                {
+                                                    "id": "storybookIllustration",
+                                                    "src": "TRIAL_DISPLAYED#1",
+                                                    "top": 0,
+                                                    "left": 0,
+                                                    "width": 120
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "kind": "exp-lookit-video",
+                                            "video": {
+                                                "position": "fill",
+                                                "loop": false,
+                                                "source": "TRIAL_DISPLAYED#2"
+                                            },
+                                            "requireVideoCount": 1,
+                                            "doRecording": false,
+                                            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
+                                            "videoTypes": [
+                                                "mp4"
+                                            ],
+                                            "backgroundColor": "white",
+                                            "autoProceed": false
+                                        },
+                                        {
+                                            "kind": "choice",
+                                            "sampler": "permute",
+                                            "commonFrameProperties": {
+                                                "kind": "exp-lookit-images-audio",
+                                                "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
+                                                "id": "storybook-group",
+                                                "audioTypes": [
+                                                    "mp3",
+                                                    "ogg"
+                                                ],
+                                                "autoProceed": false,
+                                                "doRecording": false,
+                                                "parentTextBlock": {
+                                                    "css": {
+                                                        "font-size": "1.3em"
+                                                    },
+                                                    "text": "Please remind your child of the characters' names (Andy and Suzy) if needed. Thank you! \n When you finish, click \"next\".",
+                                                    "title": "For parents"
+                                                }
+                                            },
+                                            "frameOptions": [
+                                                {
+                                                    "images": [
+                                                        {
+                                                            "id": "storybookIllustration",
+                                                            "src": "TRIAL_DISPLAYED#3",
+                                                            "top": 0,
+                                                            "left": 0,
+                                                            "width": 120
+                                                        }
+                                                    ],
+                                                    "audio": "TRIAL_DISPLAYED#4",
+                                                    "doRecording": false
+                                                },
+                                                {
+                                                    "images": [
+                                                        {
+                                                            "id": "storybookIllustration",
+                                                            "src": "TRIAL_DISPLAYED#5",
+                                                            "top": 0,
+                                                            "left": 0,
+                                                            "width": 120
+                                                        }
+                                                    ],
+                                                    "audio": "TRIAL_DISPLAYED#6",
+                                                    "doRecording": false
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "kind": "group",
+                                    "frameList": [
+                                        {
+                                            "audio": "TRIAL_DISPLAYED#7",
+                                            "kind": "exp-lookit-images-audio",
+                                            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
+                                            "id": "storybook-group",
+                                            "audioTypes": [
+                                                "mp3",
+                                                "ogg"
+                                            ],
+                                            "autoProceed": false,
+                                            "doRecording": false,
+                                            "images": [
+                                                {
+                                                    "id": "storybookIllustration",
+                                                    "src": "TRIAL_DISPLAYED#8",
+                                                    "top": 0,
+                                                    "left": 0,
+                                                    "width": 120
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "kind": "exp-lookit-video",
+                                            "video": {
+                                                "position": "fill",
+                                                "loop": false,
+                                                "source": "TRIAL_DISPLAYED#9"
+                                            },
+                                            "requireVideoCount": 1,
+                                            "doRecording": false,
+                                            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
+                                            "videoTypes": [
+                                                "mp4"
+                                            ],
+                                            "backgroundColor": "white",
+                                            "autoProceed": false
+                                        },
+                                        {
+                                            "kind": "choice",
+                                            "sampler": "permute",
+                                            "commonFrameProperties": {
+                                                "kind": "exp-lookit-images-audio",
+                                                "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment1/children/cause",
+                                                "id": "storybook-group",
+                                                "audioTypes": [
+                                                    "mp3",
+                                                    "ogg"
+                                                ],
+                                                "autoProceed": false,
+                                                "doRecording": false,
+                                                "parentTextBlock": {
+                                                    "css": {
+                                                        "font-size": "1.3em"
+                                                    },
+                                                    "text": "Please remind your child of the characters' names (Bobby and Sophia) if needed. Thank you! \n When you finish, click \"next\".",
+                                                    "title": "Attention"
+                                                }
+                                            },
+                                            "frameOptions": [
+                                                {
+                                                    "images": [
+                                                        {
+                                                            "id": "storybookIllustration",
+                                                            "src": "TRIAL_DISPLAYED#10",
+                                                            "top": 0,
+                                                            "left": 0,
+                                                            "width": 120
+                                                        }
+                                                    ],
+                                                    "audio": "TRIAL_DISPLAYED#11",
+                                                    "doRecording": false
+                                                },
+                                                {
+                                                    "images": [
+                                                        {
+                                                            "id": "storybookIllustration",
+                                                            "src": "TRIAL_DISPLAYED#12",
+                                                            "top": 0,
+                                                            "left": 0,
+                                                            "width": 120
+                                                        }
+                                                    ],
+                                                    "audio": "TRIAL_DISPLAYED#13",
+                                                    "doRecording": false
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "sequence": [
+        "instructions",
+        "video-config",
+        "video-consent",
+        "before-we-get-started",
+        "start-recording-with-image",
+        "introduction",
+        "warmup",
+        "causal-verb-study-story-book",
+        "end",
+        "stop-recording-with-video",
+        "exit-survey"
+    ]
+}

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <script src="js/jspsych.js"></script>
+      <script src="js/utils.js"></script>
+      <script src='plugins/jquery.min.js'></script>
+      <script src='plugins/jquery-ui.min.js'></script>
+      <script src="plugins/jspsych-html-slider-response-custom.js"></script>
+      <script src="plugins/jspsych-instructions.js"></script>
+      <script src="plugins/jspsych-html-button-response.js"></script>
+      <script src="plugins/jspsych-html-keyboard-response.js"></script>
+      <script src="plugins/jspsych-survey-text.js"></script>
+      <script src="plugins/jspsych-image-button-response.js"></script>
+      <script src='plugins/jspsych-survey-multi-choice-custom.js'></script>
+      <script src='plugins/jspsych-survey-html-form.js'></script>
+      <script src="plugins/jspsych-preload.js"></script>
+      <script src = 'https://proliferate.alps.science/static/js/proliferate.js'> </script> 
+      <script src='plugins/utils.js'></script>
+      <link href="css/jspsych.css" rel="stylesheet">
+      <link href="css/custom.css" rel="stylesheet">
+      <link rel="stylesheet" href='css/jquery-ui.min.css' />
+    </head>
+    <body></body>
+    <script>
+
+  var timeline = []
+
+instruction_image =   [
+  {instructions: 'images/instructions.png'}]
+  
+  sunburn_scenario_image = [
+  {sunburn_scenario: 'images/sunburn_1.png'},
+  {sunburn_scenario: 'images/sunburn_2.png'},
+  {sunburn_scenario: 'images/sunburn_3.png'},
+  {sunburn_scenario: 'images/sunburn_4.png'},
+  {sunburn_scenario: 'images/sunburn_5.png'},
+  {sunburn_scenario: 'images/sunburn_6.png'},
+  {sunburn_scenario: 'images/sunburn_7.png'},
+  {sunburn_scenario: 'images/sunburn_8.png'},
+  {sunburn_scenario: 'images/sunburn_9.png'},
+  {sunburn_scenario: 'images/sunburn_10.png'},
+  {sunburn_scenario: 'images/sunburn_11.png'},
+  {sunburn_scenario: 'images/sunburn_12.png'},
+  {sunburn_scenario: 'images/sunburn_13.png'},
+  {sunburn_scenario: 'images/sunburn_14.png'}]
+  
+  sunburn_questions_image = [
+  {sunburn_caused: 'images/sunburn_made.png'}]
+  
+  next_scenario_image = [
+  {next_scenario: 'images/next_scenario.png'}]
+
+  flood_scenario_image = [
+  {flood_scenario: 'images/flood_1.png'},
+  {flood_scenario: 'images/flood_2.png'},
+  {flood_scenario: 'images/flood_3.png'},
+  {flood_scenario: 'images/flood_4.png'},
+  {flood_scenario: 'images/flood_5.png'},
+  {flood_scenario: 'images/flood_6.png'},
+  {flood_scenario: 'images/flood_7.png'},
+  {flood_scenario: 'images/flood_8.png'},
+  {flood_scenario: 'images/flood_9.png'},
+  {flood_scenario: 'images/flood_10.png'},
+  {flood_scenario: 'images/flood_11.png'},
+  {flood_scenario: 'images/flood_12.png'},
+  {flood_scenario: 'images/flood_13.png'},
+  {flood_scenario: 'images/flood_14.png'},
+  {flood_scenario: 'images/flood_15.png'},
+  {flood_scenario: 'images/flood_16.png'},
+  {flood_scenario: 'images/flood_17.png'},
+  {flood_scenario: 'images/flood_18.png'},
+  {flood_scenario: 'images/flood_19.png'},
+  {flood_scenario: 'images/flood_20.png'},
+  {flood_scenario: 'images/flood_21.png'},
+  {flood_scenario: 'images/flood_22.png'},
+  {flood_scenario: 'images/flood_23.png'}]
+
+  flood_questions_image = [
+  {flood_caused: 'images/flood_made.png'}
+]
+
+  // Preloads all images into the browser's memory before the experiment starts
+  var preload = {
+    type: 'preload',
+    images: instruction_image, sunburn_scenario_image, next_scenario_image, flood_scenario_image, flood_questions_image,
+    show_detailed_errors: true
+}
+
+  // var sunburn_question = ["_caused", "_burn"]
+  // var counterbalance_scenario = Math.floor(Math.random()*2)
+  // var sunburn_question = sunburn_question[counterbalance_scenario]
+
+  
+  // display consent screen
+  var consent = {
+      type: 'html-button-response',
+      stimulus: '<p><b>Consent Form</b></p> <div style="text-align:left;' +
+          'background-color:lightblue; padding:20px; max-width:900px;">' +
+          '<p><b>Description:</b> Welcome! You are invited to participate ' +
+          'in a research study in cognitive psychology. You will be asked ' +
+          'to perform various tasks on a computer which may include: looking ' +
+          'at images or videos, listening to sounds, reading scenarios, or ' +
+          'playing games. You may be asked a number of different questions ' +
+          'about making judgments and intepreting people’s actions. All ' +
+          'information collected will remain confidential. <p>' +
+          '<p><b>Risks and benefits:</b> Risks involved in this study are ' +
+          'the same as those normally associated with using a computer ' +
+          '(e.g., mild eye/arm strain). If you have any pre-existing ' +
+          'conditions that might make reading and completing a computer-' +
+          'based survey strenuous for you, you should probably elect to ' +
+          'not participate in this study. If at any time during the study ' +
+          'you feel unable to participate because you are experiencing strain, ' +
+          'you may end your participation without penalty. We cannot and do ' +
+          'not guarantee or promise that you will receive any benefits from ' +
+          'this study. Your decision whether or not to participate in this ' +
+          'study will not affect your employment, medical care, and/or grades ' +
+          'in school. </p>' +
+          '<p><b>Time involvement:</b> Your participation in this experiment ' +
+          'will take 5 minutes. </p>' +
+          '<p><b> Payment: </b> If recruitment materials indicate payment ' +
+          '(e.g., Amazon or other recruitment), you will receive compensation ' +
+          'as indicated. </p>' +
+          "<p><b>Subject's rights: </b> If you have read this notice and have " +
+          'decided to participate in this project, please understand your ' +
+          'participation is voluntary and you have the right to withdraw ' +
+          'your consent or discontinue participation at any time without ' +
+          'penalty or loss of benefits to which you are otherwise entitled. ' +
+          'You have the right to refuse to answer particular questions. Your ' +
+          'individual privacy will be maintained in all published and written ' +
+          'data resulting from the study. </p>' +
+          '<p><b>Contact information: </b> If you have any questions, concerns ' +
+          'or complaints about this research study, its procedures, or risks ' +
+          'and benefits, you should ask the Protocol Director, (Professor ' +
+          'Tobias Gerstenberg, Phone: (650) 725-2431; Email: ' +
+          'gerstenberg@stanford.edu). </p>' +
+          '<p><b>Independent contact: </b>I f you are not satisfied with how ' +
+          'this study is being conducted, or if you have any concerns, ' +
+          'complaints, or general questions about the research or your ' +
+          'rights as a participant, please contact the Stanford Institutional ' +
+          'Review Board (IRB) to speak to someone independent of the research ' +
+          'team via email at irb2-manager@lists.stanford.edu, or via phone ' +
+          'at (650) 723-2480 or toll free at 1-866-680-2906. You can also ' +
+          'write to the Stanford IRB, Stanford University, 3000 El Camino ' +
+          'Real, Five Palo Alto Square, 4th Floor, Palo Alto, CA 94306. </p>' +
+          '<p>You may want to print a copy of this consent form to keep. By ' +
+          'clicking the button below, you acknowledge that you have read ' +
+          'the above information, that you are 18 years of age, or older ' +
+          'and give your consent to participate in our internet-based study ' +
+          'and consent for us to analyze the resulting data. </p> </div>' +
+          '<p> Do you agree with the terms of the experiment as explained ' +
+          'above? </p>',
+      choices: ['I agree'],
+      on_finish: function() {
+                var prog = jsPsych.getProgressBarCompleted();
+                jsPsych.setProgressBar(prog + 0.015);
+            }
+  }
+
+  var instructions = {
+    type: 'html-keyboard-response',
+    stimulus: function(){
+        // html = "<p><img src="+jsPsych.timelineVariable('instructions', true) +" width='80%' height = '100%' ></p>"
+        html = "<p><img src="+jsPsych.timelineVariable('instructions', true) +" width='50%'></p>"
+        return html},
+        prompt: "<p>Press the spacebar to begin.</p>",
+    choices: ['Spacebar'],
+    on_finish: function() {
+                var prog = jsPsych.getProgressBarCompleted();
+                jsPsych.setProgressBar(prog + 0.015);
+            }
+  }
+
+//instruction items
+  var instruction_items = {
+    timeline: [instructions],
+    timeline_variables: instruction_image
+  }
+
+  //sunburn scenario
+  var sunburn_trial = {
+    type: 'html-keyboard-response',
+    stimulus: function(){
+        // html = "<p><img src="+jsPsych.timelineVariable('sunburn_scenario', true) +" width='80%' height = '100%' ></p>"
+        html = "<p><img src="+jsPsych.timelineVariable('sunburn_scenario', true) +" width='100%'></p>"
+        return html},
+        prompt: "<p>Press the spacebar to continue.</p>",
+    choices: ['Spacebar'],
+    on_finish: function() {
+                var prog = jsPsych.getProgressBarCompleted();
+                jsPsych.setProgressBar(prog + 0.015);
+            }
+  }
+
+//sunburn items
+  var sunburn_items = {
+    timeline: [sunburn_trial],
+    timeline_variables: sunburn_scenario_image
+  }
+
+ var sunburn_made = { 
+   type: 'survey-text',
+        questions: [
+      {prompt: 
+        html = "<p><img src=images/sunburn_made.png + width='100%'></p><p>Please write your answer in the text box below.</p>", rows: 5, columns: 50, required: true, name: 'sunburn_made_response'}],
+    on_finish: function() {
+                var prog = jsPsych.getProgressBarCompleted();
+                jsPsych.setProgressBar(prog + 0.013);
+            },
+          }
+
+
+
+  //next scenario
+          var next = {
+    type: 'html-keyboard-response',
+    stimulus: function(){
+        html = "<p><img src="+jsPsych.timelineVariable('next_scenario', true) + " width='50%'></p>"
+        return html},
+        prompt: "<p>Press the spacebar to begin.</p>",
+    choices: ['Spacebar'],
+    on_finish: function() {
+                var prog = jsPsych.getProgressBarCompleted();
+                jsPsych.setProgressBar(prog + 0.015);
+            }
+  }
+
+//next scenario items
+  var next_items = {
+    timeline: [next],
+    timeline_variables: next_scenario_image
+  }
+
+ //flood scenario
+ var flood_trial = {
+    type: 'html-keyboard-response',
+    stimulus: function(){
+        html = "<p><img src="+jsPsych.timelineVariable('flood_scenario', true) +" width='100%'></p>"
+        return html},
+        prompt: "<p>Press the spacebar to continue.</p>",
+    choices: ['Spacebar'],
+    on_finish: function() {
+                var prog = jsPsych.getProgressBarCompleted();
+                jsPsych.setProgressBar(prog + 0.015);
+            }
+  }
+
+//flood items
+  var flood_items = {
+    timeline: [flood_trial],
+    timeline_variables: flood_scenario_image
+  }
+
+ var flood_made = { type: 'survey-text',
+        questions: [
+      {prompt: 
+        html = "<p><img src=images/flood_made.png + width='100%'><p>Please write your answer in the text box below.</p></p>", rows: 5, columns: 50, required: true, name: 'flood_made_response'}],
+    on_finish: function() {
+                var prog = jsPsych.getProgressBarCompleted();
+                jsPsych.setProgressBar(prog + 0.013);
+            },
+          }
+    
+
+  
+  // demographics
+  var demographics = {
+            type: 'survey-html-form',
+            html: '<div style="max-width:700px; text-align:center;"> <p>' +
+                'What factors influenced how you decided to respond? Do you' +
+                ' have any questions or comments regarding the experiment?' +
+                '</p> <textarea name="feedback" cols="40" rows="6"' +
+                ' "autofocus"></textarea> <p> Please provide the following' +
+                ' information to complete the study. </p> <div style="text-' +
+                'align:center;"> <div style="text-align:left; display:' +
+                'inline-block; margin-right:20px; line-height:1.8em;"> <ol>' +
+                    '<li>Age:</li> <br>' +
+                    '<li>Gender:</li> <br><br>' +
+                    '<li>Race:</li> <br><br><br><br><br><br>' +
+                    '<li>Ethnicity:</li>' +
+                '</ol> </div>' +
+                '<div style="text-align:left; display: inline-block;' +
+                ' line-height:1.8em;">' +
+                    // age text box
+                    '<input name="age" type="number"  min="18" max="100" /> <br> <br>' +
+                    // gender options
+                    '<input name="gender" type="radio" id="female" value=' +
+                        '"Female" /> <label for="female"> Female </label>' +
+                    '<input name="gender" type="radio" id="male" value=' +
+                        '"Male" /> <label for="male"> Male </label>' +
+                    '<input name="gender" type="radio" id="nonbinary" value=' +
+                        '"Non-binary" /> <label for="nonbinary"> Non-binary </label> <br>' +
+                    '<input name="gender" type="radio" id="other_gender" value=' +
+                        '"other_gender" /> <label for="other_gender"> Other: <input' +
+                        ' type="text" name="other_gender" /> </label> <br><br>' +
+                    // race options
+                    '<input name="race" type="radio" id="white" value=' +
+                        '"White" /> <label for="white"> White </label> <br>' +
+                    '<input name="race" type="radio" id="black" value=' +
+                        '"Black/African American" /> <label for="black">' +
+                        ' Black/African American </label> <br>' +
+                    '<input name="race" type="radio" id="am_ind" value=' +
+                        '"American Indian/Alaska Native" /> <label for="am_ind">' +
+                        ' American Indian/Alaska Native </label> <br>' +
+                    '<input name="race" type="radio" id="asian" value=' +
+                        '"Asian" /> <label for="asian"> Asian </label> <br>' +
+                    '<input name="race" type="radio" id="pac_isl" value=' +
+                        '"Native Hawaiian/Pacific Islander" /> <label for="pac_isl">' +
+                        ' Native Hawaiian/Pacific Islander </label> <br>' +
+                    '<input name="race" type="radio" id="other_race" value="other_race" />' +
+                        '<label for="other_race"> Other: <input type="text"' +
+                        'name="other_race" /> </label> <br><br>' +
+                    // ethnicity options
+                    '<input name="ethnicity" type="radio" id="hisp" value=' +
+                        '"Hispanic" /> <label for="hisp"> Hispanic </label>' +
+                    '<input name="ethnicity" type="radio" id="nonhisp" value=' +
+                        '"Non-Hispanic" /> <label for="nonhisp"> Non-Hispanic' +
+                        ' </label>' +
+                '</div> </div>' +
+                '<p> Please press the finish button to complete the experiment. </p> </div>',
+            button_label: 'Finish',
+            on_start: function() { jsPsych.setProgressBar(0.96); },
+            on_finish: function() { jsPsych.setProgressBar(1.0); }
+        };
+
+  //randomize order of scenarios and question type 
+  var scenarios = ["sunburn", "flood"]; 
+  var question_type = ["made"]
+  shuffle(scenarios)
+  shuffle(question_type)
+  console.log("question_type", question_type);
+  console.log("scenarios", scenarios);
+
+  // Adding to the timeline
+  timeline.push(consent);
+  timeline.push(instruction_items);
+  timeline.push(eval(scenarios[0] + "_items"));
+  timeline.push(eval(scenarios[0] + "_" + question_type[0]));
+  timeline.push(next_items);
+  timeline.push(eval(scenarios[1] + "_items"));
+  timeline.push(eval(scenarios[1] + "_" + question_type[0]));
+  timeline.push(demographics)
+
+  jsPsych.init({
+    timeline: timeline,
+    show_progress_bar: true,
+    auto_update_progress_bar: false,
+    on_finish: function() {
+
+    var explanations = jsPsych.data.get().filter({trial_type: 'survey-text'}).values()
+    var demographic_data = jsPsych.data.get().filter({trial_type: 'survey-html-form'}).values()
+  
+ // parse demographics and construct participant data
+  var participant = JSON.parse(demographic_data[0]['responses']);
+      // override if selected "other" or none
+      if (participant.gender == "other_gender" || typeof participant.gender == "undefined") {
+          participant.gender = participant.other_gender;
+      }
+      if (participant.race == "other_race" || typeof participant.race == "undefined") {
+          participant.race = participant.other_race;
+      }
+      if (typeof participant.ethnicity == "undefined") {
+          participant.ethnicity = "";
+      }
+      var participant_info = {
+          "feedback": participant.feedback,
+          "age": participant.age,
+          "gender": participant.gender,
+          "race": participant.race,
+          "ethnicity": participant.ethnicity,
+          "time": demographic_data[0]['rt']
+      };
+
+    // combine all data 
+    var data_final = {
+      // "trials": trials,
+      "participants": participant_info,
+      "explanations": explanations
+    }
+    console.log("data_final", data_final);
+
+    proliferate.submit(data_final);
+
+    $('#jspsych-content').html('<div style="margin: auto;"> <p> Thank you for' +
+      ' participating in this experiment! </p> <p> Redirecting you back to' +
+      ' Prolific... </p>');
+    setTimeout(function() {}, 400);
+
+    },
+    default_iti: 250
+  });
+</script>
+
+</html>

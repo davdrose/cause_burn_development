@@ -1,0 +1,74 @@
+workerid,proliferate.condition,break_cause,break_cause_processed,break_simple,break_simple_processed,counterbalance,crack_cause,crack_cause_processed,crack_simple,crack_simple_processed,error
+3068,condition 1,Suzy did because she ran into Andy who fell into it,Suzy ,Andy,Andy,order_2,Bobby scared her and she fell into the mirror,Bobby,sophia,Sophia,
+3073,condition 1,They are both responsible,Andy and Suzy,"They both broke the fence, but primarily the cyclist.",Andy and Suzy,order_1,Bobby's frightened response to being scared caused him to break the mirror,Bobby,Bobby cracked the mirror as a result of being jump scared.,Bobby,
+3050,condition 1,Suzy fell on it,Suzy ,"Suzy, technically.",Suzy,order_1,Bobby,Bobby,Bobby,Bobby,
+3057,condition 1,Andy caused the fence to break,Andy ,Suzy broke the fence,Suzy,order_1,Sophia caused the mirror to crack,Sophia,Bobby cracked the mirror,Bobby,
+3064,condition 1,The kid riding his bike too fast and pushing the girl into the fence is what broke the fence. ,The kid riding his bike too fast and pushing the girl into the fence is what broke the fence. ,The boy broke the fence with the girls body,The boy broke the fence with the girls body,order_1,Bobby falling on the mirror caused it to crack,Bobby,Bobby cracked the mirror by accident,Bobby,
+3072,condition 1,Suzy,Suzy,Andy,Andy,order_2,Bobby,Bobby,Sophia,Sophia,
+3034,condition 1,Andy,Andy,Suzie,Suzy,order_1, Sophia,Sophia,Bobby,Bobby,
+3066,condition 1,Andy caused the fence to break as a side effect of his reckless actions.,Andy,Andy's reckless actions resulted in the fence being broken.,Andy,order_1,Suzy's reckless actions caused the mirror to crack.,Sophia,"Bobby cracked the mirror, but only because of Suzy's reckless actions.",Bobby,
+3081,condition 1,andrew fell back because suzy ran into him,Suzy,andy,Andy,order_2,bobby,Bobby,sophia,Sophia,
+3083,condition 1,Suzy,Suzy,Andy,Andy,order_2,Sophia,Sophia,Sophia,Sophia,
+3070,condition 1,Andy caused the fence to break.,Andy,Suzy broke the fence because she was going too fast.,Suzy,order_2,"Bobby caused Sarah to get scared, making the mirror crack.",Bobby,The person that cracked the mirror was Sarah.,Sophia,
+3026,condition 1,"Suzy ran into the boy, which caused him to fall back and break the fence",Suzy,the boy,Andy,order_2,Sophia caused the mirror to crack because she fell into it,Sophia,Sophia cracked the mirror,Sophia,
+3039,condition 1,andy,Andy,suzy,Suzy,order_1,when Sophia scared bobby bobby accidentally knocked into the mirror causing it to crack,Sophia,bobby,Bobby,
+3031,condition 1,Suzy,Suzy, Suzy,Suzy,order_2,Bobby,Bobby,Sophia,Sophia,
+3090,condition 1,Suzy,Suzy,Suzy,Suzy,order_2,Bobby,Bobby,Bobby,Bobby,
+3079,condition 1,Suzy,Suzy,Andy,Andy,order_2,Bobby,Bobby,Sophia,Sophia,
+3092,condition 1,Andy hitting Suzy and Suzy's body landing on it,Andy,"Both Andy and Suzy caused it to happen, but Suzy more specifically because it was her body.",Andy and Suzy,order_1,Both Bobby and Sophia.,Bobby and Sophia,Both Bobby and Sophia cracked the mirror but more physically speaking Bobby did because it was his body.,Bobby and Sophia,
+3077,condition 1,Suzy,Suzy,Suzy,Suzy,order_2,Bobby,Bobby,Sofia,Sophia,
+3042,condition 1,Suzzie,Suzy,Suzzie,Suzy,order_2,bobby,Bobby,sophia,Sophia,
+3065,condition 1,The boy on the bike,Andy,Suzy,Suzy,order_1,Sophia,Sophia,Bobby,Bobby,
+3035,condition 1,andy,Andy,suzy,suzy,order_1,sophia,Sophia,bobby,Bobby,
+3055,condition 1,"Ultimately, Suzy caused the fence to break. She ran into Andy who fell into the fence. ",Suzy ,Andy broke the fence. ,Andy,order_2,Bobby,Bobby,Sophia,Sophia,
+3087,condition 1,Suzy,Suzy,Suzy,Suzy,order_2,Bobby,Bobby,Bobby,Bobby,
+3033,condition 1,Suzy technically.,Suzy,"Andy, physically but not if Suzy didn't hit him.",Andy,order_2,"Bobby jumping out, scaring Sophia and having her fall into the mirror as a result.",Bobby,"Technically it was her brother Bobby, but Sophia did the physical falling into the mirror.",Sophia,
+3082,condition 1,"I think Suzy broke the fence for reasons captured by my last answer, although the use of these two questions in sequence is making me reconsider my last answer. I still think she's probably responsible with respect to both questions. Summarizing both answers, I could say that Andy's body broke the fence -- its collision with the fence was the proximate cause -- but that Suzy's behavior was more fundamentally the cause and that she is thus the person who basically broke it. ",Suzy,"I think Suzy probably can best be said to have broken the fence because Andy's falling into it was not a volitional act but the result of his being thrown into it by Suzy's chosen action. Suzy didn't knowingly break the fence, but she did choose the behavior that most directly led to that outcome. Andy chose to watch butterflies near the fence, but that choice did not have a negligent component in it that put the fence at risk. At most, one could argue that had Andy been paying more attention to his surroundings, he might have mustered a better reaction time and moved to evade Suzy's path. But I think just as pedestrians have the right of way and are not typically considered at fault when hit by drivers, so too Andy should not be considered at fault here, not least because he was (as best I recall the relevant image) standing still when Suzy ran into him, and thus not making it harder to avoid an accident in the way he might have been had he also been moving quickly.  ",Suzy,order_2,"I think Bobby caused the mirror to crack. Trying to micromanage Sophia's (or anyone's) startle reactions seems unreasonable. If she wants to practice minimizing her reactions in such cases, perhaps she can learn to be more still in a way that would protect future mirrors, but that is not a generally recognized social obligation.  Bobby is fundamentally at fault here, though he probably had no intention of breaking the mirror -- he deliberately provoked a shock that would have an unpredictable and likely somewhat intense reaction. ",Bobby,"I would say Sophia cracked the mirror. I recognize the inconsistency in saying that after the first scenario, but I think operating a vehicle is different from shouting boo, though there was a failure of foresight in both cases. And if someone has to pay for the broken mirror, I think it should be Bobby rather than Sophia. ",Sophia,
+3030,condition 1,"both
+","Andy and Suzy
+",both,Andy and Suzy,order_2,both,Bobby and Sophia,sophia,Sophia,
+3047,condition 1,Andy,Andy,Suzy,Suzy,order_1,Sophia,Sophia,Bobby,Bobby,
+3062,condition 1,"Andy ran into Suzy, which caused her to fall into the fence, which caused it to break.",Andy ,Suzy broke the fence.,Suzy,order_1,"Suzy caused the mirror to crack by scaring Bobby, who fell into it. ",Sophia,Bobby cracked the mirror.,Bobby,
+3056,condition 1,Suzy being pushed into it by Andy crashing into her.,Suzy,Suzy.,Suzy,order_1,Bobby,Bobby,Bobby,Bobby,
+3076,condition 1,Andy.,Andy,Andy.,Andy,order_1,Sarah is responsible for the broken mirror.,Sophia,Sarah.,Sophia,
+3067,condition 1,Suzy,Suzy,Andy,Andy,order_2,Bobby,Bobby,Sophia,Sophia,
+3028,condition 1,"Andy hitting Suzy into the fence
+","Andy 
+",Technically Suzy but it was Andys fault,Suzy,order_1,"Bobby fell into the mirror and cracked it
+","Bobby 
+",Bobby,Bobby,
+3080,condition 1,"Andy riding his bike fast, going around a corner and running in to Suzi. This caused her to fall into the fence and it broke.",Andy,Andy because he knocked Suzi into it.,Andy,order_1,Sophia because she scared Bobby which caused the situation.,Sophia ,Bobby broke the mirror but only because of an action by Sophia that caused him to fall into it.,Bobby,
+3044,condition 1,"suzy
+","Suzy
+",suzy,Suzy,order_1,bobby,"Bobby 
+",bobby,Bobby,
+3058,condition 1,Andy falling onto the fence.,Andy ,Andy,Andy,order_2,"Susie
+",Sophia ,Susie,Sophia,
+3060,condition 1,Suzy,Suzy,Suzy,Suzy,order_2,Sophia,Sophia,Bobby,Bobby,
+3086,condition 1,Suzy,Suzy,Suzy,Suzy,order_2,Bobby,Bobby,Bobby,Bobby,
+3078,condition 1,the little boy crashing into the little girl who fell ,Andy,the little girl ,Suzy,order_1,bobby ,Bobby,bobby,Bobby,
+3038,condition 1,Andy was the cause of the fence breaking,Andy,I would think that Suzy broke the fence seeing that she is the one who fell into it. Andy just ran into her.,Suzy,order_1,Sophia was the cause of the mirror cracking,Sophia ,Bobby cracked the mirroe,Bobby,
+3088,condition 1,andy riding his bike too fast ,Andy,andy,Andy,order_1,susie jumping out and scaring bobby,Sophia,bobby,Bobby,
+3054,condition 1,ANDY FALLING,Andy,both,Andy and Suzy,order_2,Sophie falling into mirror,Sophia,Bobby caused Sophie to crack mirror,Bobby,
+3091,condition 1,Andy caused the fence to be broken when he hit Suzy on his bike.,Andy ,Suzy broke the fence when she fell into it.,Suzy,order_1,Bobby caused the mirror to crack by hitting it.,Bobby,Bobby fell into the mirror and cracked it.,Bobby,
+3048,condition 1,Suzy,Suzy,Suzy,Suzy,order_2,Bobby,Bobby,Sophia,Sophia,
+3046,condition 1,the boy,Andy,the boy,Andy,order_1,Sophia,Sophia,Sophia,Sophia,
+3075,condition 1,"Suzy
+","Suzy
+",Andy,Andy,order_2,Bobby,Bobby,Sophia,Sophia,
+3040,condition 1,"I think Suzie is more at fault for not slowing down as she was coming round the corner. She would not have struck Andy, who wouldn't have fallen into the fence.",Suzy,"I mean, Andy broke the fence but I don't think it's his fault.",Andy,order_2,"Bobby did, since if he did not try to scare Sophia she would not have fallen into it.",Bobby,"Sophia did, but she's not at fault here.",Sophia,
+3051,condition 1,Suzy,Suzy,Suzy,Suzy,order_2,Bobby (the boy),Bobby,Bobby (the boy).,Bobby,
+3069,condition 1,andy,Andy,andy did running into suzy,andy did running into suzy,order_1,sophia did scaring bobby,Sophia,bobby,Bobby,
+3043,condition 1,Susie caused the fence to break by riding her bike too fast and knocking someone into it ,Suzy,Susie,Suzy,order_2,Bobby by scaring Sophia into the mirror ,Bobby,Sophia when she backed into it,Sophia,
+3032,condition 1,the boy fell from getting hit from the bike,Andy,The boy,Andy,order_2,Sophia falling from being scared,Sophia ,Sophia,Sophia,
+3089,condition 1,Andy,Andy,Suzy,Suzy,order_1,Sophia,Sophia,Bobby,Bobby,
+3037,condition 1,andy,Andy,suzy,Suzy,order_1, Bobby,Bobby,bobby,Bobby,
+3029,condition 1,The boy (Andy I think was his name?) because he knocked Suzy into it,Andy,"The boy (again, I think his name was Andy) because he knocked Suzy into it",Andy,order_1,"Bobby, but it wasn't his fault",Bobby,"Bobby, but it wasn't his fault",Bobby,
+3045,condition 1,Suzy,Suzy,Suzy,Suzy,order_1,Sophia,Sophia,"Bobby
+",Bobby,
+3036,condition 1,Suzy,Suzy,Andy,Andy,order_2,Bobby,Bobby,Sophia,Sophia,
+3085,condition 1,Suzy,Suzy, Suzy, Suzy,order_2,Bobby and Sophia,Bobby and Sophia,Sophia,Sophia,
+3084,condition 1,Andy did.,Andy,"Andy did, when he fell into it. (but why is he still smiling? Surely he should be upset.)",Andy,order_2,Sophia,Sophia,"Sophia, when she fell into it.",Sophia,
+3053,condition 1,"Suzy caused the fence to break, if she did not speed she would not have run into Andy.",Suzy ,Andy broke the fence when suzy turned the corner and ran into andy.,Andy,order_2,Bobby was the person to cause the cracked mirror. If he decided not to scare the girl then nothing would have happened.,Bobby ,Sophia cracked the mirror when Bobby jumped scared her.,Sophia,
+3071,condition 1,The kid on the bike. he was the cause that make Suzy fall and break the fence. ,Andy,Forgot their names already but the kid on the bike. He hit Suzy? and she fell and broke the fence. ,Andy,order_1,Sophia was the cause that effected Bobby to crack the mirror. Although Bobby was the literal cause it wouldn't have happened if Sophia didn't scare him. ,Sophia ,Sophia for causing Bobby to be scared and break the mirror. Sophia is the cause and Bobby was the effect.,Sophia,
+3059,condition 1,"Suzie falling into it, but also the boy's fault. ",Suzy and Andy,"Suzie falling into it, but precipitated by being run into. ",Suzy,order_1,"Sophia caused the incident that caused Bobby to fall into it, so it is more her fault.",Sophia,Bobby by falling into it after being startled. ,Bobby,

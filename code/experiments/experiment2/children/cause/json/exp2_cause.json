@@ -1,0 +1,989 @@
+{
+    "frames": {
+        "exit-survey": {
+            "kind": "exp-lookit-exit-survey",
+            "debriefing": {
+                "text": " We want to know if “cause to break” and “break” mean the same thing. Though many researchers think they do, children may think they don’t.\n\n In this study,  when we ask “What caused Suzy’s skin to burn”, we expect children to mention “the sun” and “the sunscreen”, but when we ask “What burned Suzy’s skin”, we expect them to say “the sun” but not “the sunscreen”. Likewise, when we ask “What caused Andy’s basement to flood?”, we expect children to say “the rain/water” and “the broken latch/window”. But when we ask “What flooded the basement?”, we expect them to say “the rain/water” but not “the broken latch/window.” \n\n Although children’s answers can vary, there aren’t any “right” or “wrong” answers to the questions. We are just interested in looking at the average responses from children and we won’t take any specific answers as “good” or “bad”.\n\n If you are interested in learning more about this, please see the following experimental paper with adults <a href=https://philpapers.org/rec/ROSCAB-3 target='_blank' rel='noopener'>here</a>. Thank you again for your participation!",
+                "title": "Thank you!"
+            }
+        },
+        "start-recording-with-image": {
+            "kind": "exp-lookit-start-recording",
+            "baseDir": "https://www.mit.edu/~kimscott/placeholderstimuli/",
+            "videoTypes": [
+                "webm",
+                "mp4"
+            ],
+            "image": "peekaboo_remy.jpg",
+            "imageAnimation": "spin",
+            "displayFullscreen": true
+        },
+        "stop-recording-with-video": {
+            "kind": "exp-lookit-stop-recording",
+            "baseDir": "https://www.mit.edu/~kimscott/placeholderstimuli/",
+            "videoTypes": [
+                "webm",
+                "mp4"
+            ],
+            "video": "attentiongrabber",
+            "displayFullscreen": true,
+            "showProgressBar": true,
+            "waitForUploadMessage": " "
+        },
+        "instructions": {
+            "kind": "exp-lookit-instructions",
+            "blocks": [
+                {
+                    "title": "1. Overview of what we're doing today",
+                    "listblocks": [
+                        {
+                            "text": "All together, it will take about 6-8 minutes to finish this study."
+                        },
+                        {
+                            "text": "I’m going to ask you some questions and I just want to know what you think."
+                        },
+                        {
+                            "text": "There aren’t any right or wrong answers, so just tell me what you think ! "
+                        }
+                    ]
+                },
+                {
+                    "text": "Please try playing this sample audio to make sure you'll be able to hear the story.",
+                    "title": "2. Adjust your speakers",
+                    "mediaBlock": {
+                        "text": "You should hear 'Ready to go?'",
+                        "isVideo": false,
+                        "sources": [
+                            {
+                                "src": "https://s3.amazonaws.com/lookitcontents/exp-physics-final/audio/ready.mp3",
+                                "type": "audio/mp3"
+                            },
+                            {
+                                "src": "https://s3.amazonaws.com/lookitcontents/exp-physics-final/audio/ready.ogg",
+                                "type": "audio/ogg"
+                            }
+                        ],
+                        "mustPlay": true,
+                        "warningText": "Please try playing the sample audio."
+                    }
+                }
+            ],
+            "showWebcam": true,
+            "webcamBlocks": [
+                {
+                    "title": "3. Make sure we can see you",
+                    "listblocks": [
+                        {
+                            "text": "Take a look at your webcam view above. Get comfy, and adjust your own position or the computer as needed so both you and your child are visible."
+                        },
+                        {
+                            "text": "This isn't a Skype call - no one in the lab can see you - but the recorded video of your participation will be sent to the lab to help with data analysis. It's helpful for us to be able to see if your child was pointing or looking confused, for example."
+                        }
+                    ]
+                }
+            ],
+            "nextButtonText": "Next"
+        },
+        "video-config": {
+            "kind": "exp-video-config",
+            "troubleshootingIntro": "This is a standard frame you probably want to put at the very start of your study. You can customize this bit of text; the rest is standard and maintained by Lookit."
+        },
+        "video-consent": {
+            "kind": "exp-lookit-video-consent",
+            "template": "consent_005",
+            "PIName": "Lookit Tutorial Participant",
+            "PIContact": "Ellen Markman at markman@stanford.edu",
+            "include_databrary": true,
+            "risk_statement": "There are no expected risks to participation.",
+            "datause": "A research assistant will watch your video and mark down your child's answer to the question at the end of the story, and as well as other information such as interactions between you and your child during the story.",
+            "payment": "After you finish the study, we will email you a $5 Amazon gift card within approximately 3-5 business days. To be eligible for the gift card your child must be in the age range for this study, you need to submit a valid consent statement, and we need to see that there is a child with you. But we will send a gift card even if you do not finish the whole study or we are not able to use your child's data! There are no other direct benefits to you or your child from participating, but we hope you will enjoy the experience.",
+            "purpose": "This study is about how children use causal verbs in language, how children think about causation and even issues about how they think about direct and indirect action.",
+            "procedures": "In this study your child will view a digital 'storybook' about Suzy, who goes to the beach. She forgot to bring her sunscreen with her. At the end she is getting a bad sunburn. We are interested in how children use different causal verbs to describe Suzy's sunburn. We will ask you (the parent) to avoid discussing with your child until the end of the study. There are no anticipated risks associated with participating.",
+            "institution": "The Markman Lab of Stanford University"
+        },
+        "introduction": {
+            "kind": "exp-lookit-images-audio",
+            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment2/children/cause",
+            "id": "storybook-group",
+            "audioTypes": [
+                "mp3",
+                "ogg"
+            ],
+            "autoProceed": false,
+            "doRecording": false,
+            "parentTextBlock": {
+                "css": {
+                    "font-size": "1.5em"
+                },
+                "text": "Please help keep your child's attention, but don't talk with them about what you think.",
+                "title": "For parents"
+            },
+            "audio": "exp2_lookit_intro",
+            "images": [
+                {
+                    "id": "storybookIllustration",
+                    "src": "exp2_lookit_intro.jpeg",
+                    "top": 0,
+                    "left": 10,
+                    "width": 80
+                }
+            ]
+        },
+        "before-we-get-started": {
+            "kind": "exp-lookit-images-audio",
+            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment2/children/cause",
+            "id": "storybook-group",
+            "audioTypes": [
+                "mp3",
+                "ogg"
+            ],
+            "autoProceed": false,
+            "audio": "exp2_before_we_get_started",
+            "doRecording": false,
+            "images": [
+                {
+                    "id": "storybookIllustration",
+                    "src": "exp2_before_we_get_started.jpeg",
+                    "top": 0,
+                    "left": 10,
+                    "width": 80
+                }
+            ]
+        },
+        "end": {
+            "kind": "exp-lookit-images-audio",
+            "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment2/children/cause",
+            "id": "storybook-group",
+            "audioTypes": [
+                "mp3",
+                "ogg"
+            ],
+            "autoProceed": false,
+            "doRecording": false,
+            "parentTextBlock": {
+                "css": {
+                    "font-size": "1.5 em"
+                },
+                "text": "Thank you very much for your participation. We look forward to seeing you with more research games in the future. ",
+                "title": "For parents"
+            },
+            "audio": "exp2_end",
+            "images": [
+                {
+                    "id": "storybookIllustration",
+                    "src": "exp2_end.jpeg",
+                    "top": 0,
+                    "left": 10,
+                    "width": 80
+                }
+            ]
+        },
+        "warmup": {
+            "kind": "group",
+            "frameList": [
+                {
+                    "kind": "group",
+                    "frameList": [
+                        {
+                            "audio": "exp2_warmup_audio_1",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_1.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_2",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_2.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_3",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_3.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_4",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_4.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_5",
+                            "autoProceed": false,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_5.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_6",
+                            "autoProceed": false,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_6.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_7",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_7.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_8",
+                            "autoProceed": false,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_8.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_9",
+                            "autoProceed": false,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_9.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_warmup_audio_10",
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_warmup_10.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        }
+                    ],
+                    "commonFrameProperties": {
+                        "kind": "exp-lookit-images-audio",
+                        "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment2/children/cause",
+                        "id": "storybook-group",
+                        "audioTypes": [
+                            "mp3",
+                            "ogg"
+                        ],
+                        "autoProceed": true,
+                        "doRecording": false
+                    }
+                }
+            ]
+        },
+        "causal-verb-study-story-book": {
+            "kind": "choice",
+            "sampler": "permute",
+            "commonFrameProperties": {
+                "id": "storybook-group"
+            },
+            "frameOptions": [
+                {
+                    "kind": "group",
+                    "frameList": [
+                        {
+                            "kind": "group",
+                            "frameList": [
+                                {
+                                    "audio": "exp2_intro_sunburn",
+                                    "autoProceed": false,
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_intro_sunburn.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ]
+                                },
+                                {
+                                    "audio": "exp2_sunburn_audio_1",
+                                    "durationSeconds": 2.5,
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_1.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ]
+                                },
+                                {
+                                    "audio": "exp2_sunburn_audio_2",
+                                    "durationSeconds": 4.5,
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_2.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ]
+                                },
+                                {
+                                    "audio": "exp2_sunburn_audio_3",
+                                    "durationSeconds": 3.5,
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_3.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ]
+                                },
+                                {
+                                    "audio": "exp2_sunburn_audio_4",
+                                    "durationSeconds": 3.5,
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_4.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ]
+                                },
+                                {
+                                    "audio": "exp2_sunburn_audio_5",
+                                    "durationSeconds": 3.5,
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_5.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ]
+                                },
+                                {
+                                    "audio": "exp2_sunburn_audio_6",
+                                    "durationSeconds": 4.5,
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_6.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ]
+                                },
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_7.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ],
+                                    "durationSeconds": 1
+                                },
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_8.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ],
+                                    "durationSeconds": 1
+                                },
+                                {
+                                    "audio": "exp2_sunburn_audio_7",
+                                    "durationSeconds": 4.5,
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_9.jpeg",
+                                            "top": 0,
+                                            "left": 10,
+                                            "width": 80
+                                        }
+                                    ]
+                                },
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_10.jpeg",
+                                            "top": "0",
+                                            "left": "10",
+                                            "width": "80"
+                                        }
+                                    ],
+                                    "audio": "exp2_sunburn_audio_8",
+                                    "durationSeconds": 4.5
+                                },
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_11.jpeg",
+                                            "top": "0",
+                                            "left": "10",
+                                            "width": "80"
+                                        }
+                                    ],
+                                    "audio": "exp2_sunburn_audio_9",
+                                    "durationSeconds": 10
+                                },
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_12.jpeg",
+                                            "top": "0",
+                                            "left": "10",
+                                            "width": "80"
+                                        }
+                                    ],
+                                    "audio": "exp2_sunburn_audio_10",
+                                    "durationSeconds": 4.5
+                                },
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_13.jpeg",
+                                            "top": "0",
+                                            "left": "10",
+                                            "width": "80"
+                                        }
+                                    ],
+                                    "audio": "exp2_sunburn_audio_11",
+                                    "durationSeconds": 6.5
+                                },
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_14.jpeg",
+                                            "top": "0",
+                                            "left": "10",
+                                            "width": "80"
+                                        }
+                                    ],
+                                    "audio": "exp2_sunburn_audio_12",
+                                    "durationSeconds": 4.5
+                                },
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_sunburn_15.jpeg",
+                                            "top": "0",
+                                            "left": "10",
+                                            "width": "80"
+                                        }
+                                    ],
+                                    "audio": "exp2_sunburn_audio_13",
+                                    "durationSeconds": 8
+                                },
+                                {
+                                    "kind": "choice",
+                                    "sampler": "permute",
+                                    "commonFrameProperties": {
+                                        "kind": "exp-lookit-images-audio",
+                                        "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment2/children/cause",
+                                        "id": "storybook-group",
+                                        "audioTypes": [
+                                            "mp3",
+                                            "ogg"
+                                        ],
+                                        "autoProceed": false,
+                                        "doRecording": false,
+                                        "parentTextBlock": {
+                                            "css": {
+                                                "font-size": "1.8em"
+                                            },
+                                            "text": "Please say your answer out loud. \n When you finish, click \"next\".",
+                                            "title": "Attention"
+                                        }
+                                    },
+                                    "frameOptions": [
+                                        {
+                                            "images": [
+                                                {
+                                                    "id": "storybookIllustration",
+                                                    "src": "exp2_sunburn_burn.jpeg",
+                                                    "top": "0",
+                                                    "left": "10",
+                                                    "width": "80"
+                                                }
+                                            ],
+                                            "audio": "exp2_sunburn_burn",
+                                            "doRecording": false
+                                        },
+                                        {
+                                            "images": [
+                                                {
+                                                    "id": "storybookIllustration",
+                                                    "src": "exp2_sunburn_caused.jpeg",
+                                                    "top": "0",
+                                                    "left": "10",
+                                                    "width": "80"
+                                                }
+                                            ],
+                                            "audio": "exp2_sunburn_caused",
+                                            "doRecording": false
+                                        }
+                                    ]
+                                }
+                            ],
+                            "commonFrameProperties": {
+                                "kind": "exp-lookit-images-audio",
+                                "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment2/children/cause",
+                                "id": "storybook-group",
+                                "audioTypes": [
+                                    "mp3",
+                                    "ogg"
+                                ],
+                                "autoProceed": true,
+                                "doRecording": false
+                            }
+                        }
+                    ]
+                },
+                {
+                    "kind": "group",
+                    "frameList": [
+                        {
+                            "audio": "exp2_intro_flood",
+                            "autoProceed": false,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_intro_flood.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_flood_audio_1",
+                            "durationSeconds": 2.5,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_1.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_flood_audio_2",
+                            "durationSeconds": 4.5,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_2.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_flood_audio_3",
+                            "durationSeconds": 3.5,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_3.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_flood_audio_4",
+                            "durationSeconds": 3.5,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_4.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_flood_audio_5",
+                            "durationSeconds": 5.5,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_5.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_flood_audio_6",
+                            "durationSeconds": 5.5,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_6.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_flood_audio_7",
+                            "durationSeconds": 4.5,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_7.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_flood_audio_8",
+                            "durationSeconds": 5.5,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_8.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "audio": "exp2_flood_audio_9",
+                            "durationSeconds": 5.5,
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_9.jpeg",
+                                    "top": 0,
+                                    "left": 10,
+                                    "width": 80
+                                }
+                            ]
+                        },
+                        {
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_10.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_10",
+                            "durationSeconds": 3.5
+                        },
+                        {
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_11.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_11",
+                            "durationSeconds": 6.5
+                        },
+                        {
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_12.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_12",
+                            "durationSeconds": 5.5
+                        },
+                        {
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_13.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_13",
+                            "durationSeconds": 12
+                        },
+                        {
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_14.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_14",
+                            "durationSeconds": 8.5
+                        },
+                        {
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_15.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_15",
+                            "durationSeconds": 4.5
+                        },
+                        {
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_16.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_16",
+                            "durationSeconds": 4.5
+                        },
+                        {
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_17.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_17",
+                            "durationSeconds": 3.5
+                        },
+                        {
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_18.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_18",
+                            "durationSeconds": 3.5
+                        },
+                        {
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_19.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "durationSeconds": 0.5
+                        },
+                        {
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_20.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "durationSeconds": 0.5
+                        },
+                        {
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_21.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_19",
+                            "durationSeconds": 3.5
+                        },
+                        {
+                            "images": [
+                                {
+                                    "id": "storybookIllustration",
+                                    "src": "exp2_flood_22.jpeg",
+                                    "top": "0",
+                                    "left": "10",
+                                    "width": "80"
+                                }
+                            ],
+                            "audio": "exp2_flood_audio_20",
+                            "durationSeconds": 7.5
+                        },
+                        {
+                            "sampler": "permute",
+                            "kind": "choice",
+                            "commonFrameProperties": {
+                                "kind": "exp-lookit-images-audio",
+                                "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment2/children/cause",
+                                "id": "storybook-group",
+                                "audioTypes": [
+                                    "mp3",
+                                    "ogg"
+                                ],
+                                "autoProceed": false,
+                                "doRecording": false,
+                                "parentTextBlock": {
+                                    "css": {
+                                        "font-size": "1.8em"
+                                    },
+                                    "text": "Please say your answer out loud. \n When you finish, click \"next\".",
+                                    "title": "Attention"
+                                }
+                            },
+                            "frameOptions": [
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_flood_flooded.jpeg",
+                                            "top": "0",
+                                            "left": "10",
+                                            "width": "80"
+                                        }
+                                    ],
+                                    "audio": "exp2_flood_flooded",
+                                    "doRecording": false
+                                },
+                                {
+                                    "images": [
+                                        {
+                                            "id": "storybookIllustration",
+                                            "src": "exp2_flood_caused.jpeg",
+                                            "top": "0",
+                                            "left": "10",
+                                            "width": "80"
+                                        }
+                                    ],
+                                    "audio": "exp2_flood_caused",
+                                    "doRecording": false
+                                }
+                            ]
+                        }
+                    ],
+                    "commonFrameProperties": {
+                        "kind": "exp-lookit-images-audio",
+                        "baseDir": "https://raw.githubusercontent.com/davdrose/cause_burn_development/main/code/experiments/experiment2/children/cause",
+                        "id": "storybook-group",
+                        "audioTypes": [
+                            "mp3",
+                            "ogg"
+                        ],
+                        "autoProceed": true,
+                        "doRecording": false
+                    }
+                }
+            ]
+        }
+    },
+    "sequence": [
+        "instructions",
+        "video-config",
+        "video-consent",
+        "before-we-get-started",
+        "start-recording-with-image",
+        "introduction",
+        "warmup",
+        "causal-verb-study-story-book",
+        "end",
+        "stop-recording-with-video",
+        "exit-survey"
+    ]
+}

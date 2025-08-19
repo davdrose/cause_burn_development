@@ -1,0 +1,497 @@
+participant,scenario,cause_question_order,question,response,direct,absence,age,both,age_whole,age_character,response_pattern
+1,sunburn,second,lexical,the sun burned suzy's skin,1,0,9.62,0,9,7-9,different
+1,flood,second,lexical,the flood that the rain caused,1,0,9.62,0,9,7-9,different
+1,flood,second,caused,the rain,1,0,9.62,0,9,7-9,different
+2,sunburn,second,caused,forgetting her sunscreen,0,1,7.32,0,7,7-9,different
+2,flood,second,lexical,the rain that fell from the sky really hard,1,0,7.32,0,7,7-9,different
+3,flood,first,caused,because the water rose so high that it started to flood,1,0,9.12,0,9,7-9,different
+3,flood,first,lexical,water,1,0,9.12,0,9,7-9,different
+3,sunburn,first,caused,cause she didn't put any sunscreen on,0,1,9.12,0,9,7-9,different
+3,sunburn,first,lexical,the hot sun,1,0,9.12,0,9,7-9,different
+4,flood,second,lexical,the water,1,0,7.48,0,7,7-9,different
+4,sunburn,first,caused,the sun,1,0,7.48,0,7,7-9,different
+4,sunburn,first,lexical,the sun,1,0,7.48,0,7,7-9,different
+5,sunburn,second,lexical,the sun,1,0,7.64,0,7,7-9,different
+5,sunburn,second,caused,the sun,1,0,7.64,0,7,7-9,different
+5,flood,first,caused,the rain,1,0,7.64,0,7,7-9,different
+5,flood,first,lexical,the rain,1,0,7.64,0,7,7-9,different
+6,flood,second,lexical,water,1,0,8.47,0,8,7-9,different
+6,flood,second,caused,rain,1,0,8.47,0,8,7-9,different
+6,sunburn,second,lexical,the sun,1,0,8.47,0,8,7-9,different
+6,sunburn,second,caused,the sun,1,0,8.47,0,8,7-9,different
+7,sunburn,first,caused,because she didn't put on sunscreen,0,1,7.4,0,7,7-9,different
+7,sunburn,first,lexical,the sun,1,0,7.4,0,7,7-9,different
+7,flood,first,caused,the water,1,0,7.4,0,7,7-9,different
+8,sunburn,first,caused,she forgot to put her sunscreen on,0,1,8.22,0,8,7-9,different
+8,sunburn,first,lexical,the sun,1,0,8.22,0,8,7-9,different
+8,flood,first,caused,because the window was open,0,1,8.22,0,8,7-9,different
+8,flood,first,lexical,the rain,1,0,8.22,0,8,7-9,different
+9,flood,first,lexical,um the window was open and then it was raining really hard and because it was raining really hard it flooded the basement,0,1,9.29,0,9,7-9,different
+9,sunburn,second,caused,um the sun caused her skin to burn,1,0,9.29,0,9,7-9,different
+10,flood,first,caused,the window was open on the--wait in the basement window and so and it starts raining really hard and so it flooded,0,1,9.78,0,9,7-9,different
+10,flood,first,lexical,the rain,1,0,9.78,0,9,7-9,different
+10,sunburn,first,lexical,the sun,1,0,9.78,0,9,7-9,different
+11,sunburn,second,lexical,sun,1,0,7.32,0,7,7-9,different
+11,sunburn,second,caused,sun,1,0,7.32,0,7,7-9,different
+11,flood,second,lexical,rain,1,0,7.32,0,7,7-9,different
+11,flood,second,caused,rain,1,0,7.32,0,7,7-9,different
+12,sunburn,first,caused,because she left the sunscreen at home oh sally!,0,1,7.23,0,7,7-9,different
+12,sunburn,first,lexical,the sun,1,0,7.23,0,7,7-9,different
+12,flood,second,lexical,the rain,1,0,7.23,0,7,7-9,different
+12,flood,second,caused,the rain the rain,1,0,7.23,0,7,7-9,different
+13,sunburn,second,lexical,the sun,1,0,7.48,0,7,7-9,different
+13,sunburn,second,caused,the sun,1,0,7.48,0,7,7-9,different
+13,flood,second,lexical,the water,1,0,7.48,0,7,7-9,different
+13,flood,second,caused,the rain,1,0,7.48,0,7,7-9,different
+14,sunburn,second,lexical,the sun,1,0,9.62,0,9,7-9,different
+14,sunburn,second,caused,she forgot her sunscreen,0,1,9.62,0,9,7-9,different
+14,flood,first,caused,the rain,1,0,9.62,0,9,7-9,different
+14,flood,first,lexical,the rain,1,0,9.62,0,9,7-9,different
+15,flood,second,caused,it started to rain and then the water got so high it flooded the basement,1,0,8.55,0,8,7-9,different
+15,flood,second,lexical,water water water,1,0,8.55,0,8,7-9,different
+15,sunburn,first,caused,the sun,1,0,8.55,0,8,7-9,different
+15,sunburn,first,lexical,the sun,1,0,8.55,0,8,7-9,different
+16,sunburn,second,lexical,the sun,1,0,8.14,0,8,7-9,different
+16,sunburn,second,caused,the sun,1,0,8.14,0,8,7-9,different
+16,flood,second,caused,it started to rain really hard and then the basement flooded,1,0,8.14,0,8,7-9,different
+17,sunburn,second,lexical,the sun uv rays,1,0,9.86,0,9,7-9,different
+17,sunburn,second,caused,the sun,1,0,9.86,0,9,7-9,different
+17,flood,second,lexical,water,1,0,9.86,0,9,7-9,different
+17,flood,second,caused,rain rain,1,0,9.86,0,9,7-9,different
+18,flood,second,lexical,rain,1,0,7.89,0,7,7-9,different
+18,flood,second,caused,heavy rain,1,0,7.89,0,7,7-9,different
+18,sunburn,second,lexical,the sun,1,0,7.89,0,7,7-9,different
+18,sunburn,second,caused,she forgot her sunscreen and she got a sunburn,0,1,7.89,0,7,7-9,different
+19,flood,second,lexical,the hard rain flooded the basement,1,0,9.62,0,9,7-9,different
+19,sunburn,second,caused,the the hot sun,1,0,9.62,0,9,7-9,different
+20,flood,second,lexical,um rainwater flooded the basement,1,0,8.63,0,8,7-9,different
+20,sunburn,second,lexical,um the sun burned suzy's skin,1,0,8.63,0,8,7-9,different
+21,sunburn,first,caused,because she didn't wear sunscreen,0,1,7.97,0,7,7-9,different
+21,sunburn,first,lexical,the sun,1,0,7.97,0,7,7-9,different
+21,flood,first,caused,the rain,1,0,7.97,0,7,7-9,different
+21,flood,first,lexical,the water outside,1,0,7.97,0,7,7-9,different
+22,flood,second,lexical,lots of rain,1,0,8.96,0,8,7-9,different
+22,sunburn,second,caused,she didn't put on sunscreen she left it at home and she got a sunburn well more like a kindergartner scribbled with crayons all over her,0,1,8.96,0,8,7-9,different
+23,flood,first,lexical,water flooded the basement,1,0,9.7,0,9,7-9,different
+23,sunburn,first,lexical,the sun,1,0,9.7,0,9,7-9,different
+24,flood,first,caused,the basement flooded because he left the win--he left when the window was open and there was no window latch,0,1,8.88,0,8,7-9,different
+24,flood,first,lexical,the basement got flooded because andy left the window open and there was no latch to hold it shut,0,1,8.88,0,8,7-9,different
+24,sunburn,second,lexical,the sun burned suzy's face,1,0,8.88,0,8,7-9,different
+24,sunburn,second,caused,the sun caused suzy's skin to burn,1,0,8.88,0,8,7-9,different
+25,flood,second,lexical,that the water was a flood and it got into his building,1,0,7.32,0,7,7-9,different
+25,flood,second,caused,um that the window was open and there was a big flood and the flood came inside of the basement,0,1,7.32,0,7,7-9,different
+26,sunburn,second,lexical,sun the sun,1,0,7.4,0,7,7-9,different
+26,sunburn,second,caused,the sun the sun,1,0,7.4,0,7,7-9,different
+26,flood,first,caused,the water that came from outside from when it rained,1,0,7.4,0,7,7-9,different
+26,flood,first,lexical,the water that went in from when it rained,1,0,7.4,0,7,7-9,different
+27,sunburn,second,lexical,the sun,1,0,9.37,0,9,7-9,different
+27,sunburn,second,caused,forgetting to put on sunscreen,0,1,9.37,0,9,7-9,different
+27,flood,second,lexical,water,1,0,9.37,0,9,7-9,different
+27,flood,second,caused,the latch broke and the window was open,0,1,9.37,0,9,7-9,different
+28,sunburn,first,caused,she didn't wear her sunscreen and she didn't bring it,0,1,8.05,0,8,7-9,different
+28,sunburn,first,lexical,the sun,1,0,8.05,0,8,7-9,different
+28,flood,second,lexical,the rain,1,0,8.05,0,8,7-9,different
+28,flood,second,caused,because the window was opened,0,1,8.05,0,8,7-9,different
+29,sunburn,first,caused,the sun,1,0,7.4,0,7,7-9,different
+29,sunburn,first,lexical,the sun,1,0,7.4,0,7,7-9,different
+29,flood,second,lexical,water,1,0,7.4,0,7,7-9,different
+29,flood,second,caused,the broken window latch,0,1,7.4,0,7,7-9,different
+30,flood,first,caused,rain,1,0,9.04,0,9,7-9,different
+30,flood,first,lexical,rain,1,0,9.04,0,9,7-9,different
+30,sunburn,second,lexical,the sun,1,0,9.04,0,9,7-9,different
+30,sunburn,second,caused,the sun,1,0,9.04,0,9,7-9,different
+31,flood,second,lexical,the rain fell and flooded the basement,1,0,8.3,0,8,7-9,different
+31,sunburn,second,caused,she didn't put on sunscreen because it was at her house,0,1,8.3,0,8,7-9,different
+32,flood,first,lexical,the rain flooded the basement,1,0,8.79,0,8,7-9,different
+32,sunburn,second,lexical,the sun,1,0,8.79,0,8,7-9,different
+32,sunburn,second,caused,the sun,1,0,8.79,0,8,7-9,different
+33,sunburn,second,lexical,the sun burned suzy's skin,1,0,9.21,0,9,7-9,different
+33,sunburn,second,caused,the sun,1,0,9.21,0,9,7-9,different
+33,flood,second,lexical,the rain,1,0,9.21,0,9,7-9,different
+33,flood,second,caused,the open window,0,1,9.21,0,9,7-9,different
+34,flood,first,caused,the open window caused the basement to flood,0,1,8.38,0,8,7-9,different
+34,flood,first,lexical,the rain flooded the basement,1,0,8.38,0,8,7-9,different
+34,sunburn,first,caused,the sun caused suzy's skin to burn,1,0,8.38,0,8,7-9,different
+34,sunburn,first,lexical,the sun burned suzy's skin,1,0,8.38,0,8,7-9,different
+35,sunburn,second,lexical,the sun burned suzy's skin,1,0,7.89,0,7,7-9,different
+36,flood,second,lexical,the rain did,1,0,7.15,0,7,7-9,different
+36,flood,second,caused,becausebecause the window was open,0,1,7.15,0,7,7-9,different
+36,sunburn,first,caused,becausebecause she didn't bring her sunscreen yeah,0,1,7.15,0,7,7-9,different
+36,sunburn,first,lexical,it was thatbad sun yeah,1,0,7.15,0,7,7-9,different
+37,flood,first,caused,because the window was open,0,1,7.4,0,7,7-9,different
+37,flood,first,lexical,the water,1,0,7.4,0,7,7-9,different
+37,sunburn,second,lexical,the sun,1,0,7.4,0,7,7-9,different
+37,sunburn,second,caused,the sun,1,0,7.4,0,7,7-9,different
+38,sunburn,second,lexical,the sun,1,0,9.04,0,9,7-9,different
+38,sunburn,second,caused,because there's no sunscreen,0,1,9.04,0,9,7-9,different
+38,flood,second,lexical,the water,1,0,9.04,0,9,7-9,different
+38,flood,second,caused,the window staying open,0,1,9.04,0,9,7-9,different
+39,flood,first,caused,the rain caused the basement to flood,1,0,9.78,0,9,7-9,different
+39,flood,first,lexical,the rain,1,0,9.78,0,9,7-9,different
+39,sunburn,first,caused,the sun,1,0,9.78,0,9,7-9,different
+40,sunburn,first,lexical,the sun,1,0,8.96,0,8,7-9,different
+40,flood,first,caused,the open window the open windows,0,1,8.96,0,8,7-9,different
+40,flood,first,lexical,the rain,1,0,8.96,0,8,7-9,different
+41,flood,first,caused,the rain got too high and it accidentally flooded the basement because the water was too high and the rain was very hard,1,0,7.15,0,7,7-9,different
+41,flood,first,lexical,the water flooded the basement,1,0,7.15,0,7,7-9,different
+41,sunburn,first,caused,um sheshe was sunburning because the sun,1,0,7.15,0,7,7-9,different
+41,sunburn,first,lexical,the sun,1,0,7.15,0,7,7-9,different
+42,sunburn,first,caused,she forgot her sunscreen,0,1,7.73,0,7,7-9,different
+42,sunburn,first,lexical,the sun,1,0,7.73,0,7,7-9,different
+42,flood,second,lexical,water,1,0,7.73,0,7,7-9,different
+42,flood,second,caused,water,1,0,7.73,0,7,7-9,different
+43,sunburn,second,lexical,the sun burned suzy's skin,1,0,7.89,0,7,7-9,different
+44,flood,second,lexical,the rain,1,0,7.32,0,7,7-9,different
+44,flood,second,caused,the rain the rain flooded the basement when it was raining,1,0,7.32,0,7,7-9,different
+44,sunburn,second,caused,she forgot to bring her sunscreen,0,1,7.32,0,7,7-9,different
+45,sunburn,second,lexical,sun,1,0,7.07,0,7,7-9,different
+45,sunburn,second,caused,sun,1,0,7.07,0,7,7-9,different
+45,flood,second,lexical,the water,1,0,7.07,0,7,7-9,different
+45,flood,second,caused,the water,1,0,7.07,0,7,7-9,different
+46,sunburn,second,lexical,the sun,1,0,9.53,0,9,7-9,different
+46,sunburn,second,caused,she forgot her sunscreen,0,1,9.53,0,9,7-9,different
+46,flood,second,lexical,the rain,1,0,9.53,0,9,7-9,different
+46,flood,second,caused,the window was open,0,1,9.53,0,9,7-9,different
+47,sunburn,first,caused,the sun,1,0,9.53,0,9,7-9,different
+47,sunburn,first,lexical,the sun,1,0,9.53,0,9,7-9,different
+47,flood,first,lexical,water,1,0,9.53,0,9,7-9,different
+48,flood,first,caused,um first it was raining and two the window was open,0,1,9.7,0,9,7-9,different
+48,flood,first,lexical,the water,1,0,9.7,0,9,7-9,different
+48,sunburn,first,lexical,the sun,1,0,9.7,0,9,7-9,different
+49,flood,first,lexical,water rainwater,1,0,7.89,0,7,7-9,different
+49,sunburn,second,lexical,because she forgot her sunscreen,0,1,7.89,0,7,7-9,different
+49,sunburn,second,caused,the sun,1,0,7.89,0,7,7-9,different
+50,sunburn,first,lexical,the sun the light or sun,1,0,9.7,0,9,7-9,different
+50,flood,first,lexical,the hard rain,1,0,9.7,0,9,7-9,different
+51,flood,first,caused,the rain,1,0,7.32,0,7,7-9,different
+51,flood,first,lexical,water,1,0,7.32,0,7,7-9,different
+51,sunburn,second,lexical,the sun,1,0,7.32,0,7,7-9,different
+51,sunburn,second,caused,the sun,1,0,7.32,0,7,7-9,different
+52,sunburn,second,caused,she was out in the sun for too long,1,0,8.3,0,8,7-9,different
+52,flood,second,lexical,the window was open,0,1,8.3,0,8,7-9,different
+53,sunburn,second,lexical,the sun made her get sunburned the sun burned suzy's skin,1,0,8.88,0,8,7-9,different
+53,sunburn,second,caused,she forgot to take her sunscreen so she couldn't protect herself,0,1,8.88,0,8,7-9,different
+53,flood,first,caused,the open window and not--no latch,0,1,8.88,0,8,7-9,different
+53,flood,first,lexical,water flooded the basement,1,0,8.88,0,8,7-9,different
+54,flood,second,lexical,water water is what flooded the basement,1,0,9.95,0,9,7-9,different
+55,flood,first,caused,because the window is open,0,1,7.4,0,7,7-9,different
+55,flood,first,lexical,water,1,0,7.4,0,7,7-9,different
+56,sunburn,second,lexical,the sun burned suzy's skin,1,0,9.37,0,9,7-9,different
+56,sunburn,second,caused,the sun caused suzy's skin to burn,1,0,9.37,0,9,7-9,different
+56,flood,second,lexical,the rain flooded the basement,1,0,9.37,0,9,7-9,different
+57,flood,first,caused,there was no latch on the windows because it is getting fixed the window was open and it was raining very hard,0,1,9.7,0,9,7-9,different
+57,flood,first,lexical,rain a lot of rain,1,0,9.7,0,9,7-9,different
+57,sunburn,second,lexical,the sun,1,0,9.7,0,9,7-9,different
+57,sunburn,second,caused,she didn't have sunscreen and it's very very sunny,0,1,9.7,0,9,7-9,different
+58,flood,first,caused,because the latch wasn't there,0,1,9.45,0,9,7-9,different
+58,flood,first,lexical,water water water,1,0,9.45,0,9,7-9,different
+58,sunburn,first,caused,she didn't put on her sunscreen she forgot it and left it home,0,1,9.45,0,9,7-9,different
+58,sunburn,first,lexical,the sun the sun the sun the sun the shining shining sun,1,0,9.45,0,9,7-9,different
+59,sunburn,first,lexical,the sun,1,0,9.04,0,9,7-9,different
+59,flood,first,caused,there was no--it was raining and there was no latch on the window,0,1,9.04,0,9,7-9,different
+59,flood,first,lexical,the rain the rain the rain,1,0,9.04,0,9,7-9,different
+60,sunburn,first,caused,whatwhatwhat caused suzy's skin to burn? she left her--she left her sunscreen at home,0,1,7.89,0,7,7-9,different
+60,sunburn,first,lexical,sun sun or sand? probably sun,1,0,7.89,0,7,7-9,different
+61,sunburn,first,caused,the sun,1,0,4.27,0,4,4,different
+61,sunburn,first,lexical,the sun,1,0,4.27,0,4,4,different
+61,flood,second,caused,he opened the door when the water came in when he took the tape off yeah,1,0,4.27,0,4,4,different
+62,sunburn,first,caused,because she forgot her sunscreen at home,0,1,4.68,0,4,4,different
+62,flood,second,lexical,the--the water i didn't think it flooded the basement because--because i would go swimming in it all day yeah i would go swimming after i meet my [unintelligible],1,0,4.68,0,4,4,different
+63,flood,first,caused,water,1,0,4.11,0,4,4,different
+63,flood,first,lexical,water,1,0,4.11,0,4,4,different
+63,sunburn,first,lexical,what do i say? the sun,1,0,4.11,0,4,4,different
+64,flood,second,lexical,what flooded the basement is water,1,0,4.85,0,4,4,different
+64,flood,second,caused,water,1,0,4.85,0,4,4,different
+64,sunburn,second,lexical,sun,1,0,4.85,0,4,4,different
+64,sunburn,second,caused,sun,1,0,4.85,0,4,4,different
+65,sunburn,second,lexical,sun,1,0,4.68,0,4,4,different
+65,sunburn,second,caused,sun,1,0,4.68,0,4,4,different
+65,flood,first,caused,the-the rain,1,0,4.68,0,4,4,different
+65,flood,first,lexical,the water,1,0,4.68,0,4,4,different
+66,sunburn,second,caused,sun yeah,1,0,4.85,0,4,4,different
+66,flood,first,lexical,it rained water,1,0,4.85,0,4,4,different
+67,sunburn,second,lexical,the sun,1,0,4.85,0,4,4,different
+67,sunburn,second,caused,the sun,1,0,4.85,0,4,4,different
+67,flood,second,lexical,the rain,1,0,4.85,0,4,4,different
+67,flood,second,caused,the rain,1,0,4.85,0,4,4,different
+68,flood,second,lexical,the water the water the water,1,0,4.85,0,4,4,different
+68,flood,second,caused,the rain,1,0,4.85,0,4,4,different
+68,sunburn,second,lexical,the sun the sun but um she's not smiling when she has a sunburn,1,0,4.85,0,4,4,different
+69,flood,second,lexical,water water,1,0,4.27,0,4,4,different
+69,flood,second,caused,water water water water,1,0,4.27,0,4,4,different
+69,sunburn,first,caused,she didn't put her sunscreen,0,1,4.27,0,4,4,different
+69,sunburn,first,lexical,the sun,1,0,4.27,0,4,4,different
+70,flood,second,lexical,um the window was open and it was raining so hard that the sea crashed down on his house,0,1,4.68,0,4,4,different
+70,flood,second,caused,the rain,1,0,4.68,0,4,4,different
+70,sunburn,first,caused,sunscreen,0,1,4.68,0,4,4,different
+70,sunburn,first,lexical,um sun,1,0,4.68,0,4,4,different
+71,flood,second,lexical,water,1,0,4.03,0,4,4,different
+71,flood,second,caused,rain,1,0,4.03,0,4,4,different
+71,sunburn,second,lexical,the sun,1,0,4.03,0,4,4,different
+71,sunburn,second,caused,i cannot the sun,1,0,4.03,0,4,4,different
+72,sunburn,second,lexical,i don't know it's something about melanin that i don't know she forgot her sunscreen,0,1,4.93,0,4,4,different
+72,sunburn,second,caused,the sun is hot,1,0,4.93,0,4,4,different
+73,sunburn,first,caused,it's wrong i don't know i thinkwhen the sun was there,1,0,4.77,0,4,4,different
+73,sunburn,first,lexical,the sun because it's so hot,1,0,4.77,0,4,4,different
+74,sunburn,first,caused,sun,1,0,4.03,0,4,4,different
+74,sunburn,first,lexical,sun,1,0,4.03,0,4,4,different
+74,flood,second,lexical,water,1,0,4.03,0,4,4,different
+74,flood,second,caused,water,1,0,4.03,0,4,4,different
+75,sunburn,second,lexical,the sun,1,0,4.85,0,4,4,different
+75,sunburn,second,caused,the sun,1,0,4.85,0,4,4,different
+75,flood,second,lexical,the rain,1,0,4.85,0,4,4,different
+75,flood,second,caused,the rain,1,0,4.85,0,4,4,different
+76,flood,first,lexical,i already know that let's just go--[parent stops child]--it was the rain,1,0,4.27,0,4,4,different
+76,sunburn,second,caused,the sun,1,0,4.27,0,4,4,different
+78,flood,first,caused,it is the water from the rain it poured down into the sea the--the sea it pouring down into the sea and the sea gets higher and then the water flooded the basement into andy's workshop!,1,0,4.11,0,4,4,different
+78,flood,first,lexical,it's the water the ba-- the water flooded the basement,1,0,4.11,0,4,4,different
+78,sunburn,first,caused,suzy has got a sunburn cause of the sun,1,0,4.11,0,4,4,different
+78,sunburn,first,lexical,suzy's skin cause of the sun was making her suzy's skin has gone red,1,0,4.11,0,4,4,different
+79,flood,first,caused,water,1,0,4.44,0,4,4,different
+79,flood,first,lexical,water,1,0,4.44,0,4,4,different
+79,sunburn,first,caused,sun sun,1,0,4.44,0,4,4,different
+79,sunburn,first,lexical,sun,1,0,4.44,0,4,4,different
+80,sunburn,second,lexical,the sun,1,0,4.85,0,4,4,different
+80,sunburn,second,caused,sun,1,0,4.85,0,4,4,different
+80,flood,first,caused,the rain the rain,1,0,4.85,0,4,4,different
+80,flood,first,lexical,the rain,1,0,4.85,0,4,4,different
+81,sunburn,first,caused,the sun,1,0,4.93,0,4,4,different
+81,sunburn,first,lexical,the sun,1,0,4.93,0,4,4,different
+81,flood,first,caused,the--the water it was raining and the water did it,1,0,4.93,0,4,4,different
+81,flood,first,lexical,water water the water did,1,0,4.93,0,4,4,different
+82,sunburn,first,caused,the sun,1,0,4.27,0,4,4,different
+82,sunburn,first,lexical,the sun,1,0,4.27,0,4,4,different
+82,flood,first,caused,the rain,1,0,4.27,0,4,4,different
+82,flood,first,lexical,the rain,1,0,4.27,0,4,4,different
+83,flood,first,caused,rain rain,1,0,4.85,0,4,4,different
+83,flood,first,lexical,rain,1,0,4.85,0,4,4,different
+83,sunburn,second,lexical,sun,1,0,4.85,0,4,4,different
+83,sunburn,second,caused,sun,1,0,4.85,0,4,4,different
+84,flood,second,lexical,the rain,1,0,4.85,0,4,4,different
+84,sunburn,second,lexical,the sun,1,0,4.85,0,4,4,different
+84,sunburn,second,caused,sun,1,0,4.85,0,4,4,different
+85,flood,first,lexical,water water,1,0,4.19,0,4,4,different
+85,sunburn,first,caused,the sun the sun,1,0,4.19,0,4,4,different
+85,sunburn,first,lexical,the sun,1,0,4.19,0,4,4,different
+86,flood,second,lexical,rain fell down and it come in here,1,0,4.44,0,4,4,different
+86,flood,second,caused,the rain got in the house the basement,1,0,4.44,0,4,4,different
+87,sunburn,second,lexical,uhthe sun,1,0,4.93,0,4,4,different
+87,sunburn,second,caused,the sun,1,0,4.93,0,4,4,different
+87,flood,second,lexical,the rain,1,0,4.93,0,4,4,different
+87,flood,second,caused,the water got high,1,0,4.93,0,4,4,different
+88,flood,second,lexical,the window was opened this one,0,1,4.93,0,4,4,different
+88,flood,second,caused,um the water was flooding higher this one,1,0,4.93,0,4,4,different
+88,sunburn,second,lexical,she didn't use sunscreen,0,1,4.93,0,4,4,different
+88,sunburn,second,caused,the sun,1,0,4.93,0,4,4,different
+89,sunburn,first,caused,she forgot her sunscreen,0,1,4.19,0,4,4,different
+89,sunburn,first,lexical,she forgot her sunscreen,0,1,4.19,0,4,4,different
+89,flood,first,lexical,water,1,0,4.19,0,4,4,different
+90,flood,second,lexical,rain,1,0,4.19,0,4,4,different
+90,flood,second,caused,water,1,0,4.19,0,4,4,different
+90,sunburn,first,caused,because she left her sunscreen,0,1,4.19,0,4,4,different
+90,sunburn,first,lexical,because she left her in the sun and she is red now,1,0,4.19,0,4,4,different
+91,sunburn,second,lexical,so when you don't put on sunscreen you get really hot and you get red on your body,0,1,5.51,0,5,5,different
+91,sunburn,second,caused,it is the sun it's getting her hot so it's her--she's burning,1,0,5.51,0,5,5,different
+91,flood,first,lexical,so the--it's--the water's flooding it it's the water,1,0,5.51,0,5,5,different
+92,sunburn,first,caused,she forgot her sunscreen,0,1,5.92,0,5,5,different
+92,sunburn,first,lexical,the sun,1,0,5.92,0,5,5,different
+92,flood,second,lexical,the rain,1,0,5.92,0,5,5,different
+92,flood,second,caused,the window was opened,0,1,5.92,0,5,5,different
+93,sunburn,second,lexical,the sun,1,0,5.97,0,5,5,different
+93,sunburn,second,caused,the sun,1,0,5.97,0,5,5,different
+93,flood,second,lexical,the rain,1,0,5.97,0,5,5,different
+93,flood,second,caused,the rain,1,0,5.97,0,5,5,different
+94,sunburn,first,caused,sun,1,0,5.84,0,5,5,different
+94,sunburn,first,lexical,stuh [? unintelligible] sunscreen,0,1,5.84,0,5,5,different
+95,sunburn,first,caused,sun,1,0,5.59,0,5,5,different
+95,sunburn,first,lexical,sun,1,0,5.59,0,5,5,different
+95,flood,second,lexical,rain,1,0,5.59,0,5,5,different
+95,flood,second,caused,rain,1,0,5.59,0,5,5,different
+96,flood,second,lexical,the rain,1,0,5.26,0,5,5,different
+96,flood,second,caused,the rain,1,0,5.26,0,5,5,different
+96,sunburn,second,lexical,the sun,1,0,5.26,0,5,5,different
+96,sunburn,second,caused,she forgot her sunscreen,0,1,5.26,0,5,5,different
+97,sunburn,second,lexical,sun,1,0,5.92,0,5,5,different
+97,sunburn,second,caused,sun,1,0,5.92,0,5,5,different
+97,flood,first,caused,rain,1,0,5.92,0,5,5,different
+97,flood,first,lexical,rain,1,0,5.92,0,5,5,different
+98,sunburn,second,lexical,the sun the sun,1,0,5.92,0,5,5,different
+98,sunburn,second,caused,the sun the sun,1,0,5.92,0,5,5,different
+98,flood,first,caused,the rain the rain,1,0,5.92,0,5,5,different
+98,flood,first,lexical,the rain,1,0,5.92,0,5,5,different
+99,sunburn,first,caused,she forgot her sunscreen she forgot her sunscreen she forgot her sunscreen,0,1,5.67,0,5,5,different
+99,sunburn,first,lexical,she forgot her sunscreen,0,1,5.67,0,5,5,different
+100,sunburn,second,lexical,not! the sun,1,0,5.67,0,5,5,different
+100,sunburn,second,caused,the sun,1,0,5.67,0,5,5,different
+100,flood,second,lexical,the rain,1,0,5.67,0,5,5,different
+100,flood,second,caused,he opened the window,0,1,5.67,0,5,5,different
+101,flood,first,caused,the rain,1,0,5.67,0,5,5,different
+101,flood,first,lexical,rain,1,0,5.67,0,5,5,different
+101,sunburn,second,lexical,the sun,1,0,5.67,0,5,5,different
+101,sunburn,second,caused,the sun,1,0,5.67,0,5,5,different
+102,sunburn,second,lexical,sun,1,0,5.92,0,5,5,different
+102,sunburn,second,caused,the sun,1,0,5.92,0,5,5,different
+102,flood,second,lexical,water,1,0,5.92,0,5,5,different
+102,flood,second,caused,the water,1,0,5.92,0,5,5,different
+103,flood,second,lexical,um the flood a flood from outside and because the window was open these windows were open and the window opened because the latch wasn't there,0,1,5.42,0,5,5,different
+103,sunburn,first,caused,the sun the sun,1,0,5.42,0,5,5,different
+103,sunburn,first,lexical,the sun,1,0,5.42,0,5,5,different
+104,flood,first,caused,what caused the basement to flood was a latch,0,1,5.97,0,5,5,different
+104,flood,first,lexical,lots and lots of water,1,0,5.97,0,5,5,different
+105,sunburn,first,caused,the sun,1,0,5.34,0,5,5,different
+105,sunburn,first,lexical,the sun,1,0,5.34,0,5,5,different
+105,flood,second,lexical,the water,1,0,5.34,0,5,5,different
+105,flood,second,caused,the water,1,0,5.34,0,5,5,different
+106,sunburn,second,lexical,she forgot her sunscreen so she got sunburned and it's hurting,0,1,5.51,0,5,5,different
+106,sunburn,second,caused,the sun,1,0,5.51,0,5,5,different
+106,flood,second,caused,the rain,1,0,5.51,0,5,5,different
+107,flood,first,caused,cause the window was broken,0,1,5.42,0,5,5,different
+107,flood,first,lexical,the water,1,0,5.42,0,5,5,different
+107,sunburn,second,lexical,because of the sun,1,0,5.42,0,5,5,different
+107,sunburn,second,caused,because she didn't have--she forgot her sunscreen,0,1,5.42,0,5,5,different
+108,sunburn,second,lexical,the sun,1,0,5.26,0,5,5,different
+108,sunburn,second,caused,the sun,1,0,5.26,0,5,5,different
+108,flood,first,caused,the rain,1,0,5.26,0,5,5,different
+108,flood,first,lexical,the rain,1,0,5.26,0,5,5,different
+109,sunburn,second,lexical,because she didn't put her sunscreen on,0,1,5.67,0,5,5,different
+109,sunburn,second,caused,she forgot to bring her sunscreen so that made her get it,0,1,5.67,0,5,5,different
+110,flood,second,lexical,um the water,1,0,5.51,0,5,5,different
+110,flood,second,caused,water,1,0,5.51,0,5,5,different
+110,sunburn,first,caused,um she forgot his sunscreen on the table,0,1,5.51,0,5,5,different
+110,sunburn,second,lexical,um she forgot to get his sunscreen,0,1,5.51,0,5,5,different
+111,sunburn,second,lexical,sun,1,0,5.42,0,5,5,different
+111,sunburn,second,caused,sun,1,0,5.42,0,5,5,different
+111,flood,second,lexical,water,1,0,5.42,0,5,5,different
+111,flood,second,caused,rain,1,0,5.42,0,5,5,different
+112,flood,first,caused,the window got broken,0,1,5.92,0,5,5,different
+112,flood,first,lexical,water,1,0,5.92,0,5,5,different
+112,sunburn,second,lexical,the sun,1,0,5.92,0,5,5,different
+112,sunburn,second,caused,the sun,1,0,5.92,0,5,5,different
+113,flood,first,caused,water,1,0,5.84,0,5,5,different
+113,flood,first,lexical,water,1,0,5.84,0,5,5,different
+113,sunburn,second,lexical,sun the sun,1,0,5.84,0,5,5,different
+113,sunburn,second,caused,sun,1,0,5.84,0,5,5,different
+114,sunburn,first,caused,the sun burns people in the beach,1,0,5.34,0,5,5,different
+114,sunburn,first,lexical,sun,1,0,5.34,0,5,5,different
+114,flood,second,caused,rain,1,0,5.34,0,5,5,different
+115,sunburn,first,caused,sun,1,0,5.42,0,5,5,different
+115,flood,first,caused,rain rain,1,0,5.42,0,5,5,different
+115,flood,first,lexical,all of the water,1,0,5.42,0,5,5,different
+116,sunburn,second,lexical,the sun,1,0,5.34,0,5,5,different
+116,sunburn,second,caused,the hot sun,1,0,5.34,0,5,5,different
+116,flood,second,lexical,rain the rain the rain,1,0,5.34,0,5,5,different
+116,flood,second,caused,the water,1,0,5.34,0,5,5,different
+117,sunburn,second,lexical,the sun,1,0,5.92,0,5,5,different
+117,sunburn,second,caused,the sun the sun,1,0,5.92,0,5,5,different
+117,flood,first,caused,the hard hard hard hard hard hard hard hard hard hard hard hard rain,1,0,5.92,0,5,5,different
+117,flood,first,lexical,the hard hard hard hard hard hard hard hard hard hard hard hard rain,1,0,5.92,0,5,5,different
+118,flood,first,caused,it's the open window,0,1,5.26,0,5,5,different
+118,flood,first,lexical,it was the open window,0,1,5.26,0,5,5,different
+119,flood,second,lexical,rain,1,0,5.59,0,5,5,different
+119,flood,second,caused,rain rain,1,0,5.59,0,5,5,different
+119,sunburn,first,caused,the sun,1,0,5.59,0,5,5,different
+119,sunburn,first,lexical,the sun,1,0,5.59,0,5,5,different
+120,sunburn,first,caused,her forgot her sunscreen,0,1,5.01,0,5,5,different
+120,sunburn,first,lexical,the sun burned suzy's skin,1,0,5.01,0,5,5,different
+120,flood,second,lexical,the water,1,0,5.01,0,5,5,different
+121,sunburn,second,lexical,sun,1,0,6.58,0,6,6,different
+121,sunburn,second,caused,sun sun,1,0,6.58,0,6,6,different
+121,flood,first,caused,the rain,1,0,6.58,0,6,6,different
+121,flood,first,lexical,the rain,1,0,6.58,0,6,6,different
+122,flood,second,lexical,the--the water,1,0,6.82,0,6,6,different
+122,flood,second,caused,the--the heavy rain,1,0,6.82,0,6,6,different
+122,sunburn,second,lexical,the sun,1,0,6.82,0,6,6,different
+122,sunburn,second,caused,the--the sun,1,0,6.82,0,6,6,different
+123,flood,second,caused,because the window was open,0,1,6.08,0,6,6,different
+123,sunburn,second,lexical,the hot sun,1,0,6.08,0,6,6,different
+123,sunburn,second,caused,no no sunscreen,0,1,6.08,0,6,6,different
+124,flood,first,caused,the window being not opened because of the broken latch,0,1,6.08,0,6,6,different
+124,flood,first,lexical,water,1,0,6.08,0,6,6,different
+124,sunburn,first,caused,because she forgot her sunscreen,0,1,6.08,0,6,6,different
+124,sunburn,first,lexical,the sun,1,0,6.08,0,6,6,different
+125,flood,second,lexical,rain,1,0,6.16,0,6,6,different
+125,flood,second,caused,the open window,0,1,6.16,0,6,6,different
+125,sunburn,first,caused,she forgot her sunscreen,0,1,6.16,0,6,6,different
+125,sunburn,first,lexical,the sun,1,0,6.16,0,6,6,different
+126,sunburn,first,caused,the sun the sun the sun,1,0,6.25,0,6,6,different
+126,sunburn,first,lexical,the--the sun,1,0,6.25,0,6,6,different
+126,flood,second,lexical,uh the rain the rain the rain,1,0,6.25,0,6,6,different
+126,flood,second,caused,the rain the rain,1,0,6.25,0,6,6,different
+127,sunburn,second,lexical,sun,1,0,6.16,0,6,6,different
+127,sunburn,second,caused,sun,1,0,6.16,0,6,6,different
+127,flood,second,lexical,window,0,1,6.16,0,6,6,different
+127,flood,second,caused,water,1,0,6.16,0,6,6,different
+128,sunburn,second,lexical,the sun,1,0,6.82,0,6,6,different
+128,sunburn,second,caused,the sun,1,0,6.82,0,6,6,different
+128,flood,first,caused,the rain,1,0,6.82,0,6,6,different
+128,flood,first,lexical,the rain,1,0,6.82,0,6,6,different
+129,sunburn,first,caused,she forgot her sunscreen,0,1,6.58,0,6,6,different
+129,flood,second,lexical,water,1,0,6.58,0,6,6,different
+129,flood,second,caused,the rain,1,0,6.58,0,6,6,different
+130,sunburn,first,caused,the sun the hot sun,1,0,6.74,0,6,6,different
+130,sunburn,first,lexical,the hot sun the hot sun i already said it,1,0,6.74,0,6,6,different
+130,flood,first,caused,the hard rain the hard rain,1,0,6.74,0,6,6,different
+130,flood,first,lexical,the rain,1,0,6.74,0,6,6,different
+131,sunburn,second,caused,um sun,1,0,6.99,0,6,6,different
+131,flood,second,caused,water,1,0,6.99,0,6,6,different
+132,sunburn,second,lexical,the sun,1,0,6.49,0,6,6,different
+132,sunburn,second,caused,her--her not bringing the sunscreen,0,1,6.49,0,6,6,different
+132,flood,second,caused,the window latch being broken,0,1,6.49,0,6,6,different
+133,flood,first,lexical,the water flooded the basement because it was raining,1,0,6.99,0,6,6,different
+133,sunburn,second,caused,the sun 'cause--because it was too sunny and if it's too sunny then you get a sunburn,1,0,6.99,0,6,6,different
+134,flood,second,lexical,rain,1,0,6.82,0,6,6,different
+134,flood,second,caused,the window opened,0,1,6.82,0,6,6,different
+134,sunburn,first,caused,the sun,1,0,6.82,0,6,6,different
+135,flood,second,lexical,water,1,0,6.49,0,6,6,different
+135,flood,second,caused,water,1,0,6.49,0,6,6,different
+135,sunburn,first,caused,sun,1,0,6.49,0,6,6,different
+135,sunburn,first,lexical,sun,1,0,6.49,0,6,6,different
+136,flood,first,lexical,water,1,0,6.74,0,6,6,different
+136,sunburn,first,lexical,the sun,1,0,6.74,0,6,6,different
+137,flood,first,lexical,water,1,0,6.58,0,6,6,different
+137,sunburn,second,lexical,the sun,1,0,6.58,0,6,6,different
+137,sunburn,second,caused,the sun,1,0,6.58,0,6,6,different
+138,flood,second,lexical,the rain,1,0,6.25,0,6,6,different
+138,flood,second,caused,water,1,0,6.25,0,6,6,different
+138,sunburn,second,lexical,sun the sun,1,0,6.25,0,6,6,different
+138,sunburn,second,caused,sun,1,0,6.25,0,6,6,different
+139,flood,first,caused,the rain it started raining,1,0,6.33,0,6,6,different
+139,flood,first,lexical,the rain flooded the basement,1,0,6.33,0,6,6,different
+139,sunburn,second,lexical,the sun burned suzy's skin,1,0,6.33,0,6,6,different
+139,sunburn,second,caused,the sun,1,0,6.33,0,6,6,different
+140,sunburn,first,caused,the sun,1,0,6.9,0,6,6,different
+140,sunburn,first,lexical,the sun,1,0,6.9,0,6,6,different
+140,flood,first,caused,the window was open,0,1,6.9,0,6,6,different
+141,flood,second,lexical,water,1,0,6.9,0,6,6,different
+141,flood,second,caused,rain,1,0,6.9,0,6,6,different
+141,sunburn,second,lexical,the sun,1,0,6.9,0,6,6,different
+141,sunburn,second,caused,the sun,1,0,6.9,0,6,6,different
+142,flood,second,lexical,rain,1,0,6.82,0,6,6,different
+142,flood,second,caused,uhwater water water,1,0,6.82,0,6,6,different
+143,flood,second,caused,lots of rain,1,0,6.33,0,6,6,different
+143,sunburn,second,lexical,the sun,1,0,6.33,0,6,6,different
+144,sunburn,second,lexical,the sun,1,0,6.9,0,6,6,different
+144,sunburn,second,caused,the sun,1,0,6.9,0,6,6,different
+144,flood,second,lexical,water,1,0,6.9,0,6,6,different
+144,flood,second,caused,the windows were open and the water got too high,1,0,6.9,0,6,6,different
+145,flood,second,lexical,rain rain rain,1,0,6.74,0,6,6,different
+145,flood,second,caused,rain rain,1,0,6.74,0,6,6,different
+145,sunburn,first,caused,the sun the sun the sun,1,0,6.74,0,6,6,different
+145,sunburn,first,lexical,the sun the sun,1,0,6.74,0,6,6,different
+146,sunburn,first,caused,sunscreen,0,1,6.08,0,6,6,different
+146,sunburn,first,lexical,the sun,1,0,6.08,0,6,6,different
+146,flood,second,lexical,the water,1,0,6.08,0,6,6,different
+146,flood,second,caused,the water rising,1,0,6.08,0,6,6,different
+147,sunburn,first,caused,she didn't bring her sunscreen she forgot her sunscreen,0,1,6.16,0,6,6,different
+147,sunburn,first,lexical,the sun,1,0,6.16,0,6,6,different
+147,flood,first,caused,andy took the latch off and it started and the window was opening and closing and ur em it started raining really hard so the basement started to flood,0,1,6.16,0,6,6,different
+147,flood,first,lexical,the rain,1,0,6.16,0,6,6,different
+148,sunburn,first,lexical,the sun,1,0,6.41,0,6,6,different
+148,flood,second,lexical,the rain,1,0,6.41,0,6,6,different
+148,flood,second,caused,coz it rained so hard that um that there is um water that it flooded in the basement,1,0,6.41,0,6,6,different
+149,sunburn,second,lexical,sun sun,1,0,6.58,0,6,6,different
+149,sunburn,second,caused,sun,1,0,6.58,0,6,6,different
+149,flood,second,lexical,rain,1,0,6.58,0,6,6,different
+149,flood,second,caused,rain,1,0,6.58,0,6,6,different
+150,flood,first,lexical,water water flooded the basement,1,0,6.66,0,6,6,different
+150,sunburn,first,lexical,the sun burned suzy's skin,1,0,6.66,0,6,6,different
