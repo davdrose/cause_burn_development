@@ -1,4 +1,4 @@
-## Who caused it to break? Who broke it? How children map causal verbs to different causes across development
+## Broke or caused to break: How children map causal verbs to different causes across development
 
 This repository contains the experiments, data, analyses, and figures for the paper "Who caused it to break? Who broke it? How children map causal verbs to different causes across development" by David Rose, Siying Zhang, Shaun Nichols, Ellen Markman and Tobias Gerstenberg.
 
