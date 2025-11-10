@@ -2,7 +2,7 @@
 
 This repository contains the experiments, data, analyses, and figures for the paper "How children map causal verbs to different causes across development" by David Rose, Siying Zhang, Shaun Nichols, Ellen Markman and Tobias Gerstenberg.
 
-<!-- The preprint can be found [here](update link) -->
+The preprint can be found [here](https://doi.org/10.31234/osf.io/aw834_v5)
 
 __Contents__:
 - [Introduction](#Introduction)
